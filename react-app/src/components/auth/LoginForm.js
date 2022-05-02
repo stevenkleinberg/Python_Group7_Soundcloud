@@ -57,6 +57,15 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button
+          type="submit"
+          id='demoUserBtn'
+          onClick={(e) => (
+            setPassword('password'),
+            setEmail('demo@aa.io')
+          )}>
+          Demo User
+        </button>
       </div>
     </form>
   );
