@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .song_like import song_likes
 from datetime import datetime
 
 
@@ -10,12 +11,20 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False,default=datetime.now())
-    updated_at = db.Column(db.DateTime, nullable=False,default=datetime.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    user_detail = db.relationship("UserDetail",back_populates="user", uselist=False)
-    songs =  db.relationship("Song", back_populates="user")
-    comments =  db.relationship("Comment", back_populates="user")
+    user_detail = db.relationship(
+        "UserDetail", back_populates="user", uselist=False)
+    songs = db.relationship("Song", back_populates="user")
+    comments = db.relationship("Comment", back_populates="user")
+
+    likes = db.relationship(
+        "Song",
+        secondary=song_likes,
+        back_populates="likes"
+    )
+
     @property
     def password(self):
         return self.hashed_password
@@ -31,6 +40,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'email': self.email,
-            'created_at':self.created_at,
-            'updated_at':self.updated_at
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
