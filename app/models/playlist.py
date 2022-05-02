@@ -4,7 +4,7 @@ from .playlist_like import playlist_likes
 from .playlist_songs import playlist_songs
 
 
-class PlayList(db.Model):
+class Playlist(db.Model):
     __tablename__ = 'playlists'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
