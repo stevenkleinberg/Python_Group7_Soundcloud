@@ -1,0 +1,16 @@
+body {
+  background-color: rgb(242, 242, 242);
+}
+
+.homepage_container {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 75px 0px 75px;
+  height: 850px;
+}
+
+.sidebar_contanier {
+  border-left: 2.5px solid rgb(242, 242, 242);
+  height: 500px;
+}
