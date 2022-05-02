@@ -11,6 +11,8 @@ import { authenticate } from './store/session';
 import UploadSong from './components/Upload_Song/Uploadsong';
 import EditSongForm from './components/Edit_Song/editSong';
 
+import HomePage from "./components/HomePage";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -30,13 +32,13 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/upload-song' exact={true}>
+         <Route path='/upload-song' exact={true}>
           <UploadSong />
         </Route>
         <Route path='/edit-song' exact={true}>
@@ -45,11 +47,11 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <ProtectedRoute path="/" exact={true}>
+          <HomePage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
