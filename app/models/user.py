@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, nullable=False,default=datetime.now())
 
     user_detail = db.relationship("UserDetail",back_populates="user", uselist=False)
-
+    songs =  db.relationship("Song", back_populates="user")
     @property
     def password(self):
         return self.hashed_password
