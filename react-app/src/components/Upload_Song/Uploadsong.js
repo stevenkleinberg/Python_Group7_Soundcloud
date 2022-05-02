@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { createSong } from '../../store/song';
 import './uploadSong.css';
 
 const UploadSong = () => {
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
     const [title, setTitle] = useState('');
@@ -11,22 +13,23 @@ const UploadSong = () => {
     const [user_id, setUser_id] = useState('');
     const [description, setDescription] = useState('');
     const [image_url, setImageUrl] = useState('');
-    const [created_at, setCreatedAt] = useState('');
-    const [updated_at, setUpdatedAt] = useState('');
 
 
-    const handleSubmit = async (err) => {
+    const handleSubmit = async (ev) => {
 
-        err.preventDefault();
-        const newPicture = {
-            user_id,
+        ev.preventDefault();
+        const newSong = {
+            user_id: sessionUser.id,
             title,
             audio_url,
             description,
             image_url,
-            created_at,
-            updated_at
         };
+        const songs = await dispatch(createSong(newSong));
+        if (songs) {
+            history.push('/')
+        }
+
     }
 
     const reset = () => {
@@ -44,7 +47,9 @@ const UploadSong = () => {
                 </div>
                 <div className='right'>
                     <h2>upload</h2>
-                    <form id='upload-song'>
+                    <form
+                        onSubmit={handleSubmit}
+                        id='upload-song'>
                         <input
                             className='field'
                             type='text'
@@ -79,9 +84,6 @@ const UploadSong = () => {
                             required
                         />
                         <button
-                            // onClick={(e) => (
-                            //     setUser_id()
-                            // )}
                             type='submit'
                             className='btn'>
                             Submit
