@@ -1,6 +1,7 @@
 from .db import db
 from datetime import datetime
 from .song_like import song_likes
+from .playlist_songs import playlist_songs
 
 
 class Song(db.Model):
@@ -22,6 +23,12 @@ class Song(db.Model):
         "User",
         secondary=song_likes,
         back_populates="likes"
+    )
+
+    playlists = db.relationship(
+        "PlayList",
+        secondary=playlist_songs,
+        back_populates="songs"
     )
 
     def to_dict(self):

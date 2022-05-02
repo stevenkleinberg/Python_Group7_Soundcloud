@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .song_like import song_likes
+from .playlist_like import playlist_likes
 from datetime import datetime
 
 
@@ -17,7 +18,14 @@ class User(db.Model, UserMixin):
     user_detail = db.relationship(
         "UserDetail", back_populates="user", uselist=False)
     songs = db.relationship("Song", back_populates="user")
+    playlists = db.relationship("Playlist", back_populates="user")
     comments = db.relationship("Comment", back_populates="user")
+
+    pl_likes = db.relationship(
+        "Playlist",
+        secondary=playlist_likes,
+        back_populates="pl_likes"
+    )
 
     likes = db.relationship(
         "Song",
