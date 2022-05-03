@@ -31,6 +31,7 @@ const SplashPage = () => {
           or
           <a>Upload your own</a>
         </span>
+        <div>Hear what’s trending for free in the SoundCloud community</div>
       </div>
     </div>
   );
