@@ -3,6 +3,8 @@ from app.models import Song, db
 from app.forms import NewSongForm, EditSongForm
 from datetime import datetime
 from app.api.utils import validation_errors_to_error_messages
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 song_routes = Blueprint('song', __name__)
 
@@ -13,26 +15,44 @@ def new_song():
     Create a New Song
     """
     if request.method == 'POST':
-        form = NewSongForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            song = Song(
-                user_id=form.data['user_id'],
-                title=form.data['title'],
-                audio_url=form.data['audio_url'],
-                description=form.data['description'],
-                image_url=form.data['image_url'],
-            )
-            db.session.add(song)
-        else:
-            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        print("IN POST METHOD")
+        print(request.form,"    =========files")
+        # form = NewSongForm()
+        # form['csrf_token'].data = request.cookies['csrf_token']
+        # print(form.data)
+        # if form.validate_on_submit():
+
+
+        raw_audio_url = request.files["audio_url"]
+        print(raw_audio_url,"   Raw audio url")
+
+        if not allowed_file(raw_audio_url.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+
+        audio_upload = upload_file_to_s3(raw_audio_url)
+
+        print(audio_upload,"this is audio_upload function")
+
+        audio_url = audio_upload["url"]
+        print(audio_url, "audio url post upload")
+
+        song = Song(
+            user_id=request.form['user_id'],
+            title=request.form['title'],
+            audio_url=audio_url,
+            description=request.form['description'],
+            image_url=request.form['image_url'],
+        )
+        print(song)
+        db.session.add(song)
+        # else:
+        #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     else:
-        print('Im in the right place')
         form = EditSongForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        print(form.data)
         if form.validate_on_submit():
-            print(form.data)
             songId = form.data['id']
             song = Song.query.get(songId)
             song.title = form.data['title']
