@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage";
 import EditSongForm from "./components/SongFolders/Edit_Song/editSong";
 import { getAllSongs } from "./store/song";
 import SingleSong from "./components/SongFolders/SingleSong";
+import Audio from "./components/AudioPlayer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +69,7 @@ function App() {
           <HomePage />
         </ProtectedRoute>
       </Switch>
+      <Audio />
     </BrowserRouter>
   );
 }
