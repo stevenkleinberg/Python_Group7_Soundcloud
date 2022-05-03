@@ -16,6 +16,7 @@ def new_song():
     """
     if request.method == 'POST':
         print("IN POST METHOD")
+        print(request.form,"    =========files")
         # form = NewSongForm()
         # form['csrf_token'].data = request.cookies['csrf_token']
         # print(form.data)
@@ -38,11 +39,11 @@ def new_song():
         print(audio_url, "audio url post upload")
 
         song = Song(
-            user_id=request.files['user_id'],
-            title=request.files['title'],
+            user_id=request.form['user_id'],
+            title=request.form['title'],
             audio_url=audio_url,
-            description=request.files['description'],
-            image_url=request.files['image_url'],
+            description=request.form['description'],
+            image_url=request.form['image_url'],
         )
         print(song)
         db.session.add(song)

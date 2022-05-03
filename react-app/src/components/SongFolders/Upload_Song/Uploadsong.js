@@ -18,12 +18,16 @@ const UploadSong = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     const formData = new FormData();
+
     formData.append("audio_url", audio_url);
     formData.append("user_id", sessionUser.id);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image_url", image_url);
 
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
     setAudioLoading(true);
 
     // const newSong = {
@@ -33,6 +37,7 @@ const UploadSong = () => {
     //   description,
     //   image_url,
     // };
+
     const songs = await dispatch(createSong(formData));
     if (songs) {
       setAudioLoading(false);
@@ -69,7 +74,8 @@ const UploadSong = () => {
               onChange={(e) => setTitle(e.target.value)}
               value={title}
               placeholder="Title"
-              name="name"
+              name="title"
+              id="title"
               required
             />
             <input
@@ -78,6 +84,7 @@ const UploadSong = () => {
               accept="audio/*"
               onChange={updateAudioUrl}
               name="audio_url"
+              id="audio_url"
               required
             />
 
@@ -86,6 +93,8 @@ const UploadSong = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description"
+              name="description"
+              id="description"
             />
 
             <input
@@ -93,12 +102,15 @@ const UploadSong = () => {
               value={image_url}
               onChange={(e) => setImageUrl(e.target.value)}
               placeholder="Image URL"
-              name="image"
+              name="image_url"
+              id="image_url"
               required
             />
-            <button type="submit" className="btn">
+
+            <button className="btn" type="submit">
               Submit
             </button>
+            {audioLoading && <p>Loading...</p>}
           </form>
         </div>
       </div>
