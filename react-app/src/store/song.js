@@ -58,18 +58,22 @@ export const getAllSongs = () => async (dispatch) => {
     }
 };
 
-// //! Edit/Update Songs from the db
-// export const editSong = (data) => async (dispatch) => {
-//     const response = await fetch(`api/song/${data.id}`, {
-//         method: 'PUT',
-//         body: JSON.stringify(data)
-//     });
-//     if (response.ok) {
-//         const song = await response.json();
-//         dispatch(newSong(song));
-//         return song;
-//     }
-// }
+//! Edit/Update Songs from the db
+export const editSong = (data) => async (dispatch) => {
+
+    const response = await fetch(`/api/songs/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const song = await response.json();
+        dispatch(newSong(song));
+        return song;
+    }
+}
 
 // //!Delete Song from the db
 // export const deleteSong = (songId) => async (dispatch) => {
