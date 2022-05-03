@@ -9,7 +9,7 @@ const SongGallery = ({ title, description, songs }) => {
       </div>
       <div className="songs_slider">
         {songs.map((song) => (
-          <div>testing song holder</div>
+          <div>{song.title}</div>
         ))}
       </div>
     </div>

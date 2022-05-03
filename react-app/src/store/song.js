@@ -14,8 +14,18 @@ const newSong = (song) => ({
     song,
 });
 
+const removeSong = (songId) => {
+    return {
+        type: REMOVE_SONG,
+        songId
+    }
+};
+
+
 const initialState = {};
 
+
+//! Create songs in the database
 export const createSong = (song) => async (dispatch) => {
     const response = await fetch('/api/songs/', {
         method: 'POST',
@@ -39,6 +49,41 @@ export const createSong = (song) => async (dispatch) => {
     }
 };
 
+//! Get Songs from the Database
+export const getAllSongs = () => async (dispatch) => {
+    const response = await fetch('/api/songs/');
+    if (response.ok) {
+        const songs = await response.json();
+        dispatch(loadSongs(songs));
+    }
+};
+
+// //! Edit/Update Songs from the db
+// export const editSong = (data) => async (dispatch) => {
+//     const response = await fetch(`api/song/${data.id}`, {
+//         method: 'PUT',
+//         body: JSON.stringify(data)
+//     });
+//     if (response.ok) {
+//         const song = await response.json();
+//         dispatch(newSong(song));
+//         return song;
+//     }
+// }
+
+// //!Delete Song from the db
+// export const deleteSong = (songId) => async (dispatch) => {
+//     const response = await fetch(`/api/song/${songId}`, {
+//         method: 'delete'
+//     });
+//     if (response.ok) {
+//         await response.json();
+//         dispatch(removeSong(songId));
+//         return songId
+//     }
+// };
+
+
 // State shape:
 // state.songs --> {
 //   [id]: {
@@ -53,7 +98,6 @@ export const createSong = (song) => async (dispatch) => {
 //   },
 // }
 
-
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case NEW_SONG: {
@@ -63,6 +107,21 @@ export default function reducer(state = initialState, action) {
             };
             return newState;
         }
+        case LOAD_SONGS: {
+            const newState = { ...state }
+            action.songs.forEach(song => {
+                newState[song.id] = song
+            })
+            return newState;
+        }
+        // case REMOVE_SONG: {
+        //     let newState = { ...state }
+        //     delete newState[action.songId]
+        //     return newState = {
+        //         ...newState,
+        //         ...state
+        //     }
+        // }
         default:
             return state;
     }
