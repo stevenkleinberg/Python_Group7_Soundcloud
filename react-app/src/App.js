@@ -14,6 +14,8 @@ import EditSongForm from './components/SongFolders/Edit_Song/editSong';
 import { getAllSongs } from './store/song';
 import SingleSong from './components/SongFolders/SingleSong';
 import Audio from './components/AudioPlayer';
+import UserPage from './components/UserPage';
+import SongsList from './components/SongFolders/SongList';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -60,9 +62,13 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
+          <UserPage />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/allsongs" exact={true}>
+          <SongsList />
         </ProtectedRoute>
       </Switch>
       <Audio />

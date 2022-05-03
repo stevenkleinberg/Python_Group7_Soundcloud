@@ -43,57 +43,52 @@ const UploadSong = () => {
     return (
         <div className='container'>
             <div className='song-box'>
-                <div className='left'>
-                </div>
-                <div className='right'>
-                    <h2>upload</h2>
-                    <form
-                        onSubmit={handleSubmit}
-                        id='upload-song'>
-                        <input
-                            className='field'
-                            type='text'
-                            onChange={(e) => setTitle(e.target.value)}
-                            value={title}
-                            placeholder='Title'
-                            name='name'
-                            required
-                        />
-                        <input
-                            className='field'
-                            value={audio_url}
-                            onChange={(e) => setUrl(e.target.value)}
-                            placeholder='song url'
-                            name='audio_url'
-                            required
-                        />
+                <h2>upload</h2>
+                <p style={{ color: 'white', paddingBottom: '10px' }}>fill the form below to upload images</p>
+                <form
+                    onSubmit={handleSubmit}
+                    id='upload-song'>
+                    <input
+                        className='field'
+                        type='text'
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        placeholder='Title'
+                        name='name'
+                        required
+                    />
+                    <input
+                        className='field'
+                        value={audio_url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        placeholder='song url'
+                        name='audio_url'
+                        required
+                    />
 
-                        <textarea
-                            className='field'
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder='Description'
-                        />
+                    <textarea
+                        className='field'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder='Description'
+                    />
 
-                        <input
-                            className='field'
-                            value={image_url}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            placeholder='Image URL'
-                            name='image'
-                            required
-                        />
-                        <button
-                            type='submit'
-                            className='btn'>
-                            Submit
-                        </button>
-                    </form>
-
-                </div>
+                    <input
+                        className='field'
+                        value={image_url}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        placeholder='Image URL'
+                        name='image'
+                        required
+                    />
+                    <button
+                        type='submit'
+                        className='btn'>
+                        Submit
+                    </button>
+                </form>
             </div>
-
-        </div>
+        </div >
     );
 
 
