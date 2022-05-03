@@ -2,7 +2,8 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
   margin: 0px 75px 0px 75px;
   height: 850px;
 }
