@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteSong, editSong } from '../../../store/song';
-
+import './editsong.css'
 
 const EditSongForm = () => {
 
@@ -44,9 +44,10 @@ const EditSongForm = () => {
 
     return (
         <>
-            <h2> Edit  </h2>
-            <div id='EditPictureDiv' className='EditPictureForm'>
-                <div>
+            <div className='container'>
+                <div className='song-box'>
+                    <h2>edit details</h2>
+                    <p style={{ color: 'white', paddingBottom: '10px' }}>fill the form below to edit images</p>
                     <form onSubmit={handleSubmit} >
                         <input
                             className='field'
