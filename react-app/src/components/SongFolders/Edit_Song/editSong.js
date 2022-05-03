@@ -27,7 +27,7 @@ const EditSongForm = () => {
         };
         const song = await dispatch(editSong(newSong));
         if (song) {
-            // history.push(`/songs/${+id}`)
+            history.push(`/songs/${+id}`)
         }
 
     }
@@ -63,7 +63,7 @@ const EditSongForm = () => {
                             type='text'
                             value={audio_url}
                             onChange={(e) => setUrl(e.target.value)}
-                            placeholder='change image url here...'
+                            placeholder='change audio url here...'
                             name='url'
                             required
                         />
