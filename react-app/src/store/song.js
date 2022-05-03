@@ -22,8 +22,6 @@ const removeSong = (songId) => {
 };
 
 
-const initialState = {};
-
 
 //! Create songs in the database
 export const createSong = (song) => async (dispatch) => {
@@ -90,6 +88,7 @@ export const deleteSong = (songId) => async (dispatch) => {
 
 // State shape:
 // state.songs --> {
+//   playingId: id,
 //   [id]: {
 //      id, user_id, title, audio_url, description, image_url, created_at, updated_at,
 //      user: {},
@@ -102,6 +101,12 @@ export const deleteSong = (songId) => async (dispatch) => {
 //   },
 // }
 
+const initialState = {
+    playingId: 2,
+};
+
+
+
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case NEW_SONG: {
@@ -112,9 +117,9 @@ export default function reducer(state = initialState, action) {
             return newState;
         }
         case LOAD_SONGS: {
-            const newState = { ...state }
+            const newState = { ...state };
             action.songs.forEach(song => {
-                newState[song.id] = song
+                newState[song.id] = song;
             })
             return newState;
         }
