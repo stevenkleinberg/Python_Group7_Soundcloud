@@ -10,7 +10,7 @@ song_routes = Blueprint('song', __name__)
 @song_routes.route('/', methods=['POST', 'PUT'])
 def new_song():
     """
-    Create a New SOng
+    Create a New Song
     """
     if request.method == 'POST':
         form = NewSongForm()
@@ -54,3 +54,16 @@ def get_all_songs():
     """
     songs = Song.query.all()
     return jsonify([song.to_dict() for song in songs])
+
+@song_routes.route('/<int:id>', methods=['DELETE'])
+def delete_song(id):
+    """
+    Delete song of id
+    """
+    song = Song.query.get(id)
+    if song:
+        db.session.delete(song)
+        db.session.commit()
+        return {'id': id}
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
