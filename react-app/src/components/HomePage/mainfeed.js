@@ -1,8 +1,12 @@
 import React from "react";
-
 import GalleryCard from "../GalleryCard";
+import { useSelector } from "react-redux";
+
 
 const MainFeed = () => {
+
+  const songs = useSelector(state => state.songs)
+
   return (
     <div>
       <ul>
@@ -10,7 +14,7 @@ const MainFeed = () => {
           type="songs"
           description="this is a desc "
           title="Testing"
-          songs={[1, 2, 3, 12, 12, 12]}
+          songs={Object.values(songs)}
         />
       </ul>
     </div>

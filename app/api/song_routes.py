@@ -25,3 +25,12 @@ def new_song():
         db.session.commit()
         return song.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@song_routes.route('/')
+def get_all_songs():
+    """
+    Get All Songs
+    """
+    songs = Song.query.all()
+    return jsonify([song.to_dict() for song in songs])
