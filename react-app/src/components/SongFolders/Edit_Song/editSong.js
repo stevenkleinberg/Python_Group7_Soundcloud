@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { editSong } from '../../../store/song';
+import { deleteSong, editSong } from '../../../store/song';
 
 
 const EditSongForm = () => {
@@ -27,17 +27,17 @@ const EditSongForm = () => {
         };
         const song = await dispatch(editSong(newSong));
         if (song) {
-            // history.push(`/songs/${+id}`)
+            history.push(`/songs/${+id}`)
         }
 
     }
 
-    const DeleteSubmit = async (e) => {
+    const deleteSubmit = async (e) => {
         e.preventDefault();
-        const payload = {
-
+        const res = await dispatch(deleteSong(+id));
+        if (res) {
+            history.push('/');
         }
-
     }
 
 
@@ -63,7 +63,7 @@ const EditSongForm = () => {
                             type='text'
                             value={audio_url}
                             onChange={(e) => setUrl(e.target.value)}
-                            placeholder='change image url here...'
+                            placeholder='change audio url here...'
                             name='url'
                             required
                         />
@@ -91,7 +91,7 @@ const EditSongForm = () => {
                             Submit
                         </button>
                     </form>
-                    <form onSubmit={DeleteSubmit} id='deletePictureForm'>
+                    <form onSubmit={deleteSubmit} id='deletePictureForm'>
                         <button
                             style={{ margin: '5px', width: '100px' }}
                             type='submit'>
