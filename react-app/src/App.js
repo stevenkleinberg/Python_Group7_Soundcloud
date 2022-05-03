@@ -12,6 +12,7 @@ import UploadSong from './components/SongFolders/Upload_Song/Uploadsong';
 import HomePage from "./components/HomePage";
 import EditSongForm from './components/SongFolders/Edit_Song/editSong';
 import { getAllSongs } from './store/song';
+import SingleSong from './components/SongFolders/SingleSong';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,9 +48,12 @@ function App() {
         <Route path='/upload-song' exact={true}>
           <UploadSong />
         </Route>
-        <Route path='/edit-song' exact={true}>
+        <Route path='/songs/:id/edit' exact={true}>
           <EditSongForm />
         </Route>
+        <ProtectedRoute path='/songs/:id' exact={true}>
+          <SingleSong />
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
