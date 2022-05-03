@@ -17,7 +17,7 @@ const newSong = (song) => ({
 const removeSong = (songId) => {
     return {
         type: REMOVE_SONG,
-        songId
+        songId,
     }
 };
 
@@ -75,17 +75,17 @@ export const editSong = (data) => async (dispatch) => {
     }
 }
 
-// //!Delete Song from the db
-// export const deleteSong = (songId) => async (dispatch) => {
-//     const response = await fetch(`/api/song/${songId}`, {
-//         method: 'delete'
-//     });
-//     if (response.ok) {
-//         await response.json();
-//         dispatch(removeSong(songId));
-//         return songId
-//     }
-// };
+//!Delete Song from the db
+export const deleteSong = (songId) => async (dispatch) => {
+    const response = await fetch(`/api/songs/${songId}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        await response.json();
+        dispatch(removeSong(songId));
+        return songId;
+    }
+};
 
 
 // State shape:
@@ -118,14 +118,11 @@ export default function reducer(state = initialState, action) {
             })
             return newState;
         }
-        // case REMOVE_SONG: {
-        //     let newState = { ...state }
-        //     delete newState[action.songId]
-        //     return newState = {
-        //         ...newState,
-        //         ...state
-        //     }
-        // }
+        case REMOVE_SONG: {
+            const newState = { ...state };
+            delete newState[action.songId];
+            return newState;
+        }
         default:
             return state;
     }
