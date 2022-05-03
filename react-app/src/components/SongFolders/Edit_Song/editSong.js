@@ -1,32 +1,35 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { editSong } from '../../../store/song';
 
 
 const EditSongForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const [title, setTitle] = useState('');
-    const [audio_url, setUrl] = useState('');
-    const [user_id, setUser_id] = useState('');
-    const [description, setDescription] = useState('');
-    const [image_url, setImageUrl] = useState('');
-    const [created_at, setCreatedAt] = useState('');
-    const [updated_at, setUpdatedAt] = useState('');
+    const { id } = useParams();
+    const song = useSelector(state => state.songs[+id])
+    const [title, setTitle] = useState(song?.title);
+    const [audio_url, setUrl] = useState(song?.audio_url);
+    const [description, setDescription] = useState(song?.description);
+    const [image_url, setImageUrl] = useState(song?.image_url);
+
 
     const handleSubmit = async (err) => {
-
         err.preventDefault();
-        const newPicture = {
-            user_id,
+        const newSong = {
+            id: +id,
             title,
             audio_url,
             description,
-            image_url,
-            created_at,
-            updated_at
+            image_url
         };
+        const song = await dispatch(editSong(newSong));
+        if (song) {
+            // history.push(`/songs/${+id}`)
+        }
+
     }
 
     const DeleteSubmit = async (e) => {
@@ -37,14 +40,6 @@ const EditSongForm = () => {
 
     }
 
-
-    const reset = () => {
-        setTitle('');
-        setUrl('');
-        setImageUrl('');
-        setDescription('');
-        history.push('/')
-    };
 
 
     return (
@@ -59,7 +54,7 @@ const EditSongForm = () => {
                             type='text'
                             onChange={(e) => setTitle(e.target.value)}
                             value={title}
-                            placeholder='rename here... '
+                            placeholder={'rename here... '}
                             name='name'
                             required
                         />
