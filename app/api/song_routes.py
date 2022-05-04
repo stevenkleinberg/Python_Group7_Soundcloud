@@ -16,7 +16,7 @@ def new_song():
     """
     if request.method == 'POST':
         print("IN POST METHOD")
-        print(request.form,"    =========files")
+        print(request.files,"    =========files")
         # form = NewSongForm()
         # form['csrf_token'].data = request.cookies['csrf_token']
         # print(form.data)
@@ -50,18 +50,37 @@ def new_song():
         # else:
         #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     else:
-        form = EditSongForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            songId = form.data['id']
-            song = Song.query.get(songId)
-            song.title = form.data['title']
-            song.audio_url = form.data['audio_url']
-            song.description = form.data['description']
-            song.image_url = form.data['image_url']
-            song.updated_at = datetime.now()
-        else:
-            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        print(request.files,"----------------")
+        print(request.form,"=================")
+
+
+        # form = EditSongForm()
+        # form['csrf_token'].data = request.cookies['csrf_token']
+
+        # if form.validate_on_submit():
+
+        raw_audio_url = request.files["audio_url"]
+        print(raw_audio_url,"   Raw audio url")
+
+        if not allowed_file(raw_audio_url.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+
+        audio_upload = upload_file_to_s3(raw_audio_url)
+
+        print(audio_upload,"this is audio_upload function")
+
+        audio_url = audio_upload["url"]
+        print(audio_url, "audio url post upload")
+        song = Song.query.get(int(request.form["id"]))
+        song.title = request.form['title']
+        song.audio_url = audio_url,
+        song.description = request.form['description']
+        song.image_url = request.form['image_url']
+        song.updated_at = datetime.now()
+        # else:
+        #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
     db.session.commit()
     return song.to_dict()

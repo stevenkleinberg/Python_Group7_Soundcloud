@@ -22,12 +22,12 @@ const removeSong = (songId) => {
   };
 };
 // play a song
- export const playSong = (songId) => {
+export const playSong = (songId) => {
   return {
     type: PLAY_SONG,
     songId,
-  }
-}
+  };
+};
 //! Create songs in the database
 export const createSong = (song) => async (dispatch) => {
   const response = await fetch("/api/songs/", {
@@ -62,10 +62,7 @@ export const getAllSongs = () => async (dispatch) => {
 export const editSong = (data) => async (dispatch) => {
   const response = await fetch(`/api/songs/`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
+    body: data,
   });
   if (response.ok) {
     const song = await response.json();
@@ -85,7 +82,6 @@ export const deleteSong = (songId) => async (dispatch) => {
     return songId;
   }
 };
-
 
 // State shape:
 // state.songs --> {
@@ -128,7 +124,8 @@ export default function reducer(state = initialState, action) {
     case PLAY_SONG: {
       const newState = {
         ...state,
-        playingId: action.songId }
+        playingId: action.songId,
+      };
       return newState;
     }
     default:
