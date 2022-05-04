@@ -51,6 +51,11 @@
     color: #151515;
 }
 
+.navlinks.logo img {
+    width: 40px;
+    height: 40px;
+}
+
 .userProfileBtn {
     padding: 5px;
 }
@@ -75,7 +80,6 @@
     align-self: flex-end;
     font-size: medium;
     font-family: 'Inter', sans-serif;
-    ;
     padding: 3px 9px;
 }
 
@@ -83,6 +87,7 @@
     background-color: lightslategray;
     border: solid 2.3px lightslategray;
 }
+
 
 .profile-dropdown>div {
     padding: 5px;
