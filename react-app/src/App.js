@@ -10,14 +10,16 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import UploadSong from "./components/SongFolders/Upload_Song/Uploadsong";
 import HomePage from "./components/HomePage";
-import EditSongForm from './components/SongFolders/Edit_Song/editSong';
-import { getAllSongs } from './store/song';
-import SingleSong from './components/SongFolders/SingleSong';
-import Audio from './components/AudioPlayer';
-import UserPage from './components/UserPage';
-import SongsList from './components/SongFolders/SongList';
+import EditSongForm from "./components/SongFolders/Edit_Song/editSong";
+import { getAllSongs } from "./store/song";
+import { getAllPlaylists } from "./store/playlist";
+import SingleSong from "./components/SongFolders/SingleSong";
+import Audio from "./components/AudioPlayer";
+import UserPage from "./components/UserPage";
+import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
-import './index.css';
+import "./index.css";
+import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +35,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(getAllSongs());
+      await dispatch(getAllPlaylists());
     })();
   }, [dispatch]);
 
@@ -76,6 +79,12 @@ function App() {
         <ProtectedRoute path="/allsongs" exact={true}>
           <SongsList />
         </ProtectedRoute>
+        <ProtectedRoute path="/playlists" exact={true}>
+          <PlaylistsPage />
+        </ProtectedRoute>
+        <Route>
+          <p>not found</p>
+        </Route>
       </Switch>
       <Audio />
     </BrowserRouter>
