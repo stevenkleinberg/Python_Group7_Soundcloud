@@ -15,6 +15,8 @@ import { getAllSongs } from "./store/song";
 import SingleSong from "./components/SongFolders/SingleSong";
 import Audio from "./components/AudioPlayer";
 
+import SplashPage from "./components/SplashPage";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/welcome" exact={true}>
-          {/* <SplashPage /> */}
+          <SplashPage />
           <p>testing</p>
         </Route>
         <Route path="/login" exact={true}>
