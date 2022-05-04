@@ -83,7 +83,11 @@ const EditSongForm = () => {
               name="name"
               required
             />
-            <button className="field" onClick={() => setNewAudio(!newAudio)}>
+            <button
+              type="button"
+              className="field"
+              onClick={() => setNewAudio(!newAudio)}
+            >
               Upload New Audio File
             </button>
             {newAudio && (
@@ -94,7 +98,6 @@ const EditSongForm = () => {
                 onChange={updateAudioUrl}
                 name="audio_url"
                 id="audio_url"
-                required
               />
             )}
 
@@ -104,7 +107,11 @@ const EditSongForm = () => {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description"
             />
-            <button className="field" onClick={() => setNewImage(!newImage)}>
+            <button
+              type="button"
+              className="field"
+              onClick={() => setNewImage(!newImage)}
+            >
               Upload New Audio File
             </button>
             {newImage && (
