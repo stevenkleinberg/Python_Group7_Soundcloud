@@ -4,45 +4,37 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import Logo from './Icons/Logo';
 import './NavBar.css'
+import UserProfile from "./UserProfile";
 
 const NavBar = () => {
 
   const sessionUser = useSelector(state => state.session.user);
   let sessionLinks = (
-    <nav>
-      <ul className='nav_links'>
-        <li className='links'>
-          <NavLink
-            className='logo'
-            to="/"
-            exact={true}
-            activeClassName="active"
-          >
-            <Logo />
-          </NavLink>
-        </li>
-        <li className='links'><NavLink to="/upload-song" exact={true} activeClassName="active"> Upload </NavLink> </li>
-        <li className='links'><NavLink to="/songs" exact={true} activeClassName="active"> Edit </NavLink>   </li>
-        <li className='links'>  <NavLink to="/users" exact={true} activeClassName="active"> Users </NavLink> </li>
-        <li className='links'>  <NavLink to="/allsongs" exact={true} activeClassName="active"> Songs </NavLink> </li>
-        <li>
-          <div className='profile'>
-            <LogoutButton />
-          </div>
-        </li>
-      </ul>
-    </nav>
+
+    <nav className="navbar">
+      <NavLink
+        className='navlinks logo'
+        to="/"
+        exact={true}
+        activeClassName="active"
+      >
+        <Logo />
+      </NavLink>
+      <NavLink className='navlinks' to="/upload-song" exact={true} activeClassName="active"> Upload </NavLink>
+      <NavLink className='navlinks' to="/songs" exact={true} activeClassName="active"> Edit </NavLink>
+      <NavLink className='navlinks' to="/users" exact={true} activeClassName="active"> Users </NavLink>
+      <NavLink className='navlinks' to="/allsongs" exact={true} activeClassName="active"> Songs </NavLink>
+      <UserProfile user={sessionUser} />
+    </nav >
   );
   return (
     <>
       {!sessionUser ?
         <header>
-          <nav >
-            <ul className='nav_links'>
-              <li><NavLink exact to="/"> Home </NavLink></li>
-              <li><NavLink to="/login">Log In</NavLink></li>
-              <li><NavLink to="/sign-up" exact={true} activeClassName="active">Sign Up</NavLink></li>
-            </ul>
+          <nav className="navbar">
+            <NavLink className='navlinks' exact to="/"> Home </NavLink>
+            <NavLink className='navlinks' to="/login">Log In</NavLink>
+            <NavLink className='navlinks' to="/sign-up" exact={true} activeClassName="active">Sign Up</NavLink>
           </nav>
         </header>
         : <>
