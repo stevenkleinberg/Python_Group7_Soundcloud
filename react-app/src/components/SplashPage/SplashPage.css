@@ -1,0 +1,69 @@
+.splashpage_container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 75px 0px 75px;
+  height: 850px;
+}
+
+.imagebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 4px solid #f50;
+  color: #ffffff;
+  width: 1239.99px;
+  height: 430px;
+  padding-top: 50px;
+  background-color: orange;
+  /* background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists@2x-00444712.jpg); */
+  background: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg)
+    50% / cover no-repeat;
+}
+
+.soundcloudsplogo {
+  /* color: white; */
+  /* background-image: url(https://a-v2.sndcdn.com/assets/images/peace-cloud-28ad0963.svg); */
+}
+.imagetoptitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.soundcloudbuttons {
+  display: flex;
+}
+
+.signuptitle {
+  height: 30px;
+  width: 130px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.caccounttitle {
+  height: 30px;
+  width: 130px;
+  background-color: #ff5500;
+  border: 1px solid #ff5500;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+.uploadingbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 178px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #ff5500;
+}
