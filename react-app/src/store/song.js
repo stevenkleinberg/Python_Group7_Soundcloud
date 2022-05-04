@@ -20,7 +20,6 @@ const removeSong = (songId) => {
     songId,
   };
 };
-
 //! Create songs in the database
 export const createSong = (song) => async (dispatch) => {
   const response = await fetch("/api/songs/", {
@@ -55,10 +54,7 @@ export const getAllSongs = () => async (dispatch) => {
 export const editSong = (data) => async (dispatch) => {
   const response = await fetch(`/api/songs/`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
+    body: data,
   });
   if (response.ok) {
     const song = await response.json();
@@ -78,7 +74,6 @@ export const deleteSong = (songId) => async (dispatch) => {
     return songId;
   }
 };
-
 
 // State shape:
 // state.songs --> {

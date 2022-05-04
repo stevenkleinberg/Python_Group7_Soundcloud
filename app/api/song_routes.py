@@ -15,53 +15,157 @@ def new_song():
     Create a New Song
     """
     if request.method == 'POST':
-        print("IN POST METHOD")
-        print(request.form,"    =========files")
         # form = NewSongForm()
         # form['csrf_token'].data = request.cookies['csrf_token']
         # print(form.data)
         # if form.validate_on_submit():
 
-
         raw_audio_url = request.files["audio_url"]
-        print(raw_audio_url,"   Raw audio url")
+
+        raw_image_url = request.files["image_url"]
 
         if not allowed_file(raw_audio_url.filename):
             return {"errors": "file type not permitted"}, 400
 
+        if not allowed_file(raw_image_url.filename):
+            return {"errors": "file type not permitted"}, 400
+
         raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+        raw_image_url.filename = get_unique_filename(raw_image_url.filename)
 
         audio_upload = upload_file_to_s3(raw_audio_url)
-
-        print(audio_upload,"this is audio_upload function")
+        image_upload = upload_file_to_s3(raw_image_url)
 
         audio_url = audio_upload["url"]
-        print(audio_url, "audio url post upload")
+        image_url = image_upload["url"]
 
         song = Song(
             user_id=request.form['user_id'],
             title=request.form['title'],
             audio_url=audio_url,
             description=request.form['description'],
-            image_url=request.form['image_url'],
+            image_url=image_url,
         )
-        print(song)
+
         db.session.add(song)
         # else:
         #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     else:
-        form = EditSongForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            songId = form.data['id']
-            song = Song.query.get(songId)
-            song.title = form.data['title']
-            song.audio_url = form.data['audio_url']
-            song.description = form.data['description']
-            song.image_url = form.data['image_url']
+        print(request.files.to_dict(),"----------------")
+        print(request.form,"=================")
+
+        if not any(request.files):
+            song = Song.query.get(int(request.form["id"]))
+            song.title = request.form['title']
+            song.description = request.form['description']
             song.updated_at = datetime.now()
         else:
-            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+            keys = list(request.files.to_dict().keys())
+
+            if len(keys) == 2:
+                print("we have to keys")
+                raw_audio_url = request.files["audio_url"]
+                raw_image_url = request.files["image_url"]
+
+                if not allowed_file(raw_audio_url.filename):
+                    return {"errors": "file type not permitted"}, 400
+
+                if not allowed_file(raw_image_url.filename):
+                    return {"errors": "file type not permitted"}, 400
+
+                raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+                raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+
+                audio_upload = upload_file_to_s3(raw_audio_url)
+                image_upload = upload_file_to_s3(raw_image_url)
+
+                audio_url = audio_upload["url"]
+                image_url = image_upload["url"]
+
+                song = Song.query.get(int(request.form["id"]))
+                song.title = request.form['title']
+                song.audio_url = audio_url,
+                song.description = request.form['description']
+                song.image_url = image_url
+                song.updated_at = datetime.now()
+            elif keys[0] == "audio_url":
+                print("only have audio")
+                raw_audio_url = request.files["audio_url"]
+
+
+                if not allowed_file(raw_audio_url.filename):
+                    return {"errors": "file type not permitted"}, 400
+
+
+                raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+
+                audio_upload = upload_file_to_s3(raw_audio_url)
+
+                audio_url = audio_upload["url"]
+
+                song = Song.query.get(int(request.form["id"]))
+                song.title = request.form['title']
+                song.audio_url = audio_url,
+                song.description = request.form['description']
+                song.updated_at = datetime.now()
+
+            elif keys[0] == "image_url":
+                print("only have image")
+                raw_image_url = request.files["image_url"]
+
+                if not allowed_file(raw_image_url.filename):
+                    return {"errors": "file type not permitted"}, 400
+
+                raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+
+                image_upload = upload_file_to_s3(raw_image_url)
+
+                image_url = image_upload["url"]
+
+                song = Song.query.get(int(request.form["id"]))
+                song.title = request.form['title']
+                song.description = request.form['description']
+                song.image_url = image_url
+                song.updated_at = datetime.now()
+
+
+
+        # form = EditSongForm()
+        # form['csrf_token'].data = request.cookies['csrf_token']
+
+        # if form.validate_on_submit():
+
+        # raw_audio_url = request.files["audio_url"]
+        # print(raw_audio_url,"   Raw audio url")
+
+        # raw_image_url = request.files["image_url"]
+
+        # if not allowed_file(raw_audio_url.filename):
+        #     return {"errors": "file type not permitted"}, 400
+
+        # if not allowed_file(raw_image_url.filename):
+        #     return {"errors": "file type not permitted"}, 400
+
+        # raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+        # raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+
+        # audio_upload = upload_file_to_s3(raw_audio_url)
+        # image_upload = upload_file_to_s3(raw_image_url)
+
+        # print(audio_upload,"this is audio_upload function")
+
+        # audio_url = audio_upload["url"]
+        # image_url = image_upload["url"]
+        # print(audio_url, "audio url post upload")
+        # song = Song.query.get(int(request.form["id"]))
+        # song.title = request.form['title']
+        # song.audio_url = audio_url,
+        # song.description = request.form['description']
+        # song.image_url = image_url
+        # song.updated_at = datetime.now()
+        # # else:
+        # #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
     db.session.commit()
     return song.to_dict()
