@@ -1,61 +1,84 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    /* background-color: #24252A; */
-}
-
-.nav_links .links {
-    padding: 5px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: black;
-    text-decoration: none;
-}
-
-header {
+.navbar {
+    background-color: black;
+    height: 7vh;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
-}
-
-.nav_links {
+    padding: 15px 13%;
     list-style: none;
-    padding: 20px;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #303030;
+    z-index: 1;
 }
 
-.nav_links li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
-.nav_links li a {
-    transition: all 0.3s ease 0s;
-}
-
-
-
-.active,
-.nav_links li:hover {
-    background: grey;
-    border-radius: 5px;
-}
-
-.nav_links li:hover {
-    color: #0088a9;
-}
-
-button {
-    padding: 7px 23px;
-    background-color: rgba(0, 136, 169, 1);
-    border: none;
-    border-radius: 50px;
+.navlinks {
+    position: relative;
+    text-decoration: none;
+    color: grey;
+    text-align: center;
+    justify-self: center;
+    padding: 3px;
+    font-size: medium;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+    transition: color .3s ease;
 }
 
-button:hover {
-    background-color: rgba(0, 136, 169, 0.8);
+.navlinks:hover {
+    color: white;
+}
+
+.navlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    color: #151515;
+}
+
+.navlinks .profile {
+    color: #151515;
+}
+
+.userProfileBtn {
+    padding: 5px;
+}
+
+.profile-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #606060;
+    padding: 25px;
+    border-radius: 6px;
+    color: grey;
+}
+
+.dropdown button {
+    background-color: grey;
+    border: solid 2.3px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    justify-self: flex-end;
+    align-self: flex-end;
+    font-size: medium;
+    font-family: 'Inter', sans-serif;
+    ;
+    padding: 3px 9px;
+}
+
+.dropdown button:hover {
+    background-color: lightslategray;
+    border: solid 2.3px lightslategray;
+}
+
+.profile-dropdown>div {
+    padding: 5px;
+    font-size: large;
 }
