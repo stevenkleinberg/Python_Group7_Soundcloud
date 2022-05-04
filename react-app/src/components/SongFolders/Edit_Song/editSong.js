@@ -14,6 +14,8 @@ const EditSongForm = () => {
   const [description, setDescription] = useState(song?.description);
   const [image_url, setImageUrl] = useState(song?.image_url);
   const [audioLoading, setAudioLoading] = useState(false);
+  const [newAudio, setNewAudio] = useState(false);
+  const [newImage, setNewImage] = useState(false);
 
   const handleSubmit = async (err) => {
     err.preventDefault();
@@ -57,6 +59,11 @@ const EditSongForm = () => {
     setUrl(file);
   };
 
+  const updateImageUrl = (e) => {
+    const file = e.target.files[0];
+    setImageUrl(file);
+  };
+
   return (
     <>
       <div className="container">
@@ -76,29 +83,40 @@ const EditSongForm = () => {
               name="name"
               required
             />
-            <input
-              className="field"
-              type="file"
-              accept="audio/*"
-              onChange={updateAudioUrl}
-              name="audio_url"
-              id="audio_url"
-              required
-            />
+            <button className="field" onClick={() => setNewAudio(!newAudio)}>
+              Upload New Audio File
+            </button>
+            {newAudio && (
+              <input
+                className="field"
+                type="file"
+                accept="audio/*"
+                onChange={updateAudioUrl}
+                name="audio_url"
+                id="audio_url"
+                required
+              />
+            )}
+
             <textarea
               className="field"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Description"
             />
-            <input
-              className="field"
-              value={image_url}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="Image URL"
-              name="image"
-              required
-            />
+            <button className="field" onClick={() => setNewImage(!newImage)}>
+              Upload New Audio File
+            </button>
+            {newImage && (
+              <input
+                className="field"
+                type="file"
+                accept="image/*"
+                onChange={updateImageUrl}
+                name="image_url"
+                id="image_url"
+              />
+            )}
             <button
               id="btnfield"
               // onClick={(e) => (
