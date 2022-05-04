@@ -23,6 +23,30 @@
       "audio_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/LA+DIFI%CC%81CIL-+BAD+BUNNY+(+AUDIO+OFFICIAL).mp3",
       "description": "By Bad Bunny",
       "image_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/YHLQMDLG.jpeg"
+    },
+    {
+      "title": "Pepas",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/75988ff7e26445d486533cc33ba93b0f.mp3",
+      "description": "Farruko",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/5/52/Pepas_Farruko.jpg"
+    },
+    {
+      "title": "Whistle song",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/f6ce44fa8df144c5aeb8566f3c29a754.mp3",
+      "description": "Frankie Knuckles",
+      "image_url": "https://i.scdn.co/image/ab67616d0000b273dad4647a643d937143c76ba9"
+    },
+    {
+      "title": "Alberto Balsalm",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/90f7640ef0d34d8cbf62f81404c5a4ff.mp3",
+      "description": "Aphex Twin",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/5/54/AphexTwinICareBecauseYouDo.jpg"
+    },
+    {
+      "title": "Perfect",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/6e06eef15a604fe5adbd337a12aa0713.mp3",
+      "description": "Steve The Don (good day anthem)",
+      "image_url": "https://i1.sndcdn.com/artworks-pvtvktqIByjpXIAv-zebUvA-t500x500.jpg"
     }
   ]
 }
