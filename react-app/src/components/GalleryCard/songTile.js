@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { playSong } from "../../store/song";
+import { loadSong } from "../../store/player";
 import { useDispatch } from "react-redux";
 
 
@@ -10,13 +10,13 @@ const SongTile = ({ song }) => {
     const handlePlayButtonClick = (e) => {
         e.preventDefault();
         console.log("im here")
-        dispatch(playSong(song.id));
+        dispatch(loadSong(song.id));
     }
 
-      return (
+    return (
         <div className="song_tile">
             <div className="song_tile_cover">
-                <img className="song_tile_cover_img" src={song.image_url}/>
+                <img className="song_tile_cover_img" src={song.image_url} />
                 <div className="song_tile_cover_overlay">
                     <button onClick={handlePlayButtonClick} className="song_tile_cover_play">&#9654;</button>
                 </div>
@@ -31,7 +31,7 @@ const SongTile = ({ song }) => {
 
             </div>
         </div>
-      );
-    }
+    );
+}
 
-  export default SongTile;
+export default SongTile;
