@@ -50,6 +50,15 @@ export default function reducer(state = initialState, action) {
             ];
             return newState;
         }
+        case QUEUE_SONG: {
+            const newState = {
+                ...state,
+            };
+            newState.queue = [
+                ...newState.queue, action.songId,
+            ]
+            return newState;
+        }
         default:
             return state;
     }
