@@ -16,10 +16,8 @@ import SingleSong from './components/SongFolders/SingleSong';
 import Audio from './components/AudioPlayer';
 import UserPage from './components/UserPage';
 import SongsList from './components/SongFolders/SongList';
-
-
-
 import SplashPage from "./components/SplashPage";
+import './index.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
