@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './audio.css'
 
 const Audio = () => {
-    const song = useSelector(state => state.songs[state.songs.playingId])
+    const song = useSelector(state => state.songs[state.player.playingId])
     const sessionUser = useSelector(state => state.session.user)
     return (
         <div className="player">

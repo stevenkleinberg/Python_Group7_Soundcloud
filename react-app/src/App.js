@@ -16,10 +16,8 @@ import SingleSong from './components/SongFolders/SingleSong';
 import Audio from './components/AudioPlayer';
 import UserPage from './components/UserPage';
 import SongsList from './components/SongFolders/SongList';
-
-
-
 import SplashPage from "./components/SplashPage";
+import './index.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -59,7 +57,6 @@ function App() {
         <Route path="/upload-song" exact={true}>
           <UploadSong />
         </Route>
-
         <Route path="/songs/:id/edit" exact={true}>
           <EditSongForm />
         </Route>

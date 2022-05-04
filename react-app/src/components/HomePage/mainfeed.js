@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 const MainFeed = () => {
 
   const songs = useSelector(state => state.songs)
-  delete songs.playingId
   const songs_array = Object.values(songs)
 
   return (
