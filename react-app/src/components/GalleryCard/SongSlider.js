@@ -18,7 +18,6 @@ const SongSlider = ({ songs }) => {
         <div>
             <Slider {...settings}>
                 {songs.map((song) => (
-
                     <SongTile song={song} />
                 ))}
             </Slider>
