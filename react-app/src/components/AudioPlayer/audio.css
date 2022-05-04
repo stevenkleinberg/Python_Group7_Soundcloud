@@ -4,6 +4,58 @@
     justify-content: center;
     position: fixed;
     bottom: 0%;
-    background-color: #171717;
+    background-color: whitesmoke;
     width: 100vw;
+}
+
+.songImg {
+    border-radius: 10%;
+}
+
+.black {
+    color: black;
+}
+
+
+.rhap_container {
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+}
+
+.rhap_main.rhap_horizontal-reverse {
+    width: 80vw;
+
+}
+
+.player .songinfo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.player a {
+    font-weight: bold;
+    max-width: 150px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.6s;
+    z-index: 1000;
+}
+
+.player a:hover {
+    color: #ffffff;
+}
+
+.player .navlinks {
+    color: #aaa;
+    max-width: 150px;
+}
+
+.player .modal-container {
+    z-index: 1;
 }
