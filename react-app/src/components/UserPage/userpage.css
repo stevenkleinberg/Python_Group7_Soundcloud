@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.userDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    border-bottom: 2px black solid;
+    background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.backgroundUserImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 10px 10px 10px 10px;
+    font-size: medium;
+}
+
+.backgroundUserImage button {
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.userImage {
+    margin: 10px 10px 10px 10px;
+    background: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png") no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.userImage button {
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.userDetailsInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 10px 10px 10px;
+
+}
