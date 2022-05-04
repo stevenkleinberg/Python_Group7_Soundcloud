@@ -26,16 +26,26 @@ def new_song():
         raw_audio_url = request.files["audio_url"]
         print(raw_audio_url,"   Raw audio url")
 
+        raw_image_url = request.files["image_url"]
+
         if not allowed_file(raw_audio_url.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        if not allowed_file(raw_image_url.filename):
             return {"errors": "file type not permitted"}, 400
 
         raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
 
+        raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+
+
         audio_upload = upload_file_to_s3(raw_audio_url)
+        image_upload = upload_file_to_s3(raw_image_url)
 
         print(audio_upload,"this is audio_upload function")
 
         audio_url = audio_upload["url"]
+        image_url = image_upload["url"]
         print(audio_url, "audio url post upload")
 
         song = Song(
@@ -43,7 +53,7 @@ def new_song():
             title=request.form['title'],
             audio_url=audio_url,
             description=request.form['description'],
-            image_url=request.form['image_url'],
+            image_url=image_url,
         )
         print(song)
         db.session.add(song)
