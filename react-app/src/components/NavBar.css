@@ -35,7 +35,10 @@ header {
     transition: all 0.3s ease 0s;
 }
 
-
+.nav_links .logo img {
+    width: 40px;
+    height: 40px;
+}
 
 .active,
 .nav_links li:hover {
@@ -55,6 +58,7 @@ header {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+
 .logout_button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }

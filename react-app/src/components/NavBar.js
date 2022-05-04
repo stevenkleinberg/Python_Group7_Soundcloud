@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
+import Logo from './Icons/Logo';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -10,7 +11,16 @@ const NavBar = () => {
   let sessionLinks = (
     <nav>
       <ul className='nav_links'>
-        <li className='links'> <NavLink to="/" exact={true} activeClassName="active"> Home </NavLink></li>
+        <li className='links'>
+          <NavLink
+            className='logo'
+            to="/"
+            exact={true}
+            activeClassName="active"
+          >
+            <Logo />
+          </NavLink>
+        </li>
         <li className='links'><NavLink to="/upload-song" exact={true} activeClassName="active"> Upload </NavLink> </li>
         <li className='links'><NavLink to="/songs" exact={true} activeClassName="active"> Edit </NavLink>   </li>
         <li className='links'>  <NavLink to="/users" exact={true} activeClassName="active"> Users </NavLink> </li>
