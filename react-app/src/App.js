@@ -19,6 +19,8 @@ import SongsList from './components/SongFolders/SongList';
 
 
 
+import SplashPage from "./components/SplashPage";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/welcome" exact={true}>
-          {/* <SplashPage /> */}
+          <SplashPage />
           <p>testing</p>
         </Route>
         <Route path="/login" exact={true}>
@@ -57,6 +59,7 @@ function App() {
         <Route path="/upload-song" exact={true}>
           <UploadSong />
         </Route>
+
         <Route path="/songs/:id/edit" exact={true}>
           <EditSongForm />
         </Route>
