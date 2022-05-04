@@ -1,17 +1,26 @@
 import React from "react";
+import SongTile from "./songTile"
+import SongSlider from "./SongSlider";
 
 const SongGallery = ({ title, description, songs }) => {
   return (
-    <div>
+    <div className="gallery_container">
       <div className="gallery_text">
-        <h2>{title}</h2>
-        {description && <p>{description}</p>}
+        <div>
+          <p className="gallery_title">{title}</p>
+        </div>
+        <div>
+          {description && <p className="gallery_description">{description}</p>}
+        </div>
       </div>
       <div className="songs_slider">
-        {songs.map((song) => (
-          <div>{song.title}</div>
-        ))}
+        <SongSlider songs={songs} />
       </div>
+      {/* <div className="songs_slider">
+        {songs.map((song) => (
+          <SongTile song={song}/>
+        ))}
+      </div> */}
     </div>
   );
 };

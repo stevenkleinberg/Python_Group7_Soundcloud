@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* background-color: #24252A; */
+
 }
 
 .nav_links .links {
@@ -47,7 +47,7 @@ header {
     color: #0088a9;
 }
 
-button {
+.logout_button {
     padding: 7px 23px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
@@ -55,7 +55,6 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-
-button:hover {
+.logout_button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }

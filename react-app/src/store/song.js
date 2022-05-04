@@ -2,6 +2,7 @@
 const LOAD_SONGS = "song/LOAD_SONGS";
 const NEW_SONG = "song/NEW_SONG";
 const REMOVE_SONG = "song/REMOVE_SONG";
+const PLAY_SONG = "song/PLAY_SONG";
 
 const loadSongs = (songs) => ({
   type: LOAD_SONGS,
@@ -20,7 +21,13 @@ const removeSong = (songId) => {
     songId,
   };
 };
-
+// play a song
+ export const playSong = (songId) => {
+  return {
+    type: PLAY_SONG,
+    songId,
+  }
+}
 //! Create songs in the database
 export const createSong = (song) => async (dispatch) => {
   const response = await fetch("/api/songs/", {
@@ -79,6 +86,7 @@ export const deleteSong = (songId) => async (dispatch) => {
   }
 };
 
+
 // State shape:
 // state.songs --> {
 //   playingId: id,
@@ -94,9 +102,7 @@ export const deleteSong = (songId) => async (dispatch) => {
 //   },
 // }
 
-const initialState = {
-  playingId: 2,
-};
+const initialState = {};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -117,6 +123,12 @@ export default function reducer(state = initialState, action) {
     case REMOVE_SONG: {
       const newState = { ...state };
       delete newState[action.songId];
+      return newState;
+    }
+    case PLAY_SONG: {
+      const newState = {
+        ...state,
+        playingId: action.songId }
       return newState;
     }
     default:
