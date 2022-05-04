@@ -9,13 +9,10 @@ const Audio = () => {
     const sessionUser = useSelector(state => state.session.user)
     return (
         <div className="player">
-            <div className='songinfo'>
+            <div className='player songinfo'>
                 <img className='songImg' src={song?.image_url} onError={(e) => e.target.src = '../../static/images/log'} height='50px' />
-                <div>
-                    {/* {song?.id ? <p> by</p> : <>  </>} */}
-                    <NavLink to={`/songs/${song?.id}`}>  {song?.title}</NavLink>
-                </div>
-                <AudioPlayer customAdditionalControls={[]} layout="horizontal-reverse" src={song?.audio_url} />
+                <NavLink className='black' to={`/songs/${song?.id}`}>  {song?.title}</NavLink>
+                <AudioPlayer className='songPlayer' customAdditionalControls={[]} layout="horizontal-reverse" src={song?.audio_url} />
             </div>
         </div >
     )

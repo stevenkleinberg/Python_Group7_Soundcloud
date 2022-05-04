@@ -4,8 +4,8 @@
     justify-content: center;
     position: fixed;
     bottom: 0%;
-    background-color: whitesmoke;
-    width: 100vw;
+    background-color: white;
+    width: 100%;
 }
 
 .songImg {
@@ -13,27 +13,37 @@
 }
 
 .black {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 13px;
     color: black;
+    padding: 15px 20px 15px 20px;
+    min-width: fit-content;
 }
 
+.songPlayer {
+    border: none;
+}
 
 .rhap_container {
-    background-color: whitesmoke;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70vw;
+    border: none;
+    /* width: 70vw; */
 }
 
 .rhap_main.rhap_horizontal-reverse {
-    width: 80vw;
-
+    width: 70vw;
 }
 
-.player .songinfo {
+.player.songinfo {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 1px;
     justify-content: center;
     align-items: center;
 }
