@@ -1,0 +1,9 @@
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0%;
+    background-color: #171717;
+    width: 100vw;
+}

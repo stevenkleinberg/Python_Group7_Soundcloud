@@ -1,0 +1,28 @@
+{
+  "songs": [
+    {
+      "title": "Jugste y Sufri",
+      "audio_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/(LETRA)+Jugaste+y+Sufri-Eslabon+Armado+ft+DannyLux+%5B2020%5D.mp3",
+      "description": "By Eslabon Armado ft DannyLux",
+      "image_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/Corta-Venas+.jpeg"
+    },
+    {
+      "title": "Yonaguni",
+      "audio_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/Bad+Bunny+-+Yonaguni+(Letra_Lyrics).mp3",
+      "description": "By Bad Bunny",
+      "image_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/Yonaguni.jpeg"
+    },
+    {
+      "title": "Está Dañada",
+      "audio_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/Ivan+Cornejo+-+Esta%CC%81+Dan%CC%83ada+(Audio+Oficial).mp3",
+      "description": "By Ivan Cornejo",
+      "image_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/Alma-Vaci%CC%81a.jpeg"
+    },
+    {
+      "title": "La Dificil",
+      "audio_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/LA+DIFI%CC%81CIL-+BAD+BUNNY+(+AUDIO+OFFICIAL).mp3",
+      "description": "By Bad Bunny",
+      "image_url": "https://soundtownbucket.s3.us-west-1.amazonaws.com/YHLQMDLG.jpeg"
+    }
+  ]
+}

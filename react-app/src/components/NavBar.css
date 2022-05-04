@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
 .navbar {
     background-color: black;
     height: 7vh;
@@ -64,7 +71,6 @@
     border-radius: 5px;
     margin-top: 20px;
     transition: all 0.5s;
-    cursor: pointer;
     justify-self: flex-end;
     align-self: flex-end;
     font-size: medium;
