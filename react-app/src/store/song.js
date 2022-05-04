@@ -88,7 +88,7 @@ export const deleteSong = (songId) => async (dispatch) => {
 
 
 // State shape:
-// state.songs --> {
+// state.song --> {
 //   playingId: id,
 //   [id]: {
 //      id, user_id, title, audio_url, description, image_url, created_at, updated_at,

@@ -59,7 +59,6 @@ function App() {
         <Route path="/upload-song" exact={true}>
           <UploadSong />
         </Route>
-
         <Route path="/songs/:id/edit" exact={true}>
           <EditSongForm />
         </Route>
