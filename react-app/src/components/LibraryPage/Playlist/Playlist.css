@@ -1,0 +1,127 @@
+.playlist_tile_cover {
+  position: relative;
+  width: 200px;
+}
+
+.playlist_tile_cover_img {
+  display: block;
+  width: 100%;
+}
+
+.playlist_tile_cover_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.playlist_tile_cover_overlay:hover {
+  opacity: 1;
+}
+
+.playlist_tile_cover_play {
+  font-size: 2em;
+  background: none;
+  box-shadow: none;
+  border: none;
+  color: white;
+  transition: font-size 0.25s, color 0.25s;
+}
+
+.playlist_tile_cover_play:hover {
+  font-size: 2.5em;
+  color: orangered;
+}
+
+.playlist_tile_bottom {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.playlist_tile_text {
+  margin-top: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.playlist_tile_text_title {
+  text-decoration: none;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: rgb(55, 55, 55);
+  line-height: 19.6px;
+  list-style-position: outside;
+}
+
+.playlist_tile_text_title:hover {
+  color: black;
+}
+
+.playlist_tile_text_description {
+  font-size: 15px;
+  font-family: sans-serif;
+  color: rgb(153, 153, 153);
+}
+
+.playlist_tile_text_description:hover {
+  color: rgb(55, 55, 55);
+}
+
+.playlist_tile {
+  margin: 0px 25px 0px 25px;
+}
+
+.playlist_image {
+  width: 340px;
+}
+
+.left_box_banner {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title_banner {
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.banner_circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.banner_play_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #f50;
+  margin-right: 10px;
+  color: white;
+}
+.banner_title_group_1 {
+  align-items: center;
+}
