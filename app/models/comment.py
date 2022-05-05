@@ -20,8 +20,8 @@ class Comment(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'content': self.content,
-            'song_id':self.song_id,
-            'song_timestamp' : self.song_timestamp,
+            'song_id': self.song_id,
+            'song_timestamp': self.song_timestamp,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
