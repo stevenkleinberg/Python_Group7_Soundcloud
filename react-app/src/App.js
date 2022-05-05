@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -10,15 +10,18 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import UploadSong from "./components/SongFolders/Upload_Song/Uploadsong";
 import HomePage from "./components/HomePage";
-import EditSongForm from './components/SongFolders/Edit_Song/editSong';
-import { getAllSongs } from './store/song';
-import SingleSong from './components/SongFolders/SingleSong';
-import Audio from './components/AudioPlayer';
-import UserPage from './components/UserPage';
-import SongsList from './components/SongFolders/SongList';
+import EditSongForm from "./components/SongFolders/Edit_Song/editSong";
+import { getAllSongs } from "./store/song";
+import { getAllPlaylists } from "./store/playlist";
+import SingleSong from "./components/SongFolders/SingleSong";
+import Audio from "./components/AudioPlayer";
+import UserPage from "./components/UserPage";
+import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
-import './index.css';
 import UserSongList from "./components/UserPage/user_page_songs";
+import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
+import LibraryPage from "./components/LibraryPage";
+import './index.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +37,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(getAllSongs());
+      await dispatch(getAllPlaylists());
     })();
   }, [dispatch]);
 
@@ -79,6 +83,15 @@ function App() {
         <ProtectedRoute path="/allsongs" exact={true}>
           <SongsList />
         </ProtectedRoute>
+        <ProtectedRoute path="/playlists/:id" exact={true}>
+          <PlaylistsPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/library">
+          <LibraryPage />
+        </ProtectedRoute>
+        <Route>
+          <p>not found</p>
+        </Route>
       </Switch>
       <Audio />
     </BrowserRouter>

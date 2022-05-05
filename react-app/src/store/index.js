@@ -4,21 +4,22 @@ import session from './session';
 import songs from './song';
 import player from './player';
 import details from './user-details'
+import playlists from "./playlist";
 
 const rootReducer = combineReducers({
   session,
   songs,
   player,
-  details
+  details,
+  playlists,
 });
-
 
 let enhancer;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   enhancer = applyMiddleware(thunk);
 } else {
-  const logger = require('redux-logger').default;
+  const logger = require("redux-logger").default;
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));

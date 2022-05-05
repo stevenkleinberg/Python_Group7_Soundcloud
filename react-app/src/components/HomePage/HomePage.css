@@ -144,3 +144,9 @@ body {
 .song_tile_text_description:hover {
   color: rgb(55, 55, 55);
 }
+
+
+.song_tile_actions {
+  font-size: 24px;
+  font-weight: 700;
+}
