@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
-import { queueSong } from '../../store/player';
+import { loadSong, queueSong } from '../../store/player';
 
 
 function SongTileActions({ song }) {
-
+    const playingId = useSelector(state => state.player.playingId);
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
@@ -27,7 +27,11 @@ function SongTileActions({ song }) {
     }, [showMenu]);
 
     const addSongToQueue = (id) => {
-        dispatch(queueSong(id));
+        if (!playingId) {
+            dispatch(loadSong(id));
+        } else {
+            dispatch(queueSong(id));
+        }
     }
 
     return (
