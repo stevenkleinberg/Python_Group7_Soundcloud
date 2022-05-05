@@ -7,17 +7,16 @@ import Moment from "react-moment";
 import NewPlaylistForm from "../CreatePlaylist";
 import PlaylistMainFeed from "./PlaylistMainFeed";
 
+import "./PlaylistSongs.css";
+import PlaylistSideBar from "./PlaylistSideBar";
+
 const PlaylistsPage = () => {
   const { id } = useParams();
   const playlist = useSelector((state) => state.playlists[+id]);
-  console.log(playlist?.updated_at);
-  const createdDate = new Date(playlist?.created_at);
-  const todayDate = new Date();
-
-  console.log(todayDate.getDay() - createdDate.getDay());
+  console.log(playlist?.songs);
 
   return (
-    <div>
+    <div className="playlist_container_main">
       <div className="Pl_S_banner flex-row">
         <div className="left_box_banner flex-column">
           <div className="title_banner flex-row">
@@ -41,8 +40,9 @@ const PlaylistsPage = () => {
           <img src={playlist?.image_url} className="playlist_image" />
         </div>
       </div>
-      <div>
+      <div className="flex-row playlist_mainfeed_sidebar_conatiner">
         <PlaylistMainFeed songsId={playlist?.songs} />
+        <PlaylistSideBar />
       </div>
     </div>
   );
