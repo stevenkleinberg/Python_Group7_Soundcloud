@@ -13,7 +13,6 @@ import PlaylistSideBar from "./PlaylistSideBar";
 const PlaylistsPage = () => {
   const { id } = useParams();
   const playlist = useSelector((state) => state.playlists[+id]);
-  console.log(playlist?.songs);
 
   return (
     <div className="playlist_container_main">

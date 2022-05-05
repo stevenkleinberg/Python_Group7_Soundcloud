@@ -10,7 +10,6 @@ playlist_routes = Blueprint('playlist',__name__)
 @playlist_routes.route("/", methods=["POST","PUT"])
 def new_playlist():
     if request.method == 'POST':
-        print("got in the if post statement")
         """
         Create a New Playlist
         """
@@ -23,7 +22,6 @@ def new_playlist():
 
         image_upload = upload_file_to_s3(raw_image_url)
         image_url = image_upload["url"]
-        print(image_url,"====>>> URL from s3")
 
         playlist = Playlist(
             user_id =  request.form['user_id'],
@@ -34,7 +32,6 @@ def new_playlist():
 
         db.session.add(playlist)
     else:
-        print(request.files,"-------")
         if not any(request.files):
             playlist = Playlist.query.get(int(request.form["id"]))
             playlist.title= request.form["title"]
@@ -68,7 +65,6 @@ def get_all_playlists():
     Get All Playlists
     """
     playlists = db.session.query(Playlist).options(joinedload(Playlist.songs)).all()
-    print(playlists,"============")
     mainDict = {}
 
     for playlist in playlists:
@@ -76,9 +72,5 @@ def get_all_playlists():
         mainDict[playlist.id]["songs"] = []
         for song in playlist.songs:
             mainDict[playlist.id]["songs"].append(song.id)
-
-    print(mainDict)
-
-
 
     return jsonify(mainDict)

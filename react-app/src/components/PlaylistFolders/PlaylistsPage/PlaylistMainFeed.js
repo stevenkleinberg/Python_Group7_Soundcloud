@@ -9,12 +9,10 @@ const PlaylistMainFeed = ({ songsId }) => {
   const [showModal, setShowModal] = useState(false);
   const songArr = [];
   const songs = useSelector((state) => state.songs);
-  console.log(songs);
   songsId?.forEach((songId) => {
     songArr.push(songs[+songId]);
   });
 
-  console.log(songArr);
   return (
     <div className="playlist_mainfeed_container">
       <div className="playlist_button_group">
