@@ -59,6 +59,18 @@ export const editPlaylist = (data) => async (dispatch) => {
   }
 };
 
+//!Delete Playlist from the database
+export const deletePlaylist = (playlistId) => async (dispatch) => {
+  const response = await fetch(`/api/playlists/${playlistId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    await response.json();
+    dispatch(removeSong(playlistId));
+    return playlistId;
+  }
+};
+
 // State shape:
 // state.playlist --> {
 //   [id]: {
@@ -87,6 +99,11 @@ export default function reducer(state = initialState, action) {
       Object.values(action.playlists).forEach((playlist) => {
         newState[playlist.id] = playlist;
       });
+      return newState;
+    }
+    case REMOVE_PLAYLIST: {
+      const newState = { ...state };
+      delete newState[action.playlistId];
       return newState;
     }
     default:

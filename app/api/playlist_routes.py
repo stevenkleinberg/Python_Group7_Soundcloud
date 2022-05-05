@@ -74,3 +74,19 @@ def get_all_playlists():
             mainDict[playlist.id]["songs"].append(song.id)
 
     return jsonify(mainDict)
+
+
+
+@playlist_routes.route('/<int:id>',methods=['DELETE'])
+def delete_playlist(id):
+    """
+    Delete playlist by id
+    """
+
+    playlist = Playlist.query.get(id)
+    if playlist:
+        db.session.delete(playlist)
+        db.session.commit()
+        return {"id":id}
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401

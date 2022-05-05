@@ -40,7 +40,7 @@ const PlaylistsPage = () => {
         </div>
       </div>
       <div className="flex-row playlist_mainfeed_sidebar_conatiner">
-        <PlaylistMainFeed songsId={playlist?.songs} />
+        <PlaylistMainFeed songsId={playlist?.songs} playlist={playlist} />
         <PlaylistSideBar />
       </div>
     </div>
