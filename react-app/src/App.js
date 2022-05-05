@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -21,6 +21,7 @@ import SplashPage from "./components/SplashPage";
 import "./index.css";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
+import { ModalProvider } from "./components/Context/Modal";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,53 +46,55 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path="/welcome" exact={true}>
-          <SplashPage />
-          <p>testing</p>
-        </Route>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path="/upload-song" exact={true}>
-          <UploadSong />
-        </Route>
-        <Route path="/songs/:id/edit" exact={true}>
-          <EditSongForm />
-        </Route>
-        <ProtectedRoute path="/songs/:id" exact={true}>
-          <SingleSong />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-          <UserPage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <HomePage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/allsongs" exact={true}>
-          <SongsList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/playlists/:id" exact={true}>
-          <PlaylistsPage />
-        </ProtectedRoute>
-        <ProtectedRoute path="/library">
-          <LibraryPage />
-        </ProtectedRoute>
-        <Route>
-          <p>not found</p>
-        </Route>
-      </Switch>
-      <Audio />
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route path="/welcome" exact={true}>
+            <SplashPage />
+            <p>testing</p>
+          </Route>
+          <Route path="/login" exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm />
+          </Route>
+          <Route path="/upload-song" exact={true}>
+            <UploadSong />
+          </Route>
+          <Route path="/songs/:id/edit" exact={true}>
+            <EditSongForm />
+          </Route>
+          <ProtectedRoute path="/songs/:id" exact={true}>
+            <SingleSong />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users" exact={true}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true}>
+            <User />
+            <UserPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true}>
+            <HomePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/allsongs" exact={true}>
+            <SongsList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/playlists/:id" exact={true}>
+            <PlaylistsPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/library">
+            <LibraryPage />
+          </ProtectedRoute>
+          <Route>
+            <p>not found</p>
+          </Route>
+        </Switch>
+        <Audio />
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 
