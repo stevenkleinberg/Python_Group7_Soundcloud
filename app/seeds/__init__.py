@@ -13,7 +13,7 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_songs()
-    seed_user_details
+    seed_user_details()
     # Add other seed functions here
 
 
@@ -22,5 +22,5 @@ def seed():
 def undo():
     undo_users()
     undo_songs()
-    undo_user_details
+    undo_user_details()
     # Add other undo functions here

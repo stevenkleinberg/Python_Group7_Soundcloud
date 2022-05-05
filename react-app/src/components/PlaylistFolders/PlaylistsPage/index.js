@@ -32,7 +32,7 @@ const PlaylistsPage = () => {
             <Moment fromNow>{playlist?.created_at}</Moment>
           </div>
           <div className="banner_circle">
-            <div>{playlist?.songs.length}</div>
+            <div>{playlist?.songs?.length || 0}</div>
             <div>tracks</div>
           </div>
         </div>
