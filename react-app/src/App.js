@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/User";
 import { authenticate } from "./store/session";
 import UploadSong from "./components/SongFolders/Upload_Song/Uploadsong";
 import HomePage from "./components/HomePage";
@@ -18,7 +17,7 @@ import Audio from "./components/AudioPlayer";
 import UserPage from "./components/UserPage";
 import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
-import "./index.css";
+import UserSongList from "./components/UserPage/user_page_songs";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
@@ -26,7 +25,7 @@ import { ModalProvider } from "./components/Context/Modal";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-
+  const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -73,8 +72,8 @@ function App() {
             <UsersList />
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true}>
-            <User />
             <UserPage />
+            <UserSongList />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
             <HomePage />
