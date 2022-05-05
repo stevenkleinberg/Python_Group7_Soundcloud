@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SingleSongRow from "./SingleSongRow";
 
+import { Modal } from "../../Context/Modal";
+import EditPlaylistForm from "../EditPlaylist";
+
 const PlaylistMainFeed = ({ songsId }) => {
+  const [showModal, setShowModal] = useState(false);
   const songArr = [];
   const songs = useSelector((state) => state.songs);
   console.log(songs);
@@ -17,7 +21,17 @@ const PlaylistMainFeed = ({ songsId }) => {
         <button>Like</button>
         <button>Share</button>
         <button>Copy Link</button>
-        <button>Edit</button>
+        <button onClick={() => setShowModal(true)}>Edit</button>
+        {showModal && (
+          <Modal
+            onClose={() => {
+              setShowModal(false);
+            }}
+          >
+            <h3>Edit Playlist</h3>
+            <EditPlaylistForm />
+          </Modal>
+        )}
         <button>More</button>
       </div>
       <div className="flex-row">

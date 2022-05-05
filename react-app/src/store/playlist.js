@@ -46,6 +46,19 @@ export const getAllPlaylists = () => async (dispatch) => {
   }
 };
 
+//!Edit playlist in the database
+export const editPlaylist = (data) => async (dispatch) => {
+  const response = await fetch("/api/playlists/", {
+    method: "PUT",
+    body: data,
+  });
+  if (response.ok) {
+    const playlist = await response.json();
+    dispatch(newPlaylist(playlist));
+    return playlist;
+  }
+};
+
 // State shape:
 // state.playlist --> {
 //   [id]: {

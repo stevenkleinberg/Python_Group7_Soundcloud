@@ -7,7 +7,7 @@ from app.s3_helpers import (
 
 playlist_routes = Blueprint('playlist',__name__)
 
-@playlist_routes.route("/", methods=["POST"])
+@playlist_routes.route("/", methods=["POST","PUT"])
 def new_playlist():
     if request.method == 'POST':
         print("got in the if post statement")
@@ -33,6 +33,30 @@ def new_playlist():
         )
 
         db.session.add(playlist)
+    else:
+        print(request.files,"-------")
+        if not any(request.files):
+            playlist = Playlist.query.get(int(request.form["id"]))
+            playlist.title= request.form["title"]
+            playlist.description= request.form["description"]
+        else:
+            raw_image_url = request.files["image_url"]
+
+            if not allowed_file(raw_image_url.filename):
+                return {"errors": "file type not permitted"}, 400
+
+            raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+
+            image_upload = upload_file_to_s3(raw_image_url)
+            image_url = image_upload["url"]
+
+            playlist = Playlist.query.get(int(request.form["id"]))
+            playlist.title= request.form["title"]
+            playlist.image_url= image_url,
+            playlist.description= request.form["description"]
+
+
+
 
     db.session.commit()
     return playlist.to_dict()
