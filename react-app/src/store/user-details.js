@@ -43,8 +43,8 @@ export const createDetail = (detail) => async (dispatch) => {
 };
 
 //! Get Details from the Database
-export const getAllDetails = () => async (dispatch) => {
-    const response = await fetch("/api/details/");
+export const getAllDetails = (id) => async (dispatch) => {
+    const response = await fetch(`/api/details/${id}`);
     if (response.ok) {
         const data = await response.json();
         dispatch(loadDetails(data));
@@ -53,7 +53,8 @@ export const getAllDetails = () => async (dispatch) => {
 
 //! Edit/Update Details from the db
 export const editDetails = (data) => async (dispatch) => {
-    const response = await fetch(`/api/details/`, {
+    console.log('mmmmmmmmmmmmmmmmmmm', data)
+    const response = await fetch(`/api/details/${data.id}`, {
         method: "PUT",
         body: data,
     });

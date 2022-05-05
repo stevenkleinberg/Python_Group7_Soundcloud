@@ -38,9 +38,11 @@ function UserProfile({ user }) {
                 <div className="dropdown">
                     {showMenu && (
                         <div className="profile-dropdown">
-                            <div>{user.email}</div>
-                            <div> <NavLink className='navlinks ' to={`/users/${user.id}`} exact={true} activeClassName="active"> Profile </NavLink></div>
-                            <button style={{ minWidth: '70px' }} onClick={onLogout}>Log Out</button>
+                            <div>
+                                <NavLink className='navlinks ' to={`/users/${user.id}`} exact={true} activeClassName="active"> Profile </NavLink>
+                                <div style={{ width: '100%', borderBottom: 'whitesmoke solid 1px', paddingTop: '7px' }}> </div>
+                            </div>
+                            <button style={{ minWidth: '80px' }} onClick={onLogout}>Log Out</button>
                         </div>
                     )}
                 </div>

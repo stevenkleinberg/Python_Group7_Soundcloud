@@ -104,13 +104,36 @@
     display: flex;
 }
 
-#userPageContainer {
+.userPageContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 40vh;
+    height: 50vh;
     border-bottom: 2px black solid;
     background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
     background-size: cover;
+}
+
+#userSongList {
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr 1fr;
+    height: 50vh;
+    border-bottom: 2px black solid;
+}
+
+#firstContainer {
+    border-right: black solid 2px;
+}
+
+#secondContainer {
+    border-right: black solid 2px;
+}
+
+#thirdContainer {
+    border-right: black solid 2px;
+}
+
+#fourthContainer {
+    border-right: black solid 2px;
 }
 
 #firstcontainer {
@@ -118,4 +141,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+}
+
+.userNav {
+    background-color: black;
+    height: 7vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 13%;
+    list-style: none;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #303030;
+    z-index: 1;
 }

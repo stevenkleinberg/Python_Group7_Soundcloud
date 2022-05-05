@@ -3,35 +3,44 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { createDetail, editDetails } from "../../store/user-details";
+import UserNavBar from "./user_page_nav";
+import { getAllDetails } from "../../store/user-details";
 import './userpage.css';
+
 
 function UserPage() {
 
 
-    const sessionUser = useSelector((state) => state.session.user);
-    const dispatch = useDispatch();
     const { id } = useParams();
+    const sessionUser = useSelector((state) => state.session.user);
+    const sessionUserDetail = useSelector((state) => state.details);
+    const dispatch = useDispatch();
     const history = useHistory();
     const [display_name, setDisplayName] = useState("");
     const [avatar_url, setUrl] = useState("");
     const [banner_url, setBannerUrl] = useState("");
-    const [avatarLoading, setAvatarLoading] = useState(false);
-    const userDetails = useSelector(state => state.detail);
+    const userDetails = useSelector(state => state.details);
     const [activity, setActivity] = useState(false)
 
+    useEffect(() => {
+        (async () => {
+            await dispatch(getAllDetails(sessionUser.id));
+        })();
+    }, [dispatch]);
 
 
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
         const formData = new FormData();
-
-        formData.append("id", +id);
+        formData.append("id", sessionUser.id);
         formData.append("avatar_url", avatar_url);
         formData.append("display_name", display_name);
         formData.append("banner_url", banner_url);
 
+        console.log(formData, 'llflflffkkfkfd')
         const detail = await dispatch(editDetails(formData));
+        console.log(detail, 'HHHHHHHHHHH')
         if (detail) {
             history.push("/");
         } else {
@@ -63,13 +72,9 @@ function UserPage() {
         setBannerUrl(file);
     };
 
-
-    const right = 0
-    const left = 0
-
     return (
         <>
-            <div id="userPageContainer">
+            <div className="userPageContainer">
                 <div id='firstcontainer'>
                     <div className="userDetailsInfo">
                         <div className="userImage">
@@ -141,6 +146,9 @@ function UserPage() {
                     <>
                     </>
             }
+            <div>
+                <UserNavBar />
+            </div>
         </>
 
 
