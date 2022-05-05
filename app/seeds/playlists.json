@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "title": "new PLaylsit",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/e011a34f99b143f596474b02727e243d.jpeg",
+    "description": "new playlist",
+    "created_at": "2022-05-04 14:37:45.224096",
+    "updated_at": "2022-05-04 14:37:45.224123"
+  },
+  {
+    "id": 2,
+    "user_id": 1,
+    "title": "ANother playlist",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/a04c60d24f244d0b8dcff3cf51e0b71e.jpeg",
+    "description": "new playlist",
+    "created_at": "2022-05-04 14:37:45.224096",
+    "updated_at": "2022-05-04 14:37:45.224123"
+  },
+  {
+    "id": 3,
+    "user_id": 1,
+    "title": "this is a new playlistname",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/c79e5918c20347a984e6be6c732db057.jpeg",
+    "description": "this is a test",
+    "created_at": "2022-05-04 15:19:43.818213",
+    "updated_at": "2022-05-04 15:19:43.818284"
+  },
+  {
+    "id": 4,
+    "user_id": 1,
+    "title": "my fav",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/eb85195ddbc948048500a046df7a6d0b.jpeg",
+    "description": "this is my fav playlist",
+    "created_at": "2022-05-05 08:30:00.132891",
+    "updated_at": "2022-05-05 08:30:00.132906"
+  },
+  {
+    "id": 5,
+    "user_id": 1,
+    "title": "this is a new playlist",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/ac019cae8daf48fca28bfef6dfa12e3a.jpeg",
+    "description": "adding",
+    "created_at": "2022-05-05 08:45:49.836281",
+    "updated_at": "2022-05-05 08:45:49.836296"
+  },
+  {
+    "id": 6,
+    "user_id": 1,
+    "title": "test5555",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/df793517e25f435ca68b8dc0c34225b1.jpeg",
+    "description": "testing",
+    "created_at": "2022-05-05 09:06:29.149052",
+    "updated_at": "2022-05-05 09:06:29.149067"
+  },
+  {
+    "id": 7,
+    "user_id": 1,
+    "title": "eee",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/b8dd7ee4a7cb4e22bff59b082ea912c1.jpeg",
+    "description": "eee",
+    "created_at": "2022-05-05 09:06:29.149052",
+    "updated_at": "2022-05-05 09:06:29.149067"
+  },
+  {
+    "id": 8,
+    "user_id": 1,
+    "title": "teestinggg",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/65338f96b7d74d758297232d1bf01493.jpeg",
+    "description": "dsdsds",
+    "created_at": "2022-05-05 09:12:41.581784",
+    "updated_at": "2022-05-05 09:12:41.5818"
+  },
+  {
+    "id": 9,
+    "user_id": 1,
+    "title": "ds",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/901ff684974c4af0adb9573117a4b9f8.jpeg",
+    "description": "dssd",
+    "created_at": "2022-05-05 09:12:41.581784",
+    "updated_at": "2022-05-05 09:12:41.5818"
+  },
+  {
+    "id": 10,
+    "user_id": 1,
+    "title": "dsds",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/3348fd3c25c5409f9c040f06d2aaf0be.jpeg",
+    "description": "dsds",
+    "created_at": "2022-05-05 09:12:41.581784",
+    "updated_at": "2022-05-05 09:12:41.5818"
+  },
+  {
+    "id": 11,
+    "user_id": 1,
+    "title": "songstho",
+    "songs_order": null,
+    "image_url": "https://soundtownbucket.s3.amazonaws.com/12aafb97b86c4f93bb90bed28ad27f79.jpeg",
+    "description": "dsds",
+    "created_at": "2022-05-05 09:12:41.581784",
+    "updated_at": "2022-05-05 09:12:41.5818"
+  }
+]
