@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -20,6 +20,7 @@ import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
 import "./index.css";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
+import LibraryPage from "./components/LibraryPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -81,6 +82,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/playlists" exact={true}>
           <PlaylistsPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/library">
+          <LibraryPage />
         </ProtectedRoute>
         <Route>
           <p>not found</p>

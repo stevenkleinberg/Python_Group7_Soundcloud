@@ -38,6 +38,15 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className="navlinks"
+        to="/library/songs"
+        exact={true}
+        activeClassName="active"
+      >
+        {" "}
+        Library{" "}
+      </NavLink>
+      <NavLink
+        className="navlinks"
         to="/allsongs"
         exact={true}
         activeClassName="active"
