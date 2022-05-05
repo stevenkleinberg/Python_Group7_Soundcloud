@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import SongComments from "./songComments";
+import SongComments from "./SongComments";
 import "./singlesong.css";
 import Moment from "react-moment";
 const SingleSong = () => {

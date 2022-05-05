@@ -1,0 +1,9 @@
+.avatar {
+    height: 40px;
+    width: 40px;
+}
+
+.avatar-placeholder {
+    border-radius: 50%;
+    background-image: linear-gradient(135deg, #8e8485, #70929c);
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-// import SingleSongRow from "./SingleSongRow";
+import SingleComment from './Comments/SingleComment';
 
 const SongComments = ({ song }) => {
     const [content, setContent] = useState("");
@@ -29,29 +29,37 @@ const SongComments = ({ song }) => {
                         </form>
                     </div>
                 </div>
-            <div className="song_button_group">
-                <button>Like</button>
-                <button>Share</button>
-                <button>Copy Link</button>
-                <button>Edit</button>
-                <button>More</button>
-            </div>
+                <div className="song_button_group">
+                    <button>Like</button>
+                    <button>Share</button>
+                    <button>Copy Link</button>
+                    <button>Edit</button>
+                    <button>More</button>
+                </div>
             </div>
             <div className="flex-row">
-                <div>
+                <div className="user-badge flex-column">
                     <img />
                     <p>Jesus Elizalde</p>
                 </div>
-                {/* <div>
-          <ul>
-            similar logic but comments
-            {songArr?.map((song, idx) => (
-              <li key={idx}>
-                <SingleSongRow song={song} idx={idx} />
-              </li>
-            ))}
-          </ul>
-        </div> */}
+                <div className="song-details flex-column">
+                    <div className="song-description">
+                        {song.description}
+                    </div>
+                    <div className="song-comments-list flex-column">
+                        <div className="comments-count"></div>
+                        <div className="comment-cards-list">
+                            <ul>
+                                similar logic but comments
+                                {commentsArr?.map((comment, idx) => (
+                                    <li key={idx}>
+                                        <SingleComment comment={comment} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
