@@ -80,7 +80,7 @@ function App() {
         <ProtectedRoute path="/allsongs" exact={true}>
           <SongsList />
         </ProtectedRoute>
-        <ProtectedRoute path="/playlists" exact={true}>
+        <ProtectedRoute path="/playlists/:id" exact={true}>
           <PlaylistsPage />
         </ProtectedRoute>
         <ProtectedRoute path="/library">
