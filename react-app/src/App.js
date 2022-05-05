@@ -18,6 +18,7 @@ import UserPage from './components/UserPage';
 import SongsList from './components/SongFolders/SongList';
 import SplashPage from "./components/SplashPage";
 import './index.css';
+import { getAllDetails } from "./store/user-details";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,12 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(getAllSongs());
+    })();
+  }, [dispatch]);
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getAllDetails());
     })();
   }, [dispatch]);
 

@@ -6,7 +6,7 @@ class UserDetail(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"),nullable=False)
-    display_name = db.Column(db.String(50),nullable=False)
+    display_name = db.Column(db.String(50))
     avatar_url = db.Column(db.String)
     banner_url = db.Column(db.String)
 

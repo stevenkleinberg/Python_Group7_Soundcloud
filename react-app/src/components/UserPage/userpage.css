@@ -8,7 +8,7 @@
 .userDetailsContainer {
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 40vh;
     border-bottom: 2px black solid;
     background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
     background-size: cover;
@@ -17,15 +17,45 @@
 .backgroundUserImage {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-end;
     margin: 10px 10px 10px 10px;
     font-size: medium;
+    width: auto;
+
+}
+
+.headerUploadField>input {
+    width: 85px;
+    font-size: 12px;
+}
+
+.headerUploadField {
+    font-size: 12px;
+    width: fit-content;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, .1)
+        /* background-color: whitesmoke;
+    box-shadow: black 1px;
+    margin: 4px 4px 4px 4px;
+    padding: 5px;
+    border-radius: 1px; */
 }
 
 .backgroundUserImage button {
     padding: 5px;
     border-radius: 3px;
+}
+
+.headerField {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.chooseFileHeader {
+    font: none;
 }
 
 .userImage {
@@ -36,13 +66,17 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
 }
 
-.userImage button {
-    padding: 5px;
+.userImage>input {
+    padding: 15px;
     border-radius: 3px;
+}
+
+.field.userPage {
+    width: 140px;
 }
 
 .userDetailsInfo {
@@ -51,4 +85,8 @@
     align-items: flex-start;
     margin: 10px 10px 10px 10px;
 
+}
+
+.backgroundUserImage {
+    display: flex;
 }
