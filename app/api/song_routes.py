@@ -51,9 +51,6 @@ def new_song():
         # else:
         #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     else:
-        print(request.files.to_dict(),"----------------")
-        print(request.form,"=================")
-
         if not any(request.files):
             song = Song.query.get(int(request.form["id"]))
             song.title = request.form['title']
@@ -90,7 +87,6 @@ def new_song():
                 song.image_url = image_url
                 song.updated_at = datetime.now()
             elif keys[0] == "audio_url":
-                print("only have audio")
                 raw_audio_url = request.files["audio_url"]
 
 
@@ -111,7 +107,6 @@ def new_song():
                 song.updated_at = datetime.now()
 
             elif keys[0] == "image_url":
-                print("only have image")
                 raw_image_url = request.files["image_url"]
 
                 if not allowed_file(raw_image_url.filename):
