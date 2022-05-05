@@ -191,3 +191,16 @@ def delete_song(id):
         return {'id': id}
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# GET /api/songs/:id/comments
+@song_routes.route('/<int:id>/comments')
+def get_comments_by_song_id(id):
+    """
+    Get all comments of song ID
+    """
+    song = Song.query.get(id)
+    if song:
+        return song.comments
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
