@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -18,14 +18,15 @@ import Audio from "./components/AudioPlayer";
 import UserPage from "./components/UserPage";
 import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
-import "./index.css";
+import UserSongList from "./components/UserPage/user_page_songs";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
+import './index.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-
+  const sessionUser = useSelector(state => state.session.user)
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -39,6 +40,8 @@ function App() {
       await dispatch(getAllPlaylists());
     })();
   }, [dispatch]);
+
+
 
   if (!loaded) {
     return null;
@@ -71,8 +74,8 @@ function App() {
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
           <UserPage />
+          <UserSongList />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <HomePage />

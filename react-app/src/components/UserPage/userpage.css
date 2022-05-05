@@ -5,44 +5,91 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-.userDetailsContainer {
-    display: flex;
-    flex-direction: column;
-    height: 30vh;
-    border-bottom: 2px black solid;
-    background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
-    background-size: cover;
-}
 
-.backgroundUserImage {
+.backgroundHeaderImage {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-end;
     margin: 10px 10px 10px 10px;
     font-size: medium;
+    width: auto;
+
 }
 
-.backgroundUserImage button {
+.headerUploadField>input {
+    width: 85px;
+    font-size: 12px;
+}
+
+.headerUploadField {
+    font-size: 12px;
+    width: fit-content;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, .1)
+        /* background-color: whitesmoke;
+    box-shadow: black 1px;
+    margin: 4px 4px 4px 4px;
+    padding: 5px;
+    border-radius: 1px; */
+}
+
+.backgroundHeaderImage button {
     padding: 5px;
     border-radius: 3px;
 }
 
+.headerField {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.chooseFileHeader {
+    font: none;
+}
+
 .userImage {
-    margin: 10px 10px 10px 10px;
+    margin: 15px 10px 10px 10px;
     background: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png") no-repeat center;
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
 }
 
-.userImage button {
-    padding: 5px;
+.userImage>input {
+    font-size: 16px;
+    margin: 15px 5px -18px 5px;
+    padding: 25px 25px 20px 5px;
     border-radius: 3px;
+}
+
+.field.userPage {
+    margin: 0px 5px 5px 14px;
+    font-size: 70%;
+    width: 140px;
+}
+
+.userDescription {
+    height: 10px;
+}
+
+.field.userPage:hover {
+    background-color: white;
+}
+
+.display_name_div {
+    margin: 0px 5px 5px 20px;
+    font-size: 20px;
+    background-color: black;
+    width: fit-content;
+    color: floralwhite;
+    padding: 5px;
 }
 
 .userDetailsInfo {
@@ -51,4 +98,61 @@
     align-items: flex-start;
     margin: 10px 10px 10px 10px;
 
+}
+
+.backgroundUserImage {
+    display: flex;
+}
+
+.userPageContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50vh;
+    border-bottom: 2px black solid;
+    background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#userSongList {
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr 1fr;
+    height: 50vh;
+    border-bottom: 2px black solid;
+}
+
+#firstContainer {
+    border-right: black solid 2px;
+}
+
+#secondContainer {
+    border-right: black solid 2px;
+}
+
+#thirdContainer {
+    border-right: black solid 2px;
+}
+
+#fourthContainer {
+    border-right: black solid 2px;
+}
+
+#firstcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.userNav {
+    background-color: black;
+    height: 7vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 13%;
+    list-style: none;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #303030;
+    z-index: 1;
 }
