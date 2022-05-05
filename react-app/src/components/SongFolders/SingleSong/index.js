@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import SongComments from './songComments';
-import './singlesong.css'
+import SongComments from "./songComments";
+import "./singlesong.css";
 import Moment from "react-moment";
 const SingleSong = () => {
     const { id } = useParams();
-    const song = useSelector(state => state.songs[id])
+    const song = useSelector((state) => state.songs[id]);
 
     // return (
     //     <div>
@@ -50,6 +50,6 @@ const SingleSong = () => {
             </div>
         </div>
     );
-}
+};
 
 export default SingleSong;
