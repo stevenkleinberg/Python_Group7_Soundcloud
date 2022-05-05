@@ -5,16 +5,8 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-.userDetailsContainer {
-    display: flex;
-    flex-direction: column;
-    height: 40vh;
-    border-bottom: 2px black solid;
-    background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
-    background-size: cover;
-}
 
-.backgroundUserImage {
+.backgroundHeaderImage {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -41,7 +33,7 @@
     border-radius: 1px; */
 }
 
-.backgroundUserImage button {
+.backgroundHeaderImage button {
     padding: 5px;
     border-radius: 3px;
 }
@@ -59,24 +51,45 @@
 }
 
 .userImage {
-    margin: 10px 10px 10px 10px;
+    margin: 15px 10px 10px 10px;
     background: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png") no-repeat center;
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     border-radius: 50%;
     height: 120px;
     width: 120px;
 }
 
 .userImage>input {
-    padding: 15px;
+    font-size: 16px;
+    margin: 15px 5px -18px 5px;
+    padding: 25px 25px 20px 5px;
     border-radius: 3px;
 }
 
 .field.userPage {
+    margin: 0px 5px 5px 14px;
+    font-size: 70%;
     width: 140px;
+}
+
+.userDescription {
+    height: 10px;
+}
+
+.field.userPage:hover {
+    background-color: white;
+}
+
+.display_name_div {
+    margin: 0px 5px 5px 20px;
+    font-size: 20px;
+    background-color: black;
+    width: fit-content;
+    color: floralwhite;
+    padding: 5px;
 }
 
 .userDetailsInfo {
@@ -89,4 +102,20 @@
 
 .backgroundUserImage {
     display: flex;
+}
+
+#userPageContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 40vh;
+    border-bottom: 2px black solid;
+    background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#firstcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }

@@ -32,11 +32,10 @@ def new_detail():
 
         db.session.add(detail)
     else:
-        print(request.files.to_dict(), "----------------")
-        print(request.form, "=================")
-
+        # print(request.files.to_dict(), "----------------")
+        # print(request.form, "=================")
         if not any(request.files):
-            detail = UserDetail.query.get(int(request.form["id"]))
+            detail = UserDetail.query.get(request.form["id"])
             detail.display_name = request.form['display_name']
             detail.description = request.form['description']
             detail.updated_at = datetime.now()
