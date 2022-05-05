@@ -20,15 +20,6 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className="navlinks"
-        to="/playlists"
-        exact={true}
-        activeClassName="active"
-      >
-        {" "}
-        Playlist{" "}
-      </NavLink>
-      <NavLink
-        className="navlinks"
         to="/upload-song"
         exact={true}
         activeClassName="active"
