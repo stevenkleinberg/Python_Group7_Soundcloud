@@ -39,3 +39,25 @@
 .playlist_sidebar_image {
   width: 60px;
 }
+
+.playlist_queue_delete_container {
+  position: absolute;
+  background-color: white;
+  margin-top: 2px;
+  box-shadow: 0px 0px 5px black;
+}
+.p_hover:hover {
+  background-color: lightgrey;
+}
+
+.confirm_playlist_button {
+  border: 1.5px solid lightgrey;
+  border-radius: 5px;
+}
+.confirm_playlist_button:hover {
+  border: 1.7px solid grey;
+}
+
+.hidden {
+  display: none;
+}

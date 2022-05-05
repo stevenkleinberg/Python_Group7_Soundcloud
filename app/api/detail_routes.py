@@ -41,8 +41,6 @@ def edit_detail():
     """
     Edit New Details
     """
-    print(request.files.to_dict(), "----------------")
-    print(request.form, "=================")
     arr = dict(request.form)
 
     if not any(request.files):
@@ -101,7 +99,6 @@ def edit_detail():
             detail.updated_at = datetime.now()
 
         elif keys[0] == "banner_url":
-            print("only have image")
             raw_banner_url = request.files["banner_url"]
 
             if not allowed_file(raw_banner_url.filename):
@@ -137,7 +134,6 @@ def delete_detail(id):
     """
     Delete detail of id
     """
-    print('HHHHHHHHHHHHH', id)
     detail = UserDetail.query.get(id)
     if detail:
         db.session.delete(detail)
