@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { createDetail, editDetails } from "../../store/user-details";
 import UserNavBar from "./user_page_nav";
 import './userpage.css';
+import './user_page.scss';
 
 
 function UserPage() {
@@ -63,11 +64,17 @@ function UserPage() {
 
     return (
         <>
-            <div className="userPageContainer">
+            <div className="userPageContainer"
+
+                style={{ background: `url(${userDetails?.banner_url}) no-repeat center`, backgroundSize: 'cover' }}
+            >
                 <div id='firstcontainer'>
-                    <div className="userDetailsInfo">
-                        <div className="userImage">
-                            <input
+                    <div className="userDetailsInfo"
+                    >
+                        <div className="userImage"
+                            style={{ background: `url(${userDetails?.avatar_url}) no-repeat`, backgroundSize: 'cover' }}
+                        >
+                            {userDetails.avatar_url ? <></> : <input
                                 type="file"
                                 accept="image/*"
                                 onChange={(e) => (
@@ -75,51 +82,58 @@ function UserPage() {
                                 )}
                                 name="avatar_url"
                                 id="avatar_url"
-                            />
+                            />}
+
                         </div>
+                        {userDetails.display_name === '' ?
+                            < input
+                                style={{ margin: '.3em 0em' }}
+                                type="text"
+                                className="field userPage"
+                                onChange={(e) => (
+                                    setDisplayName(e.target.value),
+                                    updateActivityDisplay(e)
+                                )}
+                                value={display_name}
+                                placeholder={display_name}
+                                name="display_name"
+                                id="display_name"
+                                required
+                            />
+                            :
+                            <>
+                                <button className="btn draw-border">{userDetails?.display_name}</button>
+                            </>
+                        }
                     </div>
-                    {userDetails.display_name === '' ?
-                        <input
-                            type="text"
-                            className="field userPage"
-                            onChange={(e) => (
-                                setDisplayName(e.target.value),
-                                updateActivityDisplay(e)
-                            )}
-                            value={display_name}
-                            placeholder="add display name"
-                            name="display_name"
-                            id="display_name"
-                            required
-                        />
+
+                </div>
+                <div id='secondcontainer'>
+                    {userDetails.banner_url === '' ?
+                        <div className="backgroundHeaderImage">
+                            <button
+                                className="headerUploadField">
+                                upload header image...
+                                <input
+                                    className="chooseFileHeader"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => (
+                                        updateBannerUrl(e), updateActivity(e)
+                                    )}
+                                    name="banner_url"
+                                    id="banner_url"
+                                />
+                                <br />
+                            </button>
+                        </div>
                         :
                         <>
-                            <div>
-                                {userDetails?.display_name}
-                            </div>
+
                         </>
                     }
                 </div>
 
-                <div id='secondcontainer'>
-                    <div className="backgroundHeaderImage">
-                        <button
-                            className="headerUploadField">
-                            upload header image...
-                            <input
-                                className="chooseFileHeader"
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => (
-                                    updateBannerUrl(e), updateActivity(e)
-                                )}
-                                name="banner_url"
-                                id="bannerr_url"
-                            />
-                            <br />
-                        </button>
-                    </div>
-                </div>
             </div>
 
 

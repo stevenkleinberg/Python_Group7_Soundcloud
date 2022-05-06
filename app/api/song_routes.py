@@ -57,7 +57,6 @@ def new_song():
             song.description = request.form['description']
             song.updated_at = datetime.now()
         else:
-
             keys = list(request.files.to_dict().keys())
 
             if len(keys) == 2:

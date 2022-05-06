@@ -3,8 +3,11 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
+
 }
 
+html,
+body {}
 
 .backgroundHeaderImage {
     display: flex;
@@ -49,6 +52,8 @@
 .chooseFileHeader {
     font: none;
 }
+
+
 
 .userImage {
     margin: 15px 10px 10px 10px;
@@ -97,7 +102,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin: 10px 10px 10px 10px;
-
+    background-size: 0%
 }
 
 .backgroundUserImage {
@@ -105,6 +110,7 @@
 }
 
 .userPageContainer {
+    border: red solid 1px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 50vh;
