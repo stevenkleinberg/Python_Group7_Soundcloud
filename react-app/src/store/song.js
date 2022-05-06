@@ -63,10 +63,10 @@ export const unlikeSong = (data) => async (dispatch) => {
 };
 
 //! Create songs in the database
-export const createSong = (song) => async (dispatch) => {
+export const createSong = (data) => async (dispatch) => {
   const response = await fetch("/api/songs/", {
     method: "POST",
-    body: song,
+    body: data,
   });
 
   if (response.ok) {

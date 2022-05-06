@@ -26,13 +26,6 @@ const UploadSong = () => {
 
     setAudioLoading(true);
 
-    // const newSong = {
-    //   user_id: sessionUser.id,
-    //   title,
-    //   audio_url,
-    //   description,
-    //   image_url,
-    // };
     const songs = await dispatch(createSong(formData));
     if (songs) {
       setAudioLoading(false);

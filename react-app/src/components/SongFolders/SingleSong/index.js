@@ -18,9 +18,9 @@ const SingleSong = () => {
     //         />
     //         {song?.title}
 
-    //         <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
-    //             edit form
-    //         </NavLink>
+    // <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
+    //     edit form
+    // </NavLink>
     //     </div>
     // )
     return (
@@ -35,6 +35,9 @@ const SingleSong = () => {
                             <div className="flex-column">
                                 <h3>{song?.title}</h3>
                                 <p>{song?.description}</p>
+                                <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
+                                    edit form
+                                </NavLink>
                             </div>
                         </div>
                         <Moment fromNow>{song?.created_at}</Moment>
@@ -47,6 +50,9 @@ const SingleSong = () => {
             <div className="flex-row song_mainfeed_sidebar_conatiner">
                 <SongComments song={song} />
                 {/* <songSideBar /> */}
+                <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
+                    edit form
+                </NavLink>
             </div>
         </div>
     );
