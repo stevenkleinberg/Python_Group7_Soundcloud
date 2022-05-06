@@ -5,12 +5,12 @@ from sqlalchemy.orm import relationship, sessionmaker, joinedload
 
 like_routes = Blueprint('like', __name__)
 
+
 @like_routes.route('/song/', methods=['POST'])
 def like_song():
     """
         Create a New like on a song
     """
-    print('in the route')
     user_id = request.form["user_id"]
     song_id = request.form["song_id"]
 
@@ -21,6 +21,7 @@ def like_song():
 
     db.session.commit()
     return song.to_dict()
+
 
 @like_routes.route('/song/', methods=['DELETE'])
 def unlike_song():
@@ -34,9 +35,8 @@ def unlike_song():
     song = Song.query.get(int(song_id))
     user = User.query.get(int(user_id))
 
-
     print(song)
 
-    song.likes = [ like for like in song.likes if user.id != like.id]
+    song.likes = [like for like in song.likes if user.id != like.id]
     db.session.commit()
     return song.to_dict()
