@@ -38,5 +38,6 @@ class Playlist(db.Model):
             'image_url': self.image_url,
             'description': self.description,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'songs': [song.id for song in self.songs]
         }
