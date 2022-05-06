@@ -11,26 +11,25 @@ const SongComments = ({ song }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(content)
+
     }
     return (
         <div className="song_mainfeed_container">
-            <div className="song_mainfeed_top flex-column">
-                <div className="commentForm_wrapper  flex-row">
-                    <div className="commentForm_input_wrapper flex-row">
-                        <form className="commentForm" onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                onChange={(e) => setContent(e.target.value)}
-                                value={content}
-                                placeholder="Write a comment"
-                                name="comment_input"
-                                id="comment_input"
-                                className="comment_input"
-                            />
-                            <button type="submit" className="comment_submit_button">Post</button>
-                        </form>
-                    </div>
+            <div className="song_mainfeed_top">
+                <div className="new-comment-form_wrapper flex-row">
+                    <div className="new-comment-form_placeholder" />
+                    <form className="new-comment-form flex-row" onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            onChange={(e) => setContent(e.target.value)}
+                            value={content}
+                            placeholder="Write a comment"
+                            name="comment_input"
+                            id="comment_input"
+                            className="comment_input"
+                        />
+                        {/* <button type="submit" className="comment_submit_button">Post</button> */}
+                    </form>
                 </div>
                 <div className="song_button_group">
                     <button>Like</button>
