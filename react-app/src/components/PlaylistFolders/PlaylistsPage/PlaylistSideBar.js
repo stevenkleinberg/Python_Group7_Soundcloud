@@ -8,7 +8,7 @@ const PlaylistSideBar = () => {
   const raw_playlists = Object.values(playlistsObj);
 
   const playlists = raw_playlists?.filter(
-    (playlistele) => playlistele?.user_id == user?.id
+    (playlistele) => playlistele?.user_id === user?.id
   );
 
   return (

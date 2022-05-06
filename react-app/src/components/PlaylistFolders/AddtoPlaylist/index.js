@@ -46,6 +46,7 @@ const AddtoPlaylist = ({ song }) => {
                 <img
                   src={playlist?.image_url}
                   className="add_to_playlist_img"
+                  alt=""
                 />
                 <div>
                   <p>{playlist?.title}</p>

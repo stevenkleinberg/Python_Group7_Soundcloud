@@ -38,7 +38,7 @@ const SongTile = ({ song }) => {
   return (
     <div className="song_tile flex-column">
       <div className="song_tile_cover">
-        <img className="song_tile_cover_img" src={song.image_url} />
+        <img className="song_tile_cover_img" src={song.image_url} alt="" />
         <div className="song_tile_cover_overlay">
           <div className="song_tile_cover_overlay_inner flex-column">
             <div className="song_tile_cover_overlay_inner_top flex-row">

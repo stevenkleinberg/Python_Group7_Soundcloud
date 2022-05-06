@@ -5,7 +5,7 @@ const Avatar = ({ user }) => {
     <a href={`/users/${user?.id}`}>
       <div className="avatar">
         {user?.avatar_url ? (
-          <img src={user?.avatar_url} />
+          <img src={user?.avatar_url} alt={user?.display_name} />
         ) : (
           <div className="avatar-placeholder" />
         )}

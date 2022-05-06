@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { Modal } from "../Context/Modal";
 import { loadSong, queueSong } from "../../store/player";
 import AddtoPlaylist from "../PlaylistFolders/AddtoPlaylist";
