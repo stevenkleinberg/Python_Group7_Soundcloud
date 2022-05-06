@@ -5,7 +5,11 @@ import SidebarPlaylist from "./SidebarPlaylist";
 const PlaylistSideBar = () => {
   const user = useSelector((state) => state.session.user);
   const playlistsObj = useSelector((state) => state.playlists);
-  const playlists = Object.values(playlistsObj);
+  const raw_playlists = Object.values(playlistsObj);
+
+  const playlists = raw_playlists?.filter(
+    (playlistele) => playlistele?.user_id == user?.id
+  );
 
   return (
     <div className="playlist_sidebar_conatiner">
@@ -15,7 +19,7 @@ const PlaylistSideBar = () => {
           <a href="/library/playlists">View all</a>
         </h3>
       </div>
-      {playlists?.map((playlist) => (
+      {playlists?.slice(0, 3).map((playlist) => (
         <SidebarPlaylist key={playlist?.id} playlist={playlist} user={user} />
       ))}
     </div>

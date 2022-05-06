@@ -41,5 +41,6 @@ class Song(db.Model):
             'image_url': self.image_url,
             'comments': [comment.to_dict() for comment in self.comments],
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'likes': [like.id for like in self.likes]
         }

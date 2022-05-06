@@ -22,21 +22,20 @@ const Audio = () => {
         if (playerState.queue.length) {
             dispatch(queueAdvance());
         } else {
-            playErrorSound();
+            dispatch(queueAdvance());
         }
     };
+
 
     const playLastInHistory = () => {
         if (playerState.playHistory.length) {
             dispatch(historyStepBack());
-        } else {
-            playErrorSound();
         }
     };
 
     return song ? (
         <div className="player">
-            {song && (
+            {song.id === playerState.playingId && (
                 <div className='player songinfo'>
                     <img className='songImg' src={song?.image_url} onError={(e) => e.target.src = '../../static/images/log'} height='50px' />
                     <NavLink className='black' to={`/songs/${song?.id}`}>  {song?.title}</NavLink>
@@ -50,6 +49,7 @@ const Audio = () => {
                         onEnded={playNextInQueue}
                         showSkipControls={true}
                         volume={0.25}
+                        autoPlay={true}
                     />
                 </div>)
             }
@@ -58,7 +58,20 @@ const Audio = () => {
             </audio>
         </div >
     ) : (
-        <div className='player'></div>
+        <div className="player">
+            <div className='player songinfo'>
+                    <AudioPlayer
+                        className='songPlayer'
+                        customAdditionalControls={[]}
+                        layout="horizontal-reverse"
+                        src={null}
+                        onClickPrevious={playLastInHistory}
+                        showSkipControls={true}
+                        volume={0.25}
+                        autoPlay={true}
+                    />
+                </div>)
+        </div >
     )
 };
 
