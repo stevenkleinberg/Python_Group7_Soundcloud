@@ -22,9 +22,7 @@ const SongTile = ({ song }) => {
     formData.append("song_id", song.id);
     const likedSong = await dispatch(likeSong(formData));
 
-    if (likedSong) {
-      console.log("no way first try")
-    }
+
   };
   const handle_UnLikeButtonClick = async (e) => {
     e.preventDefault();
@@ -34,9 +32,7 @@ const SongTile = ({ song }) => {
     formData.append("song_id", song.id);
     const unlikedSong = await dispatch(unlikeSong(formData));
 
-    if (unlikedSong) {
-      console.log("no way first try")
-    }
+
   };
 
   return (

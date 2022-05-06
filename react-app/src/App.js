@@ -21,6 +21,8 @@ import UserSongList from "./components/UserPage/user_page_songs";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
+import { getAllDetails } from './store/user-details'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,11 +36,20 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    if (loaded) {
+      (async () => {
+        await dispatch(getAllDetails(sessionUser.id));
+      })();
+    }
+  }, [setLoaded, loaded, dispatch, sessionUser]);
+
+  useEffect(() => {
     (async () => {
       await dispatch(getAllSongs());
       await dispatch(getAllPlaylists());
     })();
   }, [dispatch]);
+
 
   if (!loaded) {
     return null;
