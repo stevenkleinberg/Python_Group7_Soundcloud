@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from './Comments/SingleComment';
+import { createComment, getCommentsBySongId } from "../../../store/comment";
 
 const SongComments = ({ song }) => {
+    const [errors, setErrors] = useState([]);
     const [content, setContent] = useState("");
-    console.log(song);
+    const sessionUser = useSelector(state => state.session.user);
+    const commentsObj = useSelector(state => state.comments);
+    const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        (async () => {
+            if (song) {
+                await dispatch(getCommentsBySongId(song?.id));
+            }
+        })();
+    }, [dispatch]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const comment = {
+            user_id: sessionUser.id,
+            song_id: song.id,
+            content,
+        };
+        const data = await dispatch(createComment(comment));
+        if (data.errors) {
+            setErrors(data.errors);
+        } else {
+            await dispatch(getCommentsBySongId(song?.id));
+        }
 
     }
     return (
@@ -30,6 +53,11 @@ const SongComments = ({ song }) => {
                         />
                         {/* <button type="submit" className="comment_submit_button">Post</button> */}
                     </form>
+                </div>
+                <div className="form-errors">
+                    {errors.map((error, idx) => (
+                        <div key={idx}>{error}</div>
+                    ))}
                 </div>
                 <div className="song_button_group">
                     <button>Like</button>

@@ -25,6 +25,7 @@ export const getCommentsBySongId = (songId) => async (dispatch) => {
     if (res.ok) {
         const comments = await res.json();
         dispatch(loadComments(comments));
+        console.log(comments);
     }
 };
 
@@ -32,7 +33,10 @@ export const getCommentsBySongId = (songId) => async (dispatch) => {
 export const createComment = (comment) => async (dispatch) => {
     const res = await fetch('/api/comments/', {
         method: 'POST',
-        body: comment,
+        headers: {
+            'Content-Type': "application/json",
+        },
+        body: JSON.stringify(comment),
     });
     if (res.ok) {
         const data = await res.json();
