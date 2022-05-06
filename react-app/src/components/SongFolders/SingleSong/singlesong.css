@@ -7,7 +7,7 @@
 .song_mainfeed_sidebar_conatiner {
     width: 1240px;
 
-    background-color: rgb(255,255,255);
+    background-color: rgb(255, 255, 255);
 }
 
 .song_mainfeed_container {
@@ -50,22 +50,24 @@
 }
 
 
-.song_mainfeed_top{
+.song_mainfeed_top {
     margin-top: 20px;
     height: 90px;
     width: 820;
 }
+
 .commentForm_wrapper {
 
     position: relative;
-    background-color: rgb(242,242,242);
+    background-color: rgb(242, 242, 242);
     height: 40px;
     width: 820px;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
 }
-.commentForm_input_wrapper{
+
+.commentForm_input_wrapper {
     border: 1px solid rgb(229, 229, 229);
     height: 40px;
     width: 820px;
@@ -73,10 +75,17 @@
     justify-content: flex-end;
 
 }
-.commentForm{
-    margin-right: 5px ;
+
+.commentForm {
+    margin-right: 5px;
     width: 90%;
 }
-.comment_input{
+
+.comment_input {
     width: 700px;
+}
+
+.user-badge .avatar {
+    height: 80px;
+    width: 80px;
 }
