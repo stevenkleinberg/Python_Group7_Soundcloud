@@ -58,7 +58,7 @@ function SongTileActions({ song }) {
         {showPlaylistModal && (
           <Modal onClose={() => setShowPlaylistModal(false)}>
             <div className="add_to_playlist_modal_container">
-              <AddtoPlaylist />
+              <AddtoPlaylist song={song} />
             </div>
           </Modal>
         )}

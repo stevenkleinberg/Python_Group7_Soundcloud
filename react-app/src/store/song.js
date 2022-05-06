@@ -4,7 +4,6 @@ const NEW_SONG = "song/NEW_SONG";
 const REMOVE_SONG = "song/REMOVE_SONG";
 const UNLIKE_SONG = "likes/UNLIKE_SONG";
 
-
 const loadSongs = (songs) => ({
   type: LOAD_SONGS,
   songs,

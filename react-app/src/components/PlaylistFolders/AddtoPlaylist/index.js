@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 
 import "./AddtoPlaylist.css";
 
-const AddtoPlaylist = () => {
+const AddtoPlaylist = ({ song }) => {
+  console.log(song);
   const [filter, setFilter] = useState("");
   const user = useSelector((state) => state.session.user);
   const playlistsObj = useSelector((state) => state.playlists);
@@ -11,6 +12,16 @@ const AddtoPlaylist = () => {
   const playlists = raw_playlists.filter(
     (playlist) => playlist.user_id === user.id
   );
+
+  const handleAddSongToPlaylist = (songId, playlistId) => async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("playlist_id", playlistId);
+    formData.append("song_id", songId);
+
+    console.log(playlistId, songId);
+  };
 
   return (
     <div className="flex-column inner_add_to_playlist_conatiner">
@@ -41,7 +52,9 @@ const AddtoPlaylist = () => {
                   <p>{playlist?.songs.length}</p>
                 </div>
               </div>
-              <button>Add to playlist</button>
+              <button onClick={handleAddSongToPlaylist(playlist?.id, song?.id)}>
+                Add to playlist
+              </button>
             </div>
           ))}
       </div>
