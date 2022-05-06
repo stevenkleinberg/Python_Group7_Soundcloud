@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addSongtoPlaylist } from "../../../store/playlist";
 
 import "./AddtoPlaylist.css";
 
 const AddtoPlaylist = ({ song }) => {
-  console.log(song);
+  const dispatch = useDispatch();
   const [filter, setFilter] = useState("");
   const user = useSelector((state) => state.session.user);
   const playlistsObj = useSelector((state) => state.playlists);
@@ -13,14 +14,19 @@ const AddtoPlaylist = ({ song }) => {
     (playlist) => playlist.user_id === user.id
   );
 
-  const handleAddSongToPlaylist = (songId, playlistId) => async (e) => {
+  const handleAddSongToPlaylist = (playlistId, songId) => async (e) => {
     e.preventDefault();
     const formData = new FormData();
 
     formData.append("playlist_id", playlistId);
     formData.append("song_id", songId);
-
     console.log(playlistId, songId);
+
+    const playlist = await dispatch(addSongtoPlaylist(formData));
+
+    if (playlist) {
+      return playlist;
+    }
   };
 
   return (

@@ -18,4 +18,5 @@ def add_song_to_playlist():
     playlist.songs.append(song)
 
     db.session.commit()
-    return playlist.to_dic()
+
+    return playlist.to_dict()
