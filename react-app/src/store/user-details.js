@@ -53,14 +53,13 @@ export const getAllDetails = (id) => async (dispatch) => {
 
 //! Edit/Update Details from the db
 export const editDetails = (data) => async (dispatch) => {
-    console.log('mmmmmmmmmmmmmmmmmmm', data)
-    const response = await fetch(`/api/details/${data.id}`, {
+    const response = await fetch(`/api/details/`, {
         method: "PUT",
         body: data,
     });
     if (response.ok) {
         const detail = await response.json();
-        dispatch(newDetail(detail));
+        dispatch(loadDetails(detail));
         return detail;
     }
 };
@@ -77,22 +76,34 @@ export const deleteDetails = (id) => async (dispatch) => {
     }
 };
 
-const initialState = {};
+const initialState = {
+    avatar_url: '',
+    banner_url: '',
+    display_name: '',
+    user_id: null
+};
+// {
+//     id,
+//         disp
+// }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case NEW_DETAIL: {
             const newState = {
                 ...state,
-                [action.detail.id]: action.detail,
+
             };
             return newState;
         }
         case LOAD_DETAILS: {
-            const newState = { ...state };
-            action.details.forEach((detail) => {
-                newState[detail.id] = detail;
-            });
+            const newState = {
+                ...state,
+            };
+            console.log("LLLLLLLLLLL", action.details)
+            newState.avatar_url = action.details.avatar_url;
+            newState.banner_url = action.details.banner_url;
+            newState.display_name = action.details.display_name;
             return newState;
         }
         case REMOVE_DETAIL: {

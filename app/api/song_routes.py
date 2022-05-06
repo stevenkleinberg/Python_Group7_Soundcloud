@@ -21,7 +21,6 @@ def new_song():
         # if form.validate_on_submit():
 
         raw_audio_url = request.files["audio_url"]
-
         raw_image_url = request.files["image_url"]
 
         if not allowed_file(raw_audio_url.filename):
@@ -51,8 +50,8 @@ def new_song():
         # else:
         #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     else:
-        print(request.files.to_dict(),"----------------")
-        print(request.form,"=================")
+        print(request.files.to_dict(), "----------------")
+        print(request.form, "=================")
 
         if not any(request.files):
             song = Song.query.get(int(request.form["id"]))
@@ -74,8 +73,10 @@ def new_song():
                 if not allowed_file(raw_image_url.filename):
                     return {"errors": "file type not permitted"}, 400
 
-                raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
-                raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+                raw_audio_url.filename = get_unique_filename(
+                    raw_audio_url.filename)
+                raw_image_url.filename = get_unique_filename(
+                    raw_image_url.filename)
 
                 audio_upload = upload_file_to_s3(raw_audio_url)
                 image_upload = upload_file_to_s3(raw_image_url)
@@ -93,12 +94,11 @@ def new_song():
                 print("only have audio")
                 raw_audio_url = request.files["audio_url"]
 
-
                 if not allowed_file(raw_audio_url.filename):
                     return {"errors": "file type not permitted"}, 400
 
-
-                raw_audio_url.filename = get_unique_filename(raw_audio_url.filename)
+                raw_audio_url.filename = get_unique_filename(
+                    raw_audio_url.filename)
 
                 audio_upload = upload_file_to_s3(raw_audio_url)
 
@@ -117,7 +117,8 @@ def new_song():
                 if not allowed_file(raw_image_url.filename):
                     return {"errors": "file type not permitted"}, 400
 
-                raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+                raw_image_url.filename = get_unique_filename(
+                    raw_image_url.filename)
 
                 image_upload = upload_file_to_s3(raw_image_url)
 
@@ -128,8 +129,6 @@ def new_song():
                 song.description = request.form['description']
                 song.image_url = image_url
                 song.updated_at = datetime.now()
-
-
 
         # form = EditSongForm()
         # form['csrf_token'].data = request.cookies['csrf_token']
@@ -178,6 +177,7 @@ def get_all_songs():
     """
     songs = Song.query.all()
     return jsonify([song.to_dict() for song in songs])
+
 
 @song_routes.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
