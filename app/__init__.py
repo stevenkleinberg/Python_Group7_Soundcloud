@@ -13,6 +13,7 @@ from .api.detail_routes import detail_routes
 from .api.playlist_routes import playlist_routes
 from .api.comment_routes import comment_routes
 from .api.like_routes import like_routes
+from .api.playlistsong_routes import playlistsong_routes
 
 from .seeds import seed_commands
 
@@ -41,6 +42,8 @@ app.register_blueprint(detail_routes, url_prefix='/api/details')
 app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
+app.register_blueprint(playlistsong_routes, url_prefix='/api/playlistsongs')
+
 db.init_app(app)
 Migrate(app, db)
 

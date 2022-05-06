@@ -17,6 +17,26 @@ const removeSong = (playlistId) => ({
   playlistId,
 });
 
+export const addSongtoPlaylist = (data) => async (dispatch) => {
+  const response = await fetch("/api/playlistsongs/", {
+    method: "POST",
+    body: data,
+  });
+
+  if (response.ok) {
+    const playlist = await response.json();
+    dispatch(newPlaylist(playlist));
+    return playlist;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 //!Create playlist in the database
 export const createPlaylist = (playlist) => async (dispatch) => {
   const response = await fetch("/api/playlists/", {

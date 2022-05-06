@@ -36,15 +36,6 @@ const NavBar = () => {
         {" "}
         Library{" "}
       </NavLink>
-      <NavLink
-        className="navlinks"
-        to="/allsongs"
-        exact={true}
-        activeClassName="active"
-      >
-        {" "}
-        Songs{" "}
-      </NavLink>
       <UserProfile user={sessionUser} />
     </nav>
   );
