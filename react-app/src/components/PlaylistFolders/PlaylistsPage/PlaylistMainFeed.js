@@ -106,9 +106,9 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
           <p>Jesus Elizalde</p>
         </div>
         <div>
-          <ul>
+          <ul className="playlist_song_list">
             {songArr?.map((song, idx) => (
-              <li key={idx}>
+              <li key={idx} className="playlist_song_list">
                 <SingleSongRow song={song} idx={idx} />
               </li>
             ))}

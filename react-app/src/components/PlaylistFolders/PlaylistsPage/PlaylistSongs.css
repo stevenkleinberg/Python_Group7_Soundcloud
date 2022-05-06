@@ -75,3 +75,7 @@
 .hidden {
   display: none;
 }
+
+.playlist_song_list {
+  list-style: none;
+}
