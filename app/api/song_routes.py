@@ -198,6 +198,6 @@ def get_comments_by_song_id(id):
     """
     song = Song.query.get(id)
     if song:
-        return song.comments
+        return jsonify([comment.to_dict() for comment in song.comments])
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

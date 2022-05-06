@@ -1,4 +1,5 @@
 from .db import db
+from .user_detail import UserDetail
 from datetime import datetime
 
 class Comment(db.Model):
@@ -16,12 +17,14 @@ class Comment(db.Model):
     song = db.relationship("Song", back_populates="comments")
 
     def to_dict(self):
+        user_detail = UserDetail.query.filter(UserDetail.user_id == self.user.id).one()
+
         return {
             'id': self.id,
             'user_id': self.user_id,
             'content': self.content,
             'song_id': self.song_id,
-            'user': self.user.to_dict(),
+            'user': user_detail.to_dict(),
             'song_timestamp': self.song_timestamp,
             'created_at': self.created_at,
             'updated_at': self.updated_at

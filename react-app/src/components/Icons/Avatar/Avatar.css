@@ -4,6 +4,8 @@
 }
 
 .avatar-placeholder {
+    height: 100%;
+    width: 100%;
     border-radius: 50%;
     background-image: linear-gradient(135deg, #8e8485, #70929c);
 }

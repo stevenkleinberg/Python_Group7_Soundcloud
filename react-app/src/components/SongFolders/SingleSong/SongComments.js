@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Avatar from "../../Icons/Avatar";
 import SingleComment from './Comments/SingleComment';
 
 const SongComments = ({ song }) => {
@@ -40,8 +41,8 @@ const SongComments = ({ song }) => {
             </div>
             <div className="flex-row">
                 <div className="user-badge flex-column">
-                    <img />
-                    <p>Jesus Elizalde</p>
+                    <Avatar user={song?.user} />
+                    <p>{song?.user?.display_name}</p>
                 </div>
                 <div className="song-details flex-column">
                     <div className="song-description">

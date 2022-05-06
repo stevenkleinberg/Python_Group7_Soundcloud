@@ -120,21 +120,21 @@ def edit_detail():
     return detail.to_dict()
 
 
-@detail_routes.route('/:id')
+@detail_routes.route('/<int:id>')
 def get_details(id):
     """
     Get Details
     """
-    details = UserDetail.query.get(id)
+    details = UserDetail.query.filter(UserDetail.user_id == id).one()
     return details.to_dict()
 
 
-@detail_routes.route('/:id', methods=['DELETE'])
+@detail_routes.route('/<int:id>', methods=['DELETE'])
 def delete_detail(id):
     """
     Delete detail of id
     """
-    detail = UserDetail.query.get(id)
+    detail = UserDetail.query.filter(UserDetail.user_id == id).one()
     if detail:
         db.session.delete(detail)
         db.session.commit()
