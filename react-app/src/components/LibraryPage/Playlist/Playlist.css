@@ -125,3 +125,7 @@
 .banner_title_group_1 {
   align-items: center;
 }
+
+.playlist_tile_container {
+  flex-wrap: wrap;
+}

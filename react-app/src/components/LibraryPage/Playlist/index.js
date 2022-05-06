@@ -8,8 +8,13 @@ import { Modal } from "../../Context/Modal";
 import "./Playlist.css";
 
 const Playlist = () => {
+  const user = useSelector((state) => state.session.user);
   const playlistsObj = useSelector((state) => state.playlists);
-  const playlists = Object.values(playlistsObj);
+  const raw_playlists = Object.values(playlistsObj);
+
+  const playlists = raw_playlists?.filter(
+    (playlist) => playlist?.user_id === user?.id
+  );
 
   const [showModal, setShowModal] = useState(false);
 

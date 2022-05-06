@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editPlaylist } from "../../../store/playlist";
 
-const EditPlaylistForm = () => {
+const EditPlaylistForm = ({ modalFunction }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const playlist = useSelector((state) => state.playlists[+id]);
@@ -13,7 +13,7 @@ const EditPlaylistForm = () => {
   const [description, setDescription] = useState(playlist?.description);
   const [imageLoading, setImageLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
 
@@ -25,7 +25,11 @@ const EditPlaylistForm = () => {
 
     setImageLoading(true);
 
-    dispatch(editPlaylist(formData));
+    const playlist = await dispatch(editPlaylist(formData));
+
+    if (playlist) {
+      modalFunction(false);
+    }
   };
 
   const updateImageFile = (e) => {
