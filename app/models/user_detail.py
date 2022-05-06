@@ -13,8 +13,8 @@ class UserDetail(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'user_id': self.user_id,
+            # 'id': self.id,
+            'id': self.user_id,
             'display_name': self.display_name,
             'avatar_url': self.avatar_url,
             'banner_url': self.banner_url
