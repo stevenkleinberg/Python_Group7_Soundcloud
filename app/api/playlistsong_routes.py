@@ -20,3 +20,20 @@ def add_song_to_playlist():
     db.session.commit()
 
     return playlist.to_dict()
+
+@playlistsong_routes.route('/', methods=['DELETE'])
+def delete_song_to_playlist():
+    """
+        Remove a song from playlist
+    """
+    playlist_id = request.form["playlist_id"]
+    song_id = request.form["song_id"]
+
+    song = Song.query.get(int(song_id))
+    playlist = Playlist.query.get(int(playlist_id))
+
+    playlist.songs.remove(song)
+
+    db.session.commit()
+
+    return playlist.to_dict()
