@@ -52,7 +52,8 @@ const SongComments = ({ song }) => {
                     <div className="song-comments-list flex-column">
                         <div className="comments-count flex-row">
                             <SpeechBubble />
-                            <div className="comments-count-text">{song?.comments?.length} comments</div>
+                            <div className="comments-count-text">{song?.comments?.length}
+                                {song?.comments?.length > 1 ? ' comments' : ' comment'}</div>
                         </div>
                         <div className="comment-cards-list">
                             {song?.comments?.map((comment, idx) => (

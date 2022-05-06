@@ -17,10 +17,6 @@
     padding: 0px 12px 0px 12px;
 }
 
-.song_mainfeed_container * {
-    font-family: 12px/1.4 Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
-}
-
 .song_button_group {
     padding: 0px 0px 12px 0px;
     border-bottom: 1px solid grey;
@@ -89,8 +85,8 @@
 }
 
 .user-badge .avatar {
-    height: 80px;
-    width: 80px;
+    height: 120px;
+    width: 120px;
 }
 
 .song-details {
@@ -107,10 +103,17 @@
     width: 100%;
 }
 
+.song-comments-list * {
+    font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
 .comments-count {
     padding-bottom: 7px;
     border-bottom: 1px solid #f2f2f2;
     width: 100%;
+    align-items: flex-end;
 }
 
 .comments-count-text {

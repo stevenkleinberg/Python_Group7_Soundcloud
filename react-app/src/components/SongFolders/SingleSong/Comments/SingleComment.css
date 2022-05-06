@@ -1,0 +1,20 @@
+.comment-card {
+    padding: 10px 10px 10px 0;
+    justify-content: space-between;
+}
+
+.comment-body {
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-info,
+.comment-info *,
+.comment-meta {
+    color: #999;
+}
+
+.commenter-name,
+.comment-timestamp {
+    font-weight: 900;
+}
