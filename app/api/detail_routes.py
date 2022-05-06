@@ -48,10 +48,8 @@ def edit_detail():
         detail.description = request.form['description']
         detail.updated_at = datetime.now()
     else:
-        print(len(request.files), "----------------")
-        print(len(request.form), "=================")
+
         arr = dict(request.form)
-        print(arr)
 
         if not any(request.files):
             detail = UserDetail.query.get(int(request.form["id"]))
@@ -105,7 +103,6 @@ def edit_detail():
                 detail.updated_at = datetime.now()
 
             elif keys[0] == "banner_url":
-                print("only have image")
                 raw_banner_url = request.files["banner_url"]
             elif keys[0] == "banner_url":
                 raw_banner_url = request.files["banner_url"]
@@ -133,7 +130,6 @@ def get_details(id):
     Get Details
     """
     details = UserDetail.query.get(id)
-    print("mamamamama", details)
     return details.to_dict()
 
 
