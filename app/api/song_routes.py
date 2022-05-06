@@ -1,10 +1,11 @@
 from flask import Blueprint, jsonify, request
-from app.models import Song, db
+from app.models import Song, db, User
 from app.forms import NewSongForm, EditSongForm
 from datetime import datetime
 from app.api.utils import validation_errors_to_error_messages
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
+from sqlalchemy.orm import relationship, sessionmaker, joinedload
 
 song_routes = Blueprint('song', __name__)
 
@@ -91,7 +92,6 @@ def new_song():
                 song.image_url = image_url
                 song.updated_at = datetime.now()
             elif keys[0] == "audio_url":
-                print("only have audio")
                 raw_audio_url = request.files["audio_url"]
 
                 if not allowed_file(raw_audio_url.filename):
@@ -111,7 +111,6 @@ def new_song():
                 song.updated_at = datetime.now()
 
             elif keys[0] == "image_url":
-                print("only have image")
                 raw_image_url = request.files["image_url"]
 
                 if not allowed_file(raw_image_url.filename):

@@ -2,6 +2,8 @@
 const LOAD_SONGS = "song/LOAD_SONGS";
 const NEW_SONG = "song/NEW_SONG";
 const REMOVE_SONG = "song/REMOVE_SONG";
+const UNLIKE_SONG = "likes/UNLIKE_SONG";
+
 
 const loadSongs = (songs) => ({
   type: LOAD_SONGS,
@@ -20,6 +22,47 @@ const removeSong = (songId) => {
     songId,
   };
 };
+//! like a song
+export const likeSong = (data) => async (dispatch) => {
+  const response = await fetch("/api/likes/song/", {
+    method: "POST",
+    body: data,
+  });
+
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(newSong(song));
+    return song;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+//! unlike a song
+export const unlikeSong = (data) => async (dispatch) => {
+  const response = await fetch("/api/likes/song/", {
+    method: "DELETE",
+    body: data,
+  });
+
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(newSong(song));
+    return song;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 //! Create songs in the database
 export const createSong = (song) => async (dispatch) => {
   const response = await fetch("/api/songs/", {

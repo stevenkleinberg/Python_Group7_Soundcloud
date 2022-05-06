@@ -142,8 +142,6 @@ function UserPage() {
                 <UserNavBar />
             </div>
         </>
-
-
     );
 }
 export default UserPage;

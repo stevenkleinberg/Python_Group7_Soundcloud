@@ -13,7 +13,6 @@ import PlaylistSideBar from "./PlaylistSideBar";
 const PlaylistsPage = () => {
   const { id } = useParams();
   const playlist = useSelector((state) => state.playlists[+id]);
-  console.log(playlist?.songs);
 
   return (
     <div className="playlist_container_main">
@@ -41,7 +40,7 @@ const PlaylistsPage = () => {
         </div>
       </div>
       <div className="flex-row playlist_mainfeed_sidebar_conatiner">
-        <PlaylistMainFeed songsId={playlist?.songs} />
+        <PlaylistMainFeed songsId={playlist?.songs} playlist={playlist} />
         <PlaylistSideBar />
       </div>
     </div>

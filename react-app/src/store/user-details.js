@@ -3,16 +3,12 @@ const LOAD_DETAILS = "detail/LOAD_DETAILS";
 const NEW_DETAIL = "detail/NEW_DETAIL";
 const REMOVE_DETAIL = "detail/REMOVE_DETAIL";
 
+//! for create and edit
 const loadDetails = (details) => ({
     type: LOAD_DETAILS,
     details,
 });
 
-// for create and edit
-const newDetail = (detail) => ({
-    type: NEW_DETAIL,
-    detail,
-});
 
 const removeDetail = (id) => {
     return {
@@ -30,7 +26,7 @@ export const createDetail = (detail) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(newDetail(data));
+        dispatch(loadDetails(data));
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -82,25 +78,14 @@ const initialState = {
     display_name: '',
     user_id: null
 };
-// {
-//     id,
-//         disp
-// }
+
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case NEW_DETAIL: {
-            const newState = {
-                ...state,
-
-            };
-            return newState;
-        }
         case LOAD_DETAILS: {
             const newState = {
                 ...state,
             };
-            console.log("LLLLLLLLLLL", action.details)
             newState.avatar_url = action.details.avatar_url;
             newState.banner_url = action.details.banner_url;
             newState.display_name = action.details.display_name;
@@ -114,4 +99,5 @@ export default function reducer(state = initialState, action) {
         default:
             return state;
     }
+
 }

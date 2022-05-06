@@ -30,6 +30,23 @@ def new_detail():
         )
 
         db.session.add(detail)
+
+    db.session.commit()
+    return detail.to_dict()
+
+
+@detail_routes.route('/:id', methods=['PUT'])
+def edit_detail():
+    """
+    Edit New Details
+    """
+    arr = dict(request.form)
+
+    if not any(request.files):
+        detail = UserDetail.query.get(int(arr['id']))
+        detail.display_name = request.form['display_name']
+        detail.description = request.form['description']
+        detail.updated_at = datetime.now()
     else:
         print(len(request.files), "----------------")
         print(len(request.form), "=================")
@@ -90,23 +107,24 @@ def new_detail():
             elif keys[0] == "banner_url":
                 print("only have image")
                 raw_banner_url = request.files["banner_url"]
-
+            elif keys[0] == "banner_url":
+                raw_banner_url = request.files["banner_url"]
                 if not allowed_file(raw_banner_url.filename):
                     return {"errors": "file type not permitted"}, 400
 
-                raw_banner_url.filename = get_unique_filename(
-                    raw_banner_url.filename)
+                    raw_banner_url.filename = get_unique_filename(
+                        raw_banner_url.filename)
 
-                image_upload = upload_file_to_s3(raw_banner_url)
+                    image_upload = upload_file_to_s3(raw_banner_url)
 
-                banner_url = image_upload["url"]
+                    banner_url = image_upload["url"]
 
-                detail = UserDetail.query.get(int(arr['id']))
-                detail.display_name = request.form['display_name']
-                detail.banner_url = banner_url
-                detail.updated_at = datetime.now()
-    db.session.commit()
-    return detail.to_dict()
+                    detail = UserDetail.query.get(int(arr['id']))
+                    detail.display_name = request.form['display_name']
+                    detail.banner_url = banner_url
+                    detail.updated_at = datetime.now()
+        db.session.commit()
+        return detail.to_dict()
 
 
 @detail_routes.route('/<int:id>')
@@ -124,7 +142,6 @@ def delete_detail(id):
     """
     Delete detail of id
     """
-    print('HHHHHHHHHHHHH', id)
     detail = UserDetail.query.get(id)
     if detail:
         db.session.delete(detail)
