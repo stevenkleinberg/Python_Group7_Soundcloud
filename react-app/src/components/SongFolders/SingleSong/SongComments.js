@@ -5,6 +5,7 @@ import SingleComment from './Comments/SingleComment';
 
 const SongComments = ({ song }) => {
     const [content, setContent] = useState("");
+    console.log(song);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,14 +45,14 @@ const SongComments = ({ song }) => {
                 </div>
                 <div className="song-details flex-column">
                     <div className="song-description">
-                        {song.description}
+                        {song?.description}
                     </div>
                     <div className="song-comments-list flex-column">
                         <div className="comments-count"></div>
                         <div className="comment-cards-list">
                             <ul>
                                 similar logic but comments
-                                {commentsArr?.map((comment, idx) => (
+                                {song?.comments?.map((comment, idx) => (
                                     <li key={idx}>
                                         <SingleComment comment={comment} />
                                     </li>

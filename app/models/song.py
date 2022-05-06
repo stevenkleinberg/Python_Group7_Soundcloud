@@ -39,6 +39,7 @@ class Song(db.Model):
             'audio_url': self.audio_url,
             'description': self.description,
             'image_url': self.image_url,
+            'comments': [comment.to_dict() for comment in self.comments],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

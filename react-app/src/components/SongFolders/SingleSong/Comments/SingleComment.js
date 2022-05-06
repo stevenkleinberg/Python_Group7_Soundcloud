@@ -11,17 +11,17 @@ const SingleComment = ({ comment }) => {
         <div className="comment-content flex-column">
             <div className="comment-info">
                 <a href={`/users/${comment.user_id}`}>
-                    {comment.user.display_name}
+                    {comment?.user.display_name}
                 </a> at <span className="comment-timestamp">
-                    {comment.song_timestamp}
+                    {comment?.song_timestamp}
                 </span>
             </div>
             <div className="comment-content">
-                {comment.content}
+                {comment?.content}
             </div>
         </div>
         <div className="comment-meta flex-column">
-            <Moment fromNow>{comment.created_at}</Moment>
+            <Moment fromNow>{comment?.created_at}</Moment>
         </div>
     </div>
 };

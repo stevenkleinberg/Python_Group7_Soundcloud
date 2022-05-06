@@ -19,10 +19,10 @@ def new_comment():
 
     if form.validate_on_submit():
         comment = Comment(
-            content=request.form['content'],
-            user_id=request.form['user_id'],
-            song_id=request.form['song_id'],
-            song_timestamp=request.form['song_timestamp'],
+            content=form.data['content'],
+            user_id=form.data['user_id'],
+            song_id=form.data['song_id'],
+            song_timestamp=form.data['song_timestamp'],
         )
         db.session.add(comment)
         db.session.commit()
