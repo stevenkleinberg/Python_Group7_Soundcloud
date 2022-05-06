@@ -1,0 +1,139 @@
+
+.song_tile {
+    align-items: center;
+    padding: 0 88px;
+  }
+
+  .song_tile_cover {
+    position: relative;
+    width: 200px;
+  }
+
+  .song_tile_cover_img {
+    display: block;
+    width: 100%;
+  }
+
+  .song_tile_cover_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .song_tile_cover_overlay:hover {
+    opacity: 1;
+  }
+
+  .song_tile_cover_overlay_inner{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .song_tile_cover_overlay_inner_top{
+    width: 200px;
+    height: 130px;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .song_tile_cover_overlay_inner_bottom{
+      width: 200px;
+      height: 70px;
+      align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .song_tile_cover_play {
+    font-size: 2.5em;
+    background: none;
+    box-shadow: none;
+    border: none;
+    color: white;
+    transition: font-size 0.25s, color 0.25s;
+  }
+
+  .song_tile_cover_play:hover {
+    font-size: 3.5em;
+    color: orangered;
+  }
+
+  .song_tile_cover_is_liked{
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    text-decoration: double;
+    background: none;
+    box-shadow: none;
+    border: none;
+    color: orangered;
+    transition: font-size 0.25s, color 0.5s;
+  }
+  .song_tile_cover_is_liked:hover {
+    font-size: 2em;
+    /* color: white; */
+  }
+
+  .song_tile_cover_not_liked{
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    background: none;
+    box-shadow: none;
+    border: none;
+    color: white;
+    transition: font-size 0.25s, color 0.5s;
+  }
+  .song_tile_cover_not_liked:hover {
+    font-size: 2em;
+    /* color: orangered; */
+  }
+  .song_tile_bottom {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .song_tile_text {
+    margin-top: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: flex-start;
+  }
+
+  .song_tile_text_title {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: sans-serif;
+    color: rgb(55, 55, 55);
+    line-height: 19.6px;
+    list-style-position: outside;
+  }
+
+  .song_tile_text_title:hover {
+    color: black;
+  }
+
+  .song_tile_text_description {
+    font-size: 15px;
+    font-family: sans-serif;
+    color: rgb(153, 153, 153);
+  }
+
+  .song_tile_text_description:hover {
+    color: rgb(55, 55, 55);
+  }
+
+
+  .song_tile_actions {
+    font-size: 24px;
+    font-weight: 700;
+  }

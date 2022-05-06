@@ -40,5 +40,6 @@ class Song(db.Model):
             'description': self.description,
             'image_url': self.image_url,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'likes': [like.id for like in self.likes]
         }
