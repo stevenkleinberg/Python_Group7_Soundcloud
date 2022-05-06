@@ -17,6 +17,10 @@
     padding: 0px 12px 0px 12px;
 }
 
+.song_mainfeed_container * {
+    font-family: 12px/1.4 Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+}
+
 .song_button_group {
     padding: 0px 0px 12px 0px;
     border-bottom: 1px solid grey;
@@ -57,7 +61,6 @@
 }
 
 .commentForm_wrapper {
-
     position: relative;
     background-color: rgb(242, 242, 242);
     height: 40px;
@@ -88,4 +91,30 @@
 .user-badge .avatar {
     height: 80px;
     width: 80px;
+}
+
+.song-details {
+    width: 100%;
+}
+
+.song-description {
+    min-height: 150px;
+    overflow: auto;
+    width: 100%;
+}
+
+.song-comments-list {
+    width: 100%;
+}
+
+.comments-count {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #f2f2f2;
+    width: 100%;
+}
+
+.comments-count-text {
+    font-size: 14px;
+    line-height: 1.3;
+    color: #999;
 }

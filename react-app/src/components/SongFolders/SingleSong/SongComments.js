@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
+import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from './Comments/SingleComment';
 
 const SongComments = ({ song }) => {
@@ -49,16 +50,16 @@ const SongComments = ({ song }) => {
                         {song?.description}
                     </div>
                     <div className="song-comments-list flex-column">
-                        <div className="comments-count"></div>
+                        <div className="comments-count flex-row">
+                            <SpeechBubble />
+                            <div className="comments-count-text">{song?.comments?.length} comments</div>
+                        </div>
                         <div className="comment-cards-list">
-                            <ul>
-                                similar logic but comments
-                                {song?.comments?.map((comment, idx) => (
-                                    <li key={idx}>
-                                        <SingleComment comment={comment} />
-                                    </li>
-                                ))}
-                            </ul>
+                            {song?.comments?.map((comment, idx) => (
+                                <div key={idx}>
+                                    <SingleComment comment={comment} />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
