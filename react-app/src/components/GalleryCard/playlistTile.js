@@ -8,7 +8,6 @@ const PlaylistTile = ({ playlist }) => {
 
   // const handlePlayButtonClick = (e) => {
   //   e.preventDefault();
-  //   console.log("im here");
   //   dispatch(loadplaylist(playlist.id));
   // };
 
