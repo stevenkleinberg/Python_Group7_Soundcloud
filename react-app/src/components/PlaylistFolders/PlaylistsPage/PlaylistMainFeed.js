@@ -59,7 +59,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
             }}
           >
             <h3>Edit Playlist</h3>
-            <EditPlaylistForm />
+            <EditPlaylistForm modalFunction={setShowEditModal} />
           </Modal>
         )}
         <div>

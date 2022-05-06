@@ -53,8 +53,7 @@ def new_playlist():
             playlist.description= request.form["description"]
 
 
-
-
+    print(playlist.to_dict())
     db.session.commit()
     return playlist.to_dict()
 
