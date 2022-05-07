@@ -1,35 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
-import SingleComment from "./Comments/SingleComment";
+import SpeechBubble from "../../Icons/SpeechBubble";
+import SingleComment from './Comments/SingleComment';
+import { createComment, getCommentsBySongId } from "../../../store/comment";
 
 const SongComments = ({ song }) => {
+  const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
+  const sessionUser = useSelector(state => state.session.user);
+  const commentsObj = useSelector(state => state.comments);
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    (async () => {
+      if (song) {
+        await dispatch(getCommentsBySongId(song?.id));
+      }
+    })();
+  }, [dispatch]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(content);
-  };
+    const comment = {
+      user_id: sessionUser.id,
+      song_id: song.id,
+      content,
+    };
+    const data = await dispatch(createComment(comment));
+    if (data.errors) {
+      setErrors(data.errors);
+    } else {
+      setContent('');
+    }
+
+  }
   return (
     <div className="song_mainfeed_container">
-      <div className="song_mainfeed_top flex-column">
-        <div className="commentForm_wrapper  flex-row">
-          <div className="commentForm_input_wrapper flex-row">
-            <form className="commentForm" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                onChange={(e) => setContent(e.target.value)}
-                value={content}
-                placeholder="Write a comment"
-                name="comment_input"
-                id="comment_input"
-                className="comment_input"
-              />
-              <button type="submit" className="comment_submit_button">
-                Post
-              </button>
-            </form>
-          </div>
+      <div className="song_mainfeed_top">
+        <div className="new-comment-form_wrapper flex-row">
+          <div className="new-comment-form_placeholder" />
+          <form className="new-comment-form flex-row" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+              placeholder="Write a comment"
+              name="comment_input"
+              id="comment_input"
+              className="comment_input"
+            />
+            {/* <button type="submit" className="comment_submit_button">Post</button> */}
+          </form>
+        </div>
+        <div className="form-errors">
+          {errors.map((error, idx) => (
+            <div key={idx}>{error}</div>
+          ))}
         </div>
         <div className="song_button_group">
           <button>Like</button>
@@ -45,18 +73,21 @@ const SongComments = ({ song }) => {
           <p>{song?.user?.display_name}</p>
         </div>
         <div className="song-details flex-column">
-          <div className="song-description">{song?.description}</div>
+          <div className="song-description">
+            {song?.description}
+          </div>
           <div className="song-comments-list flex-column">
-            <div className="comments-count"></div>
+            <div className="comments-count flex-row">
+              <SpeechBubble />
+              <div className="comments-count-text">{song?.comments?.length}
+                {song?.comments?.length > 1 ? ' comments' : ' comment'}</div>
+            </div>
             <div className="comment-cards-list">
-              <ul>
-                similar logic but comments
-                {song?.comments?.map((comment, idx) => (
-                  <li key={idx}>
-                    <SingleComment comment={comment} />
-                  </li>
-                ))}
-              </ul>
+              {song?.comments?.map((comment, idx) => (
+                <div key={idx}>
+                  <SingleComment comment={comment} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

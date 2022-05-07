@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Switch } from "react-router-dom";
 import ProtectedRoute from "../auth/ProtectedRoute";
 import SongsList from "../SongFolders/SongList";
 import Playlist from "./Playlist";

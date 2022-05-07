@@ -10,13 +10,6 @@ const Audio = () => {
     const dispatch = useDispatch();
     const song = useSelector(state => state.songs[state.player.playingId]);
     const playerState = useSelector(state => state.player);
-    const sessionUser = useSelector(state => state.session.user);
-
-    const playErrorSound = () => {
-        const errorSoundEle = document.getElementById('error-sound');
-        errorSoundEle.play();
-        errorSoundEle.loop = false;
-    };
 
     const playNextInQueue = () => {
         if (playerState.queue.length) {
@@ -37,7 +30,7 @@ const Audio = () => {
         <div className="player">
             {song.id === playerState.playingId && (
                 <div className='player songinfo'>
-                    <img className='songImg' src={song?.image_url} onError={(e) => e.target.src = '../../static/images/log'} height='50px' />
+                    <img className='songImg' src={song?.image_url} onError={(e) => e.target.src = '../../static/images/log'} height='50px' alt="" />
                     <NavLink className='black' to={`/songs/${song?.id}`}>  {song?.title}</NavLink>
                     <AudioPlayer
                         className='songPlayer'
@@ -60,17 +53,17 @@ const Audio = () => {
     ) : (
         <div className="player">
             <div className='player songinfo'>
-                    <AudioPlayer
-                        className='songPlayer'
-                        customAdditionalControls={[]}
-                        layout="horizontal-reverse"
-                        src={null}
-                        onClickPrevious={playLastInHistory}
-                        showSkipControls={true}
-                        volume={0.25}
-                        autoPlay={true}
-                    />
-                </div>)
+                <AudioPlayer
+                    className='songPlayer'
+                    customAdditionalControls={[]}
+                    layout="horizontal-reverse"
+                    src={null}
+                    onClickPrevious={playLastInHistory}
+                    showSkipControls={true}
+                    volume={0.25}
+                    autoPlay={true}
+                />
+            </div>)
         </div >
     )
 };

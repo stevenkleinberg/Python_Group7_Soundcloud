@@ -6,7 +6,6 @@ import { Modal } from "../../Context/Modal";
 import EditPlaylistForm from "../EditPlaylist";
 import { useHistory, useParams } from "react-router-dom";
 import { deletePlaylist } from "../../../store/playlist";
-import SongTileActions from "../../GalleryCard/SongTileActions";
 
 const PlaylistMainFeed = ({ songsId, playlist }) => {
   const { id } = useParams();

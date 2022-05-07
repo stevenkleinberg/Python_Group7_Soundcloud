@@ -1,5 +1,4 @@
 import React from "react";
-import SongTile from "./songTile"
 import SongSlider from "./SongSlider";
 
 const SongGallery = ({ title, description, songs }) => {

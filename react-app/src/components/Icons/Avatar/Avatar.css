@@ -7,5 +7,10 @@
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    background-image: linear-gradient(135deg, #8e8485, #70929c);
+    /* background-image: linear-gradient(135deg, #8e8485, #70929c); */
+    background-image: linear-gradient(135deg, #70929c, #e6846e);
+}
+
+.user-badge .avatar-placeholder {
+    background-image: linear-gradient(135deg, #70929c, #846170);
 }
