@@ -15,9 +15,14 @@ const SingleComment = ({ comment }) => {
                     <div className="comment-info">
                         <a className="commenter-name" href={`/users/${comment.user_id}`}>
                             {comment?.user.display_name}
-                        </a> at <span className="comment-timestamp">
-                            {comment?.song_timestamp}
-                        </span>
+                        </a>
+                        {comment?.song_timestamp ? (<span>
+                            at <span className="comment-timestamp">
+                                {comment?.song_timestamp}
+                            </span>
+                        </span>) : (
+                            null
+                        )}
                     </div>
                     <div className="comment-content">
                         {comment?.content}

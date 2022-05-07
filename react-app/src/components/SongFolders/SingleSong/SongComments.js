@@ -31,6 +31,8 @@ const SongComments = ({ song }) => {
         const data = await dispatch(createComment(comment));
         if (data.errors) {
             setErrors(data.errors);
+        } else {
+            setContent('');
         }
 
     }
