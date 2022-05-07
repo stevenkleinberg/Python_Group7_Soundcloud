@@ -108,7 +108,7 @@ def get_details(id):
     """
     Get Details
     """
-    details = UserDetail.query.get(id)
+    details = UserDetail.query.filter(UserDetail.user_id == id).one()
     return details.to_dict()
 
 
@@ -117,7 +117,7 @@ def delete_detail(id):
     """
     Delete detail of id
     """
-    detail = UserDetail.query.get(id)
+    detail = UserDetail.query.filter(UserDetail.user_id == id).one()
     if detail:
         db.session.delete(detail)
         db.session.commit()

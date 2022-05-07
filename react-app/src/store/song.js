@@ -4,7 +4,6 @@ const NEW_SONG = "song/NEW_SONG";
 const REMOVE_SONG = "song/REMOVE_SONG";
 const UNLIKE_SONG = "likes/UNLIKE_SONG";
 
-
 const loadSongs = (songs) => ({
   type: LOAD_SONGS,
   songs,
@@ -64,10 +63,10 @@ export const unlikeSong = (data) => async (dispatch) => {
 };
 
 //! Create songs in the database
-export const createSong = (song) => async (dispatch) => {
+export const createSong = (data) => async (dispatch) => {
   const response = await fetch("/api/songs/", {
     method: "POST",
-    body: song,
+    body: data,
   });
 
   if (response.ok) {

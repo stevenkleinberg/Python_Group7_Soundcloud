@@ -1,0 +1,48 @@
+.add_to_playlist_img {
+  width: 60px;
+}
+
+.inner_add_to_playlist_conatiner {
+  width: 100%;
+  padding: 15px 35px 15px 35px;
+}
+.div_row_add_to_playlist_container {
+  overflow-y: scroll;
+  height: 550px;
+}
+.div_row_add_to_playlist {
+  justify-content: space-between;
+  margin: 15px 0px 15px 0px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid grey;
+}
+
+.add_song_to_playlist_button {
+  width: 95px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+}
+.remove_song_to_playlist_button {
+  width: 65px;
+  height: 30px;
+  color: #f50;
+  background-color: transparent;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+.add_song_to_playlist_button:hover {
+  border: 1.3px solid grey;
+}
+.remove_song_to_playlist_button:hover {
+  border: 1.3px solid #f50;
+}
+
+.create_playlist_song_img {
+  width: 25px;
+}
+
+.inner_create_playlist_song {
+  justify-content: space-between;
+}
