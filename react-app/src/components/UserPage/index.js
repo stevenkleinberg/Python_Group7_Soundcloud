@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { createDetail, editDetails } from "../../store/user-details";
 import UserNavBar from "./user_page_nav";
+import UserSongList from "./user_page_songs";
 import './userpage.css';
 import './user_page.scss';
 
@@ -59,9 +60,14 @@ function UserPage() {
             setActivity(false)
         }
     };
-    const updateNameDisplay = (e) => {
 
-    };
+    const checkDisplayName = (e) => {
+        if (e) {
+            setDisplayBox(true)
+        } else {
+            setDisplayBox(false)
+        }
+    }
     const updateBannerUrl = (e) => {
         const file = e.target.files[0];
         setBannerUrl(file);
@@ -92,97 +98,118 @@ function UserPage() {
                                 />
                             </div>
                         </div>
-                        {userDetails.display_name === '' ?
+                        {userDetails.display_name !== '' ?
                             <>
-                                {display_box ?
-                                    <>
-                                        < input
-                                            style={{ margin: '.3em 0em' }}
-                                            type="text"
-                                            className="field userPage"
-                                            onChange={(e) => (
-                                                setDisplayName(e.target.value),
-                                                updateActivityDisplay(e)
-                                            )}
-                                            value={userDetails.display_name ? userDetails.display_name : display_name}
-                                            placeholder={display_name}
-                                            name="display_name"
-                                            id="display_name"
-                                            required
-                                        />
-                                    </>
-                                    :
-                                    <>
-                                        <button
-                                            onClick={(e) => (
-                                                setDisplayBox(true)
-                                            )}
-                                            className="btn draw-border userBtnDetail">
-                                            {userDetails?.display_name}
-                                        </button>
-                                    </>
+                                {
+                                    display_box ?
+                                        <div >
+                                            < input
+                                                style={{ margin: '.3em 0em' }}
+                                                type="text"
+                                                className="field userPage"
+                                                onChange={(e) => (
+                                                    setDisplayName(e.target.value),
+                                                    updateActivityDisplay(e)
+                                                )}
+                                                placeholder={userDetails?.display_name}
+                                                value={display_name}
+                                                name="display_name"
+                                                id="display_name"
+                                                required
+                                            />
+                                            <button
+                                                type='button'
+                                                className="userbtn"
+                                                onClick={() => (
+                                                    setDisplayBox(false)
+                                                )}>
+                                                cancel
+                                            </button>
+                                        </div>
+                                        :
+                                        <>
+                                            <button
+                                                className="btn draw-border userBtnDetail"
+                                                onClick={() => (
+                                                    setDisplayBox(true)
+                                                )}>
+                                                {userDetails?.display_name}
+                                            </button>
+
+                                        </>
                                 }
                             </>
                             :
                             <>
-                                {display_button ?
-                                    <button
-                                        onClick={(e) => (
-                                            setDisplayBox(true),
-                                            setDisplayButton(false)
-                                        )}
-                                        className="btn draw-border userBtnDetail">
-                                        {userDetails?.display_name}
-                                    </button> :
-                                    <>
-                                        < input
-                                            style={{ margin: '.3em 0em' }}
-                                            type="text"
-                                            className="field userPage"
-                                            onChange={(e) => (
-                                                setDisplayName(e.target.value),
-                                                updateActivityDisplay(e)
-                                            )}
-                                            value={userDetails.display_name ? userDetails.display_name : display_name}
-                                            placeholder={display_name}
-                                            name="display_name"
-                                            id="display_name"
-                                            required
-                                        />
-                                        <button
-                                            type='button'
-                                            onClick={() => (
-                                                setDisplayButton(false),
-                                                setDisplayBox(true)
-                                            )}>
-                                            cancel
-                                        </button>
-                                    </>
-                                }
+                                {
+                                    display_box ?
+                                        <div >
+                                            < input
+                                                style={{ margin: '.3em 0em' }}
+                                                type="text"
+                                                className="field userPage"
+                                                onChange={(e) => (
+                                                    setDisplayName(e.target.value),
+                                                    updateActivityDisplay(e)
+                                                )}
+                                                placeholder={userDetails?.display_name}
+                                                value={display_name}
+                                                name="display_name"
+                                                id="display_name"
+                                                required
+                                            />
+                                            <button
+                                                type='button'
+                                                className="userbtn"
+                                                onClick={() => (
+                                                    setDisplayBox(false)
+                                                )}>
+                                                cancel
+                                            </button>
+                                        </div>
+                                        :
+                                        <>
+                                            <button
+                                                className="btn draw-border userBtnDetail"
+                                                onClick={() => (
+                                                    setDisplayBox(true)
+                                                )}>
+                                                {userDetails?.display_name}
+                                            </button>
 
+                                        </>
+                                }
                             </>
                         }
                     </div>
-
                 </div>
                 <div id='secondcontainer'>
-                    <div className="backgroundHeaderImage">
-                        <button
-                            className="headerUploadField">
-                            upload header image...
-                            <input
-                                className="chooseFileHeader"
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => (
-                                    updateBannerUrl(e), updateActivity(e)
-                                )}
-                                name="banner_url"
-                                id="banner_url"
-                            />
-                            <br />
-                        </button>
-                    </div>
+                    {
+                        userDetails.banner_url ?
+                            <>
+                                <div className="backgroundHeaderImage " style={{}}>
+                                    <button
+                                        className="headerUploadField">
+                                        upload header image...
+                                        <input
+                                            className="chooseFileHeader"
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => (
+                                                updateBannerUrl(e), updateActivity(e)
+                                            )}
+                                            name="banner_url"
+                                            id="banner_url"
+                                        />
+                                        <br />
+                                    </button>
+                                </div>
+                            </>
+                            :
+                            <>
+                            </>
+                    }
+
                 </div>
 
             </div>
@@ -192,10 +219,14 @@ function UserPage() {
                 activity ?
                     <div className="submitFormDiv">
                         <form onSubmit={(e) => (
-                            handleSubmit(e),
-                            setDisplayButton(true)
+                            handleSubmit(e)
                         )} id='submitDetailsForm'>
-                            <button className="btn" type="submit">
+                            <button
+                                className="btn"
+                                type="submit"
+                                onClick={() => (
+                                    checkDisplayName(display_name)
+                                )}>
                                 Submit
                             </button>
                         </form>
@@ -206,6 +237,10 @@ function UserPage() {
             }
             <div>
                 <UserNavBar />
+                <UserSongList />
+            </div>
+            <div>
+
             </div>
         </>
     );

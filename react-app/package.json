@@ -23,7 +23,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sass": "^1.51.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "wavesurfer.js": "^6.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
