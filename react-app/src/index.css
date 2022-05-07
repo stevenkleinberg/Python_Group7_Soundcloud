@@ -29,5 +29,5 @@ a {
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }

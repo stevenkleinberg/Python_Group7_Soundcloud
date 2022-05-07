@@ -59,12 +59,23 @@ export const createComment = (comment) => async (dispatch) => {
 export const editComment = (data) => async (dispatch) => {
     const res = await fetch(`/api/comments/${data.id}`, {
         method: 'PUT',
-        body: data,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
     });
     if (res.ok) {
-        const comment = await res.json();
-        dispatch(newComment(comment));
-        return comment;
+        const song = await res.json();
+        // dispatch(newComment(comment));
+        dispatch(newSong(song));
+        return song;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.'];
     }
 };
 

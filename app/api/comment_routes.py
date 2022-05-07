@@ -44,10 +44,13 @@ def edit_comment(id):
 
     if form.validate_on_submit():
         comment = Comment.query.get(id)
-        comment.content = request.form['content']
+        print(comment)
+        comment.content = form.data['content']
         comment.updated_at = datetime.now()
         db.session.commit()
-        return comment.to_dict()
+
+        song = Song.query.get(comment.song_id)
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
