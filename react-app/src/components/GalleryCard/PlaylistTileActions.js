@@ -6,7 +6,6 @@ import { loadSong, queueSong } from "../../store/player";
 import AddtoPlaylist from "../PlaylistFolders/AddtoPlaylist";
 
 function PlaylistTitleActions({ songs }) {
-  console.log(songs);
   const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);

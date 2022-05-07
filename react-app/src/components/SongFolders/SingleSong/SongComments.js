@@ -5,7 +5,6 @@ import SingleComment from "./Comments/SingleComment";
 
 const SongComments = ({ song }) => {
   const [content, setContent] = useState("");
-  console.log(song);
 
   const handleSubmit = (e) => {
     e.preventDefault();

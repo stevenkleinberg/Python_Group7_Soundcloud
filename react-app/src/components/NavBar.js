@@ -10,8 +10,6 @@ const NavBar = () => {
   const rawSongs = useSelector((state) => state.songs);
   const songs = Object.values(rawSongs);
 
-  console.log(songs);
-
   const [showResults, setShowResults] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 

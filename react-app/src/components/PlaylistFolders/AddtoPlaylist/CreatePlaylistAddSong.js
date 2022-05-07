@@ -22,7 +22,7 @@ const CreatePlaylistAddSong = ({ songsArr }) => {
     const formData = new FormData();
     formData.append("user_id", +userId);
     formData.append("title", title);
-    console.log("tle");
+
     const playlist = await dispatch(createPlaylist(formData));
 
     setNewPlaylistId(playlist.id);
