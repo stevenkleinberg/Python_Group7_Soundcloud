@@ -67,8 +67,8 @@ const SingleComment = ({ comment }) => {
         const data = await dispatch(deleteComment(comment.id));
         if (data.errors) {
             setErrors(data.errors);
-        } else {
-            setShowDeleteConfirm(false);
+            // } else {
+            //     setShowDeleteConfirm(false);
         }
     }
 
