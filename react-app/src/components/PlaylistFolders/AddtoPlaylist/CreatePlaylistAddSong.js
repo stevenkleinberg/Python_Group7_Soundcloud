@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPlaylist, addSongtoPlaylist } from "../../../store/playlist";
 
-import BarLoader from "react-spinners/BarLoader";
-
 const CreatePlaylistAddSong = ({ songsArr }) => {
-  const arrr = Array;
   const songs = useSelector((state) => state.songs);
   const userId = useSelector((state) => state.session.user.id);
 
