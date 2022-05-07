@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { deleteSong, editSong } from "../../../store/song";
@@ -32,9 +32,9 @@ const EditSongForm = () => {
 
     const res = await dispatch(editSong(formData));
     if (res) {
-      if(res.errors){
-        setErrors(res.errors)
-      }else{
+      if (res.errors) {
+        setErrors(res.errors);
+      } else {
         setAudioLoading(false);
         history.push(`/songs/${+id}`);
       }
@@ -70,70 +70,72 @@ const EditSongForm = () => {
           <form onSubmit={handleSubmit}>
             <div>
               {errors.map((error, ind) => (
-                <div className="error_message" key={ind}>{error}</div>
+                <div className="error_message" key={ind}>
+                  {error}
+                </div>
               ))}
-              </div>
+            </div>
+            <input
+              className="field"
+              id="nameInput"
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              placeholder={"rename here... "}
+              name="name"
+              required
+            />
+            <button
+              type="button"
+              className="field"
+              onClick={() => setNewAudio(!newAudio)}
+            >
+              Upload New Audio File
+            </button>
+            {newAudio && (
               <input
                 className="field"
-                id="nameInput"
-                type="text"
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-                placeholder={"rename here... "}
-                name="name"
-                required
+                type="file"
+                accept="audio/*"
+                onChange={updateAudioUrl}
+                name="audio_url"
+                id="audio_url"
               />
-              <button
-                type="button"
-                className="field"
-                onClick={() => setNewAudio(!newAudio)}
-              >
-                Upload New Audio File
-              </button>
-              {newAudio && (
-                <input
-                  className="field"
-                  type="file"
-                  accept="audio/*"
-                  onChange={updateAudioUrl}
-                  name="audio_url"
-                  id="audio_url"
-                />
-              )}
+            )}
 
-              <textarea
+            <textarea
+              className="field"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Description"
+            />
+            <button
+              type="button"
+              className="field"
+              onClick={() => setNewImage(!newImage)}
+            >
+              Upload New Image File
+            </button>
+            {newImage && (
+              <input
                 className="field"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Description"
+                type="file"
+                accept="image/*"
+                onChange={updateImageUrl}
+                name="image_url"
+                id="image_url"
               />
-              <button
-                type="button"
-                className="field"
-                onClick={() => setNewImage(!newImage)}
-              >
-                Upload New Image File
-              </button>
-              {newImage && (
-                <input
-                  className="field"
-                  type="file"
-                  accept="image/*"
-                  onChange={updateImageUrl}
-                  name="image_url"
-                  id="image_url"
-                />
-              )}
-              <button
-                id="btnfield"
-                // onClick={(e) => (
-                //     setUser_id(user.id)
-                // )}
-                type="submit"
-                style={{ margin: "5px", width: "100px" }}
-              >
-                Submit
-              </button>
+            )}
+            <button
+              id="btnfield"
+              // onClick={(e) => (
+              //     setUser_id(user.id)
+              // )}
+              type="submit"
+              style={{ margin: "5px", width: "100px" }}
+            >
+              Submit
+            </button>
           </form>
           <form onSubmit={deleteSubmit} id="deletePictureForm">
             <button style={{ margin: "5px", width: "100px" }} type="submit">
