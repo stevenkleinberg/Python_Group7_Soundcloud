@@ -6,9 +6,6 @@
 
 }
 
-html,
-body {}
-
 .backgroundHeaderImage {
     display: flex;
     flex-direction: column;
@@ -23,6 +20,7 @@ body {}
 .headerUploadField>input {
     width: 85px;
     font-size: 12px;
+
 }
 
 .headerUploadField {
@@ -46,14 +44,21 @@ body {}
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
-.chooseFileHeader {
-    font: none;
+.chooseFileAvatar {
+    visibility: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity .3s linear;
 }
 
+.placeholderDiv:hover .chooseFileAvatar {
+    visibility: visible;
+    visibility: visible;
+    opacity: 1;
 
+}
 
 .userImage {
     margin: 15px 10px 10px 10px;
@@ -65,7 +70,15 @@ body {}
     border-radius: 50%;
     height: 120px;
     width: 120px;
+    transition: 1s ease;
 }
+
+.userImage:hover {
+    background-color: white;
+    box-shadow: 10px -10px 70px #CCC;
+    padding: 2px;
+}
+
 
 .userImage>input {
     font-size: 16px;
@@ -80,13 +93,12 @@ body {}
     width: 140px;
 }
 
-.userDescription {
-    height: 10px;
-}
+
 
 .field.userPage:hover {
     background-color: white;
 }
+
 
 .display_name_div {
     margin: 0px 5px 5px 20px;
@@ -161,4 +173,8 @@ body {}
     top: 0;
     border-bottom: 1px solid #303030;
     z-index: 1;
+}
+
+.placeholderDiv {
+    box-sizing: border-box;
 }

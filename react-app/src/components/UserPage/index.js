@@ -20,6 +20,8 @@ function UserPage() {
     const [avatar_url, setUrl] = useState(userDetails?.avatar_url);
     const [banner_url, setBannerUrl] = useState(userDetails?.banner_url);
     const [activity, setActivity] = useState(false)
+    const [display_box, setDisplayBox] = useState(false)
+    const [display_button, setDisplayButton] = useState(true)
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
@@ -57,6 +59,9 @@ function UserPage() {
             setActivity(false)
         }
     };
+    const updateNameDisplay = (e) => {
+
+    };
     const updateBannerUrl = (e) => {
         const file = e.target.files[0];
         setBannerUrl(file);
@@ -71,67 +76,113 @@ function UserPage() {
                 <div id='firstcontainer'>
                     <div className="userDetailsInfo"
                     >
-                        <div className="userImage"
-                            style={{ background: `url(${userDetails?.avatar_url}) no-repeat`, backgroundSize: 'cover' }}
-                        >
-                            {userDetails.avatar_url ? <></> : <input
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => (
-                                    updateAvatarUrl(e), updateActivity(e)
-                                )}
-                                name="avatar_url"
-                                id="avatar_url"
-                            />}
-
+                        <div className='placeholderDiv' >
+                            <div className="userImage placeholder"
+                                style={{ background: `url(${userDetails?.avatar_url}) no-repeat center`, backgroundSize: 'cover' }}
+                            >
+                                <input
+                                    className="chooseFileAvatar"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => (
+                                        updateAvatarUrl(e), updateActivity(e)
+                                    )}
+                                    name="avatar_url"
+                                    id="avatar_url"
+                                />
+                            </div>
                         </div>
                         {userDetails.display_name === '' ?
-                            < input
-                                style={{ margin: '.3em 0em' }}
-                                type="text"
-                                className="field userPage"
-                                onChange={(e) => (
-                                    setDisplayName(e.target.value),
-                                    updateActivityDisplay(e)
-                                )}
-                                value={display_name}
-                                placeholder={display_name}
-                                name="display_name"
-                                id="display_name"
-                                required
-                            />
+                            <>
+                                {display_box ?
+                                    <>
+                                        < input
+                                            style={{ margin: '.3em 0em' }}
+                                            type="text"
+                                            className="field userPage"
+                                            onChange={(e) => (
+                                                setDisplayName(e.target.value),
+                                                updateActivityDisplay(e)
+                                            )}
+                                            value={userDetails.display_name ? userDetails.display_name : display_name}
+                                            placeholder={display_name}
+                                            name="display_name"
+                                            id="display_name"
+                                            required
+                                        />
+                                    </>
+                                    :
+                                    <>
+                                        <button
+                                            onClick={(e) => (
+                                                setDisplayBox(true)
+                                            )}
+                                            className="btn draw-border userBtnDetail">
+                                            {userDetails?.display_name}
+                                        </button>
+                                    </>
+                                }
+                            </>
                             :
                             <>
-                                <button className="btn draw-border">{userDetails?.display_name}</button>
+                                {display_button ?
+                                    <button
+                                        onClick={(e) => (
+                                            setDisplayBox(true),
+                                            setDisplayButton(false)
+                                        )}
+                                        className="btn draw-border userBtnDetail">
+                                        {userDetails?.display_name}
+                                    </button> :
+                                    <>
+                                        < input
+                                            style={{ margin: '.3em 0em' }}
+                                            type="text"
+                                            className="field userPage"
+                                            onChange={(e) => (
+                                                setDisplayName(e.target.value),
+                                                updateActivityDisplay(e)
+                                            )}
+                                            value={userDetails.display_name ? userDetails.display_name : display_name}
+                                            placeholder={display_name}
+                                            name="display_name"
+                                            id="display_name"
+                                            required
+                                        />
+                                        <button
+                                            type='button'
+                                            onClick={() => (
+                                                setDisplayButton(false),
+                                                setDisplayBox(true)
+                                            )}>
+                                            cancel
+                                        </button>
+                                    </>
+                                }
+
                             </>
                         }
                     </div>
 
                 </div>
                 <div id='secondcontainer'>
-                    {userDetails.banner_url === '' ?
-                        <div className="backgroundHeaderImage">
-                            <button
-                                className="headerUploadField">
-                                upload header image...
-                                <input
-                                    className="chooseFileHeader"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => (
-                                        updateBannerUrl(e), updateActivity(e)
-                                    )}
-                                    name="banner_url"
-                                    id="banner_url"
-                                />
-                                <br />
-                            </button>
-                        </div>
-                        :
-                        <>
-
-                        </>
-                    }
+                    <div className="backgroundHeaderImage">
+                        <button
+                            className="headerUploadField">
+                            upload header image...
+                            <input
+                                className="chooseFileHeader"
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => (
+                                    updateBannerUrl(e), updateActivity(e)
+                                )}
+                                name="banner_url"
+                                id="banner_url"
+                            />
+                            <br />
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -141,7 +192,8 @@ function UserPage() {
                 activity ?
                     <div className="submitFormDiv">
                         <form onSubmit={(e) => (
-                            handleSubmit(e)
+                            handleSubmit(e),
+                            setDisplayButton(true)
                         )} id='submitDetailsForm'>
                             <button className="btn" type="submit">
                                 Submit
