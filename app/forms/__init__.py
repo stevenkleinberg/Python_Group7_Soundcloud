@@ -5,3 +5,4 @@ from .newsong_form import NewSongForm
 from .edit_songform import EditSongForm
 from .new_comment_form import NewCommentForm
 from .edit_comment_form import EditCommentForm
+from .playlist_form import NewPlaylistForm, EditPlaylistForm

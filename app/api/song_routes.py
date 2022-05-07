@@ -47,10 +47,9 @@ def new_song():
                 description=request.form['description'],
                 image_url=image_url,
             )
-
-        db.session.add(song)
-        # else:
-        #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+            db.session.add(song)
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     else:
         form = EditSongForm()
         form['csrf_token'].data = request.cookies['csrf_token']

@@ -9,7 +9,7 @@ const MainFeed = () => {
   const songs_array = Object.values(songs)
   const reverse_song_array = songs_array.slice().reverse()
   return (
-    <div>
+    <div className="mainfeed">
       <div className="mainFeed_gallery_list">
         <GalleryCard
           type="songs"
