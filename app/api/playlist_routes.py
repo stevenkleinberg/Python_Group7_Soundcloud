@@ -13,22 +13,31 @@ def new_playlist():
         """
         Create a New Playlist
         """
-        raw_image_url = request.files["image_url"]
+        print(len(request.form),"+=++=+++=====")
 
-        if not allowed_file(raw_image_url.filename):
-            return {"errors": "file type not permitted"}, 400
-
-        raw_image_url.filename = get_unique_filename(raw_image_url.filename)
-
-        image_upload = upload_file_to_s3(raw_image_url)
-        image_url = image_upload["url"]
-
-        playlist = Playlist(
+        if len(request.form) == 2:
+            playlist = Playlist(
             user_id =  request.form['user_id'],
-            title= request.form['title'],
-            image_url= image_url,
-            description= request.form['description']
-        )
+            image_url="https://soundtownbucket.s3.us-west-1.amazonaws.com/SoundTown-icon-with-text-black-bg.png",
+            title= request.form['title'])
+
+        else:
+            raw_image_url = request.files["image_url"]
+
+            if not allowed_file(raw_image_url.filename):
+                return {"errors": "file type not permitted"}, 400
+
+            raw_image_url.filename = get_unique_filename(raw_image_url.filename)
+
+            image_upload = upload_file_to_s3(raw_image_url)
+            image_url = image_upload["url"]
+
+            playlist = Playlist(
+                user_id =  request.form['user_id'],
+                title= request.form['title'],
+                image_url= image_url,
+                description= request.form['description']
+            )
 
         db.session.add(playlist)
     else:

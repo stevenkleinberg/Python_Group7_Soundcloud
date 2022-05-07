@@ -1,0 +1,20 @@
+.library_links {
+  margin: 0px 10px 0px 20px;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+
+.library_links_container {
+  border-bottom: 1.7px solid grey;
+  margin: 0px 10px 0px 10px;
+}
+.library_links:hover {
+  border-bottom: 1.7px solid #f50;
+  color: #f50;
+}
+
+.library_links_selected {
+  border-bottom: 1.7px solid #f50;
+  color: #f50;
+}
