@@ -62,9 +62,12 @@ def delete_comment(id):
     Delete Comment at ID
     """
     comment = Comment.query.get(id)
+    song_id = comment.song_id
     if comment:
         db.session.delete(comment)
         db.session.commit()
-        return {'id': id}
+
+        song = Song.query.get(song_id)
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
