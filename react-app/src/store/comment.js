@@ -1,4 +1,4 @@
-import { newSong } from './song';
+import { newSong, getAllSongs } from './song';
 
 // constants
 const LOAD_COMMENTS = "comment/LOAD_COMMENTS";
@@ -85,9 +85,16 @@ export const deleteComment = (commentId) => async (dispatch) => {
         method: 'DELETE',
     });
     if (res.ok) {
-        await res.json();
-        dispatch(removeComment(commentId));
-        return commentId;
+        const song = await res.json();
+        dispatch(newSong(song));
+        return song;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.'];
     }
 };
 
