@@ -4,12 +4,18 @@ import Moment from "react-moment";
 import './SingleComment.css';
 import EditCommentButton from './EditCommentButton';
 import DeleteCommentButton from './DeleteCommentButton';
+import { useState } from 'react';
 
 const SingleComment = ({ comment }) => {
     const sessionUser = useSelector(state => state.session.user);
+    const [showActions, setShowActions] = useState(false);
 
     return (
-        <div className="comment-card flex-row">
+        <div
+            onMouseOver={() => setShowActions(true)}
+            onMouseOut={() => setShowActions(false)}
+            className="comment-card flex-row"
+        >
             <div className="comment-body flex-row">
                 <div className="comment-avatar">
                     <a href={`/users/${comment.user_id}`}>
@@ -36,7 +42,9 @@ const SingleComment = ({ comment }) => {
             </div>
             <div className="comment-meta flex-column">
                 <Moment fromNow>{comment?.created_at}</Moment>
-                <div className="comment-actions flex-row">
+                <div
+                    className={`comment-actions flex-row${showActions ? '' : ' hidden'}`}
+                >
                     {comment?.user_id === sessionUser?.id && (
                         <>
                             <div className="comment-edit-button">

@@ -21,9 +21,13 @@ a {
   justify-content: space-between;
 }
 
-.error_message{
+.error_message {
   color: red;
   font-size: 20px;
   align-self: center;
   justify-self: center;
+}
+
+.hidden {
+  display: none;
 }
