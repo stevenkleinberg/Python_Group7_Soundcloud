@@ -1,6 +1,7 @@
 .song_tile {
   align-items: center;
-  padding: 0 88px;
+  padding: 0 8px;
+  width: 320px;
 }
 
 .song_tile_cover {
@@ -96,7 +97,7 @@
   /* color: orangered; */
 }
 .song_tile_bottom {
-  width: 100%;
+  width: 200px;
   justify-content: space-between;
 }
 
