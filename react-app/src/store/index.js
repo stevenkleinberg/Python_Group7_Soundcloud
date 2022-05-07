@@ -13,7 +13,6 @@ const rootReducer = combineReducers({
   player,
   details,
   playlists,
-  comments,
 });
 
 let enhancer;

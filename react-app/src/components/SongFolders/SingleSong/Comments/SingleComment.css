@@ -76,3 +76,32 @@
     width: 16px;
     height: 16px;
 }
+
+.delete-confirm .button:hover,
+.yes-delete.button:hover {
+    border-color: #e30;
+}
+
+.confirm-delete {
+    position: relative;
+}
+
+.confirm-delete-form {
+    position: absolute;
+    width: 200px;
+    background-color: white;
+    z-index: 5;
+    top: 5px;
+    right: 0px;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+}
+
+.confirm-delete-form p {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.confirm-delete-buttons {
+    justify-content: flex-end;
+}
