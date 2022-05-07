@@ -1,3 +1,5 @@
+import { newSong } from './song';
+
 // constants
 const LOAD_COMMENTS = "comment/LOAD_COMMENTS";
 const NEW_COMMENT = "comment/NEW_COMMENT";
@@ -40,7 +42,8 @@ export const createComment = (comment) => async (dispatch) => {
     });
     if (res.ok) {
         const data = await res.json();
-        dispatch(newComment(data));
+        // dispatch(newComment(data));
+        dispatch(newSong(data));
         return data;
     } else if (res.status < 500) {
         const data = await res.json();
