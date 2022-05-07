@@ -57,13 +57,21 @@ const AddtoPlaylist = ({ song }) => {
       <div className="flex-row add_song_to_playlist_mode_container ">
         <p
           onClick={() => setMode("add")}
-          className="add_song_to_playlist_mode_title atp_p_l"
+          className={
+            mode === "add"
+              ? "add_song_to_playlist_mode_title atp_p_l adtp_selected"
+              : "add_song_to_playlist_mode_title atp_p_l"
+          }
         >
           Add to playlist
         </p>
         <p
           onClick={() => setMode("create")}
-          className="add_song_to_playlist_mode_title atp_p_r"
+          className={
+            mode === "create"
+              ? "add_song_to_playlist_mode_title atp_p_l adtp_selected"
+              : "add_song_to_playlist_mode_title atp_p_l"
+          }
         >
           Create a playlist
         </p>

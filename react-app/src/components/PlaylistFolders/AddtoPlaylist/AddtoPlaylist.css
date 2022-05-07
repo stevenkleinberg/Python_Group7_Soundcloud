@@ -58,6 +58,11 @@
   color: #f50;
 }
 
+.adtp_selected {
+  border-bottom: 3px solid #f50;
+  color: #f50;
+}
+
 .atp_p_l {
   margin-right: 5px;
 }
