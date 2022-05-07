@@ -43,6 +43,7 @@ const EditPlaylistForm = ({ modalFunction }) => {
         <label>title </label>
         <input
           value={title}
+          required
           type="text"
           onChange={(e) => {
             setTitle(e.target.value);
