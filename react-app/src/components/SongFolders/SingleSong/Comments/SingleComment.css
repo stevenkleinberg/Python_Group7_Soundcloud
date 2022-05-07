@@ -18,3 +18,41 @@
 .comment-timestamp {
     font-weight: 900;
 }
+
+.comment-meta {
+    align-items: flex-end;
+}
+
+.button {
+    align-items: flex-end;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #333;
+    font-size: 11px;
+    padding: 2px 9px 2px 8px;
+    height: 22px;
+    line-height: 16px;
+    gap: 4px;
+}
+
+.button:hover {
+    border-color: #999;
+}
+
+.edit-icon {
+    position: relative;
+    bottom: -1px;
+}
+
+.reply-icon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAQAAACR313BAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALRJREFUGNNjYCAexMnhkYyxTHiJUzIqIeFX/n+sUhHMEZMT/ucBIRbJMKHw3Un/s8Ew7H/Y27CTYe1h0gi9+5L+Z8Bh2v+U/3H/w74Eu0Kl30xueZ/2HxWm/o/4GqQIlv7P+3Py7CfJ/0Hw//7Ph2+cOXhl0ouMP3HzoPr/s/zP23Ar6W8C0Gn/uf+r/bf/X/liX+MhJAf+Dzx7Ju0XEl/kVTmKD/7rP9qDwudG8+J/SQaqAgBt9GUu05AvWgAAAABJRU5ErkJggg==);
+    width: 16px;
+    height: 16px;
+}
+
+.delete-icon {
+    background-image: url(https://a-v2.sndcdn.com/assets/images/delete-d90bf5e4.svg);
+    width: 16px;
+    height: 16px;
+}
