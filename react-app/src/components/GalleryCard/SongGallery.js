@@ -13,9 +13,10 @@ const SongGallery = ({ title, description, songs }) => {
           {description && <p className="gallery_description">{description}</p>}
         </div>
       </div>
-      <div className="songs_slider">
-        <SongSlider songs={songs} />
-      </div>
+        <div className="songs_slider">
+          <SongSlider songs={songs} />
+        </div>
+
       {/* <div className="songs_slider">
         {songs.map((song) => (
           <SongTile song={song}/>
