@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { loadplaylist } from "../../store/player";
 import { useDispatch } from "react-redux";
+import PlaylistTitleActions from "./PlaylistTileActions";
 
 const PlaylistTile = ({ playlist }) => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const PlaylistTile = ({ playlist }) => {
           </div>
         </div>
         <div className="playlist_tile_options">
-          <div className="playlist_tile_actions">...</div>
+          <PlaylistTitleActions songs={playlist.songs} />
         </div>
       </div>
     </div>

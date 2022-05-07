@@ -4,11 +4,11 @@ import { loadSong } from "../../store/player";
 import { likeSong, unlikeSong } from "../../store/song";
 import { useDispatch, useSelector } from "react-redux";
 import SongTileActions from "./SongTileActions";
-import "./songTile.css"
+import "./songTile.css";
 
 const SongTile = ({ song }) => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const handlePlayButtonClick = (e) => {
     e.preventDefault();
     dispatch(loadSong(song.id));
@@ -21,8 +21,6 @@ const SongTile = ({ song }) => {
     formData.append("user_id", user.id);
     formData.append("song_id", song.id);
     const likedSong = await dispatch(likeSong(formData));
-
-
   };
   const handle_UnLikeButtonClick = async (e) => {
     e.preventDefault();
@@ -31,8 +29,6 @@ const SongTile = ({ song }) => {
     formData.append("user_id", user.id);
     formData.append("song_id", song.id);
     const unlikedSong = await dispatch(unlikeSong(formData));
-
-
   };
 
   return (
@@ -45,21 +41,30 @@ const SongTile = ({ song }) => {
               <div
                 onClick={handlePlayButtonClick}
                 className="song_tile_cover_play"
-              > &#9654;</div>
+              >
+                {" "}
+                &#9654;
+              </div>
             </div>
             <div className="song_tile_cover_overlay_inner_bottom flex-row">
               {song.likes.includes(user.id) && (
                 <div
                   onClick={handle_UnLikeButtonClick}
                   className="song_tile_cover_is_liked"
-                > &#10084;</div>)
-              }
+                >
+                  {" "}
+                  &#10084;
+                </div>
+              )}
               {!song.likes.includes(user.id) && (
                 <div
                   onClick={handle_LikeButtonClick}
                   className="song_tile_cover_not_liked"
-                > &#10084;</div>)
-              }
+                >
+                  {" "}
+                  &#10084;
+                </div>
+              )}
             </div>
           </div>
         </div>
