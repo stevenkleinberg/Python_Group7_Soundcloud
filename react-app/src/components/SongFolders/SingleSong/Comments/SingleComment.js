@@ -51,6 +51,15 @@ const SingleComment = ({ comment }) => {
         }
     };
 
+    const handleEscape = e => {
+        if (e.key === "Escape") {
+            console.log("in handleEscape");
+            setShowContentDisplay(true);
+            setShowContentEdit(false);
+            setContent(comment?.content);
+        }
+    };
+
     return (
         <div
             onMouseOver={commentCardMouseOver}
@@ -93,7 +102,9 @@ const SingleComment = ({ comment }) => {
                             <input
                                 className="content-field"
                                 onChange={(e) => setContent(e.target.value)}
+                                onKeyDown={handleEscape}
                                 value={content}
+                                title="Enter to submit; Hit Esc to cancel."
                                 required
                             />
                         </form>
