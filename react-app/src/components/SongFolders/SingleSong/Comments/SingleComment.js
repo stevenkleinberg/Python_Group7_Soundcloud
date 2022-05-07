@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import './SingleComment.css';
 import EditCommentButton from './EditCommentButton';
 import DeleteCommentButton from './DeleteCommentButton';
-import { editComment } from '../../../../store/comment';
+import { deleteComment, editComment } from '../../../../store/comment';
 
 const SingleComment = ({ comment }) => {
     const sessionUser = useSelector(state => state.session.user);
@@ -14,6 +14,7 @@ const SingleComment = ({ comment }) => {
     const [showContentEdit, setShowContentEdit] = useState(false);
     const [content, setContent] = useState(comment?.content);
     const [errors, setErrors] = useState([])
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const dispatch = useDispatch();
 
     const commentCardMouseOver = e => {
@@ -23,7 +24,7 @@ const SingleComment = ({ comment }) => {
     }
 
     const commentCardMouseOut = e => {
-        if (!showContentEdit) {
+        if (!showContentEdit && !showDeleteConfirm) {
             setShowActions(false);
         }
     }
@@ -41,7 +42,6 @@ const SingleComment = ({ comment }) => {
             user_id: sessionUser.id,
             content,
         }
-        console.log(newComment);
         const data = await dispatch(editComment(newComment));
         if (data.errors) {
             setErrors(data.errors);
@@ -50,6 +50,27 @@ const SingleComment = ({ comment }) => {
             setShowContentDisplay(true);
         }
     };
+
+    const handleEscape = e => {
+        if (e.key === "Escape") {
+            setShowContentDisplay(true);
+            setShowContentEdit(false);
+            setContent(comment?.content);
+        }
+    };
+
+    const cancelDelete = e => {
+        setShowDeleteConfirm(false);
+    }
+
+    const confirmDelete = async (ev) => {
+        const data = await dispatch(deleteComment(comment.id));
+        if (data.errors) {
+            setErrors(data.errors);
+            // } else {
+            //     setShowDeleteConfirm(false);
+        }
+    }
 
     return (
         <div
@@ -93,7 +114,9 @@ const SingleComment = ({ comment }) => {
                             <input
                                 className="content-field"
                                 onChange={(e) => setContent(e.target.value)}
+                                onKeyDown={handleEscape}
                                 value={content}
+                                title="Enter to submit; Hit Esc to cancel."
                                 required
                             />
                         </form>
@@ -119,7 +142,29 @@ const SingleComment = ({ comment }) => {
                                 <EditCommentButton />
                             </div>
                             <div className="comment-delete-button">
-                                <DeleteCommentButton />
+                                <div
+                                    className="delete-confirm"
+                                    onClick={() => setShowDeleteConfirm(true)}
+                                >
+                                    <DeleteCommentButton />
+                                </div>
+                                <div className="confirm-delete">
+                                    {showDeleteConfirm && (
+                                        <div className="confirm-delete-form">
+                                            <p>Do you really want to remove this comment?</p>
+                                            <div className="confirm-delete-buttons flex-row">
+                                                <div
+                                                    className="cancel-delete button"
+                                                    onClick={cancelDelete}
+                                                >Cancel</div>
+                                                <div
+                                                    className="yes-delete button"
+                                                    onClick={confirmDelete}
+                                                >Yes</div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </>
                     )}
