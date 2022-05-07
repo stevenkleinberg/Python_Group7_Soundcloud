@@ -7,23 +7,23 @@ const MainFeed = () => {
 
   const songs = useSelector(state => state.songs)
   const songs_array = Object.values(songs)
-
+  const reverse_song_array = songs_array.slice().reverse()
   return (
     <div>
       <div className="mainFeed_gallery_list">
         <GalleryCard
           type="songs"
           description="Up-and-coming tracks on SoundTown"
-          title={"Charts: New & Hot"}
+          title={"Charts: Hot & Trending"}
           songs={songs_array}
         />
       </div>
       <div className="mainFeed_gallery_list">
         <GalleryCard
           type="songs"
-          description="Top tracks from artists similar to Max B"
-          title={"Artists You Should Know"}
-          songs={songs_array}
+          description="The latest Uploads from around the world"
+          title={"Discover Daily"}
+          songs={ reverse_song_array}
         />
       </div>
       <div className="mainFeed_gallery_list">

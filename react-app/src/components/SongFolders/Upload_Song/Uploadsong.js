@@ -8,6 +8,7 @@ const UploadSong = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState("");
   const [audio_url, setUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -26,20 +27,17 @@ const UploadSong = () => {
 
     setAudioLoading(true);
 
-    // const newSong = {
-    //   user_id: sessionUser.id,
-    //   title,
-    //   audio_url,
-    //   description,
-    //   image_url,
-    // };
-    const songs = await dispatch(createSong(formData));
-    if (songs) {
-      setAudioLoading(false);
-      history.push("/");
+    const res = await dispatch(createSong(formData));
+    if (res) {
+      if(res.errors){
+        setErrors(res.errors)
+      }else{
+        setAudioLoading(false);
+        history.push(`/`);
+      }
     } else {
       setAudioLoading(false);
-      console.log("Error: uploadsong.js react frontend");
+      console.log("Error: editSong.js react frontend");
     }
   };
 
@@ -60,6 +58,11 @@ const UploadSong = () => {
         <div className="right">
           <h2>upload</h2>
           <form onSubmit={handleSubmit} id="upload-song">
+          <div>
+              {errors.map((error, ind) => (
+                <div className="error_message" key={ind}>{error}</div>
+              ))}
+              </div>
             <input
               className="field"
               type="text"
