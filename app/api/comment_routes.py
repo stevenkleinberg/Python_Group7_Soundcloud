@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Comment, db
+from app.models import Comment, Song, db
 from app.forms import NewCommentForm, EditCommentForm
 from datetime import datetime, time
 from app.api.utils import validation_errors_to_error_messages
@@ -26,7 +26,9 @@ def new_comment():
         )
         db.session.add(comment)
         db.session.commit()
-        return comment.to_dict()
+
+        song = Song.query.get(form.data['song_id'])
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
