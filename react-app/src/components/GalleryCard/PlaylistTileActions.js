@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Modal } from "../Context/Modal";
-import { loadSong, queueSong } from "../../store/player";
+import { loadPlaylist, queuePlaylist } from "../../store/player";
 import AddtoPlaylist from "../PlaylistFolders/AddtoPlaylist";
 
-function PlaylistTitleActions({ songs }) {
+function PlaylistTitleActions({ playlist }) {
   const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -33,11 +33,11 @@ function PlaylistTitleActions({ songs }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const addSongToQueue = (id) => {
+  const addPlaylistToQueue = (playlist) => {
     if (!playingId) {
-      dispatch(loadSong(id));
+      dispatch(loadPlaylist(playlist));
     } else {
-      dispatch(queueSong(id));
+      dispatch(queuePlaylist(playlist));
     }
   };
 
@@ -51,9 +51,7 @@ function PlaylistTitleActions({ songs }) {
           {showMenu && (
             <div className="song-tile-action-dropdown">
               <div
-                onClick={() =>
-                  songs.forEach((songId) => addSongToQueue(songId))
-                }
+                onClick={() => addPlaylistToQueue(playlist)}
               >
                 Add to Queue
               </div>
@@ -64,7 +62,7 @@ function PlaylistTitleActions({ songs }) {
         {showPlaylistModal && (
           <Modal onClose={() => setShowPlaylistModal(false)}>
             <div className="add_to_playlist_modal_container">
-              <AddtoPlaylist song={songs} />
+              <AddtoPlaylist song={playlist.songs} />
             </div>
           </Modal>
         )}
