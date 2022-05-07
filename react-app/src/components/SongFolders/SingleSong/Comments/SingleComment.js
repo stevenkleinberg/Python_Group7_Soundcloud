@@ -106,7 +106,7 @@ const SingleComment = ({ comment }) => {
                 </div>
             </div>
             <div className="comment-meta flex-column">
-                <Moment fromNow>{comment?.created_at}</Moment>
+                <Moment fromNow>{comment?.updated_at}</Moment>
                 <div
                     className={`comment-actions flex-row${showActions ? '' : ' hidden'}`}
                 >
