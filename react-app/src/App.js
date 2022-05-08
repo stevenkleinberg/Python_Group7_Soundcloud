@@ -17,7 +17,6 @@ import Audio from "./components/AudioPlayer";
 import UserPage from "./components/UserPage";
 import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
-import UserSongList from "./components/UserPage/user_page_songs";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
