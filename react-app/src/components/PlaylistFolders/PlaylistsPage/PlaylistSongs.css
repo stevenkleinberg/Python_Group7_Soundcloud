@@ -137,3 +137,7 @@
 .playlist_sidebar_user_text:hover {
   color: black;
 }
+
+.playlist_song_list_li:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
