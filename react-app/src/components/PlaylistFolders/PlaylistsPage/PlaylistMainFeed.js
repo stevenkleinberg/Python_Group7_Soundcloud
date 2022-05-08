@@ -8,6 +8,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { deletePlaylist } from "../../../store/playlist";
 
 import Avatar from "../../Icons/Avatar";
+import AddEditPlaylistModal from "../AddEditPlaylistModal";
 
 const PlaylistMainFeed = ({ songsId, playlist }) => {
   const { id } = useParams();
@@ -65,8 +66,9 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
               setShowEditModal(false);
             }}
           >
-            <h3>Edit Playlist</h3>
-            <EditPlaylistForm modalFunction={setShowEditModal} />
+            {/* <h3>Edit Playlist</h3>
+            <EditPlaylistForm modalFunction={setShowEditModal} /> */}
+            <AddEditPlaylistModal />
           </Modal>
         )}
         <div>
