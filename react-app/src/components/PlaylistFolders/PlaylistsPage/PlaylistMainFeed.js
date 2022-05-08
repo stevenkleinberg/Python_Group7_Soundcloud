@@ -20,6 +20,8 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
     songArr.push(songs[+songId]);
   });
 
+  console.log(playlist);
+
   const deletePlaylistDb = async () => {
     const res = await dispatch(deletePlaylist(+id));
     if (res) {

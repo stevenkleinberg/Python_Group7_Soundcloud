@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Moment from "react-moment";
+import "moment-timezone";
 
 import NewPlaylistForm from "../CreatePlaylist";
 import PlaylistMainFeed from "./PlaylistMainFeed";
@@ -28,7 +29,9 @@ const PlaylistsPage = () => {
                 <p>{playlist?.description}</p>
               </div>
             </div>
-            <Moment fromNow>{playlist?.created_at}</Moment>
+            <Moment fromNow tz="America/Los_Angeles">
+              {playlist?.created_at}
+            </Moment>
           </div>
           <div className="banner_circle">
             <div>{playlist?.songs?.length || 0}</div>
