@@ -13,18 +13,18 @@ This is a clone of [Soundcloud](https://soundcloud.com/). Access the [Sound Town
 
 
 # Technologies Used
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/javascript/javascript-original.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/react/react-original.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/redux/redux-original.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/nodejs/nodejs-plain-wordmark.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/flask/flask-original-wordmark.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/postgresql/postgresql-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/javascript/javascript-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/react/react-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/redux/redux-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/nodejs/nodejs-plain-wordmark.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/flask/flask-original-wordmark.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/postgresql/postgresql-original.svg" height=40 />
 <img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/sqlalchemy/sqlalchemy-original-wordmark.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/css3/css3-original.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/html5/html5-original.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/git/git-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/css3/css3-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/html5/html5-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/git/git-original.svg" height=40 />
 <img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/docker/docker-original-wordmark.svg" height=40 />
-<img src="https://github.com/devicons/devicon/tree/v2.15.1/icons/vscode/vscode-original.svg" height=40 />
+<img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/vscode/vscode-original.svg" height=40 />
 
 
 # Getting started
