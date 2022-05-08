@@ -29,24 +29,32 @@ function UserPage() {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-
-    if (!currentDetails?.avatar_url || !currentDetails.banner_url || !currentDetails.display_name) {
-
-    }
     const formData = new FormData();
     formData.append("id", userId);
     formData.append("avatar_url", avatar_url);
     formData.append("display_name", display_name);
     formData.append("banner_url", banner_url);
 
-    console.log(formData, "llflflffkkfkfd");
-    const detail = await dispatch(editDetails(formData));
-    if (detail) {
-      history.push("/");
+    if (currentDetails?.avatar_url || currentDetails?.banner_url || currentDetails?.display_name) {
+      console.log("EDIDTDTDTDTD");
+      const detail = await dispatch(editDetails(formData));
+      if (detail) {
+        history.push("/");
+      } else {
+        console.log("Error: uploadsong.js react frontend");
+      }
     } else {
-      console.log("Error: uploadsong.js react frontend");
+      console.log("CRETATATAT");
+      const detail = await dispatch(createDetail(formData));
+      if (detail) {
+        history.push("/");
+      } else {
+        console.log("Error: uploadsong.js react frontend");
+      }
     }
+
   };
+
 
   const verify = currentDetails?.id === +userId
   console.log("VVVVVVVVVVVVVVVV", verify, sessionUser.id, userId)
