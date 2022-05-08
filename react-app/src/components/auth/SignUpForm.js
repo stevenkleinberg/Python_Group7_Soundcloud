@@ -46,24 +46,7 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>FirstName</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>LastName</label>
-        <input
-          type="text"
-          name="lastname"
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={display_name}
-        ></input>
-      </div>
+
       <div>
         <label>Email</label>
         <input
