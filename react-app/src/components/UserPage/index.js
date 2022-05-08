@@ -39,12 +39,22 @@ function UserPage() {
     formData.append("display_name", display_name);
     formData.append("banner_url", banner_url);
 
-    console.log(formData, "llflflffkkfkfd");
-    const detail = await dispatch(editDetails(formData));
-    if (detail) {
-      history.push("/");
-    } else {
-      console.log("Error: uploadsong.js react frontend");
+    if (userDetails.display_name || userDetails.avatar_url || userDetails.banner_url) {
+      console.log("TRUEUEUEUEUEUEUE")
+      const detail = await dispatch(editDetails(formData));
+      if (detail) {
+        history.push('/');
+      } else {
+        console.log("Error: uploadsong.js react frontend");
+      }
+    }
+    if (!userDetails.display_name || !userDetails.avatar_url || !userDetails.banner_url) {
+      const detail = await dispatch(createDetail(formData));
+      if (detail) {
+        history.push('/');
+      } else {
+        console.log("Error: uploadsong.js react frontend");
+      }
     }
   };
 
@@ -223,36 +233,65 @@ function UserPage() {
           </div>
 
         </div>
+<<<<<<< HEAD
+  <div id='secondcontainer'>
+
+    <>
+      <div className="backgroundHeaderImage " style={{}}>
+        <button
+          className="headerUploadField">
+          upload header image...
+          <input
+            className="chooseFileHeader"
+            type="file"
+            accept="image/*"
+            onChange={(e) => (
+              updateBannerUrl(e), updateActivity(e)
+            )}
+            name="banner_url"
+            id="banner_url"
+          />
+          <br />
+        </button>
+      </div>
+    </>
+    :
+    <>
+
+    </>
+
+=======
+>>>>>>> main
 
 
-        {
-          activity ?
-            <div className="submitFormDiv">
-              <form onSubmit={(e) => (
-                handleSubmit(e)
-              )} id='submitDetailsForm'>
-                <button
-                  className="btn"
-                  type="submit"
-                  onClick={() => (
-                    checkDisplayName(display_name)
-                  )}>
-                  Submit
-                </button>
-              </form>
-            </div>
-            :
-            <>
-            </>
-        }
-        <div>
-          <UserNavBar />
-          <UserSongList />
+    {
+      activity ?
+        <div className="submitFormDiv">
+          <form onSubmit={(e) => (
+            handleSubmit(e)
+          )} id='submitDetailsForm'>
+            <button
+              className="btn"
+              type="submit"
+              onClick={() => (
+                checkDisplayName(display_name)
+              )}>
+              Submit
+            </button>
+          </form>
         </div>
-        <div>
+        :
+        <>
+        </>
+    }
+    <div>
+      <UserNavBar />
+      <UserSongList />
+    </div>
+    <div>
 
-        </div>
-      </>
+    </div>
+  </>
     </>
   );
 }
