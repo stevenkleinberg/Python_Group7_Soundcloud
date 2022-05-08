@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from './Comments/SingleComment';
+import { NavLink } from "react-router-dom";
 import { createComment, getCommentsBySongId } from "../../../store/comment";
+import { likeSong, unlikeSong } from "../../../store/song";
 
 const SongComments = ({ song }) => {
   const [errors, setErrors] = useState([]);
@@ -36,6 +38,22 @@ const SongComments = ({ song }) => {
     }
 
   }
+  const handle_LikeButtonClick = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("user_id", sessionUser.id);
+    formData.append("song_id", song.id);
+    const likedSong = await dispatch(likeSong(formData));
+  };
+  const handle_UnLikeButtonClick = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("user_id", sessionUser.id);
+    formData.append("song_id", song.id);
+    const unlikedSong = await dispatch(unlikeSong(formData));
+  };
 
   return (
     <div className="song_mainfeed_container">
@@ -61,10 +79,18 @@ const SongComments = ({ song }) => {
           ))}
         </div>
         <div className="song_button_group">
-          <button>Like</button>
-          <button>Share</button>
+          {!song?.likes.includes(sessionUser.id) && (
+            <button  onClick={handle_LikeButtonClick}>  &#10084; Like</button>
+          )}
+          {song?.likes.includes(sessionUser.id) && (
+            <button onClick={handle_UnLikeButtonClick}>  &#10084; Unlike</button>
+          )}
           <button>Copy Link</button>
-          <button>Edit</button>
+          {sessionUser?.id === song?.user_id && (
+            <button><NavLink to={`/songs/${+song.id}/edit`} exact={true} activeClassName="active">
+            Edit
+        </NavLink></button>
+          )}
           <button>More</button>
         </div>
       </div>
