@@ -19,9 +19,16 @@ const Playlist = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div>
-      <h3>Hear your own playlists</h3>
-      <button onClick={() => setShowModal(true)}>make a new playlist</button>
+    <div className="playlist_library_page_container ">
+      <div className="flex-row playlist_library_page_title_container">
+        <h3>Hear your own playlists</h3>
+        <button
+          onClick={() => setShowModal(true)}
+          className="playlist_library_page_add_button"
+        >
+          make a new playlist
+        </button>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <h1>Make a new playlist</h1>

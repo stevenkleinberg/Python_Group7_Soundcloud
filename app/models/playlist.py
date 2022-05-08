@@ -1,4 +1,5 @@
 from .db import db
+from .user_detail import UserDetail
 from datetime import datetime
 from .playlist_like import playlist_likes
 from .playlist_songs import playlist_songs
@@ -30,6 +31,8 @@ class Playlist(db.Model):
     )
 
     def to_dict(self):
+        # user_detail = UserDetail.query.filter(UserDetail.user_id == self.user.id).one()
+
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -39,5 +42,6 @@ class Playlist(db.Model):
             'description': self.description,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'songs': [song.id for song in self.songs]
+            'songs': [song.id for song in self.songs],
+            # 'user': user_detail.to_dict()
         }

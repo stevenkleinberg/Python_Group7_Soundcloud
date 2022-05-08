@@ -103,13 +103,15 @@ def new_detail():
     return detail.to_dict()
 
 
-@detail_routes.route('/<int:id>')
-def get_details(id):
+@detail_routes.route('/')
+def get_details():
     """
     Get Details
     """
-    details = UserDetail.query.filter(UserDetail.user_id == id).one()
-    return details.to_dict()
+    details = UserDetail.query.all()
+    return jsonify([detail.to_dict() for detail in details])
+    # details = UserDetail.query.filter(UserDetail.id == id).one()
+    # return details.to_dict()
 
 
 @detail_routes.route('/<int:id>', methods=['DELETE'])

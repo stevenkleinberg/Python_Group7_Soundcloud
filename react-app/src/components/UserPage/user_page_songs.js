@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './userpage.css';
-import Waveform from "../WaveForm/WaveForm";
+// import Waveform from "../WaveForm/WaveForm";
+import TheWavetest from '../WaveForm';
 
 function UserSongList() {
 
@@ -18,6 +19,7 @@ function UserSongList() {
         history.push(`/songs/${id}`)
     }
 
+
     return (
         <>
             <div id='container'>
@@ -26,7 +28,8 @@ function UserSongList() {
                     <div className="info">
                         <h1> Fairy Tale</h1>
                         <h3> Music source Pixabay </h3>
-                        <Waveform />
+                        <TheWavetest />
+                        {/* <Waveform /> */}
                     </div>
                 </div>
             </div>
