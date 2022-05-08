@@ -233,35 +233,6 @@ function UserPage() {
           </div>
 
         </div>
-<<<<<<< HEAD
-  <div id='secondcontainer'>
-
-    <>
-      <div className="backgroundHeaderImage " style={{}}>
-        <button
-          className="headerUploadField">
-          upload header image...
-          <input
-            className="chooseFileHeader"
-            type="file"
-            accept="image/*"
-            onChange={(e) => (
-              updateBannerUrl(e), updateActivity(e)
-            )}
-            name="banner_url"
-            id="banner_url"
-          />
-          <br />
-        </button>
-      </div>
-    </>
-    :
-    <>
-
-    </>
-
-=======
->>>>>>> main
 
 
     {
