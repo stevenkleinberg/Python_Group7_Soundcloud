@@ -149,7 +149,7 @@ const SongComments = ({ song }) => {
           <p>{song?.user?.display_name}</p>
         </div>
         <div className="song-details flex-column">
-          <div className="song-description">{song?.description}</div>
+          {/* <div className="song-description">{song?.description}</div> */}
           <div className="song-comments-list flex-column">
             <div className="comments-count flex-row">
               <SpeechBubble />
