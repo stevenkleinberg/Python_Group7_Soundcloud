@@ -38,6 +38,7 @@
 
 .playlist_sidebar_image {
   width: 60px;
+  margin-right: 10px;
 }
 
 .playlist_queue_delete_container {
@@ -123,4 +124,16 @@
 .single_row_img_overlay:hover {
   background-color: rgba(0, 0, 0, 0.6);
   color: #f50;
+}
+.sidebar_playlist_list {
+  margin: 5px 0px 15px 0px;
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid lightgrey;
+}
+
+.playlist_sidebar_user_text {
+  color: grey;
+}
+.playlist_sidebar_user_text:hover {
+  color: black;
 }

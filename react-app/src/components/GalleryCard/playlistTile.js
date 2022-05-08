@@ -13,7 +13,11 @@ const PlaylistTile = ({ playlist }) => {
   return (
     <div className="playlist_tile flex-column">
       <div className="playlist_tile_cover">
-        <img className="playlist_tile_cover_img" src={playlist.image_url} alt="" />
+        <img
+          className="playlist_tile_cover_img"
+          src={playlist.image_url}
+          alt=""
+        />
         <div className="playlist_tile_cover_overlay">
           <button
             onClick={handlePlayButtonClick}
@@ -25,7 +29,7 @@ const PlaylistTile = ({ playlist }) => {
       </div>
       <div className="playlist_tile_bottom flex-row">
         <div className="playlist_tile_text flex-column">
-          <div>
+          <div className="playlist_tile_text_container">
             <NavLink
               className="playlist_tile_text_title"
               to={`/playlists/${playlist.id}`}
@@ -33,7 +37,7 @@ const PlaylistTile = ({ playlist }) => {
               {playlist.title}
             </NavLink>
           </div>
-          <div>
+          <div className="playlist_tile_text_container">
             <p className="playlist_tile_text_description">
               {playlist.description}
             </p>
