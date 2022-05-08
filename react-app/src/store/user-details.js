@@ -9,6 +9,10 @@ const loadDetails = (details) => ({
     details,
 });
 
+const newDetail = (detail) => ({
+    type: NEW_DETAIL,
+    detail,
+});
 
 const removeDetail = (id) => {
     return {
@@ -39,8 +43,8 @@ export const createDetail = (detail) => async (dispatch) => {
 };
 
 //! Get Details from the Database
-export const getAllDetails = (id) => async (dispatch) => {
-    const response = await fetch(`/api/details/${id}`);
+export const getAllDetails = () => async (dispatch) => {
+    const response = await fetch(`/api/details/`);
     if (response.ok) {
         const data = await response.json();
         dispatch(loadDetails(data));
@@ -55,7 +59,7 @@ export const editDetails = (data) => async (dispatch) => {
     });
     if (response.ok) {
         const detail = await response.json();
-        dispatch(loadDetails(detail));
+        dispatch(newDetail(detail));
         return detail;
     }
 };
@@ -73,22 +77,32 @@ export const deleteDetails = (id) => async (dispatch) => {
 };
 
 const initialState = {
-    avatar_url: '',
-    banner_url: '',
-    display_name: '',
-    user_id: null
+
+    // id: '',
+    // avatar_url: '',
+    // banner_url: '',
+    // display_name: '',
+    // user_id: null
 };
 
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case LOAD_DETAILS: {
+        case NEW_DETAIL: {
             const newState = {
                 ...state,
-            };
-            newState.avatar_url = action.details.avatar_url;
-            newState.banner_url = action.details.banner_url;
-            newState.display_name = action.details.display_name;
+                [action.detail.id]: action.detail
+            }
+        }
+        case LOAD_DETAILS: {
+            const newState = { ...state };
+            action.details.forEach((detail) => {
+                newState[detail.id] = detail
+            })
+            // newState.id = action.details.id;
+            // newState.avatar_url = action.details.avatar_url;
+            // newState.banner_url = action.details.banner_url;
+            // newState.display_name = action.details.display_name;
             return newState;
         }
         case REMOVE_DETAIL: {
