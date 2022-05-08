@@ -175,7 +175,7 @@ function UserPage() {
           </div>
         </div>
         <div id="secondcontainer">
-          {userDetails.banner_url ? (
+          {!userDetails.banner_url ? (
             <>
               <div className="backgroundHeaderImage " style={{}}>
                 <button className="headerUploadField">
