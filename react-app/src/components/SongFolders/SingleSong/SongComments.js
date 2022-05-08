@@ -8,12 +8,38 @@ import { NavLink } from "react-router-dom";
 import { createComment, getCommentsBySongId } from "../../../store/comment";
 import { likeSong, unlikeSong } from "../../../store/song";
 
+import { Modal } from "../../Context/Modal";
+import AddtoPlaylist from "../../PlaylistFolders/AddtoPlaylist";
+
 const SongComments = ({ song }) => {
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
+
+  const [showMoreDropdown, setShowMoreDropdown] = useState(false);
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs);
   const dispatch = useDispatch();
+
+  const showMoreDropdownFnc = () => {
+    if (showMoreDropdown) return;
+
+    setShowMoreDropdown(true);
+  };
+
+  useEffect(() => {
+    if (!showMoreDropdown) return;
+
+    const closeEditDropdown = () => {
+      if (!showMoreDropdown) return;
+
+      setShowMoreDropdown(false);
+    };
+
+    document.addEventListener("click", closeEditDropdown);
+
+    return () => document.removeEventListener("click", closeEditDropdown);
+  }, [showMoreDropdown]);
 
   useEffect(() => {
     (async () => {
@@ -77,7 +103,7 @@ const SongComments = ({ song }) => {
             <div key={idx}>{error}</div>
           ))}
         </div>
-        <div className="song_button_group">
+        <div className="song_button_group flex-row">
           {!song?.likes.includes(sessionUser.id) && (
             <button onClick={handle_LikeButtonClick}> &#10084; Like</button>
           )}
@@ -96,7 +122,25 @@ const SongComments = ({ song }) => {
               </NavLink>
             </button>
           )}
-          <button>More</button>
+          <div className="flex-row">
+            <button onClick={showMoreDropdownFnc}>More</button>
+            {showMoreDropdown && (
+              <div className="single_song_more_dropdown">
+                <p>Add to queue</p>
+                <p onClick={() => setShowPlaylistModal(true)}>
+                  Add to playlist
+                </p>
+                <p>Delete song</p>
+              </div>
+            )}
+          </div>
+          {showPlaylistModal && (
+            <Modal onClose={() => setShowPlaylistModal(false)}>
+              <div className="add_to_playlist_modal_container">
+                <AddtoPlaylist song={song} />
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       <div className="flex-row">
