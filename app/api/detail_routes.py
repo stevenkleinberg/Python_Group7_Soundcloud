@@ -30,27 +30,7 @@ def new_detail():
         )
 
         db.session.add(detail)
-
-    db.session.commit()
-    return detail.to_dict()
-
-
-@detail_routes.route('/:id', methods=['PUT'])
-def edit_detail():
-    """
-    Edit New Details
-    """
-    arr = dict(request.form)
-
-    if not any(request.files):
-        detail = UserDetail.query.get(int(arr['id']))
-        detail.display_name = request.form['display_name']
-        detail.description = request.form['description']
-        detail.updated_at = datetime.now()
     else:
-
-        arr = dict(request.form)
-
         if not any(request.files):
             detail = UserDetail.query.get(int(request.form["id"]))
             detail.display_name = request.form['display_name']
@@ -84,7 +64,6 @@ def edit_detail():
                 detail.banner_url = banner_image
                 detail.updated_at = datetime.now()
             elif keys[0] == "avatar_url":
-
                 raw_avatar_url = request.files["avatar_url"]
 
                 if not allowed_file(raw_avatar_url.filename):
@@ -98,30 +77,30 @@ def edit_detail():
                 avatar_url = avatar_upload["url"]
 
                 detail = UserDetail.query.get(int(request.form["id"]))
-                detail.display_name = request.form[arr['display_name']]
-                detail.audio_url = avatar_url,
+                detail.display_name = request.form['display_name']
+                detail.avatar_url = avatar_url,
                 detail.updated_at = datetime.now()
-
-            elif keys[0] == "banner_url":
-                raw_banner_url = request.files["banner_url"]
             elif keys[0] == "banner_url":
                 raw_banner_url = request.files["banner_url"]
                 if not allowed_file(raw_banner_url.filename):
                     return {"errors": "file type not permitted"}, 400
+                raw_banner_url.filename = get_unique_filename(
+                    raw_banner_url.filename)
 
-                    raw_banner_url.filename = get_unique_filename(
-                        raw_banner_url.filename)
+                image_upload = upload_file_to_s3(raw_banner_url)
 
-                    image_upload = upload_file_to_s3(raw_banner_url)
+                banner_url = image_upload["url"]
 
-                    banner_url = image_upload["url"]
+                detail = UserDetail.query.get(int(request.form['id']))
+                detail.display_name = request.form['display_name']
+                detail.banner_url = banner_url
+                detail.updated_at = datetime.now()
 
-                    detail = UserDetail.query.get(int(arr['id']))
-                    detail.display_name = request.form['display_name']
-                    detail.banner_url = banner_url
-                    detail.updated_at = datetime.now()
         db.session.commit()
         return detail.to_dict()
+
+    db.session.commit()
+    return detail.to_dict()
 
 
 @detail_routes.route('/<int:id>')

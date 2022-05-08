@@ -10,7 +10,7 @@ const SongComments = ({ song }) => {
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
   const sessionUser = useSelector(state => state.session.user);
-  const commentsObj = useSelector(state => state.comments);
+  const songs = useSelector(state => state.songs);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const SongComments = ({ song }) => {
     }
 
   }
+
   return (
     <div className="song_mainfeed_container">
       <div className="song_mainfeed_top">
@@ -83,8 +84,8 @@ const SongComments = ({ song }) => {
                 {song?.comments?.length > 1 ? ' comments' : ' comment'}</div>
             </div>
             <div className="comment-cards-list">
-              {song?.comments?.map((comment, idx) => (
-                <div key={idx}>
+              {songs[song?.id]?.comments.map((comment) => (
+                <div key={comment.id}>
                   <SingleComment comment={comment} />
                 </div>
               ))}

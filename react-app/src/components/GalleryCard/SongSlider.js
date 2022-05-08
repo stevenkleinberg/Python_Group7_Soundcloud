@@ -12,10 +12,11 @@ const SongSlider = ({ songs }) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 3,
+
   };
   return (
-    <div>
-      <Slider {...settings}>
+    <div className="song_slider_surrounding_div">
+      <Slider className="song_slider_component" {...settings}>
         {songs.map((song) => (
           <SongTile song={song} key={song.id} />
         ))}
