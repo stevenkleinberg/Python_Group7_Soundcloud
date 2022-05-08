@@ -99,21 +99,21 @@ export default function reducer(state = initialState, action) {
       return newState;
     }
     case QUEUE_PLAYLIST: {
-      const newState = { ...state}
+      const newState = { ...state }
       action.playlist.songs.forEach(songId => {
         newState.queue = [...newState.queue, songId];
       });
       return newState;
     }
     case LOAD_PLAYLIST: {
-      const newState = {...state}
+      const newState = { ...state }
       if (newState.playingId) {
         newState.playHistory = [...newState.playHistory, newState.playingId];
       }
-      const firstSong = action.playlist.songs.[0]
+      const firstSong = action.playlist.songs[0]
       newState.playingId = firstSong;
       newState.queue = []
-      for ( let i = 1; i < action.playlist.songs.length; i++){
+      for (let i = 1; i < action.playlist.songs.length; i++) {
         newState.queue = [...newState.queue, action.playlist.songs[i]]
       }
       return newState;
