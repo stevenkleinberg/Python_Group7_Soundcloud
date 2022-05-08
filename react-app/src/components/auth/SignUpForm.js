@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
+import './auth.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [display_name, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -43,6 +45,24 @@ const SignUpForm = () => {
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
+      </div>
+      <div>
+        <label>FirstName</label>
+        <input
+          type="text"
+          name="email"
+          onChange={updateEmail}
+          value={email}
+        ></input>
+      </div>
+      <div>
+        <label>LastName</label>
+        <input
+          type="text"
+          name="lastname"
+          onChange={(e) => setDisplayName(e.target.value)}
+          value={display_name}
+        ></input>
       </div>
       <div>
         <label>Email</label>

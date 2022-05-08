@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     if (loaded) {
       (async () => {
-        await dispatch(getAllDetails(sessionUser?.id));
+        await dispatch(getAllDetails());
       })();
     }
   }, [setLoaded, loaded, dispatch, sessionUser]);
