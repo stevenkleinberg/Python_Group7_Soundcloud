@@ -20,6 +20,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   const songArr = [];
   const songs = useSelector((state) => state.songs);
   const sessionUser = useSelector((state) => state.session.user);
+
   songsId?.forEach((songId) => {
     songArr.push(songs[+songId]);
   });
@@ -56,7 +57,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   return (
     <div className="playlist_mainfeed_container">
       <div className="playlist_button_group flex-row">
-        <button>Copy Link</button>
+        <button onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Copy Link</button>
         {playlist?.user_id === sessionUser.id && (
           <button onClick={() => setShowEditModal(true)}>Edit</button>
         )}
