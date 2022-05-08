@@ -1,7 +1,7 @@
 @mixin btn-border-drawing($color: #ccc, $hover: rgb(65, 74, 76), $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
     box-shadow: inset 0 0 0 $width $color;
     color: $color;
-    transition: color $duration $duration/3;
+    transition: color $duration $duration;
     position: relative;
 
     &::before,
