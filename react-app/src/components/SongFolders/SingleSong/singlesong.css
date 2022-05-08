@@ -21,6 +21,12 @@
     padding: 0px 0px 12px 0px;
     border-bottom: 1px solid grey;
 }
+.song_page_play{
+    font-size: 1em;
+}
+.song_page_play:hover{
+    font-size: 2em;
+}
 
 .single_row_img {
     width: 25px;
