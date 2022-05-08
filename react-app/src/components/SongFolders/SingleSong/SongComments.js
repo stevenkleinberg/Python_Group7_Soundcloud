@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from './Comments/SingleComment';
+import { NavLink } from "react-router-dom";
 import { createComment, getCommentsBySongId } from "../../../store/comment";
 
 const SongComments = ({ song }) => {
@@ -61,10 +62,13 @@ const SongComments = ({ song }) => {
           ))}
         </div>
         <div className="song_button_group">
-          <button>Like</button>
-          <button>Share</button>
+          <button>&#10084; Like</button>
           <button>Copy Link</button>
-          <button>Edit</button>
+          {sessionUser?.id === song?.user_id && (
+            <button><NavLink to={`/songs/${+song.id}/edit`} exact={true} activeClassName="active">
+            Edit
+        </NavLink></button>
+          )}
           <button>More</button>
         </div>
       </div>

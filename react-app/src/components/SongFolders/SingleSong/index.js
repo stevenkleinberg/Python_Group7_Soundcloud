@@ -1,13 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { NavLink } from "react-router-dom";
 import SongComments from "./SongComments";
+import { loadSong, queueSong } from "../../../store/player";
 import "./singlesong.css";
 import Moment from "react-moment";
 const SingleSong = () => {
+    const dispatch =  useDispatch()
     const { id } = useParams();
     const song = useSelector((state) => state.songs[id]);
+    const user_id = useSelector((state) => state.session.user.id)
 
+    const handlePlayButtonClick = (e) => {
+        e.preventDefault();
+        dispatch(loadSong(song.id));
+      };
     // return (
     //     <div>
     //         <img
@@ -30,14 +37,11 @@ const SingleSong = () => {
                     <div className="title_banner flex-row">
                         <div className="flex-row banner_title_group_1">
                             <div className="banner_play_button">
-                                <p>Play</p>
+                                <div className="song_page_play"  onClick={handlePlayButtonClick} >&#9654;</div>
                             </div>
                             <div className="flex-column">
                                 <h3>{song?.title}</h3>
                                 <p>{song?.description}</p>
-                                <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
-                                    edit form
-                                </NavLink>
                             </div>
                         </div>
                         <Moment fromNow>{song?.created_at}</Moment>
@@ -50,9 +54,6 @@ const SingleSong = () => {
             <div className="flex-row song_mainfeed_sidebar_conatiner">
                 <SongComments song={song} />
                 {/* <songSideBar /> */}
-                <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
-                    edit form
-                </NavLink>
             </div>
         </div>
     );
