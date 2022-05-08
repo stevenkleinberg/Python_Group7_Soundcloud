@@ -7,6 +7,8 @@ import EditPlaylistForm from "../EditPlaylist";
 import { useHistory, useParams } from "react-router-dom";
 import { deletePlaylist } from "../../../store/playlist";
 
+import Avatar from "../../Icons/Avatar";
+
 const PlaylistMainFeed = ({ songsId, playlist }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -102,14 +104,14 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
         </div>
       </div>
       <div className="flex-row">
-        <div>
-          <img />
-          <p>Jesus Elizalde</p>
+        <div className="user-badge flex-column">
+          <Avatar user={playlist?.user} />
+          <p>{playlist?.user?.display_name}</p>
         </div>
-        <div>
-          <ul className="playlist_song_list">
+        <div className="song_container_ul_li">
+          <ul className="flex-column">
             {songArr?.map((song, idx) => (
-              <li key={idx} className="playlist_song_list">
+              <li key={idx} className="playlist_song_list_li">
                 <SingleSongRow song={song} idx={idx} />
               </li>
             ))}

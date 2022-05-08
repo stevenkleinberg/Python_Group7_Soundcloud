@@ -3,14 +3,14 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
-import SingleComment from './Comments/SingleComment';
+import SingleComment from "./Comments/SingleComment";
 import { createComment, getCommentsBySongId } from "../../../store/comment";
 
 const SongComments = ({ song }) => {
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
-  const sessionUser = useSelector(state => state.session.user);
-  const songs = useSelector(state => state.songs);
+  const sessionUser = useSelector((state) => state.session.user);
+  const songs = useSelector((state) => state.songs);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,10 +32,9 @@ const SongComments = ({ song }) => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      setContent('');
+      setContent("");
     }
-
-  }
+  };
 
   return (
     <div className="song_mainfeed_container">
@@ -74,14 +73,14 @@ const SongComments = ({ song }) => {
           <p>{song?.user?.display_name}</p>
         </div>
         <div className="song-details flex-column">
-          <div className="song-description">
-            {song?.description}
-          </div>
+          <div className="song-description">{song?.description}</div>
           <div className="song-comments-list flex-column">
             <div className="comments-count flex-row">
               <SpeechBubble />
-              <div className="comments-count-text">{song?.comments?.length}
-                {song?.comments?.length > 1 ? ' comments' : ' comment'}</div>
+              <div className="comments-count-text">
+                {song?.comments?.length}
+                {song?.comments?.length > 1 ? " comments" : " comment"}
+              </div>
             </div>
             <div className="comment-cards-list">
               {songs[song?.id]?.comments.map((comment) => (
