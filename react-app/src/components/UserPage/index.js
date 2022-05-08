@@ -10,8 +10,6 @@ import './user_page.scss';
 
 
 function UserPage() {
-
-
   const { id } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const userDetails = useSelector(state => state.details);
@@ -22,7 +20,6 @@ function UserPage() {
   const [banner_url, setBannerUrl] = useState(userDetails?.banner_url);
   const [activity, setActivity] = useState(false)
   const [display_box, setDisplayBox] = useState(false)
-  const [display_button, setDisplayButton] = useState(true)
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -32,12 +29,22 @@ function UserPage() {
     formData.append("display_name", display_name);
     formData.append("banner_url", banner_url);
 
-    console.log(formData, 'llflflffkkfkfd')
-    const detail = await dispatch(editDetails(formData));
-    if (detail) {
-      history.push("/");
-    } else {
-      console.log("Error: uploadsong.js react frontend");
+    if (userDetails.display_name || userDetails.avatar_url || userDetails.banner_url) {
+      console.log("TRUEUEUEUEUEUEUE")
+      const detail = await dispatch(editDetails(formData));
+      if (detail) {
+        history.push('/');
+      } else {
+        console.log("Error: uploadsong.js react frontend");
+      }
+    }
+    if (!userDetails.display_name || !userDetails.avatar_url || !userDetails.banner_url) {
+      const detail = await dispatch(createDetail(formData));
+      if (detail) {
+        history.push('/');
+      } else {
+        console.log("Error: uploadsong.js react frontend");
+      }
     }
   };
 
@@ -184,31 +191,31 @@ function UserPage() {
           </div>
         </div>
         <div id='secondcontainer'>
-          {
-            userDetails.banner_url ?
-              <>
-                <div className="backgroundHeaderImage " style={{}}>
-                  <button
-                    className="headerUploadField">
-                    upload header image...
-                    <input
-                      className="chooseFileHeader"
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => (
-                        updateBannerUrl(e), updateActivity(e)
-                      )}
-                      name="banner_url"
-                      id="banner_url"
-                    />
-                    <br />
-                  </button>
-                </div>
-              </>
-              :
-              <>
-              </>
-          }
+
+          <>
+            <div className="backgroundHeaderImage " style={{}}>
+              <button
+                className="headerUploadField">
+                upload header image...
+                <input
+                  className="chooseFileHeader"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => (
+                    updateBannerUrl(e), updateActivity(e)
+                  )}
+                  name="banner_url"
+                  id="banner_url"
+                />
+                <br />
+              </button>
+            </div>
+          </>
+          :
+          <>
+
+          </>
+
 
         </div>
 
