@@ -6,7 +6,7 @@ import { createDetail, editDetails } from "../../store/user-details";
 import UserNavBar from "./user_page_nav";
 import UserSongList from "./user_page_songs";
 import "./userpage.css";
-// import './user_page.scss';
+import "./user_page.scss";
 
 function UserPage() {
   const { id } = useParams();
