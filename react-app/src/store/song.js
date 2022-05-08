@@ -10,7 +10,7 @@ const loadSongs = (songs) => ({
 });
 
 // for create and edit
-const newSong = (song) => ({
+export const newSong = (song) => ({
   type: NEW_SONG,
   song,
 });

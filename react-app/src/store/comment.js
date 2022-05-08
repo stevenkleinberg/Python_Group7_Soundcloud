@@ -1,3 +1,5 @@
+import { newSong, getAllSongs } from './song';
+
 // constants
 const LOAD_COMMENTS = "comment/LOAD_COMMENTS";
 const NEW_COMMENT = "comment/NEW_COMMENT";
@@ -25,6 +27,7 @@ export const getCommentsBySongId = (songId) => async (dispatch) => {
     if (res.ok) {
         const comments = await res.json();
         dispatch(loadComments(comments));
+        console.log(comments);
     }
 };
 
@@ -32,11 +35,15 @@ export const getCommentsBySongId = (songId) => async (dispatch) => {
 export const createComment = (comment) => async (dispatch) => {
     const res = await fetch('/api/comments/', {
         method: 'POST',
-        body: comment,
+        headers: {
+            'Content-Type': "application/json",
+        },
+        body: JSON.stringify(comment),
     });
     if (res.ok) {
         const data = await res.json();
-        dispatch(newComment(data));
+        // dispatch(newComment(data));
+        dispatch(newSong(data));
         return data;
     } else if (res.status < 500) {
         const data = await res.json();
@@ -52,12 +59,23 @@ export const createComment = (comment) => async (dispatch) => {
 export const editComment = (data) => async (dispatch) => {
     const res = await fetch(`/api/comments/${data.id}`, {
         method: 'PUT',
-        body: data,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
     });
     if (res.ok) {
-        const comment = await res.json();
-        dispatch(newComment(comment));
-        return comment;
+        const song = await res.json();
+        // dispatch(newComment(comment));
+        dispatch(newSong(song));
+        return song;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.'];
     }
 };
 
@@ -67,9 +85,16 @@ export const deleteComment = (commentId) => async (dispatch) => {
         method: 'DELETE',
     });
     if (res.ok) {
-        await res.json();
-        dispatch(removeComment(commentId));
-        return commentId;
+        const song = await res.json();
+        dispatch(newSong(song));
+        return song;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.'];
     }
 };
 

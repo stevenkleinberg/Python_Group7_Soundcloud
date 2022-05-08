@@ -9,6 +9,7 @@ const NewPlaylistForm = () => {
   const [imageFile, setImageFile] = useState("");
   const [description, setDescription] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +22,11 @@ const NewPlaylistForm = () => {
 
     setImageLoading(true);
 
-    dispatch(createPlaylist(formData));
+    const res = dispatch(createPlaylist(formData));
+    if (res.errors) {
+      console.log(res)
+      setErrors(res.errors);
+    }
   };
 
   const updateImageFile = (e) => {
@@ -33,9 +38,17 @@ const NewPlaylistForm = () => {
     <div>
       <h2>Make a new Playlist</h2>
       <form onSubmit={handleSubmit}>
+        <div>
+          {errors.map((error, ind) => (
+            <div className="error_message" key={ind}>
+              {error}
+            </div>
+          ))}
+        </div>
         <label>title </label>
         <input
           type="text"
+          required
           onChange={(e) => {
             setTitle(e.target.value);
           }}

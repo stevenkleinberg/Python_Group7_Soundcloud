@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: space-around;
   margin: 0px 75px 0px 75px;
-
+  height: 2000px;
 }
 
 .sidebar_contanier {

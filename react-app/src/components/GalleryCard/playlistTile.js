@@ -1,23 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { loadplaylist } from "../../store/player";
+import { loadPlaylist } from "../../store/player";
 import { useDispatch } from "react-redux";
+import PlaylistTitleActions from "./PlaylistTileActions";
 
 const PlaylistTile = ({ playlist }) => {
   const dispatch = useDispatch();
-
-  // const handlePlayButtonClick = (e) => {
-  //   e.preventDefault();
-  //   dispatch(loadplaylist(playlist.id));
-  // };
-
+  const handlePlayButtonClick = (e) => {
+    e.preventDefault();
+    dispatch(loadPlaylist(playlist));
+  };
   return (
     <div className="playlist_tile flex-column">
       <div className="playlist_tile_cover">
-        <img className="playlist_tile_cover_img" src={playlist.image_url} />
+        <img className="playlist_tile_cover_img" src={playlist.image_url} alt="" />
         <div className="playlist_tile_cover_overlay">
           <button
-            // onClick={}
+            onClick={handlePlayButtonClick}
             className="playlist_tile_cover_play"
           >
             &#9654;
@@ -41,7 +40,7 @@ const PlaylistTile = ({ playlist }) => {
           </div>
         </div>
         <div className="playlist_tile_options">
-          <div className="playlist_tile_actions">...</div>
+          <PlaylistTitleActions playlist={playlist} />
         </div>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { Modal } from "../Context/Modal";
-import { loadSong, queueSong } from "../../store/player";
+import { loadPlaylist, queuePlaylist } from "../../store/player";
 import AddtoPlaylist from "../PlaylistFolders/AddtoPlaylist";
 
-function SongTileActions({ song }) {
+function PlaylistTitleActions({ playlist }) {
   const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -32,11 +33,11 @@ function SongTileActions({ song }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const addSongToQueue = (id) => {
+  const addPlaylistToQueue = (playlist) => {
     if (!playingId) {
-      dispatch(loadSong(id));
+      dispatch(loadPlaylist(playlist));
     } else {
-      dispatch(queueSong(id));
+      dispatch(queuePlaylist(playlist));
     }
   };
 
@@ -49,7 +50,11 @@ function SongTileActions({ song }) {
         <div className="dropdown">
           {showMenu && (
             <div className="song-tile-action-dropdown">
-              <div onClick={() => addSongToQueue(song.id)}>Add to Queue</div>
+              <div
+                onClick={() => addPlaylistToQueue(playlist)}
+              >
+                Add to Queue
+              </div>
               <div onClick={openPlaylistModal}>Add to Playlist</div>
             </div>
           )}
@@ -57,7 +62,7 @@ function SongTileActions({ song }) {
         {showPlaylistModal && (
           <Modal onClose={() => setShowPlaylistModal(false)}>
             <div className="add_to_playlist_modal_container">
-              <AddtoPlaylist song={song} />
+              <AddtoPlaylist song={playlist.songs} />
             </div>
           </Modal>
         )}
@@ -66,4 +71,4 @@ function SongTileActions({ song }) {
   );
 }
 
-export default SongTileActions;
+export default PlaylistTitleActions;

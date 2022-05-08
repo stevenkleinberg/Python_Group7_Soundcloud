@@ -1,0 +1,15 @@
+.ls_title_container {
+  justify-content: space-between;
+  margin: 15px 0px 25px 0px;
+  align-items: center;
+}
+
+.ls_title_container_right {
+  width: 250px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.liked_songs_container {
+  flex-wrap: wrap;
+}

@@ -3,9 +3,9 @@ import React from "react";
 const SidebarPlaylist = ({ playlist, user }) => {
   return (
     <div className="flex-row">
-      <img src={playlist?.image_url} className="playlist_sidebar_image" />
+      <img src={playlist?.image_url} className="playlist_sidebar_image" alt="" />
       <div className="flex-column">
-        <a>{user?.email}</a>
+        <a href={`/users/${user?.id}`}>{user?.email}</a>
         <a href={`/playlists/${playlist?.id}`}>{playlist?.title}</a>
       </div>
     </div>

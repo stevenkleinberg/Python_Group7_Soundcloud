@@ -5,16 +5,16 @@ const SingleSongRow = ({ song, idx }) => {
     <div className="flex-row">
       <div>
         <div>
-          <img src={song?.image_url} className="single_row_img" />
+          <img src={song?.image_url} className="single_row_img" alt="" />
         </div>
       </div>
       <div>
         <span>{idx}</span>
       </div>
       <div>
-        <a>{song?.title}</a>
+        <a href={`/songs/${song?.id}`}>{song?.title}</a>
         <span> - </span>
-        <a>{song?.description}</a>
+        <a href={`/songs/${song?.id}`}>{song?.description}</a>
       </div>
       <div>123</div>
     </div>

@@ -26,6 +26,18 @@
   border-radius: 5%;
 }
 
+#modal-x {
+  /* position: relative; */
+  /* top: -92px;
+  left: 920px; */
+  color: white;
+  z-index: 30;
+}
+
+#modal-x:hover {
+  color: #f50;
+}
+
 .form-container-model {
   display: flex;
   flex-direction: column;

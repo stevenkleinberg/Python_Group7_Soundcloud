@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Comment, db
+from app.models import Comment, Song, db
 from app.forms import NewCommentForm, EditCommentForm
 from datetime import datetime, time
 from app.api.utils import validation_errors_to_error_messages
@@ -26,7 +26,9 @@ def new_comment():
         )
         db.session.add(comment)
         db.session.commit()
-        return comment.to_dict()
+
+        song = Song.query.get(form.data['song_id'])
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -42,10 +44,13 @@ def edit_comment(id):
 
     if form.validate_on_submit():
         comment = Comment.query.get(id)
-        comment.content = request.form['content']
+        print(comment)
+        comment.content = form.data['content']
         comment.updated_at = datetime.now()
         db.session.commit()
-        return comment.to_dict()
+
+        song = Song.query.get(comment.song_id)
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -57,9 +62,12 @@ def delete_comment(id):
     Delete Comment at ID
     """
     comment = Comment.query.get(id)
+    song_id = comment.song_id
     if comment:
         db.session.delete(comment)
         db.session.commit()
-        return {'id': id}
+
+        song = Song.query.get(song_id)
+        return song.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

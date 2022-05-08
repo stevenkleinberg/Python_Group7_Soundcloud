@@ -21,7 +21,7 @@ const PlaylistsPage = () => {
           <div className="title_banner flex-row">
             <div className="flex-row banner_title_group_1">
               <div className="banner_play_button">
-                <p>Play</p>
+                <p>&#9654;</p>
               </div>
               <div className="flex-column">
                 <h3>{playlist?.title}</h3>

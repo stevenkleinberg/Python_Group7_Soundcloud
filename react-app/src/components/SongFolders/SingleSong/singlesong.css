@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 60px;
 }
 
 .song_mainfeed_sidebar_conatiner {
     width: 1240px;
-
     background-color: rgb(255, 255, 255);
 }
 
@@ -49,43 +49,83 @@
     width: 340px;
 }
 
-
 .song_mainfeed_top {
     margin-top: 20px;
     height: 90px;
-    width: 820;
 }
 
-.commentForm_wrapper {
-
-    position: relative;
+.new-comment-form_wrapper {
     background-color: rgb(242, 242, 242);
     height: 40px;
-    width: 820px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 10px;
 }
 
-.commentForm_input_wrapper {
-    border: 1px solid rgb(229, 229, 229);
+.new-comment-form_placeholder {
+    width: 40px;
     height: 40px;
-    width: 820px;
-    align-items: center;
-    justify-content: flex-end;
-
+    background-image: linear-gradient(135deg, #e6846e, #70929c);
 }
 
-.commentForm {
-    margin-right: 5px;
-    width: 90%;
+.new-comment-form {
+    border: 1px solid rgb(229, 229, 229);
+    height: 40px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+    width: 100%;
 }
 
 .comment_input {
-    width: 700px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px;
+    line-height: 1.4;
+    border: 1px solid #e5e5e5;
+    color: #333;
+}
+
+.comment_input:hover {
+    cursor: pointer;
 }
 
 .user-badge .avatar {
-    height: 80px;
-    width: 80px;
+    height: 120px;
+    width: 120px;
+}
+
+.song-details {
+    width: 100%;
+}
+
+.song-description {
+    min-height: 150px;
+    overflow: auto;
+    width: 100%;
+}
+
+.song-comments-list {
+    width: 100%;
+}
+
+.song-comments-list * {
+    font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.comments-count {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #f2f2f2;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.comments-count-text {
+    font-size: 14px;
+    line-height: 1.3;
+    color: #999;
 }

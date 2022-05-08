@@ -43,7 +43,7 @@ class Song(db.Model):
             'audio_url': self.audio_url,
             'description': self.description,
             'image_url': self.image_url,
-            'comments': [comment.to_dict() for comment in self.comments],
+            'comments': sorted([comment.to_dict() for comment in self.comments], key=lambda comment: comment['updated_at'], reverse=True),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'likes': [like.id for like in self.likes]
