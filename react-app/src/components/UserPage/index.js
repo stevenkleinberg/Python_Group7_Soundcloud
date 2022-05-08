@@ -39,7 +39,7 @@ function UserPage() {
     formData.append("display_name", display_name);
     formData.append("banner_url", banner_url);
 
-    console.log(formData, 'llflflffkkfkfd')
+    console.log(formData, "llflflffkkfkfd");
     const detail = await dispatch(editDetails(formData));
     if (detail) {
       history.push("/");
@@ -57,26 +57,26 @@ function UserPage() {
 
   const updateActivity = (e) => {
     if (e.target.files) {
-      setActivity(true)
+      setActivity(true);
     } else {
-      setActivity(false)
+      setActivity(false);
     }
   };
   const updateActivityDisplay = (e) => {
     if (e.target.value) {
-      setActivity(true)
+      setActivity(true);
     } else {
-      setActivity(false)
+      setActivity(false);
     }
   };
 
   const checkDisplayName = (e) => {
     if (e) {
-      setDisplayBox(true)
+      setDisplayBox(true);
     } else {
-      setDisplayBox(false)
+      setDisplayBox(false);
     }
-  }
+  };
   const updateBannerUrl = (e) => {
     const file = e.target.files[0];
     setBannerUrl(file);

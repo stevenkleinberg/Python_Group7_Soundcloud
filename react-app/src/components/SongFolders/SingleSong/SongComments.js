@@ -3,15 +3,43 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
-import SingleComment from './Comments/SingleComment';
+import SingleComment from "./Comments/SingleComment";
+import { NavLink } from "react-router-dom";
 import { createComment, getCommentsBySongId } from "../../../store/comment";
+import { likeSong, unlikeSong } from "../../../store/song";
+
+import { Modal } from "../../Context/Modal";
+import AddtoPlaylist from "../../PlaylistFolders/AddtoPlaylist";
 
 const SongComments = ({ song }) => {
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
-  const sessionUser = useSelector(state => state.session.user);
-  const songs = useSelector(state => state.songs);
+
+  const [showMoreDropdown, setShowMoreDropdown] = useState(false);
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
+  const songs = useSelector((state) => state.songs);
   const dispatch = useDispatch();
+
+  const showMoreDropdownFnc = () => {
+    if (showMoreDropdown) return;
+
+    setShowMoreDropdown(true);
+  };
+
+  useEffect(() => {
+    if (!showMoreDropdown) return;
+
+    const closeEditDropdown = () => {
+      if (!showMoreDropdown) return;
+
+      setShowMoreDropdown(false);
+    };
+
+    document.addEventListener("click", closeEditDropdown);
+
+    return () => document.removeEventListener("click", closeEditDropdown);
+  }, [showMoreDropdown]);
 
   useEffect(() => {
     (async () => {
@@ -32,10 +60,25 @@ const SongComments = ({ song }) => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      setContent('');
+      setContent("");
     }
+  };
+  const handle_LikeButtonClick = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
 
-  }
+    formData.append("user_id", sessionUser.id);
+    formData.append("song_id", song.id);
+    const likedSong = await dispatch(likeSong(formData));
+  };
+  const handle_UnLikeButtonClick = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("user_id", sessionUser.id);
+    formData.append("song_id", song.id);
+    const unlikedSong = await dispatch(unlikeSong(formData));
+  };
 
   return (
     <div className="song_mainfeed_container">
@@ -60,12 +103,44 @@ const SongComments = ({ song }) => {
             <div key={idx}>{error}</div>
           ))}
         </div>
-        <div className="song_button_group">
-          <button>Like</button>
-          <button>Share</button>
+        <div className="song_button_group flex-row">
+          {!song?.likes.includes(sessionUser.id) && (
+            <button onClick={handle_LikeButtonClick}> &#10084; Like</button>
+          )}
+          {song?.likes.includes(sessionUser.id) && (
+            <button onClick={handle_UnLikeButtonClick}> &#10084; Unlike</button>
+          )}
           <button>Copy Link</button>
-          <button>Edit</button>
-          <button>More</button>
+          {sessionUser?.id === song?.user_id && (
+            <button>
+              <NavLink
+                to={`/songs/${+song.id}/edit`}
+                exact={true}
+                activeClassName="active"
+              >
+                Edit
+              </NavLink>
+            </button>
+          )}
+          <div className="flex-row">
+            <button onClick={showMoreDropdownFnc}>More</button>
+            {showMoreDropdown && (
+              <div className="single_song_more_dropdown">
+                <p>Add to queue</p>
+                <p onClick={() => setShowPlaylistModal(true)}>
+                  Add to playlist
+                </p>
+                <p>Delete song</p>
+              </div>
+            )}
+          </div>
+          {showPlaylistModal && (
+            <Modal onClose={() => setShowPlaylistModal(false)}>
+              <div className="add_to_playlist_modal_container">
+                <AddtoPlaylist song={song} />
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
       <div className="flex-row">
@@ -74,14 +149,14 @@ const SongComments = ({ song }) => {
           <p>{song?.user?.display_name}</p>
         </div>
         <div className="song-details flex-column">
-          <div className="song-description">
-            {song?.description}
-          </div>
+          {/* <div className="song-description">{song?.description}</div> */}
           <div className="song-comments-list flex-column">
             <div className="comments-count flex-row">
               <SpeechBubble />
-              <div className="comments-count-text">{song?.comments?.length}
-                {song?.comments?.length > 1 ? ' comments' : ' comment'}</div>
+              <div className="comments-count-text">
+                {song?.comments?.length}
+                {song?.comments?.length > 1 ? " comments" : " comment"}
+              </div>
             </div>
             <div className="comment-cards-list">
               {songs[song?.id]?.comments.map((comment) => (

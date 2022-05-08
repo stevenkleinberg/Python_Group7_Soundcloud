@@ -1,12 +1,22 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const SidebarPlaylist = ({ playlist, user }) => {
   return (
-    <div className="flex-row">
-      <img src={playlist?.image_url} className="playlist_sidebar_image" alt="" />
+    <div className="flex-row sidebar_playlist_list">
+      <img
+        src={playlist?.image_url}
+        className="playlist_sidebar_image"
+        alt=""
+      />
       <div className="flex-column">
-        <a href={`/users/${user?.id}`}>{user?.email}</a>
-        <a href={`/playlists/${playlist?.id}`}>{playlist?.title}</a>
+        <NavLink
+          to={`/users/${user?.id}`}
+          className="playlist_sidebar_user_text"
+        >
+          {user?.email}
+        </NavLink>
+        <NavLink to={`/playlists/${playlist?.id}`}>{playlist?.title}</NavLink>
       </div>
     </div>
   );

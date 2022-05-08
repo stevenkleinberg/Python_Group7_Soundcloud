@@ -1,0 +1,10 @@
+.AEP_modal {
+  width: 550px;
+  height: 650px;
+  overflow: hidden;
+}
+
+.AEP_modal_inner_container {
+  width: 100%;
+  padding: 15px 35px 15px 35px;
+}

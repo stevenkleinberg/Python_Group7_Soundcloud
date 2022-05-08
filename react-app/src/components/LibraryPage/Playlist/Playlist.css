@@ -1,6 +1,7 @@
 .playlist_tile_cover {
   position: relative;
   width: 200px;
+  height: 200px;
 }
 
 .playlist_tile_cover_img {
@@ -67,6 +68,11 @@
   color: black;
 }
 
+.playlist_tile_text_container {
+  width: 175px;
+  overflow: hidden;
+}
+
 .playlist_tile_text_description {
   font-size: 15px;
   font-family: sans-serif;
@@ -78,7 +84,7 @@
 }
 
 .playlist_tile {
-  margin: 0px 25px 0px 25px;
+  margin: 15px 25px 0px 25px;
 }
 
 .playlist_image {
@@ -128,4 +134,25 @@
 
 .playlist_tile_container {
   flex-wrap: wrap;
+}
+
+.playlist_library_page_container {
+  margin-top: 15px;
+}
+
+.playlist_library_page_title_container {
+  justify-content: space-between;
+  margin: 25px 15px 25px 15px;
+}
+
+.playlist_library_page_add_button {
+  background-color: transparent;
+  border: 1.5px solid grey;
+  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 5px 10px 5px 10px;
+}
+.playlist_library_page_add_button:hover {
+  color: #f50;
+  border: 1px solid #f50;
 }
