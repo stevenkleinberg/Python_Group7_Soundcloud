@@ -1,4 +1,6 @@
 # Sound Town
+<div align="center"><a href="https://sound-town.herokuapp.com/">
+<img src="https://github.com/stevenkleinberg/Python_Group7_Soundcloud/blob/main/react-app/src/static/images/logo/SoundTown-icon-with-text-transparent-bg.png?raw=true" height=200 /></a></div>
 
 This is a clone of [Soundcloud](https://soundcloud.com/). Access the [Sound Town MVP](https://sound-town.herokuapp.com/).
 
