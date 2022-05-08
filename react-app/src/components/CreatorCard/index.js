@@ -25,7 +25,7 @@ const CreatorCard = ({ creator }) => {
             <div className="creator-card flex-column">
                 {creatorLoaded && <CreatorAvatar creator={updatedCreator} />}
                 <div className="creator-name-tag">
-                    {`${updatedCreator.first_name} ${updatedCreator.last_name}`}
+                    {`${updatedCreator?.first_name} ${updatedCreator?.last_name}`}
                 </div>
             </div>
         </a>

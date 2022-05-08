@@ -4,7 +4,8 @@ import creators from '../CreatorCard/creators.json';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar_contanier">
+    <div className="sidebar_container">
+      <h3 className="sidebar-text">Creators</h3>
       {creators?.map(creator => (
         <CreatorCard key={creator.github_username} creator={creator} />
       ))}
