@@ -43,6 +43,7 @@ const Audio = () => {
                         showSkipControls={true}
                         volume={0.25}
                         autoPlay={true}
+                        loop={true}
                     />
                 </div>)
             }

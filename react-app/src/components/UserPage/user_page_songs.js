@@ -26,6 +26,7 @@ function UserSongList() {
                     <div className="info">
                         <h1> Fairy Tale</h1>
                         <h3> Music source Pixabay </h3>
+
                         <Waveform />
                     </div>
                 </div>
