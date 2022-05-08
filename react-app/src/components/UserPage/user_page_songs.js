@@ -1,7 +1,9 @@
 import GalleryCard from '../GalleryCard';
+import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './userpage.css'
+import './userpage.css';
+import Waveform from "../WaveForm/WaveForm";
 
 function UserSongList() {
 
@@ -18,27 +20,14 @@ function UserSongList() {
 
     return (
         <>
-            <div id='userSongList' style={{ paddingTop: '3px' }}>
-                <div id='firstContainer'>
-
-                </div>
-                <div id='secondContainer'>
-                    <div style={{ maxWidth: '100%' }}>
-                        {allsongs.map(song => (
-                            <GalleryCard
-                                type='songs'
-                                description={song.description}
-                                title={song.title}
-                                songs={Object.values(songs)}
-                            />
-                        ))}
+            <div id='container'>
+                <div className="music-player">
+                    <img src="https://soundtownbucket.s3.us-west-1.amazonaws.com/Corta-Venas+.jpeg" alt="music-icon" id='music-icon' />
+                    <div className="info">
+                        <h1> Fairy Tale</h1>
+                        <h3> Music source Pixabay </h3>
+                        <Waveform />
                     </div>
-                </div>
-                <div id='thirdContainer'>
-
-                </div>
-                <div id='fourthContainer'>
-
                 </div>
             </div>
         </>

@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
+
 }
 
+.backgroundHeaderImage {
+    visibility: hidden;
+    visibility: hidden;
+    transition: visibility .5s, opacity .3s linear;
+}
+
+.userPageContainer:hover .backgroundHeaderImage {
+    visibility: visible;
+    visibility: visible;
+    opacity: 1;
+}
 
 .backgroundHeaderImage {
     display: flex;
@@ -20,6 +34,7 @@
 .headerUploadField>input {
     width: 85px;
     font-size: 12px;
+
 }
 
 .headerUploadField {
@@ -43,11 +58,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
-.chooseFileHeader {
-    font: none;
+.chooseFileAvatar {
+    visibility: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity .3s linear;
+}
+
+.userbtn {
+    height: 85%;
+    padding: 5px 10px 6px 10px;
+    margin-left: 3px;
+}
+
+.placeholderDiv:hover .chooseFileAvatar {
+    visibility: visible;
+    visibility: visible;
+    opacity: 1;
+
 }
 
 .userImage {
@@ -60,7 +90,15 @@
     border-radius: 50%;
     height: 120px;
     width: 120px;
+    transition: 1s ease;
 }
+
+.userImage:hover {
+    background-color: white;
+    box-shadow: 10px -10px 70px #CCC;
+    padding: 2px;
+}
+
 
 .userImage>input {
     font-size: 16px;
@@ -75,13 +113,12 @@
     width: 140px;
 }
 
-.userDescription {
-    height: 10px;
-}
+
 
 .field.userPage:hover {
     background-color: white;
 }
+
 
 .display_name_div {
     margin: 0px 5px 5px 20px;
@@ -97,7 +134,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin: 10px 10px 10px 10px;
-
+    background-size: 0%
 }
 
 .backgroundUserImage {
@@ -113,28 +150,8 @@
     background-size: cover;
 }
 
-#userSongList {
-    display: grid;
-    grid-template-columns: 1fr 5fr 3fr 1fr;
-    height: 50vh;
-    border-bottom: 2px black solid;
-}
 
-#firstContainer {
-    border-right: black solid 2px;
-}
 
-#secondContainer {
-    border-right: black solid 2px;
-}
-
-#thirdContainer {
-    border-right: black solid 2px;
-}
-
-#fourthContainer {
-    border-right: black solid 2px;
-}
 
 #firstcontainer {
     display: flex;
@@ -155,4 +172,31 @@
     top: 0;
     border-bottom: 1px solid #303030;
     z-index: 1;
+}
+
+.placeholderDiv {
+    box-sizing: border-box;
+}
+
+.music-player {
+    margin: 2px 2px 2px 2px;
+    position: absolute;
+    background: grey;
+    width: 99.65%;
+    height: 200px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+}
+
+#music-icon {
+    margin: 10px 0px 0px 10px;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.info {
+    margin: 30px;
+    width: 100%;
 }
