@@ -31,8 +31,8 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={onLogin}>
+    <div className='login_form_wrapper'>
+      <form className='login_form flex-column ' onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
@@ -57,8 +57,13 @@ const LoginForm = () => {
             value={password}
             onChange={updatePassword}
           />
-          <button type='submit'>Login</button>
+          </div>
+          <div>
+          <button className='login_form_btn' type='submit'>Login</button>
+          </div>
+          <div>
           <button
+            className='login_form_btn'
             type="submit"
             id='demoUserBtn'
             onClick={(e) => (
@@ -67,7 +72,7 @@ const LoginForm = () => {
             )}>
             Demo User
           </button>
-        </div>
+          </div>
       </form>
     </div>
   );
