@@ -11,6 +11,7 @@ body {
 .sidebar_container {
   border-left: 2.5px solid rgb(242, 242, 242);
   height: 500px;
+  align-items: center;
 }
 
 .gallery_container {
@@ -73,4 +74,9 @@ body {
 .mainfeed {
   width: 80%;
   margin-left: 160px;
+}
+
+.sidebar-text {
+  width: max-content;
+  margin: 0 auto;
 }
