@@ -43,9 +43,9 @@ const PlaylistTile = ({ playlist }) => {
             </p>
           </div>
         </div>
-        <div className="playlist_tile_options">
+        {/* <div className="playlist_tile_options">
           <PlaylistTitleActions playlist={playlist} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
