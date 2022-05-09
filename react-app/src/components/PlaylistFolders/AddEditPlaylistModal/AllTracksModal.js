@@ -8,8 +8,6 @@ const AllTracksModal = ({ songArr }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const playlist = useSelector((state) => state.playlists[id]);
-  console.log(songArr);
-  console.log(playlist);
 
   const handleDeleteSongtoPlaylist = (playlistId, songId) => async (e) => {
     e.preventDefault();

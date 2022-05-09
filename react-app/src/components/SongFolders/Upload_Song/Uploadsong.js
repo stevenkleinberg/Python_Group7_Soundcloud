@@ -29,15 +29,14 @@ const UploadSong = () => {
 
     const res = await dispatch(createSong(formData));
     if (res) {
-      if(res.errors){
-        setErrors(res.errors)
-      }else{
+      if (res.errors) {
+        setErrors(res.errors);
+      } else {
         setAudioLoading(false);
         history.push(`/`);
       }
     } else {
       setAudioLoading(false);
-      console.log("Error: editSong.js react frontend");
     }
   };
 
@@ -58,11 +57,13 @@ const UploadSong = () => {
         <div className="right">
           <h2>upload</h2>
           <form onSubmit={handleSubmit} id="upload-song">
-          <div>
+            <div>
               {errors.map((error, ind) => (
-                <div className="error_message" key={ind}>{error}</div>
+                <div className="error_message" key={ind}>
+                  {error}
+                </div>
               ))}
-              </div>
+            </div>
             <input
               className="field"
               type="text"

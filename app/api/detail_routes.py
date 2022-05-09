@@ -25,13 +25,13 @@ def new_detail():
         detail = UserDetail(
             user_id=request.form['user_id'],
             display_name=request.form['display_name'],
-            # avatar_url=image_avatar,
-            # banner_url=image_banner,
+            avatar_url=request.form["avatar_url"],
+            banner_url=request.form["banner_url"],
         )
 
         db.session.add(detail)
     else:
-        print("HHHHHHHHHHHHHHHHHHHHHHHHH", request.form)
+
         if not any(request.files):
             detail = UserDetail.query.get(int(request.form["id"]))
             detail.display_name = request.form['display_name']
