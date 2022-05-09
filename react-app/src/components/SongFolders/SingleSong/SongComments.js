@@ -22,6 +22,7 @@ const SongComments = ({ song }) => {
   const songs = useSelector((state) => state.songs);
   const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
+  const [clipboardMenu, setClipboardMenu] = useState(false);
 
   const showMoreDropdownFnc = () => {
     if (showMoreDropdown) return;
@@ -80,6 +81,26 @@ const SongComments = ({ song }) => {
       dispatch(queueSong(id));
     }
   };
+
+  const addToClipBoard = () => {
+    if (clipboardMenu) return;
+
+    navigator.clipboard.writeText(window.location.href);
+    setClipboardMenu(true);
+  };
+  useEffect(() => {
+    if (!clipboardMenu) return;
+
+    const closeClipboardDropdown = () => {
+      if (!clipboardMenu) return;
+
+      setClipboardMenu(false);
+    };
+
+    document.addEventListener("click", closeClipboardDropdown);
+
+    return () => document.removeEventListener("click", closeClipboardDropdown);
+  }, [clipboardMenu]);
   return (
     <div className="song_mainfeed_container">
       <div className="song_mainfeed_top">
@@ -117,13 +138,16 @@ const SongComments = ({ song }) => {
             </button>
           )}
           <button
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
-            }}
+            onClick={addToClipBoard}
             className="cool_button"
           >
             Copy Link
           </button>
+          <div>
+          {clipboardMenu && (
+            <div className="dropdown-clipboard">Copied to clipboard</div>
+          )}
+          </div>
           {sessionUser?.id === song?.user_id && (
             <button className="cool_button">
               <NavLink
@@ -145,7 +169,6 @@ const SongComments = ({ song }) => {
                 <p onClick={() => setShowPlaylistModal(true)}>
                   Add to playlist
                 </p>
-                <p>Delete song</p>
               </div>
             )}
           </div>
