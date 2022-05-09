@@ -78,5 +78,11 @@ body {
 
 .sidebar-text {
   width: max-content;
-  margin: 0 auto;
+  margin: 20px auto;
+}
+
+.techs {
+  width: 200px;
+  height: 60px;
+  overflow-x: scroll;
 }

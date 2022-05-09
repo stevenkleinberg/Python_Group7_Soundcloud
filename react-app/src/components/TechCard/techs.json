@@ -1,0 +1,54 @@
+[
+    {
+        "name": "JavaScript",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/javascript/javascript-original.svg"
+    },
+    {
+        "name": "React.js",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/react/react-original.svg"
+    },
+    {
+        "name": "Redux",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/redux/redux-original.svg"
+    },
+    {
+        "name": "Node.js",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/nodejs/nodejs-plain-wordmark.svg"
+    },
+    {
+        "name": "Python",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/python/python-original-wordmark.svg"
+    },
+    {
+        "name": "Flask",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/flask/flask-original-wordmark.svg"
+    },
+    {
+        "name": "Postgresql",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/postgresql/postgresql-original.svg"
+    },
+    {
+        "name": "SQLAlchemy",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/sqlalchemy/sqlalchemy-original-wordmark.svg"
+    },
+    {
+        "name": "CSS 3",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/css3/css3-original.svg"
+    },
+    {
+        "name": "HTML 5",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/html5/html5-original.svg"
+    },
+    {
+        "name": "Git",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/git/git-original.svg"
+    },
+    {
+        "name": "Docker",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/docker/docker-original-wordmark.svg"
+    },
+    {
+        "name": "Visual Studio Code",
+        "image_url": "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/vscode/vscode-original.svg"
+    }
+]
