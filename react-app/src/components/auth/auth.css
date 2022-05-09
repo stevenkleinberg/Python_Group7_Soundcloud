@@ -1,7 +1,11 @@
+.login_modal_container{
+    width: 700px;
+}
 .auth_contaner{
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
 .login_form{
@@ -19,11 +23,12 @@
 
 
 .auth_form_wrapper{
-    border: 2px solid gray;
+
     margin-top: 25px;
     width:33%;
     background-color: white;
-
+    width: 90%;
+    height: 90%;
 }
 .form_field{
     margin-top: 5px;
