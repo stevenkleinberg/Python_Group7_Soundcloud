@@ -44,7 +44,6 @@ def edit_comment(id):
 
     if form.validate_on_submit():
         comment = Comment.query.get(id)
-        print(comment)
         comment.content = form.data['content']
         comment.updated_at = datetime.now()
         db.session.commit()

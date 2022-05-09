@@ -17,8 +17,6 @@ const SplashPage = () => {
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const songs = useSelector((state) => Object.values(state.songs));
 
-  console.log(songs?.slice(0, 12));
-
   const openLoginModal = () => {
     if (showLoginModal) return;
     setShowLoginModal(true);

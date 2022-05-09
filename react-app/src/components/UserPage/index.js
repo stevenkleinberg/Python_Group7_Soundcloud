@@ -21,32 +21,6 @@ function UserPage() {
 
   const likedSongs = songs?.filter((song) => song.likes.includes(+userId));
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!check) {
-  //       console.log("HMMMMMMMMMMMMMM", userDetails);
-  //       console.log("ARE WE IN HERE ");
-  //       const avatar =
-  //         "https://avatarfiles.alphacoders.com/194/thumb-194221.jpg";
-  //       const banner = "https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg";
-  //       const displayname = "add name";
-  //       const formData = new FormData();
-  //       formData.append("id", sessionUser.id);
-  //       formData.append("user_id", sessionUser.id);
-  //       formData.append("display_name", displayname);
-  //       formData.append(
-  //         "avatar_url",
-  //         "https://avatarfiles.alphacoders.com/194/thumb-194221.jpg"
-  //       );
-  //       formData.append(
-  //         "banner_url",
-  //         "https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg"
-  //       );
-  //       const detail = await dispatch(createDetail(formData));
-  //     }
-  //   })();
-  // }, []);
-
   const dispatch = useDispatch();
   const history = useHistory();
   const [display_name, setDisplayName] = useState("");
@@ -64,15 +38,13 @@ function UserPage() {
     formData.append("display_name", display_name);
     formData.append("banner_url", banner_url);
 
-    console.log("TRUEUEUEUEUEUEUE");
-    console.log("FOOOORmm", display_name);
     const detail = await dispatch(editDetails(formData));
 
     setDisplayBox(false);
   };
 
   const verify = currentDetails?.id === +userId;
-  console.log("VVVVVVVVVVVVVVVV", verify, sessionUser.id, userId);
+
   const updateAvatarUrl = (e) => {
     const file = e.target.files[0];
     setUrl(file);

@@ -19,8 +19,11 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
       setErrors(data);
       return;
     }
-    setShowLoginModal(false);
-    history.push("/");
+
+    return () => {
+      history.push("/");
+      setShowLoginModal(false);
+    };
   };
 
   const demoLogin = async (e) => {
@@ -30,8 +33,8 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
       setErrors(data);
       return;
     }
-    setShowLoginModal(false);
     history.push("/");
+    setShowLoginModal(false);
   };
 
   const updateEmail = (e) => {

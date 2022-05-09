@@ -27,7 +27,6 @@ export const getCommentsBySongId = (songId) => async (dispatch) => {
   if (res.ok) {
     const comments = await res.json();
     dispatch(loadComments(comments));
-    console.log(comments);
   }
 };
 

@@ -15,20 +15,16 @@ import { getAllPlaylists } from "./store/playlist";
 import SingleSong from "./components/SongFolders/SingleSong";
 import Audio from "./components/AudioPlayer";
 import UserPage from "./components/UserPage";
-import SongsList from "./components/SongFolders/SongList";
 import SplashPage from "./components/SplashPage";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
-import { getAllDetails, createDetail } from "./store/user-details";
+import { getAllDetails } from "./store/user-details";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const userDetails = useSelector((state) => state.details);
-
-  console.log(sessionUser);
 
   useEffect(() => {
     (async () => {
@@ -36,14 +32,6 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (loaded) {
-  //     (async () => {
-  //       await dispatch(getAllDetails());
-  //     })();
-  //   }
-  // }, [setLoaded, loaded, dispatch, sessionUser]);
 
   useEffect(() => {
     (async () => {

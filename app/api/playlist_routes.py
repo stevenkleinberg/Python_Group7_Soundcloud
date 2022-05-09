@@ -15,7 +15,7 @@ def new_playlist():
         """
         Create a New Playlist
         """
-        # print(len(request.form),"+=++=+++=====")
+
         form = NewPlaylistForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():

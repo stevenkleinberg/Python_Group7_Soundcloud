@@ -6,7 +6,7 @@ import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from "./Comments/SingleComment";
 import { NavLink } from "react-router-dom";
 import { createComment } from "../../../store/comment";
-import { likeSong, unlikeSong, } from "../../../store/song";
+import { likeSong, unlikeSong } from "../../../store/song";
 import { loadSong, queueSong } from "../../../store/player";
 
 import { Modal } from "../../Context/Modal";
@@ -105,14 +105,27 @@ const SongComments = ({ song }) => {
         </div>
         <div className="song_button_group flex-row">
           {!song?.likes.includes(sessionUser.id) && (
-            <button onClick={handle_LikeButtonClick}> &#10084; Like</button>
+            <button onClick={handle_LikeButtonClick} className="cool_button">
+              {" "}
+              &#10084; Like
+            </button>
           )}
           {song?.likes.includes(sessionUser.id) && (
-            <button onClick={handle_UnLikeButtonClick}> &#10084; Unlike</button>
+            <button onClick={handle_UnLikeButtonClick} className="cool_button">
+              {" "}
+              &#10084; Unlike
+            </button>
           )}
-          <button onClick={() => { navigator.clipboard.writeText(window.location.href) }}>Copy Link</button>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+            }}
+            className="cool_button"
+          >
+            Copy Link
+          </button>
           {sessionUser?.id === song?.user_id && (
-            <button>
+            <button className="cool_button">
               <NavLink
                 to={`/songs/${+song.id}/edit`}
                 exact={true}
@@ -123,7 +136,9 @@ const SongComments = ({ song }) => {
             </button>
           )}
           <div className="flex-row">
-            <button onClick={showMoreDropdownFnc}>More</button>
+            <button onClick={showMoreDropdownFnc} className="cool_button">
+              More
+            </button>
             {showMoreDropdown && (
               <div className="single_song_more_dropdown">
                 <p onClick={() => addSongToQueue(song.id)}>Add to queue</p>

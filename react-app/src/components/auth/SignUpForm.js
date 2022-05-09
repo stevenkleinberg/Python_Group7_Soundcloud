@@ -13,7 +13,7 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
-  const sessionUser = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -39,8 +39,10 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
       );
       const res = await dispatch(createDetail(formData));
       if (res) {
-        setShowSignUpModal(false);
-        history.push("/");
+        return () => {
+          history.push("/");
+          setShowSignUpModal(false);
+        };
       }
     }
   };

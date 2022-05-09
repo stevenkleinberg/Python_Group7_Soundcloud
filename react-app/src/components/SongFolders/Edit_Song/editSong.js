@@ -40,7 +40,6 @@ const EditSongForm = () => {
       }
     } else {
       setAudioLoading(false);
-      console.log("Error: editSong.js react frontend");
     }
   };
 

@@ -25,7 +25,6 @@ const NewPlaylistForm = ({ modalFunction }) => {
 
     const res = await dispatch(createPlaylist(formData));
     if (res.errors) {
-      console.log(res);
       setErrors(res.errors);
     }
     if (res) {

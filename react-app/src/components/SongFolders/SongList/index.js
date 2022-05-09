@@ -9,33 +9,26 @@ const SongsList = () => {
   const history = useHistory();
   const songs = useSelector((state) => state.songs);
   const sessionUser = useSelector((state) => state.session.user);
-  // const allsongs = [];
-  // for (let key in songs) {
-  //   console.log("key in loop", songs[key])
-  //   if(songs[key].user_id === sessionUser?.id){
-  //     allsongs.push((key = songs[key]));
-  //   }
-  // }
-  const userSongs = []
-  const songsArr = Object.values(songs)
-  songsArr.forEach( song => {
 
-    if (song.user_id === sessionUser?.id){
-      userSongs.push(song)
+  const userSongs = [];
+  const songsArr = Object.values(songs);
+  songsArr.forEach((song) => {
+    if (song.user_id === sessionUser?.id) {
+      userSongs.push(song);
     }
-  })
-  console.log(userSongs)
+  });
+
   const navLink = (id) => {
     history.push(`/songs/${id}`);
   };
 
   return (
     <>
-    <div className="songs_library_container">
-      <h3>Hear Your Uploaded Songs:</h3>
-    </div>
       <div className="songs_library_container">
-          <GridDisplay likedSongs={userSongs} />
+        <h3>Hear Your Uploaded Songs:</h3>
+      </div>
+      <div className="songs_library_container">
+        <GridDisplay likedSongs={userSongs} />
       </div>
     </>
   );
