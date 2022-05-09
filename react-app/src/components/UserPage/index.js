@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { createDetail, editDetails, getAllDetails } from "../../store/user-details";
-import UserNavBar from "./user_page_nav";
 import UserSongList from "./user_page_songs";
+import GridDisplay from "../LibraryPage/Likes/GridDisplay";
 import './userpage.css';
 import './user_page.scss';
 import theWavetest from "../WaveForm";
@@ -16,7 +16,10 @@ function UserPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const userDetails = useSelector(state => state.details);
   const currentDetails = useSelector(state => state.details[userId])
-
+  const songs = Object.values(useSelector((state) => state.songs));
+  console.log(" mamammam ", songs)
+  const likedSongs = songs?.filter((song) => song.likes.includes(+userId));
+  console.log('mamamamama', likedSongs)
   let check;
   if (userDetails[userId]) {
     check = true
@@ -24,10 +27,8 @@ function UserPage() {
     check = false
   }
 
-  console.log("first check", check)
   useEffect(() => {
     (async () => {
-      console.log("second check", check)
 
       if (!check) {
         console.log("HMMMMMMMMMMMMMM", userDetails)
@@ -110,25 +111,20 @@ function UserPage() {
     const file = e.target.files[0];
     setBannerUrl(file);
   };
-  let baseAvatarUrl;
-  if (currentDetails?.avatar_url) {
-    baseAvatarUrl = currentDetails.avatar_url
-  } else {
-    baseAvatarUrl = 'https://png.pngtree.com/png-vector/20190428/ourmid/pngtree-vector-music-icon-png-image_990937.jpg'
-  }
+
   return (
     <>
 
       <>
         <div className="userPageContainer"
-          style={{ background: `url(${currentDetails?.banner_url ? currentDetails?.banner_url : 'https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'}) no-repeat center`, backgroundSize: 'cover' }}
+          style={{ background: `url(${currentDetails?.banner_url ? currentDetails.banner_url : 'https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'}) no-repeat center`, backgroundSize: 'cover' }}
         >
           <div id='firstcontainer'>
             <div className="userDetailsInfo"
             >
               <div className='placeholderDiv' >
                 <div className="userImage placeholder"
-                  style={{ background: `url(${currentDetails?.avatar_url ? currentDetails?.avatar_url : 'https://avatarfiles.alphacoders.com/194/thumb-194221.jpg'}) no-repeat center`, backgroundSize: 'cover' }}
+                  style={{ background: `url(${currentDetails?.avatar_url ? currentDetails.avatar_url : 'https://avatarfiles.alphacoders.com/194/thumb-194221.jpg'}) no-repeat center`, backgroundSize: 'cover' }}
                 >
                   <input
                     className="chooseFileAvatar"
@@ -279,8 +275,8 @@ function UserPage() {
             </>
         }
         <div>
-          <UserNavBar />
-          <UserSongList />
+          <div className="forSpace"></div>
+          <GridDisplay likedSongs={likedSongs} />
         </div>
         <div>
 

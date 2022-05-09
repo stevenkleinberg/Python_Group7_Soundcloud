@@ -5,7 +5,7 @@ import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from "./Comments/SingleComment";
 import { NavLink } from "react-router-dom";
-import { createComment, getCommentsBySongId } from "../../../store/comment";
+import { createComment } from "../../../store/comment";
 import { likeSong, unlikeSong, } from "../../../store/song";
 import { loadSong, queueSong } from "../../../store/player";
 
@@ -42,14 +42,6 @@ const SongComments = ({ song }) => {
 
     return () => document.removeEventListener("click", closeEditDropdown);
   }, [showMoreDropdown]);
-
-  useEffect(() => {
-    (async () => {
-      if (song) {
-        await dispatch(getCommentsBySongId(song?.id));
-      }
-    })();
-  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,7 +110,7 @@ const SongComments = ({ song }) => {
           {song?.likes.includes(sessionUser.id) && (
             <button onClick={handle_UnLikeButtonClick}> &#10084; Unlike</button>
           )}
-          <button onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Copy Link</button>
+          <button onClick={() => { navigator.clipboard.writeText(window.location.href) }}>Copy Link</button>
           {sessionUser?.id === song?.user_id && (
             <button>
               <NavLink

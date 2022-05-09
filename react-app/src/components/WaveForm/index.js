@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 function TheWavetest() {
     const waveform = useRef(null);
     const sessionUser = useSelector(state => state.session.user)
-    const url = 'https://soundtownbucket.s3.us-west-1.amazonaws.com/(LETRA)+Jugaste+y+Sufri-Eslabon+Armado+ft+DannyLux+%5B2020%5D.mp3'
+    // const url = 'https://soundtownbucket.s3.us-west-1.amazonaws.com/(LETRA)+Jugaste+y+Sufri-Eslabon+Armado+ft+DannyLux+%5B2020%5D.mp3'
     const song = useSelector(state => state.songs[state.player.playingId]);
 
     useEffect(() => {
@@ -36,7 +36,7 @@ function TheWavetest() {
                 CursorPlugin.create({})
             ],
         });
-        waveform.current.load('../../static/audio/buzz.mp3');
+        // waveform.current.load('../../static/audio/buzz.mp3');
 
     }, [sessionUser]);
 
