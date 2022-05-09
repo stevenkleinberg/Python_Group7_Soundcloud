@@ -83,6 +83,11 @@ body {
 
 .techs {
   width: 200px;
-  height: 60px;
+  /* height: 60px; */
   overflow-x: scroll;
+}
+
+.tech-icon img {
+  width: 60px;
+  height: 60px;
 }
