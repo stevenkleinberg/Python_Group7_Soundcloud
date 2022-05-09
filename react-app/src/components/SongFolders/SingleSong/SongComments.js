@@ -158,7 +158,7 @@ const SongComments = ({ song }) => {
           )}
         </div>
       </div>
-      <div className="flex-row">
+      <div className="comment-section flex-row">
         <div className="user-badge flex-column">
           <Avatar user={song?.user} />
           <p>{song?.user?.display_name}</p>
