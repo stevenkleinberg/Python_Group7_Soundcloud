@@ -18,6 +18,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [hiddenClass, setHiddenClass] = useState(false);
+  const [clipboardMenu, setClipboardMenu] = useState(false);
   const songArr = [];
   const songs = useSelector((state) => state.songs);
   const sessionUser = useSelector((state) => state.session.user);
@@ -62,17 +63,39 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
       dispatch(queuePlaylist(playlist));
     }
   };
+  const addToClipBoard = () => {
+    if (clipboardMenu) return;
+
+    navigator.clipboard.writeText(window.location.href);
+    setClipboardMenu(true);
+  };
+  useEffect(() => {
+    if (!clipboardMenu) return;
+
+    const closeClipboardDropdown = () => {
+      if (!clipboardMenu) return;
+
+      setClipboardMenu(false);
+    };
+
+    document.addEventListener("click", closeClipboardDropdown);
+
+    return () => document.removeEventListener("click", closeClipboardDropdown);
+  }, [clipboardMenu]);
   return (
     <div className="playlist_mainfeed_container">
       <div className="playlist_button_group flex-row">
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(window.location.href);
-          }}
-          className="cool_button"
-        >
-          Copy Link
-        </button>
+      <button
+            onClick={addToClipBoard}
+            className="cool_button"
+          >
+            Copy Link
+          </button>
+          <div>
+          {clipboardMenu && (
+            <div className="dropdown-clipboard">Copied to clipboard</div>
+          )}
+          </div>
         {playlist?.user_id === sessionUser.id && (
           <button
             className="cool_button"
