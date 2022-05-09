@@ -6,7 +6,7 @@ import { Modal } from "../../Context/Modal";
 import EditPlaylistForm from "../EditPlaylist";
 import { useHistory, useParams } from "react-router-dom";
 import { deletePlaylist } from "../../../store/playlist";
-
+import { loadPlaylist, queuePlaylist } from "../../../store/player";
 import Avatar from "../../Icons/Avatar";
 import AddEditPlaylistModal from "../AddEditPlaylistModal";
 
@@ -14,6 +14,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  const playingId = useSelector((state) => state.player.playingId);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [hiddenClass, setHiddenClass] = useState(false);
@@ -54,6 +55,13 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
     return () => document.removeEventListener("click", closeMenu);
   }, [hiddenClass]);
 
+  const addPlaylistToQueue = (playlist) => {
+    if (!playingId) {
+      dispatch(loadPlaylist(playlist));
+    } else {
+      dispatch(queuePlaylist(playlist));
+    }
+  };
   return (
     <div className="playlist_mainfeed_container">
       <div className="playlist_button_group flex-row">
@@ -87,7 +95,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
           <div className="playlist_queue_delete_container">
             {hiddenClass && (
               <>
-                <p className="p_hover">Add to next up</p>
+                <p onClick={() => addPlaylistToQueue(playlist)} className="p_hover">Add to Queue</p>
                 {playlist?.user_id === sessionUser.id && (
                   <p className="p_hover" onClick={showdeletemodal}>
                     Delete playlist
