@@ -28,6 +28,8 @@ const EditPlaylistForm = ({ modalFunction }) => {
     const playlist = await dispatch(editPlaylist(formData));
 
     if (playlist) {
+      setImageLoading(false);
+
       modalFunction(false);
     }
   };
@@ -38,29 +40,41 @@ const EditPlaylistForm = ({ modalFunction }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>title </label>
-        <input
-          value={title}
-          required
-          type="text"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-        <label>playlist image </label>
+    <div className="flex-row AEP_conatiner">
+      <div className="AEP_left">
+        <img src={playlist.image_url} className="AEP_image" />
+        <label>Playlist Image: </label>
         <input type="file" accept="image/*" onChange={updateImageFile} />
-        <label>decription </label>
-        <input
-          value={description}
-          type="description"
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-        />
-        <button>Submit</button>
-      </form>
+      </div>
+      <div className="AEP_right">
+        <form onSubmit={handleSubmit} className="flex-column">
+          <label className="AEP_spacing">Title: </label>
+          <input
+            value={title}
+            required
+            type="text"
+            className="AEP_spacing"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+
+          <label className="AEP_spacing">Description: </label>
+          <input
+            className="AEP_spacing"
+            value={description}
+            type="description"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+          {imageLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <button className="AEP_submit_button">Submit</button>
+          )}
+        </form>
+      </div>
     </div>
   );
 };

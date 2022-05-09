@@ -8,3 +8,66 @@
   width: 100%;
   padding: 15px 35px 15px 35px;
 }
+
+.AEP_image {
+  width: 175px;
+  height: 175px;
+}
+
+.AEP_left {
+  width: 45%;
+}
+.AEP_right {
+  width: 100%;
+}
+.AEP_spacing {
+  margin: 10px 0px 10px 0px;
+}
+
+.AEP_submit_button {
+  width: 50px;
+  border: 2px solid grey;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.AEP_submit_button:hover {
+  border: 2.2px solid #f50;
+  color: #f50;
+}
+
+.AEP_conatiner {
+  margin: 15px 0px 0px 0px;
+}
+
+.AEP_li_img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.AEP_li {
+  list-style: none;
+  margin: 5px 0px 10px 0px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AEP_basic_title {
+  font-size: 25px;
+
+  margin: 0px 10px 0px 0px;
+}
+.AEP_basic_title:hover {
+  border-bottom: 2.5px solid #f50;
+  color: #f50;
+}
+
+.selected {
+  border-bottom: 2.5px solid #f50;
+  color: #f50;
+}
+.AEP_inner_container_titles {
+  border-bottom: 2px solid grey;
+  width: 250px;
+}

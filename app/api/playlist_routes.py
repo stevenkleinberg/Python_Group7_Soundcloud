@@ -71,6 +71,7 @@ def new_playlist():
                 image_upload = upload_file_to_s3(raw_image_url)
                 image_url = image_upload["url"]
 
+
                 playlist = Playlist.query.get(int(request.form["id"]))
                 playlist.title= request.form["title"]
                 playlist.image_url= image_url,
