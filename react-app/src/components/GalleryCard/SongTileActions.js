@@ -42,7 +42,7 @@ function SongTileActions({ song }) {
 
   return (
     <>
-      <div>
+      <div className="song_tile_actions_container">
         <div className="song_tile_actions" onClick={openMenu}>
           ...
         </div>

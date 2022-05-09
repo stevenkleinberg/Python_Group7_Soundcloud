@@ -43,8 +43,12 @@
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+  position: absolute;
+  margin-top: 1px;
+  background-color: white;
+  box-shadow: 0px 0px 4px black;
+  border-radius: 2px;
+  /* display: inline-block; */
   color: #151515;
 }
 
