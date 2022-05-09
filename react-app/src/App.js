@@ -20,6 +20,7 @@ import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
 import { getAllDetails } from "./store/user-details";
+import { getAllUsers } from "./store/users";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +39,7 @@ function App() {
       await dispatch(getAllSongs());
       await dispatch(getAllPlaylists());
       await dispatch(getAllDetails());
+      await dispatch(getAllUsers());
     })();
   }, [dispatch]);
 

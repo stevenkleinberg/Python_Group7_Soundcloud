@@ -22,6 +22,9 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   const songArr = [];
   const songs = useSelector((state) => state.songs);
   const sessionUser = useSelector((state) => state.session.user);
+  const userData = useSelector((state) => state.details[id]);
+  console.log(userData);
+  console.log(playlist);
 
   songsId?.forEach((songId) => {
     songArr.push(songs[+songId]);
@@ -165,8 +168,8 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
       </div>
       <div className="flex-row">
         <div className="user-badge flex-column">
-          <Avatar user={playlist?.user} />
-          <p>{playlist?.user?.display_name}</p>
+          <Avatar user={userData} />
+          <p>{userData?.display_name}</p>
         </div>
         <div className="song_container_ul_li">
           <ul className="flex-column">
