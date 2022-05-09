@@ -16,7 +16,7 @@
   top: 0;
   border-bottom: 1px solid #303030;
   margin-bottom: 1px;
-  z-index: 1;
+  z-index: 10;
 }
 
 .navlinks {
@@ -93,7 +93,7 @@
   border: solid 2.3px lightslategray;
 }
 
-.profile-dropdown > div {
+.profile-dropdown>div {
   padding: 5px;
   font-size: large;
 }
@@ -102,6 +102,7 @@
   width: 450px;
   height: 20px;
 }
+
 .navbar_search {
   width: 300px;
   height: 100%;
@@ -135,6 +136,7 @@
   padding: 5px;
   align-items: center;
 }
+
 .search_results_li:hover {
   list-style: none;
   background-color: lightgrey;
