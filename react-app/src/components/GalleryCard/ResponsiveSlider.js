@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import SongTile from "./songTile";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const ResponsiveSlider = ({ title, description, songs }) => {
   const settings = {
     dots: true,
@@ -12,7 +13,7 @@ const ResponsiveSlider = ({ title, description, songs }) => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
