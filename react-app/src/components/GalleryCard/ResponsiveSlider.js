@@ -44,7 +44,7 @@ const ResponsiveSlider = ({ title, description, songs }) => {
 
       <Slider {...settings}>
         {songs?.map((song) => (
-          <SongTile song={song} />
+          <SongTile song={song} key={song.id} />
         ))}
       </Slider>
     </div>

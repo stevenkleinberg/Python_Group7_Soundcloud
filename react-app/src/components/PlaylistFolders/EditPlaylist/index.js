@@ -71,7 +71,15 @@ const EditPlaylistForm = ({ modalFunction }) => {
           {imageLoading ? (
             <p>Loading...</p>
           ) : (
-            <button className="AEP_submit_button">Submit</button>
+            <div className="flex-row">
+              <button className="AEP_submit_button">Submit</button>
+              <button
+                className="AEP_submit_button"
+                onClick={() => modalFunction(false)}
+              >
+                Cancel
+              </button>
+            </div>
           )}
         </form>
       </div>

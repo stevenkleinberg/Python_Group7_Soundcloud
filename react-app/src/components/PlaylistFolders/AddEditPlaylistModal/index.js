@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./AddEditPlaylist.css";
 import EditPlaylistForm from "../EditPlaylist";
 import AllTracksModal from "./AllTracksModal";
+import NewPlaylistForm from "../CreatePlaylist";
 
 const AddEditPlaylistModal = ({ modalMode, modalFunction, songArr }) => {
   const [mode, setMode] = useState("basic");
@@ -18,17 +19,30 @@ const AddEditPlaylistModal = ({ modalMode, modalFunction, songArr }) => {
           >
             Basic Info
           </p>
-          <p
-            onClick={() => setMode("tracks")}
-            className={
-              mode == "tracks" ? "AEP_basic_title selected" : "AEP_basic_title"
-            }
-          >
-            Tracks
-          </p>
+
+          {modalMode === "edit" && (
+            <p
+              onClick={() => setMode("tracks")}
+              className={
+                mode == "tracks"
+                  ? "AEP_basic_title selected"
+                  : "AEP_basic_title"
+              }
+            >
+              Tracks
+            </p>
+          )}
         </div>
-        {mode === "basic" && <EditPlaylistForm modalFunction={modalFunction} />}
-        {mode === "tracks" && <AllTracksModal songArr={songArr} />}
+        {modalMode === "edit" ? (
+          <>
+            {mode === "basic" && (
+              <EditPlaylistForm modalFunction={modalFunction} />
+            )}
+            {mode === "tracks" && <AllTracksModal songArr={songArr} />}
+          </>
+        ) : (
+          <NewPlaylistForm modalFunction={modalFunction} />
+        )}
       </div>
     </div>
   );

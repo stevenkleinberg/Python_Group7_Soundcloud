@@ -47,6 +47,7 @@ const SongTile = ({ song }) => {
               </div>
             </div>
             <div className="song_tile_cover_overlay_inner_bottom flex-row">
+              <SongTileActions song={song} />
               {song.likes.includes(user.id) && (
                 <div
                   onClick={handle_UnLikeButtonClick}
@@ -80,9 +81,9 @@ const SongTile = ({ song }) => {
             <p className="song_tile_text_description">{song.description}</p>
           </div>
         </div>
-        <div className="song_tile_options">
+        {/* <div className="song_tile_options">
           <SongTileActions song={song} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const AllTracksModal = ({ songArr }) => {
     dispatch(deleteSongtoPlaylist(formData));
   };
   return (
-    <div>
+    <div className="AEP_track_container">
       <ul>
         {songArr?.map((song) => (
           <li key={song?.id} className="AEP_li flex-row">
@@ -29,8 +29,11 @@ const AllTracksModal = ({ songArr }) => {
               <img src={song?.image_url} className="AEP_li_img" />
               <NavLink to={`/songs/${song?.id}`}>{song?.title}</NavLink>
             </div>
-            <p onClick={handleDeleteSongtoPlaylist(playlist?.id, song?.id)}>
-              *
+            <p
+              onClick={handleDeleteSongtoPlaylist(playlist?.id, song?.id)}
+              className="AEP_li_x"
+            >
+              &#10005;
             </p>
           </li>
         ))}
