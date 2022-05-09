@@ -37,18 +37,19 @@ function App() {
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    if (loaded) {
-      (async () => {
-        await dispatch(getAllDetails());
-      })();
-    }
-  }, [setLoaded, loaded, dispatch, sessionUser]);
+  // useEffect(() => {
+  //   if (loaded) {
+  //     (async () => {
+  //       await dispatch(getAllDetails());
+  //     })();
+  //   }
+  // }, [setLoaded, loaded, dispatch, sessionUser]);
 
   useEffect(() => {
     (async () => {
       await dispatch(getAllSongs());
       await dispatch(getAllPlaylists());
+      await dispatch(getAllDetails());
     })();
   }, [dispatch]);
 

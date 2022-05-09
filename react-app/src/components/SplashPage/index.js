@@ -78,7 +78,7 @@ const SplashPage = () => {
           <Logo />
         </div>
       </div>
-      <div className="flex-column">
+      <div className="flex-column splashpage_title_songs_container">
         {/* <span>
           <span>
             <form>
@@ -89,7 +89,9 @@ const SplashPage = () => {
           or
           <a>Upload your own</a>
         </span> */}
-        <div>Hear what’s trending for free in the SoundCloud community</div>
+        <div className="splashpage_inner_title_container">
+          Hear what’s trending for free in the SoundCloud community
+        </div>
         <div className="splashpage_song_container flex-row">
           <GridDisplay likedSongs={songs.slice(0, 8)} />
         </div>

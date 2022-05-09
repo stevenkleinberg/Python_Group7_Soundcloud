@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
+import { createDetail } from "../../store/user-details";
 import "./auth.css";
 
 const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const [display_name, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
@@ -20,12 +20,28 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(email, password));
-      if (data) {
+      if (!data.sucess) {
         setErrors(data);
         return;
       }
-      setShowSignUpModal(false);
-      history.push("/");
+
+      const displayname = "add name";
+      const formData = new FormData();
+      formData.append("user_id", data.sucess.id);
+      formData.append("display_name", displayname);
+      formData.append(
+        "avatar_url",
+        "https://avatarfiles.alphacoders.com/194/thumb-194221.jpg"
+      );
+      formData.append(
+        "banner_url",
+        "https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg"
+      );
+      const res = await dispatch(createDetail(formData));
+      if (res) {
+        setShowSignUpModal(false);
+        history.push("/");
+      }
     }
   };
 

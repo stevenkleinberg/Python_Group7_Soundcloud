@@ -12,4 +12,5 @@
 
 .liked_songs_container {
   flex-wrap: wrap;
+  justify-content: center;
 }

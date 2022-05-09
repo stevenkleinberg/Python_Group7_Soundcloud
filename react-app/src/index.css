@@ -31,3 +31,16 @@ a {
 .hidden {
   visibility: hidden;
 }
+
+.cool_button {
+  border: 2px solid grey;
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin: 0px 5px 0px 0px;
+}
+
+.cool_button:hover {
+  border: 2.2px solid #f50;
+  color: #f50;
+}

@@ -23,11 +23,6 @@
     50% / cover no-repeat;
 }
 
-.soundcloudsplogo {
-  /* color: white; */
-  /* background-image: url(https://a-v2.sndcdn.com/assets/images/peace-cloud-28ad0963.svg); */
-}
-
 .imagetoptitle {
   display: flex;
   justify-content: space-between;
@@ -93,4 +88,12 @@
 
 .splashpage_song_container {
   width: 100%;
+}
+
+.splashpage_title_songs_container {
+  align-items: center;
+}
+.splashpage_inner_title_container {
+  margin: 10px 0px;
+  font-size: 25px;
 }

@@ -69,11 +69,17 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
           onClick={() => {
             navigator.clipboard.writeText(window.location.href);
           }}
+          className="cool_button"
         >
           Copy Link
         </button>
         {playlist?.user_id === sessionUser.id && (
-          <button onClick={() => setShowEditModal(true)}>Edit</button>
+          <button
+            className="cool_button"
+            onClick={() => setShowEditModal(true)}
+          >
+            Edit
+          </button>
         )}
         {showEditModal && (
           <Modal
@@ -91,11 +97,18 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
           </Modal>
         )}
         <div>
-          <button onClick={openMenu}>More</button>
+          <button onClick={openMenu} className="cool_button">
+            More
+          </button>
           <div className="playlist_queue_delete_container">
             {hiddenClass && (
               <>
-                <p onClick={() => addPlaylistToQueue(playlist)} className="p_hover">Add to Queue</p>
+                <p
+                  onClick={() => addPlaylistToQueue(playlist)}
+                  className="p_hover"
+                >
+                  Add to Queue
+                </p>
                 {playlist?.user_id === sessionUser.id && (
                   <p className="p_hover" onClick={showdeletemodal}>
                     Delete playlist

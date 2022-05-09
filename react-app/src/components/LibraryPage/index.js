@@ -23,7 +23,7 @@ const LibraryPage = () => {
             }
             onClick={() => setSelected("songs")}
           >
-            Songs
+            My Songs
           </NavLink>
           <NavLink
             to="/library/likes"
