@@ -18,7 +18,7 @@ const SongTile = ({ song }) => {
     e.preventDefault();
     const formData = new FormData();
 
-    formData.append("user_id", user.id);
+    formData.append("user_id", user?.id);
     formData.append("song_id", song.id);
     const likedSong = await dispatch(likeSong(formData));
   };
@@ -26,7 +26,7 @@ const SongTile = ({ song }) => {
     e.preventDefault();
     const formData = new FormData();
 
-    formData.append("user_id", user.id);
+    formData.append("user_id", user?.id);
     formData.append("song_id", song.id);
     const unlikedSong = await dispatch(unlikeSong(formData));
   };
@@ -35,40 +35,42 @@ const SongTile = ({ song }) => {
     <div className="song_tile flex-column">
       <div className="song_tile_cover">
         <img className="song_tile_cover_img" src={song.image_url} alt="" />
-        <div className="song_tile_cover_overlay">
-          <div className="song_tile_cover_overlay_inner flex-column">
-            <div className="song_tile_cover_overlay_inner_top flex-row">
-              <div
-                onClick={handlePlayButtonClick}
-                className="song_tile_cover_play"
-              >
-                {" "}
-                &#9654;
+        {user && (
+          <div className="song_tile_cover_overlay">
+            <div className="song_tile_cover_overlay_inner flex-column">
+              <div className="song_tile_cover_overlay_inner_top flex-row">
+                <div
+                  onClick={handlePlayButtonClick}
+                  className="song_tile_cover_play"
+                >
+                  {" "}
+                  &#9654;
+                </div>
+              </div>
+              <div className="song_tile_cover_overlay_inner_bottom flex-row">
+                <SongTileActions song={song} />
+                {song.likes.includes(user?.id) && (
+                  <div
+                    onClick={handle_UnLikeButtonClick}
+                    className="song_tile_cover_is_liked"
+                  >
+                    {" "}
+                    &#10084;
+                  </div>
+                )}
+                {!song.likes.includes(user?.id) && (
+                  <div
+                    onClick={handle_LikeButtonClick}
+                    className="song_tile_cover_not_liked"
+                  >
+                    {" "}
+                    &#10084;
+                  </div>
+                )}
               </div>
             </div>
-            <div className="song_tile_cover_overlay_inner_bottom flex-row">
-              <SongTileActions song={song} />
-              {song.likes.includes(user.id) && (
-                <div
-                  onClick={handle_UnLikeButtonClick}
-                  className="song_tile_cover_is_liked"
-                >
-                  {" "}
-                  &#10084;
-                </div>
-              )}
-              {!song.likes.includes(user.id) && (
-                <div
-                  onClick={handle_LikeButtonClick}
-                  className="song_tile_cover_not_liked"
-                >
-                  {" "}
-                  &#10084;
-                </div>
-              )}
-            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="song_tile_bottom flex-row">
         <div className="song_tile_text flex-column">

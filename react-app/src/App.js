@@ -26,7 +26,9 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const userDetails = useSelector(state => state.details);
+  const userDetails = useSelector((state) => state.details);
+
+  console.log(sessionUser);
 
   useEffect(() => {
     (async () => {
@@ -39,7 +41,6 @@ function App() {
     if (loaded) {
       (async () => {
         await dispatch(getAllDetails());
-
       })();
     }
   }, [setLoaded, loaded, dispatch, sessionUser]);
@@ -58,11 +59,10 @@ function App() {
   return (
     <ModalProvider>
       <BrowserRouter>
-        <NavBar />
+        {sessionUser != null && <NavBar />}
         <Switch>
           <Route path="/welcome" exact={true}>
             <SplashPage />
-            <p>testing</p>
           </Route>
           <Route path="/upload-song" exact={true}>
             <UploadSong />
