@@ -18,10 +18,32 @@ const SongComments = ({ song }) => {
 
   const [showMoreDropdown, setShowMoreDropdown] = useState(false);
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+  const [clipboardMenu, setClipboardMenu] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs);
   const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
+
+  const addToClipBoard = () => {
+    if (clipboardMenu) return;
+
+    navigator.clipboard.writeText(window.location.href);
+    setClipboardMenu(true);
+  };
+
+  useEffect(() => {
+    if (!clipboardMenu) return;
+
+    const closeClipboardDropdown = () => {
+      if (!clipboardMenu) return;
+
+      setClipboardMenu(false);
+    };
+
+    document.addEventListener("click", closeClipboardDropdown);
+
+    return () => document.removeEventListener("click", closeClipboardDropdown);
+  }, [clipboardMenu]);
 
   const showMoreDropdownFnc = () => {
     if (showMoreDropdown) return;
@@ -116,14 +138,14 @@ const SongComments = ({ song }) => {
               &#10084; Unlike
             </button>
           )}
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
-            }}
-            className="cool_button"
-          >
-            Copy Link
-          </button>
+          <div>
+            <button onClick={addToClipBoard} className="cool_button">
+              Copy Link
+            </button>
+            {clipboardMenu && (
+              <div className="dropdown-clipboard">Copied to clipboard</div>
+            )}
+          </div>
           {sessionUser?.id === song?.user_id && (
             <button className="cool_button">
               <NavLink
