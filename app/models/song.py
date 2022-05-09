@@ -33,12 +33,12 @@ class Song(db.Model):
     )
 
     def to_dict(self):
-        user_detail = UserDetail.query.filter(UserDetail.user_id == self.user.id).one()
+        # user_detail = UserDetail.query.filter(UserDetail.user_id == self.user.id).one()
 
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'user': user_detail.to_dict(),
+            # 'user': user_detail.to_dict(),
             'title': self.title,
             'audio_url': self.audio_url,
             'description': self.description,
