@@ -49,6 +49,8 @@
 .AEP_li {
   list-style: none;
   margin: 5px 0px 10px 0px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
   align-items: center;
   justify-content: space-between;
 }
@@ -70,4 +72,12 @@
 .AEP_inner_container_titles {
   border-bottom: 2px solid grey;
   width: 250px;
+}
+
+.AEP_li_x:hover {
+  color: #f50;
+}
+
+.AEP_track_container {
+  margin-top: 10px;
 }

@@ -6,6 +6,7 @@ import NewPlaylistForm from "../../PlaylistFolders/CreatePlaylist";
 import { Modal } from "../../Context/Modal";
 
 import "./Playlist.css";
+import AddEditPlaylistModal from "../../PlaylistFolders/AddEditPlaylistModal";
 
 const Playlist = () => {
   const user = useSelector((state) => state.session.user);
@@ -31,8 +32,7 @@ const Playlist = () => {
       </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <h1>Make a new playlist</h1>
-          <NewPlaylistForm />
+          <AddEditPlaylistModal modalMode="add" modalFunction={setShowModal} />
         </Modal>
       )}
       <div className="playlist_tile_container flex-row">
