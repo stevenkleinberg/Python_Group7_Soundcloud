@@ -22,7 +22,7 @@ const Likes = () => {
     <div>
       <div className="flex-row ls_title_container">
         <h3>Hear the tracks you’ve liked:</h3>
-        <div className="flex-row ls_title_container_right">
+        {/* <div className="flex-row ls_title_container_right">
           <p>View</p>
           {viewMode ? (
             <>
@@ -41,7 +41,7 @@ const Likes = () => {
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           />
-        </div>
+        </div> */}
       </div>
       {viewMode && <GridDisplay likedSongs={likedSongs} />}
     </div>
