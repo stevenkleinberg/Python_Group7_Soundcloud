@@ -31,16 +31,18 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login_form_wrapper'>
+    <div className="auth_contaner flex-row">
+    <div className='auth_form_wrapper'>
       <form className='login_form flex-column ' onSubmit={onLogin}>
+      <h1>Log In</h1>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className='form_field'>
           <input
-            className="field userPage"
+            className="field"
             name='email'
             type='text'
             placeholder='Email'
@@ -48,9 +50,9 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-        <div>
+        <div className='form_field'>
           <input
-            className="field userPage"
+            className="field"
             name='password'
             type='password'
             placeholder='Password'
@@ -58,10 +60,10 @@ const LoginForm = () => {
             onChange={updatePassword}
           />
           </div>
-          <div>
+          <div className='form_field'>
           <button className='login_form_btn' type='submit'>Login</button>
           </div>
-          <div>
+          <div className='form_field'>
           <button
             className='login_form_btn'
             type="submit"
@@ -74,6 +76,7 @@ const LoginForm = () => {
           </button>
           </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -44,37 +44,39 @@ const SignUpForm = () => {
   return (
 
     <>
-      <div className="authContainer">
-        <form onSubmit={onSignUp}>
+
+      <div className="auth_contaner flex-row">
+        <div  className='auth_form_wrapper'>
+        <form className='signup_form flex-column ' onSubmit={onSignUp}>
+          <h1>Sign Up</h1>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div>
+          <div className='form_field'>
             <input
               placeholder="email"
-              className="field userPage"
+              className="field "
               type="text"
               name="email"
               onChange={updateEmail}
               value={email}
             ></input>
           </div>
-
-          <div>
+          <div className='form_field'>
             <input
               placeholder="password"
-              className="field userPage"
+              className="field "
               type="password"
               name="password"
               onChange={updatePassword}
               value={password}
             ></input>
           </div>
-          <div>
+          <div className='form_field'>
             <input
-              className="field userPage"
+              className="field "
               type="password"
               name="repeat_password"
               onChange={updateRepeatPassword}
@@ -82,9 +84,12 @@ const SignUpForm = () => {
               required={true}
               placeholder='confirm password'
             ></input>
+          </div >
+          <div className='form_field'>
+          <button className='login_form_btn' type="submit">Sign Up</button>
           </div>
-          <button className='btn' type="submit">Sign Up</button>
         </form>
+        </div>
       </div>
 
     </>
