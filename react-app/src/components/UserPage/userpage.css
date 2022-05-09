@@ -8,18 +8,6 @@
 }
 
 .backgroundHeaderImage {
-  visibility: hidden;
-  visibility: hidden;
-  transition: visibility 0.5s, opacity 0.3s linear;
-}
-
-.userPageContainer:hover .backgroundHeaderImage {
-  visibility: visible;
-  visibility: visible;
-  opacity: 1;
-}
-
-.backgroundHeaderImage {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -92,7 +80,7 @@
 }
 
 .userImage:hover {
-  background-color: white;
+  background-color: black;
   box-shadow: 10px -10px 70px #ccc;
   padding: 2px;
 }
@@ -135,12 +123,18 @@
   display: flex;
 }
 
+.forLikeHeading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 15px solid whitesmoke;
+}
+
 .userPageContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 50vh;
-  border-bottom: 2px black solid;
-  /* background-color: red; */
+  border-bottom: 10px black solid;
   /* background: url("https://media.tarkett-image.com/large/TH_24567081_24594081_24596081_24601081_24563081_24565081_24588081_001.jpg")
     no-repeat center;
   background-size: cover; */
@@ -203,7 +197,7 @@
 }
 
 .forSpace {
-  border-bottom: 10px solid whitesmoke;
+  border: 35px whitesmoke solid;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
@@ -252,10 +246,34 @@
   cursor: pointer;
 }
 
+.submitFormDiv {
+  padding: 40px 0px 0px 0px;
+}
+
 .banner_container {
   position: absolute;
   width: 100%;
   height: 55vh;
   z-index: -10;
   object-fit: cover;
+}
+
+.backgroundHeaderImage {
+  /* visibility: hidden;
+    visibility: hidden; */
+  transition: visibility 0.5s, opacity 0.3s linear;
+}
+
+.banner_container:hover .backgroundHeaderImage {
+  visibility: visible;
+  visibility: visible;
+  opacity: 1;
+}
+
+.secondcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: -2;
 }

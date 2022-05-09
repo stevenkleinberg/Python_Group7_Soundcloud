@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
-  createDetail,
   editDetails,
-  getAllDetails,
 } from "../../store/user-details";
-import UserSongList from "./user_page_songs";
 import GridDisplay from "../LibraryPage/Likes/GridDisplay";
 import "./userpage.css";
 import "./user_page.scss";
@@ -58,6 +55,7 @@ function UserPage() {
     }
   };
   const updateActivityDisplay = (e) => {
+    if (e === null) setActivity(false)
     if (e.target.value) {
       setActivity(true);
     } else {
@@ -87,14 +85,16 @@ function UserPage() {
               <div className="placeholderDiv">
                 <div
                   className="userImage placeholder"
-                  // style={{
-                  //   background: `url(${currentDetails?.avatar_url}) no-repeat center`,
-                  //   backgroundSize: "cover",
-                  // }}
+                // style={{
+                //   background: `url(${currentDetails?.avatar_url}) no-repeat center`,
+                //   backgroundSize: "cover",
+                // }}
                 >
                   <img
                     src={currentDetails?.avatar_url}
                     className="userImage "
+                    onChange={(e) => (updateAvatarUrl(e), updateActivity(e))}
+
                   />
                   <input
                     className="chooseFileAvatar"
@@ -168,7 +168,9 @@ function UserPage() {
                       <button
                         type="button"
                         className="userbtn"
-                        onClick={() => setDisplayBox(false)}
+                        onClick={(e) => (
+                          setDisplayBox(false),
+                          updateActivity(null))}
                       >
                         cancel
                       </button>
@@ -212,23 +214,28 @@ function UserPage() {
           </div>
         </div>
 
-        {activity ? (
-          <div className="submitFormDiv">
-            <form onSubmit={(e) => handleSubmit(e)} id="submitDetailsForm">
-              <button
-                className="btn"
-                type="submit"
-                onClick={() => checkDisplayName(display_name)}
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-        ) : (
-          <></>
-        )}
+        {activity ?
+          <>
+            <div className="submitFormDiv">
+              <form onSubmit={(e) => handleSubmit(e)} id="submitDetailsForm">
+                <button
+                  className="btn"
+                  type="submit"
+                  onClick={() => checkDisplayName(display_name)}
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </>
+          : (
+            <></>
+          )}
         <div>
           <div className="forSpace"></div>
+          <div className="forLikeHeading">
+            <h1> Likes</h1>
+          </div>
           <GridDisplay likedSongs={likedSongs} />
         </div>
         <div></div>
