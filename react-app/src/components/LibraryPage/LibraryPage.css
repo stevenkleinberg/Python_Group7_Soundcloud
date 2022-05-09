@@ -34,3 +34,7 @@ body {
 .inner_library_container{
   width:100%;
 }
+
+.songs_library_container{
+  margin-top: 15px;
+}

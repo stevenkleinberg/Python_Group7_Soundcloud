@@ -31,13 +31,11 @@ const SongsList = () => {
 
   return (
     <>
-    <div>
+    <div className="songs_library_container">
       <h3>Hear Your Uploaded Songs:</h3>
     </div>
-      <div>
-
+      <div className="songs_library_container">
           <GridDisplay likedSongs={userSongs} />
-
       </div>
     </>
   );
