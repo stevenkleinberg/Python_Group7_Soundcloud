@@ -141,3 +141,10 @@
   height: 650px;
   overflow: hidden;
 }
+
+.mainfeed_slider_title {
+  font-size: xx-large;
+}
+.mainfeed_slider_desc {
+  margin: 0px 0px 5px 0px;
+}
