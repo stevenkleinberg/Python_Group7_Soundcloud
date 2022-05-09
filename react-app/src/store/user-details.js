@@ -30,7 +30,7 @@ export const createDetail = (detail) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadDetails(data));
+        dispatch(newDetail(data));
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -93,6 +93,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 [action.detail.id]: action.detail
             }
+            return newState;
         }
         case LOAD_DETAILS: {
             const newState = { ...state };
