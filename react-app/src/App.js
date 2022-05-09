@@ -64,12 +64,6 @@ function App() {
             <SplashPage />
             <p>testing</p>
           </Route>
-          <Route path="/login" exact={true}>
-            <LoginForm />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm />
-          </Route>
           <Route path="/upload-song" exact={true}>
             <UploadSong />
           </Route>
@@ -79,17 +73,11 @@ function App() {
           <ProtectedRoute path="/songs/:id" exact={true}>
             <SingleSong />
           </ProtectedRoute>
-          <ProtectedRoute path="/users" exact={true}>
-            <UsersList />
-          </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true}>
             <UserPage />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
             <HomePage />
-          </ProtectedRoute>
-          <ProtectedRoute path="/allsongs" exact={true}>
-            <SongsList />
           </ProtectedRoute>
           <ProtectedRoute path="/playlists/:id" exact={true}>
             <PlaylistsPage />

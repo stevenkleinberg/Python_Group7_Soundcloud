@@ -1,3 +1,6 @@
+body {
+  background-color:rgb(242,242,242);
+}
 .library_links {
   margin: 0px 10px 0px 20px;
   font-size: 25px;
@@ -17,4 +20,15 @@
 .library_links_selected {
   border-bottom: 1.7px solid #f50;
   color: #f50;
+}
+
+.library_container{
+  align-items: center;
+  background-color: rgb(255,255,255);
+  margin: 0px 200px 0px 200px;
+  padding: 0px 25px 0px 25px;
+}
+
+.inner_library_container{
+  width:1300px;
 }

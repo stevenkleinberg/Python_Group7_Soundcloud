@@ -47,6 +47,56 @@
       "audio_url": "https://soundtownbucket.s3.amazonaws.com/6e06eef15a604fe5adbd337a12aa0713.mp3",
       "description": "Steve The Don (good day anthem)",
       "image_url": "https://i1.sndcdn.com/artworks-pvtvktqIByjpXIAv-zebUvA-t500x500.jpg"
+    },
+    {
+      "id": 1,
+      "user_id": 1,
+      "title": "Andamos Mejor",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/3368bd8d584d466bb84bb052e2c94482.mp3",
+      "description": "By: Los Gemelos De Sinaloa",
+      "image_url": "https://soundtownbucket.s3.amazonaws.com/cbad88598dd74016bebe7deefecbc4ef.jpeg",
+      "created_at": "2022-05-08 17:50:55.692798",
+      "updated_at": "2022-05-08 17:50:55.692813"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "title": "Por Mi No Te Detengas",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/e0a7eb755ad5428fa7d297755d1aea5f.mp3",
+      "description": "By: Banda Ms",
+      "image_url": "https://soundtownbucket.s3.amazonaws.com/80c728761eaf462c9320bac912ceb4d7.jpeg",
+      "created_at": "2022-05-08 19:56:45.257001",
+      "updated_at": "2022-05-08 19:56:45.257017"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "title": "Dicen",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/1442b4a73d25476fb166fbecc46ce1df.mp3",
+      "description": "By: Junior H",
+      "image_url": "https://soundtownbucket.s3.amazonaws.com/a6d27fae9c3e4085bdae0cd186e141d2.jpg",
+      "created_at": "2022-05-08 19:56:45.257001",
+      "updated_at": "2022-05-08 19:56:45.257017"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "title": "Dos Morritas",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/9e25188e50e14e4abc360d3ffe0f9d92.mp3",
+      "description": "By: Eslabon Armado ft Junior H",
+      "image_url": "https://soundtownbucket.s3.amazonaws.com/7dc4e636976743a5b64b66d1bd0a8681.jpeg",
+      "created_at": "2022-05-08 19:56:45.257001",
+      "updated_at": "2022-05-08 19:56:45.257017"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "title": "Me Meti En El Ruedo",
+      "audio_url": "https://soundtownbucket.s3.amazonaws.com/8e4e9ce841d247dfabd88aaed63147e2.mp3",
+      "description": "By: Luis R Conriquez",
+      "image_url": "https://soundtownbucket.s3.amazonaws.com/8fae04cf90e94e5e8f1febdddc211f76.jpeg",
+      "created_at": "2022-05-08 19:56:45.257001",
+      "updated_at": "2022-05-08 19:56:45.257017"
     }
   ]
 }

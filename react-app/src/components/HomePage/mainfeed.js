@@ -2,12 +2,10 @@ import React from "react";
 import GalleryCard from "../GalleryCard";
 import { useSelector } from "react-redux";
 
-
 const MainFeed = () => {
-
-  const songs = useSelector(state => state.songs)
-  const songs_array = Object.values(songs)
-  const reverse_song_array = songs_array.slice().reverse()
+  const songs = useSelector((state) => state.songs);
+  const songs_array = Object.values(songs);
+  const reverse_song_array = songs_array.slice().reverse();
   return (
     <div className="mainfeed">
       <div className="mainFeed_gallery_list">
@@ -23,7 +21,7 @@ const MainFeed = () => {
           type="songs"
           description="The latest Uploads from around the world"
           title={"Discover Daily"}
-          songs={ reverse_song_array}
+          songs={reverse_song_array}
         />
       </div>
       <div className="mainFeed_gallery_list">

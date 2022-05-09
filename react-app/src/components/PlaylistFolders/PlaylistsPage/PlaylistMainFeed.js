@@ -57,7 +57,13 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   return (
     <div className="playlist_mainfeed_container">
       <div className="playlist_button_group flex-row">
-        <button onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Copy Link</button>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+          }}
+        >
+          Copy Link
+        </button>
         {playlist?.user_id === sessionUser.id && (
           <button onClick={() => setShowEditModal(true)}>Edit</button>
         )}
@@ -69,7 +75,11 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
           >
             {/* <h3>Edit Playlist</h3>
             <EditPlaylistForm modalFunction={setShowEditModal} /> */}
-            <AddEditPlaylistModal />
+            <AddEditPlaylistModal
+              modalMode="edit"
+              modalFunction={setShowEditModal}
+              songArr={songArr}
+            />
           </Modal>
         )}
         <div>

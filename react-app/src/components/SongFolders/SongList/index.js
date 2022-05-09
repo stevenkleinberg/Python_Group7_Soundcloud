@@ -31,6 +31,9 @@ const SongsList = () => {
 
   return (
     <>
+    <div>
+      <h3>Hear Your Uploaded Songs:</h3>
+    </div>
       <div>
 
           <GridDisplay likedSongs={userSongs} />
