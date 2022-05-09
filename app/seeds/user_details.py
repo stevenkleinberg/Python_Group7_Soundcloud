@@ -3,17 +3,24 @@ from app.models import db, UserDetail
 
 # Adds a demo user, you can add other users here if you want
 def seed_user_details():
+
     demo = UserDetail(
         user_id=1,
-        display_name='Demo user'
+        display_name='Demo user',
+        avatar_url='https://avatarfiles.alphacoders.com/194/thumb-194221.jpg',
+        banner_url='https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'
     )
     marnie = UserDetail(
         user_id=2,
-        display_name='Marnie Bernard'
+        display_name='Marnie Bernard',
+        avatar_url='https://avatarfiles.alphacoders.com/194/thumb-194221.jpg',
+        banner_url='https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'
     )
     bobbie = UserDetail(
         user_id=3,
-        display_name='Bobby Bernard'
+        display_name='Bobby Bernard',
+        avatar_url='https://avatarfiles.alphacoders.com/194/thumb-194221.jpg',
+        banner_url='https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'
     )
 
     db.session.add(demo)
