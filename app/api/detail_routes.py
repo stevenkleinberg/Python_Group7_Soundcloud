@@ -31,6 +31,7 @@ def new_detail():
 
         db.session.add(detail)
     else:
+        print("HHHHHHHHHHHHHHHHHHHHHHHHH", request.form)
         if not any(request.files):
             detail = UserDetail.query.get(int(request.form["id"]))
             detail.display_name = request.form['display_name']

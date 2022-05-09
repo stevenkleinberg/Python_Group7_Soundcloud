@@ -20,12 +20,14 @@ import SplashPage from "./components/SplashPage";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
-import { getAllDetails } from "./store/user-details";
+import { getAllDetails, createDetail } from "./store/user-details";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const userDetails = useSelector(state => state.details);
+
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -37,6 +39,7 @@ function App() {
     if (loaded) {
       (async () => {
         await dispatch(getAllDetails());
+
       })();
     }
   }, [setLoaded, loaded, dispatch, sessionUser]);

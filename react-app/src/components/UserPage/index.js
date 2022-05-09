@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { createDetail, editDetails } from "../../store/user-details";
+import { createDetail, editDetails, getAllDetails } from "../../store/user-details";
 import UserNavBar from "./user_page_nav";
 import UserSongList from "./user_page_songs";
 import './userpage.css';
@@ -16,46 +16,65 @@ function UserPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const userDetails = useSelector(state => state.details);
   const currentDetails = useSelector(state => state.details[userId])
-  console.log("HMMMMMMMMMMMMMM", currentDetails?.id)
+
+  let check;
+  if (userDetails[userId]) {
+    check = true
+  } else {
+    check = false
+  }
+
+  console.log("first check", check)
+  useEffect(() => {
+    (async () => {
+      console.log("second check", check)
+
+      if (!check) {
+        console.log("HMMMMMMMMMMMMMM", userDetails)
+        console.log('ARE WE IN HERE ')
+        const avatar = 'https://avatarfiles.alphacoders.com/194/thumb-194221.jpg'
+        const banner = 'https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'
+        const displayname = 'add name'
+        const formData = new FormData();
+        formData.append("id", sessionUser.id);
+        formData.append("user_id", sessionUser.id);
+        formData.append("display_name", displayname);
+        formData.append("avatar_url", 'https://avatarfiles.alphacoders.com/194/thumb-194221.jpg');
+        formData.append("banner_url", 'https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg');
+        const detail = await dispatch(createDetail(formData));
+      }
+
+    })();
+
+  }, []);
 
   console.log("HOOOOORRRRRAAAAYYYY", userDetails)
   const dispatch = useDispatch();
   const history = useHistory();
-  const [display_name, setDisplayName] = useState(userDetails?.display_name);
-  const [avatar_url, setUrl] = useState(userDetails?.avatar_url);
-  const [banner_url, setBannerUrl] = useState(userDetails?.banner_url);
+  const [display_name, setDisplayName] = useState('');
+  const [avatar_url, setUrl] = useState('');
+  const [banner_url, setBannerUrl] = useState('');
   const [activity, setActivity] = useState(false)
   const [display_box, setDisplayBox] = useState(false)
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
 
-    if (!currentDetails?.avatar_url || !currentDetails.banner_url || !currentDetails.display_name) {
-
-    }
     const formData = new FormData();
     formData.append("id", userId);
     formData.append("avatar_url", avatar_url);
     formData.append("display_name", display_name);
     formData.append("banner_url", banner_url);
 
-    if (userDetails.display_name || userDetails.avatar_url || userDetails.banner_url) {
-      console.log("TRUEUEUEUEUEUEUE")
-      const detail = await dispatch(editDetails(formData));
-      if (detail) {
-        history.push('/');
-      } else {
-        console.log("Error: uploadsong.js react frontend");
-      }
+    console.log("TRUEUEUEUEUEUEUE")
+    console.log('FOOOORmm', display_name)
+    const detail = await dispatch(editDetails(formData));
+    if (detail) {
+      history.push('/');
+    } else {
+      console.log("Error: uploadsong.js react frontend");
     }
-    if (!userDetails.display_name || !userDetails.avatar_url || !userDetails.banner_url) {
-      const detail = await dispatch(createDetail(formData));
-      if (detail) {
-        history.push('/');
-      } else {
-        console.log("Error: uploadsong.js react frontend");
-      }
-    }
+
   };
 
   const verify = currentDetails?.id === +userId
@@ -91,20 +110,25 @@ function UserPage() {
     const file = e.target.files[0];
     setBannerUrl(file);
   };
-
+  let baseAvatarUrl;
+  if (currentDetails?.avatar_url) {
+    baseAvatarUrl = currentDetails.avatar_url
+  } else {
+    baseAvatarUrl = 'https://png.pngtree.com/png-vector/20190428/ourmid/pngtree-vector-music-icon-png-image_990937.jpg'
+  }
   return (
     <>
 
       <>
         <div className="userPageContainer"
-          style={{ background: `url(${currentDetails?.banner_url}) no-repeat center`, backgroundSize: 'cover' }}
+          style={{ background: `url(${currentDetails?.banner_url ? currentDetails?.banner_url : 'https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg'}) no-repeat center`, backgroundSize: 'cover' }}
         >
           <div id='firstcontainer'>
             <div className="userDetailsInfo"
             >
               <div className='placeholderDiv' >
                 <div className="userImage placeholder"
-                  style={{ background: `url(${currentDetails?.avatar_url}) no-repeat center`, backgroundSize: 'cover' }}
+                  style={{ background: `url(${currentDetails?.avatar_url ? currentDetails?.avatar_url : 'https://avatarfiles.alphacoders.com/194/thumb-194221.jpg'}) no-repeat center`, backgroundSize: 'cover' }}
                 >
                   <input
                     className="chooseFileAvatar"
@@ -118,7 +142,7 @@ function UserPage() {
                   />
                 </div>
               </div>
-              {currentDetails?.display_name !== '' ?
+              {currentDetails?.display_name ?
                 <>
                   {
                     display_box ?
@@ -153,7 +177,7 @@ function UserPage() {
                           onClick={() => (
                             setDisplayBox(true)
                           )}>
-                          {currentDetails?.display_name}
+                          {currentDetails?.display_name ? <> {currentDetails.display_name} </> : <> add name </>}
                         </button>
 
                       </>
@@ -172,7 +196,7 @@ function UserPage() {
                             setDisplayName(e.target.value),
                             updateActivityDisplay(e)
                           )}
-                          placeholder={userDetails?.display_name}
+                          placeholder={currentDetails?.display_name}
                           value={display_name}
                           name="display_name"
                           id="display_name"
@@ -194,7 +218,7 @@ function UserPage() {
                           onClick={() => (
                             setDisplayBox(true)
                           )}>
-                          {userDetails?.display_name}
+                          {currentDetails?.display_name ? <> {currentDetails.display_name} </> : <> add name </>}
                         </button>
 
                       </>
@@ -204,65 +228,64 @@ function UserPage() {
             </div>
           </div>
           <div id='secondcontainer'>
-            {
-              userDetails.banner_url ?
-                <>
-                  <div className="backgroundHeaderImage " style={{}}>
-                    <button
-                      className="headerUploadField">
-                      upload header image...
-                      <input
-                        className="chooseFileHeader"
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => (
-                          updateBannerUrl(e), updateActivity(e)
-                        )}
-                        name="banner_url"
-                        id="banner_url"
-                      />
-                      <br />
-                    </button>
-                  </div>
-                </>
-                :
-                <>
-                </>
-            }
+
+            <>
+              <div className="backgroundHeaderImage " style={{}}>
+                <button
+                  className="headerUploadField">
+                  upload header image...
+                  <input
+                    className="chooseFileHeader"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => (
+                      updateBannerUrl(e), updateActivity(e)
+                    )}
+                    name="banner_url"
+                    id="banner_url"
+                  />
+                  <br />
+                </button>
+              </div>
+            </>
+            :
+            <>
+            </>
+
 
           </div>
 
         </div>
 
 
-    {
-      activity ?
-        <div className="submitFormDiv">
-          <form onSubmit={(e) => (
-            handleSubmit(e)
-          )} id='submitDetailsForm'>
-            <button
-              className="btn"
-              type="submit"
-              onClick={() => (
-                checkDisplayName(display_name)
-              )}>
-              Submit
-            </button>
-          </form>
+        {
+          activity ?
+            <div className="submitFormDiv">
+              <form onSubmit={(e) => (
+                handleSubmit(e)
+              )} id='submitDetailsForm'>
+                <button
+                  className="btn"
+                  type="submit"
+                  onClick={() => (
+                    checkDisplayName(display_name)
+                  )}>
+                  Submit
+                </button>
+              </form>
+            </div>
+            :
+            <>
+            </>
+        }
+        <div>
+          <UserNavBar />
+          <UserSongList />
         </div>
-        :
-        <>
-        </>
-    }
-    <div>
-      <UserNavBar />
-      <UserSongList />
-    </div>
-    <div>
+        <div>
 
-    </div>
-  </>
+        </div>
+      </>
     </>
   );
 }
