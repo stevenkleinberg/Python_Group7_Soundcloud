@@ -1,0 +1,43 @@
+.NUP_main_container {
+  /* margin: 0px 75px 0px 75px; */
+  /* width: 1260px; */
+  align-items: center;
+}
+
+.banner_container {
+  height: 260px;
+  width: 1250px;
+  justify-content: flex-start;
+}
+.banner_img {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar_img_banner {
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.banner_title {
+  background-color: black;
+  color: white;
+  /* width: 200px; */
+  padding: 4px 10px;
+  margin-top: 15px;
+}
+.banner_title_second {
+  background-color: black;
+  color: white;
+  margin-top: 5px;
+  padding: 4px 10px;
+  width: 125px;
+}
+
+.NUP_buttons {
+  position: absolute;
+  margin: 50vh;
+}

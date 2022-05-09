@@ -21,6 +21,7 @@ import LibraryPage from "./components/LibraryPage";
 import { ModalProvider } from "./components/Context/Modal";
 import { getAllDetails } from "./store/user-details";
 import { getAllUsers } from "./store/users";
+import NewUserPage from "./components/UserPage/NewUserPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,7 +66,8 @@ function App() {
             <SingleSong />
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true}>
-            <UserPage />
+            {/* <UserPage /> */}
+            <NewUserPage />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
             <HomePage />

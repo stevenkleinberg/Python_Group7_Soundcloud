@@ -22,10 +22,6 @@ export default function reducer(state = initialState, action) {
       action.users.forEach((user) => {
         newState[user.id] = user;
       });
-      // newState.id = action.details.id;
-      // newState.avatar_url = action.details.avatar_url;
-      // newState.banner_url = action.details.banner_url;
-      // newState.display_name = action.details.display_name;
       return newState;
     }
 

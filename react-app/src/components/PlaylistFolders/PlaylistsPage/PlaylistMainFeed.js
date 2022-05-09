@@ -22,7 +22,7 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   const songArr = [];
   const songs = useSelector((state) => state.songs);
   const sessionUser = useSelector((state) => state.session.user);
-  const userData = useSelector((state) => state.details[id]);
+  const userData = useSelector((state) => state.details[playlist?.user_id]);
   console.log(userData);
   console.log(playlist);
 
@@ -169,7 +169,11 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
       <div className="flex-row">
         <div className="user-badge flex-column">
           <Avatar user={userData} />
-          <p>{userData?.display_name}</p>
+          <p>
+            {userData?.display_name === "add me"
+              ? sessionUser?.email
+              : userData?.display_name}
+          </p>
         </div>
         <div className="song_container_ul_li">
           <ul className="flex-column">

@@ -22,6 +22,7 @@ const SongComments = ({ song }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs);
   const playingId = useSelector((state) => state.player.playingId);
+  const userData = useSelector((state) => state.details[song?.user_id]);
   const dispatch = useDispatch();
 
   const addToClipBoard = () => {
@@ -182,8 +183,12 @@ const SongComments = ({ song }) => {
       </div>
       <div className="comment-section flex-row">
         <div className="user-badge flex-column">
-          <Avatar user={song?.user} />
-          <p>{song?.user?.display_name}</p>
+          <Avatar user={userData} />
+          <p>
+            {userData?.display_name === "add me"
+              ? sessionUser?.email
+              : userData?.display_name}
+          </p>
         </div>
         <div className="song-details flex-column">
           {/* <div className="song-description">{song?.description}</div> */}
