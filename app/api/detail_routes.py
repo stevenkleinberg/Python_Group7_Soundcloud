@@ -16,17 +16,17 @@ def new_detail():
     Create New Details
     """
     if request.method == 'POST':
-        raw_avatar_url = request.files["avatar_url"]
-        raw_banner_url = request.files["banner_url"]
+        # raw_avatar_url = request.files["avatar_url"]
+        # raw_banner_url = request.files["banner_url"]
 
-        image_avatar = upload_file_to_s3(raw_avatar_url)
-        image_banner = upload_file_to_s3(raw_banner_url)
+        # image_avatar = upload_file_to_s3(raw_avatar_url)
+        # image_banner = upload_file_to_s3(raw_banner_url)
 
         detail = UserDetail(
             user_id=request.form['user_id'],
             display_name=request.form['display_name'],
-            avatar_url=image_avatar,
-            banner_url=image_banner,
+            # avatar_url=image_avatar,
+            # banner_url=image_banner,
         )
 
         db.session.add(detail)
@@ -103,13 +103,15 @@ def new_detail():
     return detail.to_dict()
 
 
-@detail_routes.route('/<int:id>')
-def get_details(id):
+@detail_routes.route('/')
+def get_details():
     """
     Get Details
     """
-    details = UserDetail.query.filter(UserDetail.user_id == id).one()
-    return details.to_dict()
+    details = UserDetail.query.all()
+    return jsonify([detail.to_dict() for detail in details])
+    # details = UserDetail.query.filter(UserDetail.id == id).one()
+    # return details.to_dict()
 
 
 @detail_routes.route('/<int:id>', methods=['DELETE'])

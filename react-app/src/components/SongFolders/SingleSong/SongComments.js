@@ -6,7 +6,8 @@ import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from "./Comments/SingleComment";
 import { NavLink } from "react-router-dom";
 import { createComment, getCommentsBySongId } from "../../../store/comment";
-import { likeSong, unlikeSong } from "../../../store/song";
+import { likeSong, unlikeSong, } from "../../../store/song";
+import { loadSong, queueSong } from "../../../store/player";
 
 import { Modal } from "../../Context/Modal";
 import AddtoPlaylist from "../../PlaylistFolders/AddtoPlaylist";
@@ -19,6 +20,7 @@ const SongComments = ({ song }) => {
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs);
+  const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
 
   const showMoreDropdownFnc = () => {
@@ -79,7 +81,13 @@ const SongComments = ({ song }) => {
     formData.append("song_id", song.id);
     const unlikedSong = await dispatch(unlikeSong(formData));
   };
-
+  const addSongToQueue = (id) => {
+    if (!playingId) {
+      dispatch(loadSong(id));
+    } else {
+      dispatch(queueSong(id));
+    }
+  };
   return (
     <div className="song_mainfeed_container">
       <div className="song_mainfeed_top">
@@ -110,7 +118,7 @@ const SongComments = ({ song }) => {
           {song?.likes.includes(sessionUser.id) && (
             <button onClick={handle_UnLikeButtonClick}> &#10084; Unlike</button>
           )}
-          <button>Copy Link</button>
+          <button onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Copy Link</button>
           {sessionUser?.id === song?.user_id && (
             <button>
               <NavLink
@@ -126,7 +134,7 @@ const SongComments = ({ song }) => {
             <button onClick={showMoreDropdownFnc}>More</button>
             {showMoreDropdown && (
               <div className="single_song_more_dropdown">
-                <p>Add to queue</p>
+                <p onClick={() => addSongToQueue(song.id)}>Add to queue</p>
                 <p onClick={() => setShowPlaylistModal(true)}>
                   Add to playlist
                 </p>

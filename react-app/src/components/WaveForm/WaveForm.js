@@ -18,7 +18,6 @@ const Waveform = () => {
     useEffect(() => {
 
         waveform.current = Wavesurfer.create({
-            display: 'display',
             container: "#waveform",
             waveColor: "whitesmoke",
             progressColor: "orange",
