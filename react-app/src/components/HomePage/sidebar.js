@@ -13,7 +13,6 @@ const Sidebar = () => {
       ))}
       <h3 className="sidebar-text">Technology Used</h3>
       <div className="techs flex-row">
-        <i class="devicon-devicon-plain" />
         {techs?.map(tech => (
           <TechCard key={tech.name} tech={tech} />
         ))}

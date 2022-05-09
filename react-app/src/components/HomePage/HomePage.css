@@ -10,7 +10,7 @@ body {
 
 .sidebar_container {
   border-left: 2.5px solid rgb(242, 242, 242);
-  height: 500px;
+  /* height: 500px; */
   align-items: center;
 }
 
@@ -83,8 +83,8 @@ body {
 
 .techs {
   width: 200px;
-  /* height: 60px; */
   overflow-x: scroll;
+  gap: 10px;
 }
 
 .tech-icon img {
