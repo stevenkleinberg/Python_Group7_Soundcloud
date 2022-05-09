@@ -40,7 +40,7 @@ function UserPage() {
     setDisplayBox(false);
   };
 
-  const verify = currentDetails?.id === +userId;
+  const verify = currentDetails?.id === +sessionUser.id;
 
   const updateAvatarUrl = (e) => {
     const file = e.target.files[0];
@@ -54,6 +54,13 @@ function UserPage() {
       setActivity(false);
     }
   };
+  const updateSetDisplayBox = () => {
+    if (sessionUser.id === currentDetails.id) {
+      setDisplayBox(true)
+    } else {
+      setDisplayBox(false)
+    }
+  }
   const updateActivityDisplay = (e) => {
     if (e === null) setActivity(false)
     if (e.target.value) {
@@ -96,14 +103,21 @@ function UserPage() {
                     onChange={(e) => (updateAvatarUrl(e), updateActivity(e))}
 
                   />
-                  <input
-                    className="chooseFileAvatar"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => (updateAvatarUrl(e), updateActivity(e))}
-                    name="avatar_url"
-                    id="avatar_url"
-                  />
+                  {verify ?
+                    <>
+                      <input
+                        className="chooseFileAvatar"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => (updateAvatarUrl(e), updateActivity(e))}
+                        name="avatar_url"
+                        id="avatar_url"
+                      />
+                    </>
+                    :
+                    <>
+                    </>
+                  }
                 </div>
               </div>
               {currentDetails?.display_name ? (
@@ -136,7 +150,7 @@ function UserPage() {
                     <>
                       <button
                         className="btn draw-border userBtnDetail"
-                        onClick={() => setDisplayBox(true)}
+                        onClick={() => updateSetDisplayBox()}
                       >
                         {currentDetails?.display_name ? (
                           <> {currentDetails.display_name} </>
@@ -195,42 +209,56 @@ function UserPage() {
           </div>
           <div id="secondcontainer">
             <>
-              <div className="backgroundHeaderImage " style={{}}>
-                <button className="headerUploadField">
-                  upload header image...
-                  <input
-                    className="chooseFileHeader"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => (updateBannerUrl(e), updateActivity(e))}
-                    name="banner_url"
-                    id="banner_url"
-                  />
-                  <br />
-                </button>
-              </div>
+              {
+                verify ?
+                  <>
+                    <div className="backgroundHeaderImage " style={{}}>
+                      <button className="headerUploadField">
+                        upload header image...
+                        <input
+                          className="chooseFileHeader"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => (updateBannerUrl(e), updateActivity(e))}
+                          name="banner_url"
+                          id="banner_url"
+                        />
+                        <br />
+                      </button>
+                    </div>
+                  </>
+                  :
+                  <>
+                  </>
+              }
             </>
             :<></>
           </div>
         </div>
-
-        {activity ?
+        {verify ?
           <>
-            <div className="submitFormDiv">
-              <form onSubmit={(e) => handleSubmit(e)} id="submitDetailsForm">
-                <button
-                  className="btn"
-                  type="submit"
-                  onClick={() => checkDisplayName(display_name)}
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
+            {activity ?
+              <>
+                <div className="submitFormDiv">
+                  <form onSubmit={(e) => handleSubmit(e)} id="submitDetailsForm">
+                    <button
+                      className="btn"
+                      type="submit"
+                      onClick={() => checkDisplayName(display_name)}
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </>
+              : (
+                <></>
+              )}
           </>
-          : (
-            <></>
-          )}
+          :
+          <>
+          </>
+        }
         <div>
           <div className="forSpace"></div>
           <div className="forLikeHeading">
