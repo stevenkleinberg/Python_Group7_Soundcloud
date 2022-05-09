@@ -5,9 +5,7 @@ body {
 .homepage_container {
   background-color: white;
   display: flex;
-  justify-content: space-around;
-  margin: 0px 75px 0px 75px;
-  height: 2000px;
+  margin: 0px 75px 75px 75px;
 }
 
 .sidebar_container {
@@ -53,10 +51,26 @@ body {
 
 .mainFeed_gallery_list {
   list-style: none;
+  width: 100%;
+  margin: 20px 0px 25px 0px;
+  padding: 0px 0px 20px 0px;
+  border-bottom: 2px solid grey;
 }
-
 
 .slick-prev:before,
 .slick-next:before {
   color: black;
+}
+
+.mainfeed_left_container {
+  width: 80%;
+}
+
+.mainfeed_right_container {
+  width: 100%;
+}
+
+.mainfeed {
+  width: 80%;
+  margin-left: 160px;
 }

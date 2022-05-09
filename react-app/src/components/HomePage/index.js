@@ -8,10 +8,10 @@ import "./HomePage.css";
 const HomePage = () => {
   return (
     <div className="homepage_container">
-      <div>
+      <div className="mainfeed_left_container">
         <MainFeed />
       </div>
-      <div>
+      <div className="mainfeed_right_container">
         <Sidebar />
       </div>
     </div>
