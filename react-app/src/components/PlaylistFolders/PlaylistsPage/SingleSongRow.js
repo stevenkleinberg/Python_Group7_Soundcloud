@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { loadSong } from "../../../store/player";
 
 const SingleSongRow = ({ song, idx }) => {
@@ -21,9 +22,11 @@ const SingleSongRow = ({ song, idx }) => {
         <span>{idx + 1}</span>
       </div>
       <div className="single_song_container_title">
-        <a href={`/songs/${song?.id}`}>{song?.title}</a>
+        <NavLink to={`/songs/${song?.id}`}>{song?.title}</NavLink>
+        {/* <a href={`/songs/${song?.id}`}>{song?.title}</a> */}
         <span> - </span>
-        <a href={`/songs/${song?.id}`}>{song?.description}</a>
+        <NavLink to={`/songs/${song?.id}`}>{song?.description}</NavLink>
+        {/* <a href={`/songs/${song?.id}`}>{song?.description}</a> */}
       </div>
     </div>
   );
