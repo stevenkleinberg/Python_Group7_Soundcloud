@@ -23,6 +23,17 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
     history.push("/");
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+      return;
+    }
+    setShowLoginModal(false);
+    history.push("/");
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -80,7 +91,7 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
               className="login_form_btn"
               type="submit"
               id="demoUserBtn"
-              onClick={(e) => (setPassword("password"), setEmail("demo@aa.io"))}
+              onClick={demoLogin}
             >
               Demo User
             </button>
