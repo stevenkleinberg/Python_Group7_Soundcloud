@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory} from 'react-router-dom';
 import { login } from '../../store/session';
 import './auth.css'
-const LoginForm = () => {
+const LoginForm = ({setShowLoginModal}) => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,9 +14,14 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
+
     if (data) {
       setErrors(data);
+      return
     }
+    setShowLoginModal(false)
+     history.push('/')
+
   };
 
   const updateEmail = (e) => {
@@ -31,16 +37,18 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={onLogin}>
+    <div className="auth_contaner flex-row">
+    <div className='auth_form_wrapper'>
+      <form className='login_form flex-column ' onSubmit={onLogin}>
+      <h1>Log In</h1>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className='form_field'>
           <input
-            className="field userPage"
+            className="field"
             name='email'
             type='text'
             placeholder='Email'
@@ -48,17 +56,22 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-        <div>
+        <div className='form_field'>
           <input
-            className="field userPage"
+            className="field"
             name='password'
             type='password'
             placeholder='Password'
             value={password}
             onChange={updatePassword}
           />
-          <button type='submit'>Login</button>
+          </div>
+          <div className='form_field'>
+          <button className='login_form_btn' type='submit'>Login</button>
+          </div>
+          <div className='form_field'>
           <button
+            className='login_form_btn'
             type="submit"
             id='demoUserBtn'
             onClick={(e) => (
@@ -67,8 +80,9 @@ const LoginForm = () => {
             )}>
             Demo User
           </button>
-        </div>
+          </div>
       </form>
+    </div>
     </div>
   );
 };

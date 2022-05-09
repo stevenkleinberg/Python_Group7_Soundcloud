@@ -1,0 +1,48 @@
+.login_modal_container{
+    width: 700px;
+}
+.auth_contaner{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login_form{
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.signup_form{
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.auth_form_wrapper{
+
+    margin-top: 25px;
+    width:33%;
+    background-color: white;
+    width: 90%;
+    height: 90%;
+}
+.form_field{
+    margin-top: 5px;
+    width: 33%;
+}
+
+
+.login_form_btn{
+    width: 100%;
+    height: 42px ;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* .login_form_btn:hover{
+    font-size: ;
+} */
