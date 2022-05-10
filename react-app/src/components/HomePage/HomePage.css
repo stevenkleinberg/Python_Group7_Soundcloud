@@ -10,8 +10,8 @@ body {
 
 .sidebar_container {
   border-left: 2.5px solid rgb(242, 242, 242);
-  /* height: 500px; */
   align-items: center;
+  padding-top: 20px;
 }
 
 .gallery_container {

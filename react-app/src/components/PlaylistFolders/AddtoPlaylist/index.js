@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import {
   addSongtoPlaylist,
   deleteSongtoPlaylist,
@@ -100,9 +101,9 @@ const AddtoPlaylist = ({ song }) => {
                       className="add_to_playlist_img"
                     />
                     <div>
-                      <a href={`/playlists/${playlist?.id}`}>
+                      <NavLink to={`/playlists/${playlist?.id}`}>
                         {playlist?.title}
-                      </a>
+                      </NavLink>
                       <p>{playlist?.songs.length}</p>
                     </div>
                   </div>

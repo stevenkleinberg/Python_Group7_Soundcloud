@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { createPlaylist, addSongtoPlaylist } from "../../../store/playlist";
 
 const CreatePlaylistAddSong = ({ songsArr }) => {
@@ -75,9 +76,9 @@ const CreatePlaylistAddSong = ({ songsArr }) => {
       )}
 
       {playlistBtn && (
-        <a href={`/playlists/${newPlaylistId}`} className="atp_bc atp_bsp">
+        <NavLink to={`/playlists/${newPlaylistId}`} className="atp_bc atp_bsp">
           Go to playlist
-        </a>
+        </NavLink>
       )}
 
       <div className="atp_ul_conatiner">
