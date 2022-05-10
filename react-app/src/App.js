@@ -14,7 +14,7 @@ import { getAllSongs } from "./store/song";
 import { getAllPlaylists } from "./store/playlist";
 import SingleSong from "./components/SongFolders/SingleSong";
 import Audio from "./components/AudioPlayer";
-import UserPage from "./components/UserPage";
+import UserPage from "./components/UserPage/index";
 import SplashPage from "./components/SplashPage";
 import PlaylistsPage from "./components/PlaylistFolders/PlaylistsPage";
 import LibraryPage from "./components/LibraryPage";
