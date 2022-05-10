@@ -6,9 +6,10 @@ import {
   editDetails,
 } from "../../store/user-details";
 import GridDisplay from "../LibraryPage/Likes/GridDisplay";
+import Avatar from "./Avatar";
+import BackGroundImage from "./BackgroundHeader";
 import "./userpage.css";
 import "./user_page.scss";
-import theWavetest from "../WaveForm";
 
 function UserPage() {
   const { userId } = useParams();
@@ -61,6 +62,7 @@ function UserPage() {
       setDisplayBox(false)
     }
   }
+
   const updateActivityDisplay = (e) => {
     if (e === null) setActivity(false)
     if (e.target.value) {
@@ -84,190 +86,12 @@ function UserPage() {
 
   return (
     <>
-      <>
-        <div className="userPageContainer">
-          <img src={currentDetails?.banner_url} className="banner_container" />
-          <div id="firstcontainer">
-            <div className="userDetailsInfo">
-              <div className="placeholderDiv">
-                <div
-                  className="userImage placeholder"
-                // style={{
-                //   background: `url(${currentDetails?.avatar_url}) no-repeat center`,
-                //   backgroundSize: "cover",
-                // }}
-                >
-                  <img
-                    src={currentDetails?.avatar_url}
-                    className="userImage "
-                    onChange={(e) => (updateAvatarUrl(e), updateActivity(e))}
+      <div> <BackGroundImage /> </div>
+      <div> <Avatar /> </div>
+      <div>
+        <GridDisplay likedSongs={likedSongs} />
+      </div>
 
-                  />
-                  {verify ?
-                    <>
-                      <input
-                        className="chooseFileAvatar"
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => (updateAvatarUrl(e), updateActivity(e))}
-                        name="avatar_url"
-                        id="avatar_url"
-                      />
-                    </>
-                    :
-                    <>
-                    </>
-                  }
-                </div>
-              </div>
-              {currentDetails?.display_name ? (
-                <>
-                  {display_box ? (
-                    <div>
-                      <input
-                        style={{ margin: ".3em 0em" }}
-                        type="text"
-                        className="field userPage"
-                        onChange={(e) => (
-                          setDisplayName(e.target.value),
-                          updateActivityDisplay(e)
-                        )}
-                        placeholder={currentDetails?.display_name}
-                        value={display_name}
-                        name="display_name"
-                        id="display_name"
-                        required
-                      />
-                      <button
-                        type="button"
-                        className="userbtn"
-                        onClick={() => setDisplayBox(false)}
-                      >
-                        cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <>
-                      <button
-                        className="btn draw-border userBtnDetail"
-                        onClick={() => updateSetDisplayBox()}
-                      >
-                        {currentDetails?.display_name ? (
-                          <> {currentDetails.display_name} </>
-                        ) : (
-                          <> add name </>
-                        )}
-                      </button>
-                    </>
-                  )}
-                </>
-              ) : (
-                <>
-                  {display_box ? (
-                    <div>
-                      <input
-                        style={{ margin: ".3em 0em" }}
-                        type="text"
-                        className="field userPage"
-                        onChange={(e) => (
-                          setDisplayName(e.target.value),
-                          updateActivityDisplay(e)
-                        )}
-                        placeholder={currentDetails?.display_name}
-                        value={display_name}
-                        name="display_name"
-                        id="display_name"
-                        required
-                      />
-                      <button
-                        type="button"
-                        className="userbtn"
-                        onClick={(e) => (
-                          setDisplayBox(false),
-                          updateActivity(null))}
-                      >
-                        cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <>
-                      <button
-                        className="btn draw-border userBtnDetail"
-                        onClick={() => setDisplayBox(true)}
-                      >
-                        {currentDetails?.display_name ? (
-                          <> {currentDetails.display_name} </>
-                        ) : (
-                          <> add name </>
-                        )}
-                      </button>
-                    </>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-          <div id="secondcontainer">
-            <>
-              {
-                verify ?
-                  <>
-                    <div className="backgroundHeaderImage " style={{}}>
-                      <button className="headerUploadField">
-                        upload header image...
-                        <input
-                          className="chooseFileHeader"
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => (updateBannerUrl(e), updateActivity(e))}
-                          name="banner_url"
-                          id="banner_url"
-                        />
-                        <br />
-                      </button>
-                    </div>
-                  </>
-                  :
-                  <>
-                  </>
-              }
-            </>
-            :<></>
-          </div>
-        </div>
-        {verify ?
-          <>
-            {activity ?
-              <>
-                <div className="submitFormDiv">
-                  <form onSubmit={(e) => handleSubmit(e)} id="submitDetailsForm">
-                    <button
-                      className="btn"
-                      type="submit"
-                      onClick={() => checkDisplayName(display_name)}
-                    >
-                      Submit
-                    </button>
-                  </form>
-                </div>
-              </>
-              : (
-                <></>
-              )}
-          </>
-          :
-          <>
-          </>
-        }
-        <div>
-          <div className="forSpace"></div>
-          <div className="forLikeHeading">
-            <h1> Likes</h1>
-          </div>
-          <GridDisplay likedSongs={likedSongs} />
-        </div>
-        <div></div>
-      </>
     </>
   );
 }
