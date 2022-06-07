@@ -45,7 +45,7 @@ const LibraryPage = () => {
             }
             onClick={() => setSelected("playlists")}
           >
-            Playlists
+            Playlist
           </NavLink>
         </div>
         <Switch>

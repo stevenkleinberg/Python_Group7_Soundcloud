@@ -61,7 +61,7 @@ function App() {
           <ProtectedRoute path="/songs/:id" exact={true}>
             <SingleSong />
           </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
+          <ProtectedRoute path="/users/:userId">
             {/* <UserPage />  noels users page */}
             <NewUsersPage />
           </ProtectedRoute>
