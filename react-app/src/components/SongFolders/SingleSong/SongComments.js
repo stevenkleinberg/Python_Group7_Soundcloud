@@ -115,6 +115,7 @@ const SongComments = ({ song }) => {
               name="comment_input"
               id="comment_input"
               className="comment_input"
+              autoComplete="off"
             />
             {/* <button type="submit" className="comment_submit_button">Post</button> */}
           </form>
