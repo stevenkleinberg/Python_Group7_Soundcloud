@@ -1,3 +1,7 @@
+:root {
+  --user-banner-url: url("https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg");
+}
+
 a {
   text-decoration: none;
   color: black;
