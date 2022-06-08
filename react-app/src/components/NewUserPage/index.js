@@ -6,6 +6,7 @@ import { editDetails } from "../../store/user-details";
 import ProtectedRoute from "../auth/ProtectedRoute";
 
 import "./NewUserPage.css";
+import UsersSongs from "./UsersSongs";
 
 const NewUsersPage = () => {
   const dispatch = useDispatch();
@@ -127,7 +128,7 @@ const NewUsersPage = () => {
       </div>
       <Switch>
         <ProtectedRoute path={"/users/:userId/songs"} exact={true}>
-          <p>test</p>
+          <UsersSongs />
         </ProtectedRoute>
         <ProtectedRoute path={"/users/:userId/playlists"} exact={true}>
           <p>123</p>
