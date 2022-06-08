@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -63,6 +63,7 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId">
             {/* <UserPage />  noels users page */}
+
             <NewUsersPage />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
