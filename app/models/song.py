@@ -14,8 +14,8 @@ class Song(db.Model):
     audio_url = db.Column(db.String, nullable=False)
     description = db.Column(db.Text)
     image_url = db.Column(db.String)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
     user = db.relationship("User", back_populates="songs")
     comments = db.relationship("Comment", back_populates="song", cascade="all, delete")
@@ -43,7 +43,7 @@ class Song(db.Model):
             'audio_url': self.audio_url,
             'description': self.description,
             'image_url': self.image_url,
-            'comments': sorted([comment.to_dict() for comment in self.comments], key=lambda comment: comment['updated_at'], reverse=True),
+            'comments': sorted([comment.to_dict() for comment in self.comments], key=lambda comment: comment['created_at'], reverse=False),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'likes': [like.id for like in self.likes]
