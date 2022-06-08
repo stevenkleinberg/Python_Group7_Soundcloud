@@ -93,7 +93,7 @@
   border: solid 2.3px lightslategray;
 }
 
-.profile-dropdown>div {
+.profile-dropdown > div {
   padding: 5px;
   font-size: large;
 }
@@ -106,6 +106,9 @@
 .navbar_search {
   width: 300px;
   height: 100%;
+}
+.navbar_search:focus {
+  outline: none;
 }
 
 .icon_style {

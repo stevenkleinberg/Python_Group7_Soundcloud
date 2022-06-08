@@ -91,6 +91,9 @@
 
 .user-badge {
   margin-top: 19px;
+  margin-bottom: 50px;
+  align-items: center;
+  gap: 20px;
 }
 
 .single_song_container_li {

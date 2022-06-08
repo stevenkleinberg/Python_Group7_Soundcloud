@@ -101,10 +101,11 @@
   line-height: 1.4;
   border: 1px solid #e5e5e5;
   color: #333;
+  cursor: pointer;
 }
 
-.comment_input:hover {
-  cursor: pointer;
+.comment_input:focus {
+  outline: none;
 }
 
 .user-badge .avatar {
