@@ -85,13 +85,13 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
             />
           </div>
           <div className="form_field">
-            <button className="login_form_btn" type="submit">
+            <button className="login_form_btn cursor-pointer" type="submit">
               Login
             </button>
           </div>
           <div className="form_field">
             <button
-              className="login_form_btn"
+              className="login_form_btn cursor-pointer"
               type="submit"
               id="demoUserBtn"
               onClick={demoLogin}

@@ -28,7 +28,6 @@ const SplashPage = () => {
 
   useEffect(() => {
     dispatch(getAllSongs());
-    // setArr()
   }, []);
 
   return (
@@ -37,7 +36,7 @@ const SplashPage = () => {
         <div className="imagetoptitle">
           <h1 className="soundcloudsplogo">SoundTown</h1>
           <div className="soundcloudbuttons">
-            <button className="signuptitle" onClick={openLoginModal}>
+            <button className="signuptitle cursor-pointer" onClick={openLoginModal}>
               Sign In
             </button>
             {showLoginModal && (
@@ -50,7 +49,7 @@ const SplashPage = () => {
                 </div>
               </Modal>
             )}
-            <button className="caccounttitle" onClick={openSignUpModal}>
+            <button className="caccounttitle cursor-pointer" onClick={openSignUpModal}>
               Create account
             </button>
             {showSignUpModal && (
@@ -91,7 +90,7 @@ const SplashPage = () => {
           Hear what’s trending for free in the SoundCloud community
         </div>
         <div className="splashpage_song_container flex-row">
-          <GridDisplay likedSongs={songs.slice(0, 8)} />
+          <GridDisplay likedSongs={songs?.slice(0, 8)} />
         </div>
       </div>
     </div>
