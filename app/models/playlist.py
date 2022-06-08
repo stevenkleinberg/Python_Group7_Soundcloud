@@ -13,8 +13,8 @@ class Playlist(db.Model):
     songs_order = db.Column(db.Text)
     image_url = db.Column(db.String)
     description = db.Column(db.String)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
     user = db.relationship("User", back_populates="playlists")
 

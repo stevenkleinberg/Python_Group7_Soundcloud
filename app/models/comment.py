@@ -10,8 +10,8 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     song_id = db.Column(db.Integer, db.ForeignKey("songs.id"), nullable=False)
     song_timestamp = db.Column(db.Time)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
     user = db.relationship("User", back_populates="comments")
     song = db.relationship("Song", back_populates="comments")
