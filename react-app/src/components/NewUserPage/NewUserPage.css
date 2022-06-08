@@ -65,9 +65,12 @@ input[type="file"] {
 
 .user_links_container {
   justify-content: space-between;
+  padding: 0px 0px 12px 0px;
+  border-bottom: 1px solid grey;
 }
 .user_inner_container {
   width: 1240px;
+  margin-top: 25px;
 }
 
 /* .user_banner_img_container:hover img {
