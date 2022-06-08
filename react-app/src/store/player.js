@@ -5,6 +5,7 @@ const QUEUE_SONG = "player/QUEUE_SONG";
 const QUEUE_PLAYLIST = "player/QUEUE_PLAYLIST";
 const QUEUE_ADVANCE = "player/QUEUE_ADVANCE";
 const HISTORY_STEPBACK = "player/HISTORY_STEPBACK";
+const CLEAR_PLAYER = "player/CLEAR_PLAYER";
 
 // adding song to play now and history
 export const loadSong = (songId) => ({
@@ -37,6 +38,12 @@ export const queueAdvance = () => ({
 // moving song from history into now playing and move now playing into queue
 export const historyStepBack = () => ({
   type: HISTORY_STEPBACK,
+});
+
+
+// clear player when user logs out
+export const clearPlayer = () => ({
+  type: CLEAR_PLAYER,
 });
 
 // State shape:
@@ -118,6 +125,8 @@ export default function reducer(state = initialState, action) {
       }
       return newState;
     }
+    case CLEAR_PLAYER:
+      return initialState;
     default:
       return state;
   }

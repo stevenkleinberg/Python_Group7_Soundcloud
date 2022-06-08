@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { clearPlayer } from '../store/player';
 import { logout } from '../store/session';
 import { NavLink } from "react-router-dom";
 
@@ -28,6 +29,7 @@ function UserProfile({ user }) {
     }, [showMenu]);
 
     const onLogout = () => {
+        dispatch(clearPlayer());
         dispatch(logout());
     };
 
