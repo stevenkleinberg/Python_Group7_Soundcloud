@@ -38,7 +38,6 @@ def new_detail():
             detail.updated_at = datetime.now()
         else:
             keys = list(request.files.to_dict().keys())
-
             if len(keys) == 2:
                 raw_avatar_url = request.files["avatar_url"]
                 raw_banner_url = request.files["banner_url"]

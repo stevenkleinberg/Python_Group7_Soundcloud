@@ -1,7 +1,6 @@
 import "./Avatar.css";
 
 const Avatar = ({ user }) => {
-  console.log(user);
   return (
     <a href={`/users/${user?.id}`}>
       <div className="avatar">
