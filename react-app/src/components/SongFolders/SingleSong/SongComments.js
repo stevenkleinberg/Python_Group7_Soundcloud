@@ -13,6 +13,10 @@ import { Modal } from "../../Context/Modal";
 import AddtoPlaylist from "../../PlaylistFolders/AddtoPlaylist";
 
 const SongComments = ({ song }) => {
+  console.log(
+    "🚀 ~ file: SongComments.js ~ line 16 ~ SongComments ~ song",
+    song
+  );
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
 
@@ -137,16 +141,13 @@ const SongComments = ({ song }) => {
               &#10084; Unlike
             </button>
           )}
-          <button
-            onClick={addToClipBoard}
-            className="cool_button"
-          >
+          <button onClick={addToClipBoard} className="cool_button">
             Copy Link
           </button>
           <div>
-          {clipboardMenu && (
-            <div className="dropdown-clipboard">Copied to clipboard</div>
-          )}
+            {clipboardMenu && (
+              <div className="dropdown-clipboard">Copied to clipboard</div>
+            )}
           </div>
           {sessionUser?.id === song?.user_id && (
             <button className="cool_button">
