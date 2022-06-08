@@ -12,10 +12,6 @@ const NewUsersPage = () => {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const history = useHistory();
-  console.log(
-    "🚀 ~ file: index.js ~ line 15 ~ NewUsersPage ~ history",
-    history
-  );
   const currentUser = useSelector((state) => state.session.user);
   const user = useSelector((state) => state.users[userId]);
   const userDetails = user?.user_detail;

@@ -13,10 +13,6 @@ import { Modal } from "../../Context/Modal";
 import AddtoPlaylist from "../../PlaylistFolders/AddtoPlaylist";
 
 const SongComments = ({ song }) => {
-  console.log(
-    "🚀 ~ file: SongComments.js ~ line 16 ~ SongComments ~ song",
-    song
-  );
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
 
