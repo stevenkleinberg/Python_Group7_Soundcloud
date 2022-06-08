@@ -17,6 +17,10 @@ a {
   flex-direction: column;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .Pl_S_banner {
   background-color: grey;
   height: 380px;

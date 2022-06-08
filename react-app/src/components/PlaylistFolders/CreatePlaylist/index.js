@@ -73,7 +73,11 @@ const NewPlaylistForm = ({ modalFunction }) => {
     // </div>
     <div className="flex-row AEP_conatiner">
       <div className="AEP_left">
-        <img src={urlImageFile} className="AEP_image" />
+        {urlImageFile !== '' ? (
+          <img src={urlImageFile} className="AEP_image" />
+        ) : (
+          <div className="AEP_placeholder" />
+        )}
         <label>Playlist Image: </label>
         <input type="file" accept="image/*" onChange={updateImageFile} />
       </div>
