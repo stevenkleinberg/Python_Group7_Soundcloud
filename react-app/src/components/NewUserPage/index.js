@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams, Switch, useHistory } from "react-router-dom";
+import {
+  NavLink,
+  useParams,
+  Switch,
+  useHistory,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { getAllUsers } from "../../store/user";
 import { editDetails } from "../../store/user-details";
 import ProtectedRoute from "../auth/ProtectedRoute";
 
 import "./NewUserPage.css";
+import UsersPlaylists from "./UsersPlaylists";
 import UsersSongs from "./UsersSongs";
 
 const NewUsersPage = () => {
@@ -19,7 +27,9 @@ const NewUsersPage = () => {
   const [loadingAvatar, setLoadingAvatar] = useState(false);
   const [loadingBanner, setLoadingBanner] = useState(false);
 
-  const [selected, setSelected] = useState("songs");
+  const [selected, setSelected] = useState(
+    history.location.pathname.split("/")[3]
+  );
 
   if (history.location.pathname === `/users/${userId}`) {
     history.push(`/users/${userId}/songs`);
@@ -126,19 +136,22 @@ const NewUsersPage = () => {
             </NavLink>
           </div>
           <div className="flex-row">
-            <button>Share</button>
-            <button>Edit</button>
+            <button className="cool_button">Share</button>
+            <button className="cool_button">Edit</button>
           </div>
         </div>
+        <Switch>
+          <ProtectedRoute path={"/users/:userId/songs"} exact={true}>
+            <UsersSongs />
+          </ProtectedRoute>
+          <ProtectedRoute path={"/users/:userId/playlists"} exact={true}>
+            <UsersPlaylists />
+          </ProtectedRoute>
+          <Route>
+            <Redirect to="/not-found" />
+          </Route>
+        </Switch>
       </div>
-      <Switch>
-        <ProtectedRoute path={"/users/:userId/songs"} exact={true}>
-          <UsersSongs />
-        </ProtectedRoute>
-        <ProtectedRoute path={"/users/:userId/playlists"} exact={true}>
-          <p>123</p>
-        </ProtectedRoute>
-      </Switch>
     </div>
   );
 };
