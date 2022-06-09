@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createSong } from "../../../store/song";
 import "./uploadSong.css";
 
-const UploadSong = () => {
+const UploadSong = ({ setShowUploadModal }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,6 +34,7 @@ const UploadSong = () => {
       } else {
         setAudioLoading(false);
         history.push(`/`);
+        setShowUploadModal(false);
       }
     } else {
       setAudioLoading(false);
@@ -51,63 +52,60 @@ const UploadSong = () => {
   };
 
   return (
-    <div className="container">
+    <div className="upload-form-container">
       <div className="song-box">
-        <div className="left"></div>
-        <div className="right">
-          <h2>upload</h2>
-          <form onSubmit={handleSubmit} id="upload-song">
-            <div>
-              {errors.map((error, ind) => (
-                <div className="error_message" key={ind}>
-                  {error}
-                </div>
-              ))}
-            </div>
-            <input
-              className="field"
-              type="text"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder="Title"
-              name="title"
-              id="title"
-              required
-            />
-            <input
-              className="field"
-              type="file"
-              accept="audio/*"
-              onChange={updateAudioUrl}
-              name="audio_url"
-              id="audio_url"
-              required
-            />
+        <h2>upload</h2>
+        <form onSubmit={handleSubmit} id="upload-song" className="flex-column">
+          <div>
+            {errors.map((error, ind) => (
+              <div className="error_message" key={ind}>
+                {error}
+              </div>
+            ))}
+          </div>
+          <input
+            className="field"
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            placeholder="Title"
+            name="title"
+            id="title"
+            required
+          />
+          <input
+            className="field"
+            type="file"
+            accept="audio/*"
+            onChange={updateAudioUrl}
+            name="audio_url"
+            id="audio_url"
+            required
+          />
 
-            <textarea
-              className="field"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description"
-              name="description"
-              id="description"
-            />
+          <textarea
+            className="field"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
+            name="description"
+            id="description"
+          />
 
-            <input
-              className="field"
-              type="file"
-              accept="image/*"
-              onChange={updateImageUrl}
-              name="image_url"
-              id="image_url"
-            />
+          <input
+            className="field"
+            type="file"
+            accept="image/*"
+            onChange={updateImageUrl}
+            name="image_url"
+            id="image_url"
+          />
 
-            <button className="btn" type="submit">
-              Submit
-            </button>
-            {audioLoading && <p>Loading...</p>}
-          </form>
-        </div>
+          <button className="btn" type="submit">
+            Submit
+          </button>
+          {audioLoading && <p>Loading...</p>}
+        </form>
       </div>
     </div>
   );
