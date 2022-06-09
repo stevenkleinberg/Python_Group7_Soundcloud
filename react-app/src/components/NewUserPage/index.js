@@ -34,7 +34,7 @@ const NewUsersPage = () => {
   if (history.location.pathname === `/users/${userId}`) {
     history.push(`/users/${userId}/songs`);
   }
-
+  // document.body.scrollHeight
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch, loadingAvatar, loadingBanner]);
@@ -140,17 +140,33 @@ const NewUsersPage = () => {
             <button className="cool_button">Edit</button>
           </div>
         </div>
-        <Switch>
-          <ProtectedRoute path={"/users/:userId/songs"} exact={true}>
-            <UsersSongs />
-          </ProtectedRoute>
-          <ProtectedRoute path={"/users/:userId/playlists"} exact={true}>
-            <UsersPlaylists />
-          </ProtectedRoute>
-          <Route>
+        <div className="flex-row user_page_inner_feed_container">
+          <Switch>
+            <ProtectedRoute path={"/users/:userId/songs"} exact={true}>
+              <UsersSongs />
+            </ProtectedRoute>
+            <ProtectedRoute path={"/users/:userId/playlists"} exact={true}>
+              <UsersPlaylists />
+            </ProtectedRoute>
+            {/* <Route>
             <Redirect to="/not-found" />
-          </Route>
-        </Switch>
+          </Route> */}
+          </Switch>
+          <div className="user_side_feed_container">
+            <div className="right_stick_feed flex_column">
+              <div className="flex-row">
+                <div className="flex-column user_feed_like_box">
+                  <p>Liked</p>
+                  <p>{user?.like_amount}</p>
+                </div>
+                <div className="flex-column user_feed_comment_box">
+                  <p>Comments</p>
+                  <p>{user?.comment_amount}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

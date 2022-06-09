@@ -50,5 +50,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            "user_detail":self.user_detail.to_dict()
+            "user_detail":self.user_detail.to_dict(),
+            "comment_amount":len(self.comments),
+            "like_amount":len(self.likes)
         }
