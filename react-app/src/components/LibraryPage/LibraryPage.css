@@ -1,6 +1,7 @@
 body {
-  background-color:rgb(242,242,242);
+  background-color: rgb(242, 242, 242);
 }
+
 .library_links {
   margin: 0px 10px 0px 20px;
   font-size: 25px;
@@ -10,10 +11,25 @@ body {
 
 .library_links_container {
   /* border-bottom: 1.7px solid grey; */
-  margin: 0px 10px 0px 10px;
-  width:1300px;
-
+  align-self: flex-start;
+  margin: 0 200px;
+  padding: 10px 0 10px 10px;
+  /* width: 1300px; */
+  position: sticky;
+  top: 66px;
+  background-color: white;
+  z-index: 3;
+  border-bottom: 1px solid var(--color-border);
 }
+
+.library_container {
+  position: relative;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  margin: 0px 200px var(--page-container-bottom-margin) 200px;
+  padding: 0px 25px 0px 25px;
+}
+
 .library_links:hover {
   border-bottom: 1.7px solid #f50;
   color: #f50;
@@ -24,17 +40,11 @@ body {
   color: #f50;
 }
 
-.library_container{
-  align-items: center;
-  background-color: rgb(255,255,255);
-  margin: 0px 200px 0px 200px;
-  padding: 0px 25px 0px 25px;
+.inner_library_container {
+  width: 100%;
+  position: relative;
 }
 
-.inner_library_container{
-  width:100%;
-}
-
-.songs_library_container{
+.songs_library_container {
   margin-top: 15px;
 }

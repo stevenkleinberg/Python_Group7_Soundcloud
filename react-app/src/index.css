@@ -1,3 +1,10 @@
+* {
+  --page-container-bottom-margin: 75px;
+  --color-border-dark: #333;
+  --color-border: #e5e5e5;
+  --color-border-light: #f2f2f2;
+}
+
 :root {
   --user-banner-url: url("https://i.ytimg.com/vi/zob-2dpRtH0/maxresdefault.jpg");
 }

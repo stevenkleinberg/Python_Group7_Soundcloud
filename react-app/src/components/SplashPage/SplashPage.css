@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 0px 75px 60px 75px;
+  margin: 0px 75px var(--page-container-bottom-margin) 75px;
   /* height: 850px; */
 }
 
@@ -19,8 +19,7 @@
   padding-top: 50px;
   background-color: orange;
   /* background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists@2x-00444712.jpg); */
-  background: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg)
-    50% / cover no-repeat;
+  background: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg) 50% / cover no-repeat;
 }
 
 .imagetoptitle {
@@ -80,6 +79,7 @@
   font-weight: bolder;
   margin: 15px 0px;
 }
+
 .imagebox_inner_para {
   font-size: 20px;
   text-align: center;
@@ -93,6 +93,7 @@
 .splashpage_title_songs_container {
   align-items: center;
 }
+
 .splashpage_inner_title_container {
   margin: 10px 0px;
   font-size: 25px;

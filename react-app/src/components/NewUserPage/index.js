@@ -109,37 +109,37 @@ const NewUsersPage = () => {
           )}
         </div>
       </div>
-      <div className="inner_library_container user_inner_container flex-column">
-        <div className="flex-row user_links_container">
-          <div className="flex-row">
-            <NavLink
-              to={`/users/${userId}/songs`}
-              className={
-                selected === "songs"
-                  ? `library_links library_links_selected`
-                  : `library_links`
-              }
-              onClick={() => setSelected("songs")}
-            >
-              Songs
-            </NavLink>
-            <NavLink
-              to={`/users/${userId}/playlists`}
-              className={
-                selected === "playlists"
-                  ? `library_links library_links_selected`
-                  : `library_links`
-              }
-              onClick={() => setSelected("playlists")}
-            >
-              Playlists
-            </NavLink>
-          </div>
-          <div className="flex-row">
-            <button className="cool_button">Share</button>
-            <button className="cool_button">Edit</button>
-          </div>
+      <div className="flex-row user_links_container">
+        <div className="flex-row">
+          <NavLink
+            to={`/users/${userId}/songs`}
+            className={
+              selected === "songs"
+                ? `library_links library_links_selected`
+                : `library_links`
+            }
+            onClick={() => setSelected("songs")}
+          >
+            Songs
+          </NavLink>
+          <NavLink
+            to={`/users/${userId}/playlists`}
+            className={
+              selected === "playlists"
+                ? `library_links library_links_selected`
+                : `library_links`
+            }
+            onClick={() => setSelected("playlists")}
+          >
+            Playlists
+          </NavLink>
         </div>
+        <div className="flex-row">
+          <button className="cool_button">Share</button>
+          <button className="cool_button">Edit</button>
+        </div>
+      </div>
+      <div className="inner_library_container user_inner_container flex-column">
         <div className="flex-row user_page_inner_feed_container">
           <Switch>
             <ProtectedRoute path={"/users/:userId/songs"} exact={true}>
