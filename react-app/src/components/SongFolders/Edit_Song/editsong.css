@@ -1,25 +1,16 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
-}
-
-
-
-.container {
+.upload-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 50px 120px;
-    height: 90vh;
-    padding-bottom: 100px;
-    margin: 50px 50px 50px 50px;
+    padding: 10px 50px 50px;
+    /* height: 90vh; */
+    /* padding-bottom: 100px; */
     background: url("https://c4.wallpaperflare.com/wallpaper/820/705/307/rezz-edm-music-djs-dubstep-hd-wallpaper-preview.jpg") no-repeat center;
     background-size: cover;
+    border-radius: 5%;
 }
 
-.container:after {
+.upload-form-container:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -49,7 +40,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px 40px;
+    /* padding: 25px 40px; */
 }
 
 h2 {
@@ -73,7 +64,7 @@ h2:after {
 }
 
 .field {
-    width: 100%;
+    /* width: 100%; */
     border: 2px solid rgba(0, 0, 0, 0);
     outline: none;
     background-color: rgba(230, 230, 230, 0.6);
@@ -92,7 +83,7 @@ textarea {
 }
 
 .btn {
-    width: 100%;
+    /* width: 100%; */
     padding: 0.5rem 1rem;
     background-color: #2ecc71;
     color: #fff;

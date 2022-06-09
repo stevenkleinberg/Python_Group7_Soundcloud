@@ -7,6 +7,7 @@ import "./NavBar.css";
 import UserProfile from "./UserProfile";
 import LoginForm from "./auth/LoginForm";
 import SignUpForm from "./auth/SignUpForm"
+import UploadSong from "./SongFolders/Upload_Song/Uploadsong";
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const rawSongs = useSelector((state) => state.songs);
@@ -16,7 +17,7 @@ const NavBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
-
+  const [showUploadModal, setShowUploadModal] = useState(false);
 
   useEffect(() => {
     if (searchInput.length) {
@@ -70,8 +71,7 @@ const NavBar = () => {
         exact={true}
         activeClassName="active"
       >
-        {" "}
-        Library{" "}
+        Library
       </NavLink>
       <div className="flex-row navbar_input_container">
         <div>
@@ -108,15 +108,25 @@ const NavBar = () => {
         </div>
       </div>
 
-      <NavLink
+      {/* <NavLink
         className="navlinks"
         to="/upload-song"
         exact={true}
         activeClassName="active"
       >
-        {" "}
-        Upload{" "}
-      </NavLink>
+        Upload
+      </NavLink> */}
+
+      <div onClick={() => setShowUploadModal(true)} className="navlinks">
+        Upload
+      </div>
+      {showUploadModal && (
+        <Modal onClose={() => setShowUploadModal(false)}>
+          {/* <div className="upload-modal-container"> */}
+          <UploadSong setShowUploadModal={setShowUploadModal} />
+          {/* </div> */}
+        </Modal>
+      )}
       <UserProfile user={sessionUser} />
     </nav>
   );
@@ -126,8 +136,7 @@ const NavBar = () => {
         <header>
           <nav className="navbar">
             <NavLink className="navlinks" exact to="/">
-              {" "}
-              Home{" "}
+              Home
             </NavLink>
             <div onClick={openLoginModal} className="navlinks">
               Log In
@@ -137,18 +146,18 @@ const NavBar = () => {
             </div>
           </nav>
           {showLoginModal && (
-          <Modal onClose={() => setShowLoginModal(false)}>
-            <div className="login_modal_container">
-            <LoginForm setShowLoginModal={setShowLoginModal} />
-            </div>
-          </Modal>
+            <Modal onClose={() => setShowLoginModal(false)}>
+              <div className="login_modal_container">
+                <LoginForm setShowLoginModal={setShowLoginModal} />
+              </div>
+            </Modal>
           )}
           {showSignUpModal && (
-          <Modal onClose={() => setShowSignUpModal(false)}>
-            <div className="login_modal_container">
-            <SignUpForm setShowSignUpModal={setShowSignUpModal} />
-            </div>
-          </Modal>
+            <Modal onClose={() => setShowSignUpModal(false)}>
+              <div className="login_modal_container">
+                <SignUpForm setShowSignUpModal={setShowSignUpModal} />
+              </div>
+            </Modal>
           )}
         </header>
       ) : (
