@@ -56,13 +56,6 @@ const UploadSong = ({ setShowUploadModal }) => {
       <div className="song-box">
         <h2>upload</h2>
         <form onSubmit={handleSubmit} id="upload-song" className="flex-column">
-          <div>
-            {errors.map((error, ind) => (
-              <div className="error_message" key={ind}>
-                {error}
-              </div>
-            ))}
-          </div>
           <input
             className="field"
             type="text"
@@ -99,7 +92,16 @@ const UploadSong = ({ setShowUploadModal }) => {
             onChange={updateImageUrl}
             name="image_url"
             id="image_url"
+            required
           />
+
+          <div>
+            {errors?.map((error, ind) => (
+              <div className="error_message" key={ind}>
+                {error}
+              </div>
+            ))}
+          </div>
 
           <button className="btn" type="submit">
             Submit
