@@ -5,6 +5,7 @@ import { likeSong, unlikeSong } from "../../store/song";
 import { useDispatch, useSelector } from "react-redux";
 import SongTileActions from "./SongTileActions";
 import "./songTile.css";
+import { getAllUsers } from "../../store/user";
 
 const SongTile = ({ song }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const SongTile = ({ song }) => {
     formData.append("user_id", user?.id);
     formData.append("song_id", song.id);
     const likedSong = await dispatch(likeSong(formData));
+    dispatch(getAllUsers());
   };
   const handle_UnLikeButtonClick = async (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ const SongTile = ({ song }) => {
     formData.append("user_id", user?.id);
     formData.append("song_id", song.id);
     const unlikedSong = await dispatch(unlikeSong(formData));
+    dispatch(getAllUsers());
   };
 
   return (

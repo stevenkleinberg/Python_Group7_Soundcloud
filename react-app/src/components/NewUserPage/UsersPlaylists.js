@@ -12,7 +12,7 @@ const UsersPlaylists = () => {
     (playlist) => +playlist?.user_id === +userId
   );
   return (
-    <div className="playlist_tile_container flex-row">
+    <div className="playlist_tile_container flex-row user_page_left_conatiner">
       {userPlaylists.map((playlist) => (
         <PlaylistTile key={playlist.id} playlist={playlist} />
       ))}

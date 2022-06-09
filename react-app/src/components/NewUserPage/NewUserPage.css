@@ -76,3 +76,30 @@ input[type="file"] {
 /* .user_banner_img_container:hover img {
   display: block;
 } */
+
+.user_side_feed_container {
+  border-left: 1px solid gray;
+  padding: 5px 45px 5px 45px;
+}
+
+.user_page_left_conatiner {
+  width: 900px;
+}
+
+.user_page_inner_feed_container {
+  margin-top: 25px;
+}
+
+.right_stick_feed {
+  position: sticky;
+  top: 120px;
+}
+
+.user_feed_like_box {
+  padding-right: 30px;
+  border-right: 1px solid gray;
+}
+
+.user_feed_comment_box {
+  padding-left: 30px;
+}

@@ -15,7 +15,7 @@ const UsersSongs = () => {
     }
   });
   return (
-    <div className="songs_library_container">
+    <div className="songs_library_container user_page_left_conatiner">
       <GridDisplay likedSongs={userSongs} />
     </div>
   );
