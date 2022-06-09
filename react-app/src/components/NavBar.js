@@ -139,6 +139,10 @@ const NavBar = () => {
                   playlistsAndSongs
                     ?.filter((playlistOrSong) =>
                       playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
+                    ).length ?
+                    playlistsAndSongs
+                    ?.filter((playlistOrSong) =>
+                      playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
                     )
                   .map((playlistOrSong) =>
                     playlistOrSong.songs?
@@ -171,6 +175,18 @@ const NavBar = () => {
                       </a>
                     </li>
                   )
+                  ) :
+                  (
+                    <>
+                    <li className="flex-row search_results_li">
+
+                      <a
+                        className="search_results_a"
+                      >
+                        Nothing Found
+                      </a>
+                    </li>
+                    </>
                   )
 
                 }
