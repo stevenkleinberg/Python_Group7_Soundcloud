@@ -3,11 +3,12 @@
   --color-border-dark: #333;
   --color-border: #e5e5e5;
   --color-border-light: #f2f2f2;
+  --color-primary: #f50;
   --navbar-height: 66px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 :root {
