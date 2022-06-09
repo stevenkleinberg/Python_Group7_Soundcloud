@@ -5,7 +5,7 @@ body {
 .homepage_container {
   background-color: white;
   display: flex;
-  margin: 0px 75px 75px 75px;
+  margin: 0px 75px var(--page-container-bottom-margin) 75px;
 }
 
 .sidebar_container {
