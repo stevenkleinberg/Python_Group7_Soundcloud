@@ -91,7 +91,7 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
             <div className="form_field">
               <input
                 placeholder="email"
-                className="field "
+                className="field"
                 type="text"
                 name="email"
                 onChange={updateEmail}
@@ -102,7 +102,7 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
             <div className="form_field">
               <input
                 placeholder="password"
-                className="field "
+                className="field"
                 type="password"
                 name="password"
                 onChange={updatePassword}
@@ -112,7 +112,7 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
             </div>
             <div className="form_field">
               <input
-                className="field "
+                className="field"
                 type="password"
                 name="repeat_password"
                 onChange={updateRepeatPassword}
@@ -126,7 +126,7 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
                 <div key={ind} className="error-text">{error}</div>
               ))}
             </div>
-            <div className="form_field">
+            <div className="form_button flex-row">
               <button className="login_form_btn cursor-pointer" type="submit">
                 Sign Up
               </button>

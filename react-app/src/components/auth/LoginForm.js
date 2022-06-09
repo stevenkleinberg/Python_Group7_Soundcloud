@@ -71,7 +71,7 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
   return (
     <div className="auth_contaner flex-row">
       <div className="auth_form_wrapper">
-        <form className="login_form flex-column " onSubmit={onLogin}>
+        <form className="login_form flex-column" onSubmit={onLogin}>
           <h1>Log In</h1>
           <div className="form_field">
             <input
@@ -100,12 +100,12 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
               <div key={ind} className="error-text" >{error}</div>
             ))}
           </div>
-          <div className="form_field">
+          <div className="form_button flex-row">
             <button className="login_form_btn cursor-pointer" type="submit">
               Login
             </button>
           </div>
-          <div className="form_field">
+          <div className="form_button flex-row">
             <button
               className="login_form_btn cursor-pointer"
               type="submit"
