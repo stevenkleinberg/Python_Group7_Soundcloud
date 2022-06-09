@@ -1,4 +1,5 @@
-.upload-form-container {
+.upload-form-container,
+.edit-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +11,8 @@
     border-radius: 5%;
 }
 
-.upload-form-container:after {
+.upload-form-container:after,
+.edit-form-container:after {
     content: '';
     position: absolute;
     width: 100%;

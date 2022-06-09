@@ -63,3 +63,8 @@ a {
   border: 2.2px solid #f50;
   color: #f50;
 }
+
+.cool_div {
+  font-size: 13.3333px;
+  padding: 5px 10px 3px;
+}

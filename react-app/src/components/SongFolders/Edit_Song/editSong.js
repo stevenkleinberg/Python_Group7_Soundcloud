@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { deleteSong, editSong } from "../../../store/song";
 import "./editsong.css";
 
-const EditSongForm = () => {
+const EditSongForm = ({ setShowEditSongModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
@@ -37,6 +37,7 @@ const EditSongForm = () => {
       } else {
         setAudioLoading(false);
         history.push(`/songs/${+id}`);
+        setShowEditSongModal(false);
       }
     } else {
       setAudioLoading(false);
@@ -63,10 +64,10 @@ const EditSongForm = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="edit-form-container">
         <div className="song-box">
           <h2>edit details</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id="edit-song" className="flex-column">
             <div>
               {errors.map((error, ind) => (
                 <div className="error_message" key={ind}>

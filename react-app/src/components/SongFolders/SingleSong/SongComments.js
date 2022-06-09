@@ -11,6 +11,7 @@ import { loadSong, queueSong } from "../../../store/player";
 
 import { Modal } from "../../Context/Modal";
 import AddtoPlaylist from "../../PlaylistFolders/AddtoPlaylist";
+import EditSongForm from "../Edit_Song/editSong";
 
 const SongComments = ({ song }) => {
   const [errors, setErrors] = useState([]);
@@ -23,6 +24,7 @@ const SongComments = ({ song }) => {
   const playingId = useSelector((state) => state.player.playingId);
   const dispatch = useDispatch();
   const [clipboardMenu, setClipboardMenu] = useState(false);
+  const [showEditSongModal, setShowEditSongModal] = useState(false);
 
   const showMoreDropdownFnc = () => {
     if (showMoreDropdown) return;
@@ -147,15 +149,25 @@ const SongComments = ({ song }) => {
             )}
           </div>
           {sessionUser?.id === song?.user_id && (
-            <button className="cool_button">
-              <NavLink
-                to={`/songs/${+song.id}/edit`}
-                exact={true}
-                activeClassName="active"
-              >
+            // <button className="cool_button">
+            //   <NavLink
+            //     to={`/songs/${+song.id}/edit`}
+            //     exact={true}
+            //     activeClassName="active"
+            //   >
+            //     Edit
+            //   </NavLink>
+            // </button>
+            <>
+              <div onClick={() => setShowEditSongModal(true)} className="cool_button cool_div">
                 Edit
-              </NavLink>
-            </button>
+              </div>
+              {showEditSongModal && (
+                <Modal onClose={() => setShowEditSongModal(false)}>
+                  <EditSongForm setShowEditSongModal={setShowEditSongModal} />
+                </Modal>
+              )}
+            </>
           )}
           <div className="flex-row">
             <button onClick={showMoreDropdownFnc} className="cool_button">
