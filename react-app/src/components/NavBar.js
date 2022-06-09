@@ -10,7 +10,10 @@ import SignUpForm from "./auth/SignUpForm"
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const rawSongs = useSelector((state) => state.songs);
+  const rawPlaylists = useSelector((state) => state.playlists);
   const songs = Object.values(rawSongs);
+  const playlists = Object.values(rawPlaylists);
+  const playlistsAndSongs = songs.concat(playlists);
 
   const [showResults, setShowResults] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -93,24 +96,84 @@ const NavBar = () => {
           {showResults && (
             <div className="search_results">
               <ul>
-                {songs
-                  ?.filter((song) =>
-                    song.title.toLowerCase().includes(searchInput.toLowerCase())
-                  )
-                  .map((song) => (
-                    <li key={song.id} className="flex-row search_results_li">
+                {playlistsAndSongs
+                  ?.filter((playlistOrSong) =>
+                    playlistOrSong.title.toLowerCase().startsWith(searchInput.toLowerCase())
+                  ).length ?
+                  playlistsAndSongs
+                    ?.filter((playlistOrSong) =>
+                      playlistOrSong.title.toLowerCase().startsWith(searchInput.toLowerCase())
+                    )
+                  .map((playlistOrSong) =>
+                    playlistOrSong.songs?
+                  (
+                    <li key={playlistOrSong.id} className="flex-row search_results_li">
                       <img
                         className="search_results_img"
-                        src={song.image_url}
+                        src={playlistOrSong.image_url}
                       />
                       <a
-                        href={`/songs/${song.id}`}
+                        href={`/playlists/${playlistOrSong.id}`}
                         className="search_results_a"
                       >
-                        {song.title}
+                        {playlistOrSong.title}
                       </a>
                     </li>
-                  ))}
+                  ):
+                  rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
+                  (
+                    <li key={playlistOrSong.id} className="flex-row search_results_li">
+                      <img
+                        className="search_results_img"
+                        src={playlistOrSong.image_url}
+                      />
+                      <a
+                        href={`/songs/${playlistOrSong.id}`}
+                        className="search_results_a"
+                      >
+                        {playlistOrSong.title}
+                      </a>
+                    </li>
+                  )
+                  ):
+                  playlistsAndSongs
+                    ?.filter((playlistOrSong) =>
+                      playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
+                    )
+                  .map((playlistOrSong) =>
+                    playlistOrSong.songs?
+                  (
+                    <li key={playlistOrSong.id} className="flex-row search_results_li">
+                      <img
+                        className="search_results_img"
+                        src={playlistOrSong.image_url}
+                      />
+                      <a
+                        href={`/playlists/${playlistOrSong.id}`}
+                        className="search_results_a"
+                      >
+                        {playlistOrSong.title}
+                      </a>
+                    </li>
+                  ):
+                  rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
+                  (
+                    <li key={playlistOrSong.id} className="flex-row search_results_li">
+                      <img
+                        className="search_results_img"
+                        src={playlistOrSong.image_url}
+                      />
+                      <a
+                        href={`/songs/${playlistOrSong.id}`}
+                        className="search_results_a"
+                      >
+                        {playlistOrSong.title}
+                      </a>
+                    </li>
+                  )
+                  )
+
+                }
               </ul>
             </div>
           )}
@@ -146,18 +209,18 @@ const NavBar = () => {
             </div>
           </nav>
           {showLoginModal && (
-          <Modal onClose={() => setShowLoginModal(false)}>
-            <div className="login_modal_container">
-            <LoginForm setShowLoginModal={setShowLoginModal} />
-            </div>
-          </Modal>
+            <Modal onClose={() => setShowLoginModal(false)}>
+              <div className="login_modal_container">
+                <LoginForm setShowLoginModal={setShowLoginModal} />
+              </div>
+            </Modal>
           )}
           {showSignUpModal && (
-          <Modal onClose={() => setShowSignUpModal(false)}>
-            <div className="login_modal_container">
-            <SignUpForm setShowSignUpModal={setShowSignUpModal} />
-            </div>
-          </Modal>
+            <Modal onClose={() => setShowSignUpModal(false)}>
+              <div className="login_modal_container">
+                <SignUpForm setShowSignUpModal={setShowSignUpModal} />
+              </div>
+            </Modal>
           )}
         </header>
       ) : (
