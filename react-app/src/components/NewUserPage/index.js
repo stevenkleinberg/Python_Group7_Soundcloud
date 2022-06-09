@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams, Switch, useHistory } from "react-router-dom";
+import {
+  NavLink,
+  useParams,
+  Switch,
+  useHistory,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { getAllUsers } from "../../store/user";
 import { editDetails } from "../../store/user-details";
 import ProtectedRoute from "../auth/ProtectedRoute";
@@ -140,6 +147,9 @@ const NewUsersPage = () => {
           <ProtectedRoute path={"/users/:userId/playlists"} exact={true}>
             <UsersPlaylists />
           </ProtectedRoute>
+          <Route>
+            <Redirect to="/not-found" />
+          </Route>
         </Switch>
       </div>
     </div>
