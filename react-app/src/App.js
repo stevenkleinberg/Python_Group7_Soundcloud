@@ -18,6 +18,7 @@ import { ModalProvider } from "./components/Context/Modal";
 import { getAllDetails } from "./store/user-details";
 import { getAllUsers } from "./store/user";
 import NewUsersPage from "./components/NewUserPage";
+import ExplorePage from "./components/explorePage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -73,6 +74,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/library">
             <LibraryPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/explore">
+            <ExplorePage />
           </ProtectedRoute>
           <Route>
             <p>not found</p>

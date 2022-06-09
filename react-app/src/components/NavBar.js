@@ -73,6 +73,15 @@ const NavBar = () => {
         {" "}
         Library{" "}
       </NavLink>
+      <NavLink
+        className="navlinks"
+        to="/explore/songs"
+        exact={true}
+        activeClassName="active"
+      >
+        {" "}
+        Explore{" "}
+      </NavLink>
       <div className="flex-row navbar_input_container">
         <div>
           <input
