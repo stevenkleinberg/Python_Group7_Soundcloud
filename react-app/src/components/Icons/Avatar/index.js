@@ -1,8 +1,9 @@
+import { NavLink } from "react-router-dom";
 import "./Avatar.css";
 
 const Avatar = ({ user }) => {
   return (
-    <a href={`/users/${user?.id}`}>
+    <NavLink to={`/users/${user?.id}`}>
       <div className="avatar">
         {user?.avatar_url ? (
           <img src={user?.avatar_url} alt={user?.display_name} />
@@ -10,7 +11,7 @@ const Avatar = ({ user }) => {
           <div className="avatar-placeholder" />
         )}
       </div>
-    </a>
+    </NavLink>
   );
 };
 
