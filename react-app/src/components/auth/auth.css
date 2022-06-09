@@ -1,5 +1,5 @@
 .login_modal_container {
-  width: 700px;
+  width: 450px;
 }
 
 .auth_contaner {
@@ -12,7 +12,7 @@
 .login_form {
   margin-top: 15px;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   width: 100%;
 }
 
@@ -25,19 +25,26 @@
 
 .auth_form_wrapper {
   margin: 25px 0;
-  width: 33%;
-  background-color: white;
   width: 90%;
   height: 90%;
+  background-color: white;
 }
 
 .form_field {
   margin-top: 5px;
-  width: 33%;
+  width: 300px;
+}
+
+.form_field .field {
+  width: 100%;
+}
+
+.form_button {
+  justify-content: center;
 }
 
 .login_form_btn {
-  width: 100%;
+  width: 160px;
   height: 42px;
   margin-bottom: 20px;
   font-size: 20px;

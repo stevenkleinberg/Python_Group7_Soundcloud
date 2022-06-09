@@ -16,6 +16,20 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
 
   const dispatch = useDispatch();
 
+  const formatError = (errorText) => {
+    if (errorText.includes(" : ")) {
+      let array = errorText.split(" : This field");
+      let firstWord = array[0].split("");
+      firstWord[0] = firstWord[0].toUpperCase();
+      firstWord = firstWord.join("");
+      return `${firstWord}${array[1]}`;
+    } else if (errorText.includes("csrf")) {
+      return 'An error occurred. Please try again.';
+    } else {
+      return errorText;
+    }
+  };
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -74,34 +88,31 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
         <div className="auth_form_wrapper">
           <form className="signup_form flex-column " onSubmit={onSignUp}>
             <h1>Sign Up</h1>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div>
             <div className="form_field">
               <input
                 placeholder="email"
-                className="field "
+                className="field"
                 type="text"
                 name="email"
                 onChange={updateEmail}
                 value={email}
+                required
               ></input>
             </div>
             <div className="form_field">
               <input
                 placeholder="password"
-                className="field "
+                className="field"
                 type="password"
                 name="password"
                 onChange={updatePassword}
                 value={password}
+                required
               ></input>
             </div>
             <div className="form_field">
               <input
-                className="field "
+                className="field"
                 type="password"
                 name="repeat_password"
                 onChange={updateRepeatPassword}
@@ -110,7 +121,12 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
                 placeholder="confirm password"
               ></input>
             </div>
-            <div className="form_field">
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind} className="error-text">{error}</div>
+              ))}
+            </div>
+            <div className="form_button flex-row">
               <button className="login_form_btn cursor-pointer" type="submit">
                 Sign Up
               </button>

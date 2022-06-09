@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .song_like import song_likes
 from .playlist_like import playlist_likes
+from .user_detail import UserDetail
 from datetime import datetime
 
 
@@ -45,12 +46,14 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        user_detail = UserDetail.query.filter(UserDetail.user_id == self.id).first()
+
         return {
             'id': self.id,
             'email': self.email,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            "user_detail":self.user_detail.to_dict(),
+            "user_detail": user_detail.to_dict(),
             "comment_amount":len(self.comments),
             "like_amount":len(self.likes)
         }

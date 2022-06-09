@@ -3,7 +3,11 @@
   --color-border-dark: #333;
   --color-border: #e5e5e5;
   --color-border-light: #f2f2f2;
+<<<<<<< HEAD
   --color-primary: #f50;
+=======
+  --navbar-height: 66px;
+>>>>>>> main
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -33,6 +37,14 @@ a {
   cursor: pointer;
 }
 
+.error-text {
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .Pl_S_banner {
   background-color: grey;
   height: 380px;
@@ -46,10 +58,6 @@ a {
   font-size: 20px;
   align-self: center;
   justify-self: center;
-}
-
-.hidden {
-  visibility: hidden;
 }
 
 .cool_button {
