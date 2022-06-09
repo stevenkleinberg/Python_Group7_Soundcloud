@@ -32,6 +32,14 @@ a {
   cursor: pointer;
 }
 
+.error-text {
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .Pl_S_banner {
   background-color: grey;
   height: 380px;
@@ -45,10 +53,6 @@ a {
   font-size: 20px;
   align-self: center;
   justify-self: center;
-}
-
-.hidden {
-  visibility: hidden;
 }
 
 .cool_button {
