@@ -11,6 +11,20 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+  const formatError = (errorText) => {
+    if (errorText.includes(" : ")) {
+      let array = errorText.split(" : This field");
+      let firstWord = array[0].split("");
+      firstWord[0] = firstWord[0].toUpperCase();
+      firstWord = firstWord.join("");
+      return `${firstWord}${array[1]}`;
+    } else if (errorText.includes("csrf")) {
+      return 'An error occurred. Please try again.';
+    } else {
+      return errorText;
+    }
+  };
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -57,13 +71,8 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
   return (
     <div className="auth_contaner flex-row">
       <div className="auth_form_wrapper">
-        <form className="login_form flex-column " onSubmit={onLogin}>
+        <form className="login_form flex-column" onSubmit={onLogin}>
           <h1>Log In</h1>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <div className="form_field">
             <input
               className="field"
@@ -72,6 +81,7 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
               placeholder="Email"
               value={email}
               onChange={updateEmail}
+              required
             />
           </div>
           <div className="form_field">
@@ -82,14 +92,20 @@ const LoginForm = ({ setShowLoginModal, setShowSignUpModal }) => {
               placeholder="Password"
               value={password}
               onChange={updatePassword}
+              required
             />
           </div>
-          <div className="form_field">
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind} className="error-text" >{error}</div>
+            ))}
+          </div>
+          <div className="form_button flex-row">
             <button className="login_form_btn cursor-pointer" type="submit">
               Login
             </button>
           </div>
-          <div className="form_field">
+          <div className="form_button flex-row">
             <button
               className="login_form_btn cursor-pointer"
               type="submit"

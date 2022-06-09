@@ -77,7 +77,7 @@ input[type="file"] {
   width: 1240px;
   padding-top: 20px;
   position: sticky;
-  top: 66px;
+  top: var(--navbar-height);
 
 }
 
