@@ -1,14 +1,26 @@
+.modal-form {
+    margin: 25px;
+    position: relative;
+}
+
+.form-header {
+    padding: 20px;
+}
+
+h2.active {
+    text-decoration: underline;
+    color: var(--color-primary);
+    font-size: 24px;
+    font-family: Interstate, "Lucida Grande", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .upload-form-container,
 .edit-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 50px 50px;
-    /* height: 90vh; */
-    /* padding-bottom: 100px; */
-    background: url("https://c4.wallpaperflare.com/wallpaper/820/705/307/rezz-edm-music-djs-dubstep-hd-wallpaper-preview.jpg") no-repeat center;
-    background-size: cover;
+    gap: 20px;
+    padding: 20px;
+    width: 700px;
     border-radius: 5%;
+    max-height: 250px;
 }
 
 .upload-form-container:after,
@@ -25,92 +37,145 @@
     z-index: -1;
 }
 
-.picture-box {
-    max-width: 850px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: flex-start;
+.upload-song-left,
+.edit-song-left {
     align-items: center;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    position: relative;
+    width: 270px;
 }
 
+.upload-song-right,
+.edit-song-right {
+    width: 400px;
+}
 
-.song-box {
-    display: flex;
-    flex-direction: column;
+.upload-song-image,
+.upload-song-placeholder {
+    width: 250px;
+    height: 250px;
+}
+
+.upload-song-placeholder {
+    background-image: linear-gradient(135deg, #8e8485, #70929c);
+}
+
+.image-button {
+    position: relative;
+    z-index: 1;
+}
+
+.replace-image-button {
+    width: 125px;
+    top: -20px;
+    align-self: flex-end;
+}
+
+.upload-image-button {
+    width: 135px;
+    top: -50px;
+}
+
+.audio-button {
+    width: 200px;
+}
+
+.inner-button {
     justify-content: center;
     align-items: center;
-    /* padding: 25px 40px; */
+    gap: 5px;
+    margin: 5px 10px 3px;
 }
 
-h2 {
-    color: white;
-    padding-left: 10px;
-    position: relative;
-    padding: 0 0 10px;
+.upload-image-camera {
+    background-image: url(https://a-v2.sndcdn.com/assets/images/camera-2d93bb05.svg);
+}
+
+.upload-audio-note {
+    background-image: url(../../../static/images/logo/music-solid.svg);
+}
+
+.upload-image-camera,
+.upload-audio-note {
+    width: 15px;
+    height: 12px;
+    background-size: 15px 12px;
+    align-self: flex-start;
+}
+
+.modal-field-label {
+    font-size: 12px;
+}
+
+.label-required:after {
+    content: "*";
+    color: var(--color-warning);
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.modal-field-label {
     margin-bottom: 10px;
 }
 
-h2:after {
-    content: '';
-    position: absolute;
-    left: 50%;
+.modal-field {
+    margin-bottom: 20px;
+}
+
+.modal-field:focus {
+    outline: none;
+}
+
+textarea.modal-field {
+    height: 130px;
+}
+
+.form-footer {
+    padding: 120px 20px 20px;
+    position: sticky;
     bottom: 0;
-    transform: translateX(-50%);
-    height: 4px;
-    width: 50px;
-    border-radius: 2px;
-    background-color: #2ecc71;
 }
 
-.field {
-    /* width: 100%; */
-    border: 2px solid rgba(0, 0, 0, 0);
-    outline: none;
-    background-color: rgba(230, 230, 230, 0.6);
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    transition: .3s;
+.error-block {
+    padding: 20px 0;
 }
 
-.field:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+.legend-required {
+    font-size: 12px;
 }
 
-textarea {
-    min-height: 150px;
+.legend-required:before {
+    content: "*";
+    color: var(--color-warning);
+    display: inline-block;
+    margin-right: 2px;
 }
 
-.btn {
-    /* width: 100%; */
-    padding: 0.5rem 1rem;
-    background-color: #2ecc71;
-    color: #fff;
-    font-size: 1.1rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: .3s;
+.form-action {
+    justify-content: space-between;
+    align-items: center;
 }
 
-.btn:hover {
-    background-color: #27ae60;
+.form-action-buttons {
+    align-items: center;
+    gap: 10px;
 }
 
-.field:focus {
-    border: 2px solid rgba(30, 85, 250, 0.47);
-    background-color: #fff;
+.modal-button {
+    border: 0;
+    padding: 5px 10px 3px;
+    border-radius: 3px;
 }
 
-@media screen and (max-width: 880px) {
-    .contact-box {
-        grid-template-columns: 1fr;
-    }
+.button-cancel {
+    color: var(--color-border-dark);
+}
 
-    .left {
-        height: 200px;
-    }
+.button-submit {
+    background-color: var(--color-primary);
+    color: var(--color-border-light);
+}
+
+.button-delete {
+    background-color: var(--color-warning);
+    color: var(--color-border-light);
 }

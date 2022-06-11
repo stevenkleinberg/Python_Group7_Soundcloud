@@ -23,7 +23,9 @@ def new_song():
             if len(keys) != 2:
                 return {"errors": "No file uploaded"}
             raw_audio_url = request.files["audio_url"]
+            print("---------------audio url----------------", raw_audio_url)
             raw_image_url = request.files["image_url"]
+            print("---------------image url----------------", raw_image_url)
 
             if not allowed_file(raw_audio_url.filename):
                 return {"errors": ["audio file type not permitted"]}
