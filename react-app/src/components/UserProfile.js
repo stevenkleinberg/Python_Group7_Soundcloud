@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { clearPlayer } from '../store/player';
 import { logout } from '../store/session';
 import { NavLink } from "react-router-dom";
-
+import Avatar from "./Icons/Avatar";
 
 
 function UserProfile({ user }) {
@@ -34,22 +34,21 @@ function UserProfile({ user }) {
     };
 
     return (
-        <>
-            <div>
-                <button className="userProfileBtn" onClick={openMenu} > {user.email} </button>
-                <div className="dropdown">
-                    {showMenu && (
-                        <div className="profile-dropdown">
-                            <div>
-                                <NavLink className='navlinks ' to={`/users/${user.id}`} exact={true} activeClassName="active"> Profile </NavLink>
-                                <div style={{ width: '100%', borderBottom: 'whitesmoke solid 1px', paddingTop: '7px' }}> </div>
-                            </div>
-                            <button style={{ minWidth: '80px' }} onClick={onLogout}>Log Out</button>
+        <div>
+            <button className="cursor-pointer userProfileBtn" onClick={openMenu}>
+                <Avatar user={user} isNotLink={true} />
+            </button>
+            <div className="dropdown">
+                {showMenu && (
+                    <div className="profile-dropdown">
+                        <div className="dropdown-links cursor-pointer">
+                            <NavLink to={`/users/${user.id}`} exact={true}> Profile </NavLink>
                         </div>
-                    )}
-                </div>
+                        <div className="cursor-pointer dropdown-links" onClick={onLogout}>Log Out</div>
+                    </div>
+                )}
             </div>
-        </>
+        </div>
     );
 }
 

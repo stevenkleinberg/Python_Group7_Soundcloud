@@ -4,11 +4,12 @@
   --color-border: #e5e5e5;
   --color-border-light: #f2f2f2;
   --color-primary: #f50;
+  --color-warning: #cf0000;
   --navbar-height: 66px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Lucida Grande", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 :root {
@@ -35,7 +36,7 @@ a {
 }
 
 .error-text {
-  color: red;
+  color: var(--color-warning);
 }
 
 .hidden {
@@ -51,7 +52,7 @@ a {
 }
 
 .error_message {
-  color: red;
+  color: var(--color-warning);
   font-size: 20px;
   align-self: center;
   justify-self: center;
@@ -66,8 +67,8 @@ a {
 }
 
 .cool_button:hover {
-  border: 2.2px solid #f50;
-  color: #f50;
+  border: 2.2px solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .cool_div {

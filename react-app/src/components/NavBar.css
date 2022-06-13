@@ -22,12 +22,11 @@
 .navlinks {
   position: relative;
   text-decoration: none;
-  color: grey;
+  color: var(--color-border);
   text-align: center;
   justify-self: center;
   padding: 3px;
   font-size: medium;
-  cursor: pointer;
   transition: color 0.3s ease;
 }
 
@@ -63,39 +62,31 @@
 
 .userProfileBtn {
   padding: 5px;
+  background-color: transparent;
 }
 
 .profile-dropdown {
+  width: 100px;
   position: absolute;
   display: flex;
   flex-direction: column;
-  background-color: #606060;
-  padding: 25px;
-  border-radius: 6px;
-  color: grey;
+  background-color: var(--color-border-light);
+  /* padding: 25px; */
+  /* border-radius: 6px; */
 }
 
-.dropdown button {
-  background-color: grey;
-  border: solid 2.3px;
-  border-radius: 5px;
-  margin-top: 20px;
-  transition: all 0.5s;
-  justify-self: flex-end;
-  align-self: flex-end;
-  font-size: medium;
-  font-family: "Inter", sans-serif;
-  padding: 3px 9px;
+.profile-dropdown * {
+  color: var(--color-border-dark);
 }
 
-.dropdown button:hover {
-  background-color: lightslategray;
-  border: solid 2.3px lightslategray;
+.dropdown-links {
+  line-height: 24px;
+  padding: 5px 15px;
+  width: 100%;
 }
 
-.profile-dropdown>div {
-  padding: 5px;
-  font-size: large;
+.dropdown-links:hover {
+  background-color: var(--color-border);
 }
 
 .navbar_input_container {

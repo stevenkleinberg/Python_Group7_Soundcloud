@@ -104,90 +104,90 @@ const NavBar = () => {
                     ?.filter((playlistOrSong) =>
                       playlistOrSong.title.toLowerCase().startsWith(searchInput.toLowerCase())
                     )
-                  .map((playlistOrSong) =>
-                    playlistOrSong.songs?
-                  (
-                    <li key={playlistOrSong.id} className="flex-row search_results_li">
-                      <img
-                        className="search_results_img"
-                        src={playlistOrSong.image_url}
-                      />
-                      <a
-                        href={`/playlists/${playlistOrSong.id}`}
-                        className="search_results_a"
-                      >
-                        {playlistOrSong.title}
-                      </a>
-                    </li>
-                  ):
-                  rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
-                  (
-                    <li key={playlistOrSong.id} className="flex-row search_results_li">
-                      <img
-                        className="search_results_img"
-                        src={playlistOrSong.image_url}
-                      />
-                      <a
-                        href={`/songs/${playlistOrSong.id}`}
-                        className="search_results_a"
-                      >
-                        {playlistOrSong.title}
-                      </a>
-                    </li>
-                  )
-                  ):
+                    .map((playlistOrSong) =>
+                      playlistOrSong.songs ?
+                        (
+                          <li key={playlistOrSong.id} className="flex-row search_results_li">
+                            <img
+                              className="search_results_img"
+                              src={playlistOrSong.image_url}
+                            />
+                            <a
+                              href={`/playlists/${playlistOrSong.id}`}
+                              className="search_results_a"
+                            >
+                              {playlistOrSong.title}
+                            </a>
+                          </li>
+                        ) :
+                        rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
+                        (
+                          <li key={playlistOrSong.id} className="flex-row search_results_li">
+                            <img
+                              className="search_results_img"
+                              src={playlistOrSong.image_url}
+                            />
+                            <a
+                              href={`/songs/${playlistOrSong.id}`}
+                              className="search_results_a"
+                            >
+                              {playlistOrSong.title}
+                            </a>
+                          </li>
+                        )
+                    ) :
                   playlistsAndSongs
                     ?.filter((playlistOrSong) =>
                       playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
                     ).length ?
                     playlistsAndSongs
-                    ?.filter((playlistOrSong) =>
-                      playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
-                    )
-                  .map((playlistOrSong) =>
-                    playlistOrSong.songs?
-                  (
-                    <li key={playlistOrSong.id} className="flex-row search_results_li">
-                      <img
-                        className="search_results_img"
-                        src={playlistOrSong.image_url}
-                      />
-                      <a
-                        href={`/playlists/${playlistOrSong.id}`}
-                        className="search_results_a"
-                      >
-                        {playlistOrSong.title}
-                      </a>
-                    </li>
-                  ):
-                  rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
-                  (
-                    <li key={playlistOrSong.id} className="flex-row search_results_li">
-                      <img
-                        className="search_results_img"
-                        src={playlistOrSong.image_url}
-                      />
-                      <a
-                        href={`/songs/${playlistOrSong.id}`}
-                        className="search_results_a"
-                      >
-                        {playlistOrSong.title}
-                      </a>
-                    </li>
-                  )
-                  ) :
-                  (
-                    <>
-                    <li className="flex-row search_results_li">
+                      ?.filter((playlistOrSong) =>
+                        playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
+                      )
+                      .map((playlistOrSong) =>
+                        playlistOrSong.songs ?
+                          (
+                            <li key={playlistOrSong.id} className="flex-row search_results_li">
+                              <img
+                                className="search_results_img"
+                                src={playlistOrSong.image_url}
+                              />
+                              <a
+                                href={`/playlists/${playlistOrSong.id}`}
+                                className="search_results_a"
+                              >
+                                {playlistOrSong.title}
+                              </a>
+                            </li>
+                          ) :
+                          rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
+                          (
+                            <li key={playlistOrSong.id} className="flex-row search_results_li">
+                              <img
+                                className="search_results_img"
+                                src={playlistOrSong.image_url}
+                              />
+                              <a
+                                href={`/songs/${playlistOrSong.id}`}
+                                className="search_results_a"
+                              >
+                                {playlistOrSong.title}
+                              </a>
+                            </li>
+                          )
+                      ) :
+                    (
+                      <>
+                        <li className="flex-row search_results_li">
 
-                      <a
-                        className="search_results_a"
-                      >
-                        Nothing Found
-                      </a>
-                    </li>
-                    </>
-                  )
+                          <a
+                            className="search_results_a"
+                          >
+                            Nothing Found
+                          </a>
+                        </li>
+                      </>
+                    )
 
                 }
               </ul>
@@ -205,7 +205,7 @@ const NavBar = () => {
         Upload
       </NavLink> */}
 
-      <div onClick={() => setShowUploadModal(true)} className="navlinks">
+      <div onClick={() => setShowUploadModal(true)} className="navlinks cursor-pointer">
         Upload
       </div>
       {showUploadModal && (
