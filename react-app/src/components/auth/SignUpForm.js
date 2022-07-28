@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 import { createDetail } from "../../store/user-details";
+import { FaUserAlt } from 'react-icons/fa';
+import { IoLogOutSharp } from 'react-icons/io5';
+import { IoCloseOutline } from 'react-icons/io5';
+import { login } from "../../store/session";
 import "./auth.css";
 
 const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
@@ -16,19 +20,19 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
 
   const dispatch = useDispatch();
 
-  const formatError = (errorText) => {
-    if (errorText.includes(" : ")) {
-      let array = errorText.split(" : This field");
-      let firstWord = array[0].split("");
-      firstWord[0] = firstWord[0].toUpperCase();
-      firstWord = firstWord.join("");
-      return `${firstWord}${array[1]}`;
-    } else if (errorText.includes("csrf")) {
-      return 'An error occurred. Please try again.';
-    } else {
-      return errorText;
-    }
-  };
+  // const formatError = (errorText) => {
+  //   if (errorText.includes(" : ")) {
+  //     let array = errorText.split(" : This field");
+  //     let firstWord = array[0].split("");
+  //     firstWord[0] = firstWord[0].toUpperCase();
+  //     firstWord = firstWord.join("");
+  //     return `${firstWord}${array[1]}`;
+  //   } else if (errorText.includes("csrf")) {
+  //     return 'An error occurred. Please try again.';
+  //   } else {
+  //     return errorText;
+  //   }
+  // };
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -61,6 +65,17 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+      return;
+    }
+    history.push("/");
+    setShowLoginModal(false);
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -87,10 +102,40 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
       <div className="auth_contaner flex-row">
         <div className="auth_form_wrapper">
           <form className="signup_form flex-column " onSubmit={onSignUp}>
-            <h1>Sign Up</h1>
+            <IoCloseOutline className="close-login-icon" onClick={() => setShowSignUpModal(false)} />
+
+            <button
+              className="login_form_btn cursor-pointer or-shdw-hov"
+              type="submit"
+              onClick={demoLogin}
+            >
+              <FaUserAlt /> Continue with Demo User
+            </button>
+            <button
+              className="login_form_btn cursor-pointer toggle-sign-up or-shdw-hov "
+              type="submit"
+              onClick={toggleModals}
+            >
+              <IoLogOutSharp className="proF-icon" /> Continue to Log In
+            </button>
+
+            <div className="half-Div">
+              <div className="half-line"></div>
+              <h3>or</h3>
+              <div className="half-line"></div>
+            </div>
+
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind} className="error-text" >{error}</div>
+              ))}
+            </div>
+
             <div className="form_field">
               <input
                 placeholder="email"
+                style={{ marginBottom: '10px' }}
+
                 className="field"
                 type="text"
                 name="email"
@@ -102,6 +147,8 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
             <div className="form_field">
               <input
                 placeholder="password"
+                style={{ marginBottom: '10px' }}
+
                 className="field"
                 type="password"
                 name="password"
@@ -113,6 +160,7 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
             <div className="form_field">
               <input
                 className="field"
+
                 type="password"
                 name="repeat_password"
                 onChange={updateRepeatPassword}
@@ -127,16 +175,17 @@ const SignUpForm = ({ setShowSignUpModal, setShowLoginModal }) => {
               ))}
             </div>
             <div className="form_button flex-row">
-              <button className="login_form_btn cursor-pointer" type="submit">
-                Sign Up
+              <button className="login_form_btn cursor-pointer cnt-login or-shdw-hov" type="submit">
+                Accept {'&'} Continue
               </button>
             </div>
-            <div>
-              <p>
-                Already have an account?{" "}
-                <span onClick={toggleModals} className="auth_links">
-                  Login!
-                </span>
+            <div className="priv-tag-div">
+              <p className="priv-tag">
+                When registering, you agree that we will not use your provided
+                data from the registration and we won't send you notifications on
+                our products and services. You can not unsubscribe from our non-existent
+                notifications at this time in your settings. For non-existent additional
+                info please do not refer to our fake <span style={{ color: 'blue', cursor: 'not-allowed' }}>Privacy Policy</span>.
               </p>
             </div>
           </form>

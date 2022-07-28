@@ -74,7 +74,7 @@ const NewPlaylistForm = ({ modalFunction }) => {
     <div className="flex-row AEP_conatiner">
       <div className="AEP_left">
         {urlImageFile !== '' ? (
-          <img src={urlImageFile} className="AEP_image" />
+          <img alt='' src={urlImageFile} className="AEP_image" />
         ) : (
           <div className="AEP_placeholder" />
         )}
@@ -82,6 +82,11 @@ const NewPlaylistForm = ({ modalFunction }) => {
         <input type="file" accept="image/*" onChange={updateImageFile} />
       </div>
       <div className="AEP_right">
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind} className="error-text" >{error}</div>
+          ))}
+        </div>
         <form onSubmit={handleSubmit} className="flex-column">
           <label className="AEP_spacing">Title: </label>
           <input

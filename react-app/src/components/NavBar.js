@@ -52,97 +52,58 @@ const NavBar = () => {
   };
   let sessionLinks = (
     <nav className="navbar">
-      <NavLink
-        className="navlinks logo"
-        to="/"
-        exact={true}
-        activeClassName="active"
-      >
-        <Logo />
-      </NavLink>
-      <NavLink
-        className="navlinks logo"
-        to="/"
-        exact={true}
-        activeClassName="active"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        className="navlinks"
-        to="/library/songs"
-        exact={true}
-        activeClassName="active"
-      >
-        Library
-      </NavLink>
-      <NavLink
-        className="navlinks"
-        to="/explore/songs"
-        exact={true}
-        activeClassName="active"
-      >
-        {" "}
-        Explore{" "}
-      </NavLink>
-      <div className="flex-row navbar_input_container">
-        <div>
-          <input
-            className="navbar_search"
-            placeholder="Search"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          {showResults && (
-            <div className="search_results">
-              <ul>
-                {playlistsAndSongs
-                  ?.filter((playlistOrSong) =>
-                    playlistOrSong.title.toLowerCase().startsWith(searchInput.toLowerCase())
-                  ).length ?
-                  playlistsAndSongs
+      <nav className="HomeLinkDiv flex-row-center" >
+        <NavLink
+          className="nav-logo flex-row-center"
+          to="/"
+          exact={true}
+          activeClassName="activeNav"
+        >
+          <Logo />
+        </NavLink>
+        <NavLink
+          className="navlinks nav-home flex-row-center"
+          to="/"
+          exact={true}
+          activeClassName="activeNav"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className="navlinks stream flex-row-center"
+          to="/explore/songs"
+          exact={true}
+          activeClassName="activeNav"
+        >
+
+          Stream
+        </NavLink>
+        <NavLink
+          className="navlinks library flex-row-center"
+          to="/library/songs"
+          exact={true}
+          activeClassName="activeNav"
+        >
+          Library
+        </NavLink>
+        <div className="flex-row-center navbar_input_container">
+          <div className="navbar-search-container">
+            <input
+              className="navbar_search"
+              placeholder="Search"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            {showResults && (
+              <div className="search_results">
+                <ul>
+                  {playlistsAndSongs
                     ?.filter((playlistOrSong) =>
                       playlistOrSong.title.toLowerCase().startsWith(searchInput.toLowerCase())
-                    )
-                    .map((playlistOrSong) =>
-                      playlistOrSong.songs ?
-                        (
-                          <li key={playlistOrSong.id} className="flex-row search_results_li">
-                            <img
-                              className="search_results_img"
-                              src={playlistOrSong.image_url}
-                            />
-                            <a
-                              href={`/playlists/${playlistOrSong.id}`}
-                              className="search_results_a"
-                            >
-                              {playlistOrSong.title}
-                            </a>
-                          </li>
-                        ) :
-                        rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
-                        (
-                          <li key={playlistOrSong.id} className="flex-row search_results_li">
-                            <img
-                              className="search_results_img"
-                              src={playlistOrSong.image_url}
-                            />
-                            <a
-                              href={`/songs/${playlistOrSong.id}`}
-                              className="search_results_a"
-                            >
-                              {playlistOrSong.title}
-                            </a>
-                          </li>
-                        )
-                    ) :
-                  playlistsAndSongs
-                    ?.filter((playlistOrSong) =>
-                      playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
                     ).length ?
                     playlistsAndSongs
                       ?.filter((playlistOrSong) =>
-                        playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
+                        playlistOrSong.title.toLowerCase().startsWith(searchInput.toLowerCase())
                       )
                       .map((playlistOrSong) =>
                         playlistOrSong.songs ?
@@ -176,46 +137,86 @@ const NavBar = () => {
                             </li>
                           )
                       ) :
-                    (
-                      <>
-                        <li className="flex-row search_results_li">
+                    playlistsAndSongs
+                      ?.filter((playlistOrSong) =>
+                        playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
+                      ).length ?
+                      playlistsAndSongs
+                        ?.filter((playlistOrSong) =>
+                          playlistOrSong.title.toLowerCase().includes(searchInput.toLowerCase())
+                        )
+                        .map((playlistOrSong) =>
+                          playlistOrSong.songs ?
+                            (
+                              <li key={playlistOrSong.id} className="flex-row search_results_li">
+                                <img
+                                  className="search_results_img"
+                                  src={playlistOrSong.image_url}
+                                />
+                                <a
+                                  href={`/playlists/${playlistOrSong.id}`}
+                                  className="search_results_a"
+                                >
+                                  {playlistOrSong.title}
+                                </a>
+                              </li>
+                            ) :
+                            rawSongs[playlistOrSong.id] && rawSongs[playlistOrSong.id].title == playlistOrSong.title &&
+                            (
+                              <li key={playlistOrSong.id} className="flex-row search_results_li">
+                                <img
+                                  className="search_results_img"
+                                  src={playlistOrSong.image_url}
+                                />
+                                <a
+                                  href={`/songs/${playlistOrSong.id}`}
+                                  className="search_results_a"
+                                >
+                                  {playlistOrSong.title}
+                                </a>
+                              </li>
+                            )
+                        ) :
+                      (
+                        <>
+                          <li className="flex-row search_results_li">
 
-                          <a
-                            className="search_results_a"
-                          >
-                            Nothing Found
-                          </a>
-                        </li>
-                      </>
-                    )
+                            <a
+                              className="search_results_a"
+                            >
+                              Nothing Found
+                            </a>
+                          </li>
+                        </>
+                      )
 
-                }
-              </ul>
-            </div>
-          )}
+                  }
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      <div className="UploadUser">
+
+        <div onClick={() => setShowUploadModal(true)} className="navlinks upload cursor-pointer flex-row-center"
+          style={{ background: `${showUploadModal ? '#111' : ''}` }}>
+          Upload
+        </div>
+
+        <div className="user-navdrop-div">
+          <UserProfile user={sessionUser} />
         </div>
       </div>
-
-      {/* <NavLink
-        className="navlinks"
-        to="/upload-song"
-        exact={true}
-        activeClassName="active"
-      >
-        Upload
-      </NavLink> */}
-
-      <div onClick={() => setShowUploadModal(true)} className="navlinks cursor-pointer">
-        Upload
-      </div>
       {showUploadModal && (
-        <Modal onClose={() => setShowUploadModal(false)}>
+        <Modal onClose={() => setShowUploadModal(false)} >
           {/* <div className="upload-modal-container"> */}
           <UploadSong setShowUploadModal={setShowUploadModal} />
           {/* </div> */}
         </Modal>
       )}
-      <UserProfile user={sessionUser} />
+
     </nav>
   );
   return (
@@ -223,7 +224,7 @@ const NavBar = () => {
       {!sessionUser ? (
         <header>
           <nav className="navbar">
-            <NavLink className="navlinks" exact to="/">
+            <NavLink className="navlinks" exact to="/" >
               Home
             </NavLink>
             <div onClick={openLoginModal} className="navlinks">
@@ -234,14 +235,14 @@ const NavBar = () => {
             </div>
           </nav>
           {showLoginModal && (
-            <Modal onClose={() => setShowLoginModal(false)}>
+            <Modal onClose={() => setShowLoginModal(false)} >
               <div className="login_modal_container">
                 <LoginForm setShowLoginModal={setShowLoginModal} />
               </div>
             </Modal>
           )}
           {showSignUpModal && (
-            <Modal onClose={() => setShowSignUpModal(false)}>
+            <Modal onClose={() => setShowSignUpModal(false)} >
               <div className="login_modal_container">
                 <SignUpForm setShowSignUpModal={setShowSignUpModal} />
               </div>

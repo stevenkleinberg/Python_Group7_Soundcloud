@@ -1,12 +1,9 @@
 import "./songlist.css";
-
-import GalleryCard from "../../GalleryCard";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import GridDisplay from "../../LibraryPage/Likes/GridDisplay";
+import React from "react";
 
 const SongsList = () => {
-  const history = useHistory();
   const songs = useSelector((state) => state.songs);
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -17,10 +14,6 @@ const SongsList = () => {
       userSongs.push(song);
     }
   });
-
-  const navLink = (id) => {
-    history.push(`/songs/${id}`);
-  };
 
   return (
     <>

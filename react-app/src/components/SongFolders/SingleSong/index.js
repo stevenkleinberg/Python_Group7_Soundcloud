@@ -1,35 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch} from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import SongComments from "./SongComments";
-import { loadSong, queueSong } from "../../../store/player";
-import "./singlesong.css";
+import { loadSong } from "../../../store/player";
 import Moment from "react-moment";
+import "./singlesong.css";
+import React from "react";
 const SingleSong = () => {
-    const dispatch =  useDispatch()
+    const dispatch = useDispatch()
     const { id } = useParams();
     const song = useSelector((state) => state.songs[id]);
-    const user_id = useSelector((state) => state.session.user.id)
 
     const handlePlayButtonClick = (e) => {
         e.preventDefault();
         dispatch(loadSong(song.id));
-      };
-    // return (
-    //     <div>
-    //         <img
-    //             id='songImg'
-    //             src={song?.image_url}
-    //             alt=' '
-    //             style={{ width: '100%' }}
-    //         />
-    //         {song?.title}
+    };
 
-    // <NavLink to={`/songs/${+id}/edit`} exact={true} activeClassName="active">
-    //     edit form
-    // </NavLink>
-    //     </div>
-    // )
     return (
         <div className="song_container_main">
             <div className="Pl_S_banner flex-row">
@@ -37,7 +22,7 @@ const SingleSong = () => {
                     <div className="title_banner flex-row">
                         <div className="flex-row banner_title_group_1">
                             <div className="banner_play_button">
-                                <div className="song_page_play"  onClick={handlePlayButtonClick} >&#9654;</div>
+                                <div className="song_page_play" onClick={handlePlayButtonClick} >&#9654;</div>
                             </div>
                             <div className="flex-column">
                                 <h3>{song?.title}</h3>
@@ -48,7 +33,7 @@ const SingleSong = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={song?.image_url} className="song_image" />
+                    <img alt='' src={song?.image_url} className="song_image" />
                 </div>
             </div>
             <div className="flex-row song_mainfeed_sidebar_conatiner">

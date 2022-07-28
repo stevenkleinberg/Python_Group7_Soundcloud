@@ -31,6 +31,20 @@ a {
   flex-direction: column;
 }
 
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -74,4 +88,14 @@ a {
 .cool_div {
   font-size: 13.3333px;
   padding: 5px 10px 3px;
+}
+
+
+.opHov {
+  cursor: pointer;
+}
+
+.opHov:hover {
+  opacity: .95;
+  color: rgba(128, 128, 128, 0.686);
 }

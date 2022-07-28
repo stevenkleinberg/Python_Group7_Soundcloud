@@ -14,7 +14,6 @@ const EditSongForm = ({ setShowEditSongModal }) => {
   const [audio_url, setAudioUrl] = useState(song?.audio_url);
   const [description, setDescription] = useState(song?.description);
   const [image_url, setImageUrl] = useState(song?.image_url);
-  const [imageLoading, setImageLoading] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
   const [newAudio, setNewAudio] = useState();
   const [newImage, setNewImage] = useState();
@@ -104,6 +103,7 @@ const EditSongForm = ({ setShowEditSongModal }) => {
       <div className="edit-form-container flex-row">
         <div className="edit-song-left flex-column">
           <img
+            alt=''
             id="upload-image"
             src={image_url}
             className={`upload-song-image`}
@@ -122,8 +122,6 @@ const EditSongForm = ({ setShowEditSongModal }) => {
           >
             Replace Image
           </button>
-
-          {imageLoading && <p>Uploading image...</p>}
 
         </div>
 

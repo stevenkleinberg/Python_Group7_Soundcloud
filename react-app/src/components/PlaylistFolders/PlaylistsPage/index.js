@@ -1,16 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { loadPlaylist, queuePlaylist } from "../../../store/player";
-
+import { loadPlaylist } from "../../../store/player";
 import Moment from "react-moment";
 import "moment-timezone";
-
-import NewPlaylistForm from "../CreatePlaylist";
 import PlaylistMainFeed from "./PlaylistMainFeed";
-
-import "./PlaylistSongs.css";
 import PlaylistSideBar from "./PlaylistSideBar";
+import "./PlaylistSongs.css";
 
 const PlaylistsPage = () => {
   const dispatch = useDispatch()
@@ -28,7 +24,7 @@ const PlaylistsPage = () => {
           <div className="title_banner flex-row">
             <div className="flex-row banner_title_group_1">
               <div className="banner_play_button">
-                <div className="song_page_play"  onClick={handlePlayButtonClick} >&#9654;</div>
+                <div className="song_page_play" onClick={handlePlayButtonClick} >&#9654;</div>
               </div>
               <div className="flex-column">
                 <h3>{playlist?.title}</h3>
@@ -45,7 +41,7 @@ const PlaylistsPage = () => {
           </div>
         </div>
         <div>
-          <img src={playlist?.image_url} className="playlist_image" />
+          <img alt='' src={playlist?.image_url} className="playlist_image" />
         </div>
       </div>
       <div className="flex-row playlist_mainfeed_sidebar_conatiner">

@@ -50,7 +50,7 @@ function App() {
       <BrowserRouter>
         {sessionUser != null && <NavBar />}
         <Switch>
-          <Route path="/welcome" exact={true}>
+          <Route path="/welcome" >
             <SplashPage />
           </Route>
           <Route path="/upload-song" exact={true}>

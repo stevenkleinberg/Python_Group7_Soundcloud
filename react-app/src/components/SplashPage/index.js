@@ -4,8 +4,6 @@ import { getAllSongs } from "../../store/song";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
 import { Modal } from "../Context/Modal";
-import SongTile from "../GalleryCard/songTile";
-
 import Logo from "../Icons/Logo";
 import GridDisplay from "../LibraryPage/Likes/GridDisplay";
 
@@ -28,13 +26,16 @@ const SplashPage = () => {
 
   useEffect(() => {
     dispatch(getAllSongs());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="splashpage_container">
       <div className="imagebox">
         <div className="imagetoptitle">
-          <h1 className="soundcloudsplogo">SoundTown</h1>
+          <div className="splash-header-logo-div">
+            <div className="splash-header-wrapper flex-row-center"><Logo /> <h2> SoundTown</h2> </div>
+          </div>
+
           <div className="soundcloudbuttons">
             <button className="signuptitle cursor-pointer" onClick={openLoginModal}>
               Sign In
@@ -89,7 +90,7 @@ const SplashPage = () => {
         <div className="splashpage_inner_title_container">
           Hear what’s trending for free in the SoundCloud community
         </div>
-        <div className="splashpage_song_container flex-row">
+        <div className="splashpage_song_container flex-row" onClick={() => setShowLoginModal(true)}>
           <GridDisplay likedSongs={songs?.slice(0, 8)} />
         </div>
       </div>

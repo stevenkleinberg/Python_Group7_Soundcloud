@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "../../Icons/Avatar";
 import SpeechBubble from "../../Icons/SpeechBubble";
 import SingleComment from "./Comments/SingleComment";
-import { NavLink } from "react-router-dom";
 import { createComment } from "../../../store/comment";
 import { likeSong, unlikeSong } from "../../../store/song";
 import { loadSong, queueSong } from "../../../store/player";
@@ -66,7 +65,7 @@ const SongComments = ({ song }) => {
 
     formData.append("user_id", sessionUser.id);
     formData.append("song_id", song.id);
-    const likedSong = await dispatch(likeSong(formData));
+    await dispatch(likeSong(formData));
   };
   const handle_UnLikeButtonClick = async (e) => {
     e.preventDefault();
@@ -74,7 +73,7 @@ const SongComments = ({ song }) => {
 
     formData.append("user_id", sessionUser.id);
     formData.append("song_id", song.id);
-    const unlikedSong = await dispatch(unlikeSong(formData));
+    await dispatch(unlikeSong(formData));
   };
   const addSongToQueue = (id) => {
     if (!playingId) {

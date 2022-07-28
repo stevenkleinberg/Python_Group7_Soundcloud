@@ -98,3 +98,34 @@
   margin: 10px 0px;
   font-size: 25px;
 }
+
+.splash-header-logo-div {
+  position: relative;
+  justify-content: space-between;
+  width: 100px;
+  height: 40px;
+  min-width: fit-content;
+  font-family: 'Abril Fatface', cursive;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.splash-header-wrapper>h2 {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 20px;
+  text-transform: uppercase;
+
+
+}
+
+.splash-header-wrapper {
+  justify-content: space-between;
+
+}
+
+.splash-header-wrapper img {
+  width: 50px;
+  height: 49.47px;
+  justify-content: space-between;
+  margin-left: -50px;
+}
