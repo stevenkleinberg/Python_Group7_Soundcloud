@@ -1,4 +1,4 @@
-import { newSong, getAllSongs } from "./song";
+import { newSong } from "./song";
 
 // constants
 const LOAD_COMMENTS = "comment/LOAD_COMMENTS";
@@ -11,15 +11,15 @@ const loadComments = (comments) => ({
 });
 
 // for create and edit
-const newComment = (comment) => ({
-  type: NEW_COMMENT,
-  comment,
-});
+// const newComment = (comment) => ({
+//   type: NEW_COMMENT,
+//   comment,
+// });
 
-const removeComment = (commentId) => ({
-  type: REMOVE_COMMENT,
-  commentId,
-});
+// const removeComment = (commentId) => ({
+//   type: REMOVE_COMMENT,
+//   commentId,
+// });
 
 // Get comments of a song from DB
 export const getCommentsBySongId = (songId) => async (dispatch) => {

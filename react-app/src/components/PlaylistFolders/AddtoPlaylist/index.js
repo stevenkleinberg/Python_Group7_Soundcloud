@@ -97,6 +97,7 @@ const AddtoPlaylist = ({ song }) => {
                 >
                   <div className="flex-row">
                     <img
+                      alt=''
                       src={playlist?.image_url}
                       className="add_to_playlist_img"
                     />

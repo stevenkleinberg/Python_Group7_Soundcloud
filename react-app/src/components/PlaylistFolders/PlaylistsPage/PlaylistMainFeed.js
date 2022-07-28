@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import SingleSongRow from "./SingleSongRow";
 
 import { Modal } from "../../Context/Modal";
-import EditPlaylistForm from "../EditPlaylist";
 import { useHistory, useParams } from "react-router-dom";
 import { deletePlaylist } from "../../../store/playlist";
 import { loadPlaylist, queuePlaylist } from "../../../store/player";
@@ -85,17 +84,17 @@ const PlaylistMainFeed = ({ songsId, playlist }) => {
   return (
     <div className="playlist_mainfeed_container">
       <div className="playlist_button_group flex-row">
-      <button
-            onClick={addToClipBoard}
-            className="cool_button"
-          >
-            Copy Link
-          </button>
-          <div>
+        <button
+          onClick={addToClipBoard}
+          className="cool_button"
+        >
+          Copy Link
+        </button>
+        <div>
           {clipboardMenu && (
             <div className="dropdown-clipboard">Copied to clipboard</div>
           )}
-          </div>
+        </div>
         {playlist?.user_id === sessionUser.id && (
           <button
             className="cool_button"

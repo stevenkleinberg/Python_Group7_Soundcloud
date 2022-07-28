@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -13,7 +14,7 @@ const UploadSong = ({ setShowUploadModal }) => {
   const [musicFile, setMusicFile] = useState();
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState();
-  const [imageLoading, setImageLoading] = useState(false);
+  // const [imageLoading, setImageLoading] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
 
   const handleCancel = e => {
@@ -101,6 +102,7 @@ const UploadSong = ({ setShowUploadModal }) => {
         <div className="upload-song-left flex-column">
           <img
             id="upload-image"
+            alt=''
             className={`upload-song-image${!!imageFile ? '' : ' hidden'}`}
           />
           <div
@@ -129,7 +131,6 @@ const UploadSong = ({ setShowUploadModal }) => {
               )}
           </button>
 
-          {imageLoading && <p>Uploading image...</p>}
 
         </div>
         <div className="upload-song-right flex-column">

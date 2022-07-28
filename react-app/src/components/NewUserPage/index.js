@@ -5,8 +5,6 @@ import {
   useParams,
   Switch,
   useHistory,
-  Route,
-  Redirect,
 } from "react-router-dom";
 import { getAllUsers } from "../../store/user";
 import { editDetails } from "../../store/user-details";
@@ -49,7 +47,7 @@ const NewUsersPage = () => {
     formData.append("avatar_url", avatarFile);
 
     setLoadingAvatar(true);
-    const detail = await dispatch(editDetails(formData));
+    await dispatch(editDetails(formData));
     setLoadingAvatar(false);
   };
 
@@ -63,7 +61,7 @@ const NewUsersPage = () => {
     formData.append("banner_url", bannerFile);
 
     setLoadingBanner(true);
-    const detail = await dispatch(editDetails(formData));
+    await dispatch(editDetails(formData));
     setLoadingBanner(false);
   };
 
@@ -76,13 +74,12 @@ const NewUsersPage = () => {
 
   return (
     <div className="users_page_main_container">
-      {/* <div className="user_banner_img">
-        <img src={userDetails?.banner_url} />
-      </div> */}
+
       <div className="Pl_S_banner user_banner flex-row">
         <div className="flex-row">
           <div className="flex-column">
             <img
+              alt=''
               src={
                 loadingAvatar
                   ? "https://soundtownbucket.s3.amazonaws.com/e119c0b2842f44eb84dbcc441b3b9744.png"

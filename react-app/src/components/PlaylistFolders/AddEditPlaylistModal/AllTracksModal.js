@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { deleteSongtoPlaylist } from "../../../store/playlist";
-import { deleteSong } from "../../../store/song";
 
 const AllTracksModal = ({ songArr }) => {
   const { id } = useParams();

@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../Context/Modal";
 import { loadSong, queueSong } from "../../store/player";
 import AddtoPlaylist from "../PlaylistFolders/AddtoPlaylist";
+import { ImMenu3 } from 'react-icons/im'
+import { CgPlayList } from 'react-icons/cg'
+import { MdOutlinePlaylistAdd } from 'react-icons/md'
 
 function SongTileActions({ song }) {
   const playingId = useSelector((state) => state.player.playingId);
@@ -44,24 +47,26 @@ function SongTileActions({ song }) {
     <>
       <div className="song_tile_actions_container">
         <div className="song_tile_actions" onClick={openMenu}>
-          ...
+          < ImMenu3 className="song_tile_actions_icon opHov" />
         </div>
-        <div className="dropdown">
+        <div className="song_tile_dropdown">
           {showMenu && (
             <div className="song-tile-action-dropdown">
-              <div onClick={() => addSongToQueue(song.id)}>Add to Queue</div>
-              <div onClick={openPlaylistModal}>Add to Playlist</div>
+              <div className='stad flex-row-center' onClick={() => addSongToQueue(song.id)} > <span className='flex-row-center '> < CgPlayList className="cg-icon" />  Add to Queue</span></div>
+              <div className='stad flex-row-center' onClick={openPlaylistModal}><span className=' flex-row-center'><MdOutlinePlaylistAdd className="cg-icon" /> Add to Playlist</span></div>
             </div>
           )}
         </div>
-        {showPlaylistModal && (
-          <Modal onClose={() => setShowPlaylistModal(false)}>
-            <div className="add_to_playlist_modal_container">
-              <AddtoPlaylist song={song} />
-            </div>
-          </Modal>
-        )}
-      </div>
+        {
+          showPlaylistModal && (
+            <Modal onClose={() => setShowPlaylistModal(false)}>
+              <div className="add_to_playlist_modal_container">
+                <AddtoPlaylist song={song} />
+              </div>
+            </Modal>
+          )
+        }
+      </div >
     </>
   );
 }
